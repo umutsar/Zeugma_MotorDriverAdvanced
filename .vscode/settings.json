@@ -1,0 +1,10 @@
+{
+    "cortex-debug.openocdPath": "/usr/bin/openocd",
+    "cortex-debug.gdbPath": "/opt/Libraries/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb",
+    "cortex-debug.armToolchainPath": "/opt/Libraries/gcc-arm-none-eabi-10.3-2021.10/bin",
+    "files.associations": {
+        "rpm.h": "c",
+        "stm32f1xx_hal.h": "c",
+        "old_value_hall.C": "cpp"
+    }
+}

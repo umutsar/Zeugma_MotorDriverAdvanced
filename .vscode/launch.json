@@ -1,0 +1,80 @@
+{
+    "configurations": [
+        {
+            "showDevDebugOutput": "parsed",
+            "cwd": "${workspaceRoot}",
+            "executable": "./build/MotorSurucuC8T6.elf",
+            "name": "Debug STM32",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "preLaunchTask": "Build STM",
+            "device": "stm32f103xb.s",
+            "configFiles": [
+                "openocd.cfg"
+            ],
+        },
+        {
+            "showDevDebugOutput": "parsed",
+            "cwd": "${workspaceRoot}",
+            "executable": "./build/MotorSurucuC8T6.elf",
+            "name": "Attach STM32",
+            "request": "attach",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "preLaunchTask": "Build STM",
+            "device": "stm32f103xb.s",
+            "configFiles": [
+                "openocd.cfg"
+            ],
+        },
+
+        {
+            "name": "J-Link Debug",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "jlink",
+            "device": "STM32F103C8",        // Kullanılan STM32 modeline göre ayarlayın
+            "interface": "swd",
+            "runToEntryPoint": "main",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/MotorSurucuC8T6.elf",    // Derlenmiş ELF dosyasının yolu
+            "gdbPath": "/opt/Libraries/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb",
+            "serverpath": "/usr/bin/JLinkGDBServer",
+            "showDevDebugOutput": "raw",
+            "swoConfig": {
+                "enabled": true,
+                "cpuFrequency": 72000000,
+                "swoFrequency": 4000000,
+                "source": "probe",
+                "decoders": [
+                    {
+                        "type": "console",
+                        "port": 0,
+                        "label": "ITM port 0 output",
+                        "showOnStartup": true,
+                        "encoding": "ascii"
+                    }
+                ]
+            }
+        },
+
+        {
+            "name": "Youtube-JLINK DEBUG",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/MotorSurucuC8T6.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "preLaunchTask": "Build STM",
+            "configFiles": [
+                "/usr/share/openocd/scripts/interface/stlink.cfg",
+                "/usr/share/openocd/scripts/target/stm32f1x.cfg"
+            ],
+            "searchDir": [],
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "both"
+        }
+
+    ]
+}
