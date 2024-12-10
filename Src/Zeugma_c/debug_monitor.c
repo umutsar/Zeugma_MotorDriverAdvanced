@@ -1,5 +1,5 @@
 #include "debug_monitor.h"
-#include "usbd_cdc_if.h" // added for function prototype warning.
+#include "usbd_cdc_if.h"
 #include "usb_device.h"
 
 char log_buffer[BUFFER_SIZE];
