@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccQOS06D.s 			page 1
+ARM GAS  /tmp/cccnRnbi.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
   29:Src/main.c    **** #include "stdbool.h"
   30:Src/main.c    **** #include "debug_monitor.h"
   31:Src/main.c    **** #include "first_step.h"
-ARM GAS  /tmp/ccQOS06D.s 			page 2
+ARM GAS  /tmp/cccnRnbi.s 			page 2
 
 
   32:Src/main.c    **** #include "rpm.h"
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
   86:Src/main.c    **** uint32_t timeForRotorStopStatusMs = 0;
   87:Src/main.c    **** uint32_t timeForRotorStopStatusMsFlag = 0;
   88:Src/main.c    **** 
-ARM GAS  /tmp/ccQOS06D.s 			page 3
+ARM GAS  /tmp/cccnRnbi.s 			page 3
 
 
   89:Src/main.c    **** volatile uint32_t rpm_counter = 0;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  109:Src/main.c    **** //   rpm_counter = 0;
  110:Src/main.c    **** // }
  111:Src/main.c    **** 
-ARM GAS  /tmp/ccQOS06D.s 			page 4
+ARM GAS  /tmp/cccnRnbi.s 			page 4
 
 
  112:Src/main.c    **** void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  108 0032 1A88     		ldrh	r2, [r3]
  121:Src/main.c    ****       temporary_current_value = map(filtered_current, 0, 1000, 0, 4430);
  109              		.loc 1 121 7 is_stmt 1 view .LVU23
-ARM GAS  /tmp/ccQOS06D.s 			page 5
+ARM GAS  /tmp/cccnRnbi.s 			page 5
 
 
  110              		.loc 1 121 33 is_stmt 0 view .LVU24
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  154              	.L7:
  132:Src/main.c    ****     }
  133:Src/main.c    **** 
-ARM GAS  /tmp/ccQOS06D.s 			page 6
+ARM GAS  /tmp/cccnRnbi.s 			page 6
 
 
  134:Src/main.c    ****     if (minCurrent > filtered_current)
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  201 00a8 1B88     		ldrh	r3, [r3]
  202 00aa 9BB2     		uxth	r3, r3
  122:Src/main.c    ****       temporary_current_value = 1000;
-ARM GAS  /tmp/ccQOS06D.s 			page 7
+ARM GAS  /tmp/cccnRnbi.s 			page 7
 
 
  203              		.loc 1 122 13 view .LVU50
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  249              		.loc 1 145 3 view .LVU56
  146:Src/main.c    ****   static uint16_t dizi_index = 0; // Diziye ekleme için indeks
  250              		.loc 1 146 3 view .LVU57
-ARM GAS  /tmp/ccQOS06D.s 			page 8
+ARM GAS  /tmp/cccnRnbi.s 			page 8
 
 
  147:Src/main.c    ****   uint32_t toplam = 0;            // Toplamı tutmak için değişken
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  290 0020 F8E7     		b	.L17
  291              	.LVL11:
  292              	.L19:
-ARM GAS  /tmp/ccQOS06D.s 			page 9
+ARM GAS  /tmp/cccnRnbi.s 			page 9
 
 
  293              	.LBB6:
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  338              	Error_Handler:
  339              	.LFB73:
  168:Src/main.c    **** 
-ARM GAS  /tmp/ccQOS06D.s 			page 10
+ARM GAS  /tmp/cccnRnbi.s 			page 10
 
 
  169:Src/main.c    **** /* USER CODE END 0 */
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  223:Src/main.c    ****   /* Infinite loop */
  224:Src/main.c    ****   /* USER CODE BEGIN WHILE */
  225:Src/main.c    ****   while (1)
-ARM GAS  /tmp/ccQOS06D.s 			page 11
+ARM GAS  /tmp/cccnRnbi.s 			page 11
 
 
  226:Src/main.c    ****   {
@@ -658,170 +658,169 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  280:Src/main.c    ****     {
  281:Src/main.c    ****       timeForRotorStopStatusMsFlag = 1;
  282:Src/main.c    **** 
-ARM GAS  /tmp/ccQOS06D.s 			page 12
+ARM GAS  /tmp/cccnRnbi.s 			page 12
 
 
- 283:Src/main.c    **** 
- 284:Src/main.c    ****       mode = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5); // Nitro mod
- 285:Src/main.c    ****       if (mode == 0)
- 286:Src/main.c    ****       {
- 287:Src/main.c    ****         pedal_value_mapped = map(speedInAdc, 700, 3600, 0, 10000);
- 288:Src/main.c    ****       }
- 289:Src/main.c    ****       else
- 290:Src/main.c    ****       {
- 291:Src/main.c    ****         pedal_value_mapped = map(speedInAdc, 700, 3600, 0, 10000);
- 292:Src/main.c    ****       }
- 293:Src/main.c    ****       HAL_Delay(10); // Kaldırılabilir
- 294:Src/main.c    **** 
- 295:Src/main.c    ****       if (temporary_current_value > pedal_value_mapped) // if (filtered_current > pedal_value_mappe
- 296:Src/main.c    ****       {
- 297:Src/main.c    ****         if (pwm_value > min_pwm_limit)
- 298:Src/main.c    ****         {
- 299:Src/main.c    ****           pwm_value -= 1;
- 300:Src/main.c    ****         }
- 301:Src/main.c    ****         else
- 302:Src/main.c    ****         {
- 303:Src/main.c    ****           pwm_value = min_pwm_limit;
- 304:Src/main.c    ****         }
- 305:Src/main.c    ****       }
- 306:Src/main.c    **** 
- 307:Src/main.c    ****       else
- 308:Src/main.c    ****       {
- 309:Src/main.c    ****         if (pwm_value < min_pwm_limit)
- 310:Src/main.c    ****         {
- 311:Src/main.c    ****           pwm_value = min_pwm_limit;
- 312:Src/main.c    ****         }
- 313:Src/main.c    ****         else if (pwm_value < 900)
- 314:Src/main.c    ****         {
- 315:Src/main.c    ****           if (HAL_GetTick() - previousTime > 2)
- 316:Src/main.c    ****           {
- 317:Src/main.c    ****             pwm_value += 4;
- 318:Src/main.c    ****             previousTime = HAL_GetTick();
- 319:Src/main.c    ****           }
- 320:Src/main.c    ****         }
- 321:Src/main.c    ****       }
- 322:Src/main.c    **** 
- 323:Src/main.c    ****       if (!run_status)
- 324:Src/main.c    ****       {
- 325:Src/main.c    ****         run_status = true;
- 326:Src/main.c    ****         geri_vites = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
- 327:Src/main.c    ****         first_step(hall_A, hall_B, hall_C);
- 328:Src/main.c    ****       }
- 329:Src/main.c    ****     }
- 330:Src/main.c    ****     else if ((run_status) && (speedInAdc < 900))
- 331:Src/main.c    ****     {
- 332:Src/main.c    ****       pwm_value = 0;
- 333:Src/main.c    ****       // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
- 334:Src/main.c    ****       // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);
- 335:Src/main.c    ****       // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 0);
- 336:Src/main.c    ****       // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0); // Mosfetleri kapatıyoruz
- 337:Src/main.c    ****       // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
- 338:Src/main.c    ****       // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
- 339:Src/main.c    ****       TIM1->CCER = 0x0CCC;
-ARM GAS  /tmp/ccQOS06D.s 			page 13
+ 283:Src/main.c    ****       mode = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5); // Nitro mod
+ 284:Src/main.c    ****       if (mode == 0)
+ 285:Src/main.c    ****       {
+ 286:Src/main.c    ****         pedal_value_mapped = map(speedInAdc, 700, 3600, 0, 10000);
+ 287:Src/main.c    ****       }
+ 288:Src/main.c    ****       else
+ 289:Src/main.c    ****       {
+ 290:Src/main.c    ****         pedal_value_mapped = map(speedInAdc, 700, 3600, 0, 10000);
+ 291:Src/main.c    ****       }
+ 292:Src/main.c    ****       HAL_Delay(10); // Kaldırılabilir
+ 293:Src/main.c    **** 
+ 294:Src/main.c    ****       if (temporary_current_value > pedal_value_mapped) // if (filtered_current > pedal_value_mappe
+ 295:Src/main.c    ****       {
+ 296:Src/main.c    ****         if (pwm_value > min_pwm_limit)
+ 297:Src/main.c    ****         {
+ 298:Src/main.c    ****           pwm_value -= 1;
+ 299:Src/main.c    ****         }
+ 300:Src/main.c    ****         else
+ 301:Src/main.c    ****         {
+ 302:Src/main.c    ****           pwm_value = min_pwm_limit;
+ 303:Src/main.c    ****         }
+ 304:Src/main.c    ****       }
+ 305:Src/main.c    **** 
+ 306:Src/main.c    ****       else
+ 307:Src/main.c    ****       {
+ 308:Src/main.c    ****         if (pwm_value < min_pwm_limit)
+ 309:Src/main.c    ****         {
+ 310:Src/main.c    ****           pwm_value = min_pwm_limit;
+ 311:Src/main.c    ****         }
+ 312:Src/main.c    ****         else if (pwm_value < 900)
+ 313:Src/main.c    ****         {
+ 314:Src/main.c    ****           if (HAL_GetTick() - previousTime > 2)
+ 315:Src/main.c    ****           {
+ 316:Src/main.c    ****             pwm_value += 4;
+ 317:Src/main.c    ****             previousTime = HAL_GetTick();
+ 318:Src/main.c    ****           }
+ 319:Src/main.c    ****         }
+ 320:Src/main.c    ****       }
+ 321:Src/main.c    **** 
+ 322:Src/main.c    ****       if (!run_status)
+ 323:Src/main.c    ****       {
+ 324:Src/main.c    ****         run_status = true;
+ 325:Src/main.c    ****         geri_vites = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
+ 326:Src/main.c    ****         first_step(hall_A, hall_B, hall_C);
+ 327:Src/main.c    ****       }
+ 328:Src/main.c    ****     }
+ 329:Src/main.c    ****     else if ((run_status) && (speedInAdc < 900))
+ 330:Src/main.c    ****     {
+ 331:Src/main.c    ****       pwm_value = 0;
+ 332:Src/main.c    ****       // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
+ 333:Src/main.c    ****       // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);
+ 334:Src/main.c    ****       // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 0);
+ 335:Src/main.c    ****       // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0); // Mosfetleri kapatıyoruz
+ 336:Src/main.c    ****       // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+ 337:Src/main.c    ****       // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+ 338:Src/main.c    ****       TIM1->CCER = 0x0CCC;
+ 339:Src/main.c    ****       flagg = 1;
+ARM GAS  /tmp/cccnRnbi.s 			page 13
 
 
- 340:Src/main.c    ****       flagg = 1;
- 341:Src/main.c    ****       oldValue[0] = 0;
- 342:Src/main.c    ****       oldValue[1] = 0;
- 343:Src/main.c    ****       oldValue[2] = 0;
- 344:Src/main.c    ****       hall_A = 0;
- 345:Src/main.c    ****       hall_B = 0;
- 346:Src/main.c    ****       hall_C = 0;
- 347:Src/main.c    ****       step = 0;
- 348:Src/main.c    ****       pedal_value_mapped = 0;
- 349:Src/main.c    ****       first_step_flag = 1;
- 350:Src/main.c    ****       run_status = false;
- 351:Src/main.c    **** 
- 352:Src/main.c    ****       HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
- 353:Src/main.c    ****       HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_1);
- 354:Src/main.c    ****       HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
- 355:Src/main.c    ****       HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2);
- 356:Src/main.c    ****       HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);
- 357:Src/main.c    ****       HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_3);
- 358:Src/main.c    ****       if (timeForRotorStopStatusMsFlag)
- 359:Src/main.c    ****       {
- 360:Src/main.c    ****         timeForRotorStopStatusMs = HAL_GetTick();
- 361:Src/main.c    ****         timeForRotorStopStatusMsFlag = 0;
- 362:Src/main.c    ****       }
- 363:Src/main.c    ****     }
- 364:Src/main.c    ****   }
- 365:Src/main.c    **** 
- 366:Src/main.c    ****   hall_A = HAL_GPIO_ReadPin(GPIOA, HALL_1_Pin);
- 367:Src/main.c    ****   hall_B = HAL_GPIO_ReadPin(GPIOA, HALL_2_Pin);
- 368:Src/main.c    ****   hall_C = HAL_GPIO_ReadPin(GPIOA, HALL_3_Pin);
- 369:Src/main.c    ****   /* USER CODE END 3 */
- 370:Src/main.c    **** }
- 371:Src/main.c    **** 
- 372:Src/main.c    **** /**
- 373:Src/main.c    ****  * @brief System Clock Configuration
- 374:Src/main.c    ****  * @retval None
- 375:Src/main.c    ****  */
- 376:Src/main.c    **** void SystemClock_Config(void)
- 377:Src/main.c    **** {
- 378:Src/main.c    ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
- 379:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
- 380:Src/main.c    ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
- 381:Src/main.c    **** 
- 382:Src/main.c    ****   /** Initializes the RCC Oscillators according to the specified parameters
- 383:Src/main.c    ****    * in the RCC_OscInitTypeDef structure.
- 384:Src/main.c    ****    */
- 385:Src/main.c    ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
- 386:Src/main.c    ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
- 387:Src/main.c    ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
- 388:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
- 389:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
- 390:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
- 391:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
- 392:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
- 393:Src/main.c    ****   {
- 394:Src/main.c    ****     Error_Handler();
- 395:Src/main.c    ****   }
- 396:Src/main.c    **** 
-ARM GAS  /tmp/ccQOS06D.s 			page 14
+ 340:Src/main.c    ****       oldValue[0] = 0;
+ 341:Src/main.c    ****       oldValue[1] = 0;
+ 342:Src/main.c    ****       oldValue[2] = 0;
+ 343:Src/main.c    ****       hall_A = 0;
+ 344:Src/main.c    ****       hall_B = 0;
+ 345:Src/main.c    ****       hall_C = 0;
+ 346:Src/main.c    ****       step = 0;
+ 347:Src/main.c    ****       pedal_value_mapped = 0;
+ 348:Src/main.c    ****       first_step_flag = 1;
+ 349:Src/main.c    ****       run_status = false;
+ 350:Src/main.c    **** 
+ 351:Src/main.c    ****       HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
+ 352:Src/main.c    ****       HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_1);
+ 353:Src/main.c    ****       HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
+ 354:Src/main.c    ****       HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2);
+ 355:Src/main.c    ****       HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);
+ 356:Src/main.c    ****       HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_3);
+ 357:Src/main.c    ****       if (timeForRotorStopStatusMsFlag)
+ 358:Src/main.c    ****       {
+ 359:Src/main.c    ****         timeForRotorStopStatusMs = HAL_GetTick();
+ 360:Src/main.c    ****         timeForRotorStopStatusMsFlag = 0;
+ 361:Src/main.c    ****       }
+ 362:Src/main.c    ****     }
+ 363:Src/main.c    ****   }
+ 364:Src/main.c    **** 
+ 365:Src/main.c    ****   hall_A = HAL_GPIO_ReadPin(GPIOA, HALL_1_Pin);
+ 366:Src/main.c    ****   hall_B = HAL_GPIO_ReadPin(GPIOA, HALL_2_Pin);
+ 367:Src/main.c    ****   hall_C = HAL_GPIO_ReadPin(GPIOA, HALL_3_Pin);
+ 368:Src/main.c    ****   /* USER CODE END 3 */
+ 369:Src/main.c    **** }
+ 370:Src/main.c    **** 
+ 371:Src/main.c    **** /**
+ 372:Src/main.c    ****  * @brief System Clock Configuration
+ 373:Src/main.c    ****  * @retval None
+ 374:Src/main.c    ****  */
+ 375:Src/main.c    **** void SystemClock_Config(void)
+ 376:Src/main.c    **** {
+ 377:Src/main.c    ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+ 378:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 379:Src/main.c    ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+ 380:Src/main.c    **** 
+ 381:Src/main.c    ****   /** Initializes the RCC Oscillators according to the specified parameters
+ 382:Src/main.c    ****    * in the RCC_OscInitTypeDef structure.
+ 383:Src/main.c    ****    */
+ 384:Src/main.c    ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+ 385:Src/main.c    ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+ 386:Src/main.c    ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
+ 387:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 388:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 389:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+ 390:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
+ 391:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 392:Src/main.c    ****   {
+ 393:Src/main.c    ****     Error_Handler();
+ 394:Src/main.c    ****   }
+ 395:Src/main.c    **** 
+ 396:Src/main.c    ****   /** Initializes the CPU, AHB and APB buses clocks
+ARM GAS  /tmp/cccnRnbi.s 			page 14
 
 
- 397:Src/main.c    ****   /** Initializes the CPU, AHB and APB buses clocks
- 398:Src/main.c    ****    */
- 399:Src/main.c    ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | R
- 400:Src/main.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
- 401:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
- 402:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
- 403:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
- 404:Src/main.c    **** 
- 405:Src/main.c    ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
- 406:Src/main.c    ****   {
- 407:Src/main.c    ****     Error_Handler();
- 408:Src/main.c    ****   }
- 409:Src/main.c    ****   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC | RCC_PERIPHCLK_USB;
- 410:Src/main.c    ****   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
- 411:Src/main.c    ****   PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL_DIV1_5;
- 412:Src/main.c    ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
- 413:Src/main.c    ****   {
- 414:Src/main.c    ****     Error_Handler();
- 415:Src/main.c    ****   }
- 416:Src/main.c    **** }
- 417:Src/main.c    **** 
- 418:Src/main.c    **** /* USER CODE BEGIN 4 */
- 419:Src/main.c    **** 
- 420:Src/main.c    **** /* USER CODE END 4 */
- 421:Src/main.c    **** 
- 422:Src/main.c    **** /**
- 423:Src/main.c    ****  * @brief  This function is executed in case of error occurrence.
- 424:Src/main.c    ****  * @retval None
- 425:Src/main.c    ****  */
- 426:Src/main.c    **** void Error_Handler(void)
- 427:Src/main.c    **** {
- 340              		.loc 1 427 1 is_stmt 1 view -0
+ 397:Src/main.c    ****    */
+ 398:Src/main.c    ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | R
+ 399:Src/main.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+ 400:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 401:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+ 402:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 403:Src/main.c    **** 
+ 404:Src/main.c    ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+ 405:Src/main.c    ****   {
+ 406:Src/main.c    ****     Error_Handler();
+ 407:Src/main.c    ****   }
+ 408:Src/main.c    ****   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC | RCC_PERIPHCLK_USB;
+ 409:Src/main.c    ****   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
+ 410:Src/main.c    ****   PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL_DIV1_5;
+ 411:Src/main.c    ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 412:Src/main.c    ****   {
+ 413:Src/main.c    ****     Error_Handler();
+ 414:Src/main.c    ****   }
+ 415:Src/main.c    **** }
+ 416:Src/main.c    **** 
+ 417:Src/main.c    **** /* USER CODE BEGIN 4 */
+ 418:Src/main.c    **** 
+ 419:Src/main.c    **** /* USER CODE END 4 */
+ 420:Src/main.c    **** 
+ 421:Src/main.c    **** /**
+ 422:Src/main.c    ****  * @brief  This function is executed in case of error occurrence.
+ 423:Src/main.c    ****  * @retval None
+ 424:Src/main.c    ****  */
+ 425:Src/main.c    **** void Error_Handler(void)
+ 426:Src/main.c    **** {
+ 340              		.loc 1 426 1 is_stmt 1 view -0
  341              		.cfi_startproc
  342              		@ Volatile: function does not return.
  343              		@ args = 0, pretend = 0, frame = 0
  344              		@ frame_needed = 0, uses_anonymous_args = 0
  345              		@ link register save eliminated.
- 428:Src/main.c    ****   /* USER CODE BEGIN Error_Handler_Debug */
- 429:Src/main.c    ****   /* User can add his own implementation to report the HAL error return state */
- 430:Src/main.c    ****   __disable_irq();
- 346              		.loc 1 430 3 view .LVU85
+ 427:Src/main.c    ****   /* USER CODE BEGIN Error_Handler_Debug */
+ 428:Src/main.c    ****   /* User can add his own implementation to report the HAL error return state */
+ 429:Src/main.c    ****   __disable_irq();
+ 346              		.loc 1 429 3 view .LVU85
  347              	.LBB7:
  348              	.LBI7:
  349              		.file 2 "Drivers/CMSIS/Include/cmsis_gcc.h"
@@ -838,10 +837,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
   11:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
   12:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
   13:Drivers/CMSIS/Include/cmsis_gcc.h ****  * not use this file except in compliance with the License.
-ARM GAS  /tmp/ccQOS06D.s 			page 15
-
-
   14:Drivers/CMSIS/Include/cmsis_gcc.h ****  * You may obtain a copy of the License at
+ARM GAS  /tmp/cccnRnbi.s 			page 15
+
+
   15:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
   16:Drivers/CMSIS/Include/cmsis_gcc.h ****  * www.apache.org/licenses/LICENSE-2.0
   17:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
@@ -898,10 +897,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
   68:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_UNION                         union __attribute__((packed, aligned(1)))
   69:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   70:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32        /* deprecated */
-ARM GAS  /tmp/ccQOS06D.s 			page 16
-
-
   71:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+ARM GAS  /tmp/cccnRnbi.s 			page 16
+
+
   72:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
   73:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
   74:Drivers/CMSIS/Include/cmsis_gcc.h ****   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
@@ -958,10 +957,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  125:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Enable IRQ Interrupts
  126:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
  127:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
-ARM GAS  /tmp/ccQOS06D.s 			page 17
-
-
  128:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ARM GAS  /tmp/cccnRnbi.s 			page 17
+
+
  129:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_irq(void)
  130:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  131:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
@@ -988,13 +987,13 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  359              	.L24:
  360              	.LBE8:
  361              	.LBE7:
- 431:Src/main.c    ****   while (1)
- 362              		.loc 1 431 3 view .LVU88
- 432:Src/main.c    ****   {
- 433:Src/main.c    ****   }
- 363              		.loc 1 433 3 view .LVU89
- 431:Src/main.c    ****   while (1)
- 364              		.loc 1 431 9 view .LVU90
+ 430:Src/main.c    ****   while (1)
+ 362              		.loc 1 430 3 view .LVU88
+ 431:Src/main.c    ****   {
+ 432:Src/main.c    ****   }
+ 363              		.loc 1 432 3 view .LVU89
+ 430:Src/main.c    ****   while (1)
+ 364              		.loc 1 430 9 view .LVU90
  365 0002 FEE7     		b	.L24
  366              		.cfi_endproc
  367              	.LFE73:
@@ -1006,8 +1005,8 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  374              		.thumb_func
  376              	SystemClock_Config:
  377              	.LFB72:
- 377:Src/main.c    ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
- 378              		.loc 1 377 1 view -0
+ 376:Src/main.c    ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+ 378              		.loc 1 376 1 view -0
  379              		.cfi_startproc
  380              		@ args = 0, pretend = 0, frame = 80
  381              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1016,157 +1015,157 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  384              		.cfi_offset 14, -4
  385 0002 95B0     		sub	sp, sp, #84
  386              		.cfi_def_cfa_offset 88
- 378:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
- 387              		.loc 1 378 3 view .LVU92
-ARM GAS  /tmp/ccQOS06D.s 			page 18
+ 377:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 387              		.loc 1 377 3 view .LVU92
+ 377:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ARM GAS  /tmp/cccnRnbi.s 			page 18
 
 
- 378:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
- 388              		.loc 1 378 22 is_stmt 0 view .LVU93
+ 388              		.loc 1 377 22 is_stmt 0 view .LVU93
  389 0004 2822     		movs	r2, #40
  390 0006 0021     		movs	r1, #0
  391 0008 0DEB0200 		add	r0, sp, r2
  392 000c FFF7FEFF 		bl	memset
  393              	.LVL17:
- 379:Src/main.c    ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
- 394              		.loc 1 379 3 is_stmt 1 view .LVU94
- 379:Src/main.c    ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
- 395              		.loc 1 379 22 is_stmt 0 view .LVU95
+ 378:Src/main.c    ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+ 394              		.loc 1 378 3 is_stmt 1 view .LVU94
+ 378:Src/main.c    ****   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+ 395              		.loc 1 378 22 is_stmt 0 view .LVU95
  396 0010 0023     		movs	r3, #0
  397 0012 0593     		str	r3, [sp, #20]
  398 0014 0693     		str	r3, [sp, #24]
  399 0016 0793     		str	r3, [sp, #28]
  400 0018 0893     		str	r3, [sp, #32]
  401 001a 0993     		str	r3, [sp, #36]
- 380:Src/main.c    **** 
- 402              		.loc 1 380 3 is_stmt 1 view .LVU96
- 380:Src/main.c    **** 
- 403              		.loc 1 380 28 is_stmt 0 view .LVU97
+ 379:Src/main.c    **** 
+ 402              		.loc 1 379 3 is_stmt 1 view .LVU96
+ 379:Src/main.c    **** 
+ 403              		.loc 1 379 28 is_stmt 0 view .LVU97
  404 001c 0193     		str	r3, [sp, #4]
  405 001e 0293     		str	r3, [sp, #8]
  406 0020 0393     		str	r3, [sp, #12]
  407 0022 0493     		str	r3, [sp, #16]
- 385:Src/main.c    ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
- 408              		.loc 1 385 3 is_stmt 1 view .LVU98
- 385:Src/main.c    ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
- 409              		.loc 1 385 36 is_stmt 0 view .LVU99
+ 384:Src/main.c    ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+ 408              		.loc 1 384 3 is_stmt 1 view .LVU98
+ 384:Src/main.c    ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+ 409              		.loc 1 384 36 is_stmt 0 view .LVU99
  410 0024 0122     		movs	r2, #1
  411 0026 0A92     		str	r2, [sp, #40]
- 386:Src/main.c    ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
- 412              		.loc 1 386 3 is_stmt 1 view .LVU100
- 386:Src/main.c    ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
- 413              		.loc 1 386 30 is_stmt 0 view .LVU101
+ 385:Src/main.c    ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
+ 412              		.loc 1 385 3 is_stmt 1 view .LVU100
+ 385:Src/main.c    ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
+ 413              		.loc 1 385 30 is_stmt 0 view .LVU101
  414 0028 4FF48033 		mov	r3, #65536
  415 002c 0B93     		str	r3, [sp, #44]
- 387:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
- 416              		.loc 1 387 3 is_stmt 1 view .LVU102
- 388:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
- 417              		.loc 1 388 3 view .LVU103
- 388:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
- 418              		.loc 1 388 30 is_stmt 0 view .LVU104
+ 386:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 416              		.loc 1 386 3 is_stmt 1 view .LVU102
+ 387:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 417              		.loc 1 387 3 view .LVU103
+ 387:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 418              		.loc 1 387 30 is_stmt 0 view .LVU104
  419 002e 0E92     		str	r2, [sp, #56]
- 389:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
- 420              		.loc 1 389 3 is_stmt 1 view .LVU105
- 389:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
- 421              		.loc 1 389 34 is_stmt 0 view .LVU106
+ 388:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+ 420              		.loc 1 388 3 is_stmt 1 view .LVU105
+ 388:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+ 421              		.loc 1 388 34 is_stmt 0 view .LVU106
  422 0030 0222     		movs	r2, #2
  423 0032 1192     		str	r2, [sp, #68]
- 390:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
- 424              		.loc 1 390 3 is_stmt 1 view .LVU107
- 390:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
- 425              		.loc 1 390 35 is_stmt 0 view .LVU108
+ 389:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
+ 424              		.loc 1 389 3 is_stmt 1 view .LVU107
+ 389:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
+ 425              		.loc 1 389 35 is_stmt 0 view .LVU108
  426 0034 1293     		str	r3, [sp, #72]
- 391:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
- 427              		.loc 1 391 3 is_stmt 1 view .LVU109
-ARM GAS  /tmp/ccQOS06D.s 			page 19
+ 390:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 427              		.loc 1 390 3 is_stmt 1 view .LVU109
+ 390:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ARM GAS  /tmp/cccnRnbi.s 			page 19
 
 
- 391:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
- 428              		.loc 1 391 32 is_stmt 0 view .LVU110
+ 428              		.loc 1 390 32 is_stmt 0 view .LVU110
  429 0036 4FF4E013 		mov	r3, #1835008
  430 003a 1393     		str	r3, [sp, #76]
- 392:Src/main.c    ****   {
- 431              		.loc 1 392 3 is_stmt 1 view .LVU111
- 392:Src/main.c    ****   {
- 432              		.loc 1 392 7 is_stmt 0 view .LVU112
+ 391:Src/main.c    ****   {
+ 431              		.loc 1 391 3 is_stmt 1 view .LVU111
+ 391:Src/main.c    ****   {
+ 432              		.loc 1 391 7 is_stmt 0 view .LVU112
  433 003c 0AA8     		add	r0, sp, #40
  434 003e FFF7FEFF 		bl	HAL_RCC_OscConfig
  435              	.LVL18:
- 392:Src/main.c    ****   {
- 436              		.loc 1 392 6 discriminator 1 view .LVU113
+ 391:Src/main.c    ****   {
+ 436              		.loc 1 391 6 discriminator 1 view .LVU113
  437 0042 D8B9     		cbnz	r0, .L30
- 399:Src/main.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
- 438              		.loc 1 399 3 is_stmt 1 view .LVU114
- 399:Src/main.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
- 439              		.loc 1 399 31 is_stmt 0 view .LVU115
+ 398:Src/main.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+ 438              		.loc 1 398 3 is_stmt 1 view .LVU114
+ 398:Src/main.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+ 439              		.loc 1 398 31 is_stmt 0 view .LVU115
  440 0044 0F23     		movs	r3, #15
  441 0046 0593     		str	r3, [sp, #20]
- 400:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
- 442              		.loc 1 400 3 is_stmt 1 view .LVU116
- 400:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
- 443              		.loc 1 400 34 is_stmt 0 view .LVU117
+ 399:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 442              		.loc 1 399 3 is_stmt 1 view .LVU116
+ 399:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 443              		.loc 1 399 34 is_stmt 0 view .LVU117
  444 0048 0221     		movs	r1, #2
  445 004a 0691     		str	r1, [sp, #24]
- 401:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
- 446              		.loc 1 401 3 is_stmt 1 view .LVU118
- 401:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
- 447              		.loc 1 401 35 is_stmt 0 view .LVU119
+ 400:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+ 446              		.loc 1 400 3 is_stmt 1 view .LVU118
+ 400:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+ 447              		.loc 1 400 35 is_stmt 0 view .LVU119
  448 004c 0023     		movs	r3, #0
  449 004e 0793     		str	r3, [sp, #28]
- 402:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
- 450              		.loc 1 402 3 is_stmt 1 view .LVU120
- 402:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
- 451              		.loc 1 402 36 is_stmt 0 view .LVU121
+ 401:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 450              		.loc 1 401 3 is_stmt 1 view .LVU120
+ 401:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 451              		.loc 1 401 36 is_stmt 0 view .LVU121
  452 0050 4FF48062 		mov	r2, #1024
  453 0054 0892     		str	r2, [sp, #32]
- 403:Src/main.c    **** 
- 454              		.loc 1 403 3 is_stmt 1 view .LVU122
- 403:Src/main.c    **** 
- 455              		.loc 1 403 36 is_stmt 0 view .LVU123
+ 402:Src/main.c    **** 
+ 454              		.loc 1 402 3 is_stmt 1 view .LVU122
+ 402:Src/main.c    **** 
+ 455              		.loc 1 402 36 is_stmt 0 view .LVU123
  456 0056 0993     		str	r3, [sp, #36]
- 405:Src/main.c    ****   {
- 457              		.loc 1 405 3 is_stmt 1 view .LVU124
- 405:Src/main.c    ****   {
- 458              		.loc 1 405 7 is_stmt 0 view .LVU125
+ 404:Src/main.c    ****   {
+ 457              		.loc 1 404 3 is_stmt 1 view .LVU124
+ 404:Src/main.c    ****   {
+ 458              		.loc 1 404 7 is_stmt 0 view .LVU125
  459 0058 05A8     		add	r0, sp, #20
  460 005a FFF7FEFF 		bl	HAL_RCC_ClockConfig
  461              	.LVL19:
- 405:Src/main.c    ****   {
- 462              		.loc 1 405 6 discriminator 1 view .LVU126
+ 404:Src/main.c    ****   {
+ 462              		.loc 1 404 6 discriminator 1 view .LVU126
  463 005e 78B9     		cbnz	r0, .L31
- 409:Src/main.c    ****   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
- 464              		.loc 1 409 3 is_stmt 1 view .LVU127
- 409:Src/main.c    ****   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
- 465              		.loc 1 409 38 is_stmt 0 view .LVU128
-ARM GAS  /tmp/ccQOS06D.s 			page 20
-
-
+ 408:Src/main.c    ****   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
+ 464              		.loc 1 408 3 is_stmt 1 view .LVU127
+ 408:Src/main.c    ****   PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
+ 465              		.loc 1 408 38 is_stmt 0 view .LVU128
  466 0060 1223     		movs	r3, #18
+ARM GAS  /tmp/cccnRnbi.s 			page 20
+
+
  467 0062 0193     		str	r3, [sp, #4]
- 410:Src/main.c    ****   PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL_DIV1_5;
- 468              		.loc 1 410 3 is_stmt 1 view .LVU129
- 410:Src/main.c    ****   PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL_DIV1_5;
- 469              		.loc 1 410 35 is_stmt 0 view .LVU130
+ 409:Src/main.c    ****   PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL_DIV1_5;
+ 468              		.loc 1 409 3 is_stmt 1 view .LVU129
+ 409:Src/main.c    ****   PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL_DIV1_5;
+ 469              		.loc 1 409 35 is_stmt 0 view .LVU130
  470 0064 4FF40043 		mov	r3, #32768
  471 0068 0393     		str	r3, [sp, #12]
- 411:Src/main.c    ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
- 472              		.loc 1 411 3 is_stmt 1 view .LVU131
- 411:Src/main.c    ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
- 473              		.loc 1 411 35 is_stmt 0 view .LVU132
+ 410:Src/main.c    ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 472              		.loc 1 410 3 is_stmt 1 view .LVU131
+ 410:Src/main.c    ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 473              		.loc 1 410 35 is_stmt 0 view .LVU132
  474 006a 0023     		movs	r3, #0
  475 006c 0493     		str	r3, [sp, #16]
- 412:Src/main.c    ****   {
- 476              		.loc 1 412 3 is_stmt 1 view .LVU133
- 412:Src/main.c    ****   {
- 477              		.loc 1 412 7 is_stmt 0 view .LVU134
+ 411:Src/main.c    ****   {
+ 476              		.loc 1 411 3 is_stmt 1 view .LVU133
+ 411:Src/main.c    ****   {
+ 477              		.loc 1 411 7 is_stmt 0 view .LVU134
  478 006e 01A8     		add	r0, sp, #4
  479 0070 FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
  480              	.LVL20:
- 412:Src/main.c    ****   {
- 481              		.loc 1 412 6 discriminator 1 view .LVU135
+ 411:Src/main.c    ****   {
+ 481              		.loc 1 411 6 discriminator 1 view .LVU135
  482 0074 30B9     		cbnz	r0, .L32
- 416:Src/main.c    **** 
- 483              		.loc 1 416 1 view .LVU136
+ 415:Src/main.c    **** 
+ 483              		.loc 1 415 1 view .LVU136
  484 0076 15B0     		add	sp, sp, #84
  485              		.cfi_remember_state
  486              		.cfi_def_cfa_offset 4
@@ -1174,18 +1173,18 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  488 0078 5DF804FB 		ldr	pc, [sp], #4
  489              	.L30:
  490              		.cfi_restore_state
- 394:Src/main.c    ****   }
- 491              		.loc 1 394 5 is_stmt 1 view .LVU137
+ 393:Src/main.c    ****   }
+ 491              		.loc 1 393 5 is_stmt 1 view .LVU137
  492 007c FFF7FEFF 		bl	Error_Handler
  493              	.LVL21:
  494              	.L31:
- 407:Src/main.c    ****   }
- 495              		.loc 1 407 5 view .LVU138
+ 406:Src/main.c    ****   }
+ 495              		.loc 1 406 5 view .LVU138
  496 0080 FFF7FEFF 		bl	Error_Handler
  497              	.LVL22:
  498              	.L32:
- 414:Src/main.c    ****   }
- 499              		.loc 1 414 5 view .LVU139
+ 413:Src/main.c    ****   }
+ 499              		.loc 1 413 5 view .LVU139
  500 0084 FFF7FEFF 		bl	Error_Handler
  501              	.LVL23:
  502              		.cfi_endproc
@@ -1198,10 +1197,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  510              	.LC1:
  511 0004 66696C74 		.ascii	"filtreli_akim\000"
  511      72656C69 
-ARM GAS  /tmp/ccQOS06D.s 			page 21
-
-
  511      5F616B69 
+ARM GAS  /tmp/cccnRnbi.s 			page 21
+
+
  511      6D00
  512 0012 0000     		.align	2
  513              	.LC2:
@@ -1258,10 +1257,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  553              	.LVL28:
  201:Src/main.c    ****   MX_USB_DEVICE_Init();
  554              		.loc 1 201 3 view .LVU146
-ARM GAS  /tmp/ccQOS06D.s 			page 22
-
-
  555 0018 FFF7FEFF 		bl	MX_TIM1_Init
+ARM GAS  /tmp/cccnRnbi.s 			page 22
+
+
  556              	.LVL29:
  202:Src/main.c    ****   MX_TIM2_Init();
  557              		.loc 1 202 3 view .LVU147
@@ -1318,10 +1317,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  213:Src/main.c    **** 
  600              		.loc 1 213 3 view .LVU156
  601 0060 A148     		ldr	r0, .L51+12
-ARM GAS  /tmp/ccQOS06D.s 			page 23
-
-
  602 0062 FFF7FEFF 		bl	HAL_TIM_Base_Start
+ARM GAS  /tmp/cccnRnbi.s 			page 23
+
+
  603              	.LVL39:
  215:Src/main.c    ****   HAL_Delay(1000);
  604              		.loc 1 215 3 view .LVU157
@@ -1378,10 +1377,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  642 0090 0093     		str	r3, [sp]
  643 0092 1423     		movs	r3, #20
  644 0094 4FF4C862 		mov	r2, #1600
-ARM GAS  /tmp/ccQOS06D.s 			page 24
-
-
  645 0098 4FF49661 		mov	r1, #1200
+ARM GAS  /tmp/cccnRnbi.s 			page 24
+
+
  646 009c 2846     		mov	r0, r5
  647 009e FFF7FEFF 		bl	map
  648              	.LVL47:
@@ -1438,10 +1437,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  689              		.loc 1 261 7 is_stmt 1 view .LVU180
  690 00d8 824B     		ldr	r3, .L51+8
  691 00da 1A68     		ldr	r2, [r3]
-ARM GAS  /tmp/ccQOS06D.s 			page 25
-
-
  692 00dc 0023     		movs	r3, #0
+ARM GAS  /tmp/cccnRnbi.s 			page 25
+
+
  693 00de D363     		str	r3, [r2, #60]
  262:Src/main.c    ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
  694              		.loc 1 262 7 view .LVU181
@@ -1498,10 +1497,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  733 0114 FFF7FEFF 		bl	HAL_TIM_PWM_Start
  734              	.LVL61:
  274:Src/main.c    ****       HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
-ARM GAS  /tmp/ccQOS06D.s 			page 26
-
-
  735              		.loc 1 274 7 view .LVU194
+ARM GAS  /tmp/cccnRnbi.s 			page 26
+
+
  736 0118 0421     		movs	r1, #4
  737 011a 2846     		mov	r0, r5
  738 011c FFF7FEFF 		bl	HAL_TIMEx_PWMN_Start
@@ -1520,10 +1519,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  749              	.LVL64:
  750 0130 78E0     		b	.L37
  751              	.L39:
- 291:Src/main.c    ****       }
- 752              		.loc 1 291 9 view .LVU197
- 291:Src/main.c    ****       }
- 753              		.loc 1 291 30 is_stmt 0 view .LVU198
+ 290:Src/main.c    ****       }
+ 752              		.loc 1 290 9 view .LVU197
+ 290:Src/main.c    ****       }
+ 753              		.loc 1 290 30 is_stmt 0 view .LVU198
  754 0132 784B     		ldr	r3, .L51+56
  755 0134 1888     		ldrh	r0, [r3]
  756 0136 42F21073 		movw	r3, #10000
@@ -1534,111 +1533,111 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  761 0146 80B2     		uxth	r0, r0
  762 0148 FFF7FEFF 		bl	map
  763              	.LVL65:
- 291:Src/main.c    ****       }
- 764              		.loc 1 291 28 discriminator 1 view .LVU199
+ 290:Src/main.c    ****       }
+ 764              		.loc 1 290 28 discriminator 1 view .LVU199
  765 014c 6D4B     		ldr	r3, .L51+40
  766 014e 1860     		str	r0, [r3]
  767 0150 94E0     		b	.L40
  768              	.L42:
- 303:Src/main.c    ****         }
- 769              		.loc 1 303 11 is_stmt 1 view .LVU200
- 303:Src/main.c    ****         }
- 770              		.loc 1 303 21 is_stmt 0 view .LVU201
+ 302:Src/main.c    ****         }
+ 769              		.loc 1 302 11 is_stmt 1 view .LVU200
+ 302:Src/main.c    ****         }
+ 770              		.loc 1 302 21 is_stmt 0 view .LVU201
  771 0152 6E4A     		ldr	r2, .L51+48
  772 0154 1360     		str	r3, [r2]
  773 0156 A6E0     		b	.L43
  774              	.L41:
- 309:Src/main.c    ****         {
- 775              		.loc 1 309 9 is_stmt 1 view .LVU202
- 309:Src/main.c    ****         {
- 776              		.loc 1 309 23 is_stmt 0 view .LVU203
+ 308:Src/main.c    ****         {
+ 775              		.loc 1 308 9 is_stmt 1 view .LVU202
+ 308:Src/main.c    ****         {
+ 776              		.loc 1 308 23 is_stmt 0 view .LVU203
  777 0158 6F4B     		ldr	r3, .L51+60
  778 015a 1B88     		ldrh	r3, [r3]
  779 015c 6B4A     		ldr	r2, .L51+48
  780 015e 1268     		ldr	r2, [r2]
- 309:Src/main.c    ****         {
- 781              		.loc 1 309 12 view .LVU204
-ARM GAS  /tmp/ccQOS06D.s 			page 27
-
-
+ 308:Src/main.c    ****         {
+ 781              		.loc 1 308 12 view .LVU204
  782 0160 9342     		cmp	r3, r2
+ARM GAS  /tmp/cccnRnbi.s 			page 27
+
+
  783 0162 02D9     		bls	.L44
- 311:Src/main.c    ****         }
- 784              		.loc 1 311 11 is_stmt 1 view .LVU205
- 311:Src/main.c    ****         }
- 785              		.loc 1 311 21 is_stmt 0 view .LVU206
+ 310:Src/main.c    ****         }
+ 784              		.loc 1 310 11 is_stmt 1 view .LVU205
+ 310:Src/main.c    ****         }
+ 785              		.loc 1 310 21 is_stmt 0 view .LVU206
  786 0164 694A     		ldr	r2, .L51+48
  787 0166 1360     		str	r3, [r2]
  788 0168 9DE0     		b	.L43
  789              	.L44:
- 313:Src/main.c    ****         {
- 790              		.loc 1 313 14 is_stmt 1 view .LVU207
- 313:Src/main.c    ****         {
- 791              		.loc 1 313 28 is_stmt 0 view .LVU208
+ 312:Src/main.c    ****         {
+ 790              		.loc 1 312 14 is_stmt 1 view .LVU207
+ 312:Src/main.c    ****         {
+ 791              		.loc 1 312 28 is_stmt 0 view .LVU208
  792 016a 684B     		ldr	r3, .L51+48
  793 016c 1B68     		ldr	r3, [r3]
- 313:Src/main.c    ****         {
- 794              		.loc 1 313 17 view .LVU209
+ 312:Src/main.c    ****         {
+ 794              		.loc 1 312 17 view .LVU209
  795 016e B3F5617F 		cmp	r3, #900
  796 0172 80F09880 		bcs	.L43
- 315:Src/main.c    ****           {
- 797              		.loc 1 315 11 is_stmt 1 view .LVU210
- 315:Src/main.c    ****           {
- 798              		.loc 1 315 15 is_stmt 0 view .LVU211
+ 314:Src/main.c    ****           {
+ 797              		.loc 1 314 11 is_stmt 1 view .LVU210
+ 314:Src/main.c    ****           {
+ 798              		.loc 1 314 15 is_stmt 0 view .LVU211
  799 0176 FFF7FEFF 		bl	HAL_GetTick
  800              	.LVL66:
- 315:Src/main.c    ****           {
- 801              		.loc 1 315 29 discriminator 1 view .LVU212
+ 314:Src/main.c    ****           {
+ 801              		.loc 1 314 29 discriminator 1 view .LVU212
  802 017a 001B     		subs	r0, r0, r4
- 315:Src/main.c    ****           {
- 803              		.loc 1 315 14 discriminator 1 view .LVU213
+ 314:Src/main.c    ****           {
+ 803              		.loc 1 314 14 discriminator 1 view .LVU213
  804 017c 0228     		cmp	r0, #2
  805 017e 40F29280 		bls	.L43
- 317:Src/main.c    ****             previousTime = HAL_GetTick();
- 806              		.loc 1 317 13 is_stmt 1 view .LVU214
- 317:Src/main.c    ****             previousTime = HAL_GetTick();
- 807              		.loc 1 317 23 is_stmt 0 view .LVU215
+ 316:Src/main.c    ****             previousTime = HAL_GetTick();
+ 806              		.loc 1 316 13 is_stmt 1 view .LVU214
+ 316:Src/main.c    ****             previousTime = HAL_GetTick();
+ 807              		.loc 1 316 23 is_stmt 0 view .LVU215
  808 0182 624A     		ldr	r2, .L51+48
  809 0184 1368     		ldr	r3, [r2]
  810 0186 0433     		adds	r3, r3, #4
  811 0188 1360     		str	r3, [r2]
- 318:Src/main.c    ****           }
- 812              		.loc 1 318 13 is_stmt 1 view .LVU216
- 318:Src/main.c    ****           }
- 813              		.loc 1 318 28 is_stmt 0 view .LVU217
+ 317:Src/main.c    ****           }
+ 812              		.loc 1 317 13 is_stmt 1 view .LVU216
+ 317:Src/main.c    ****           }
+ 813              		.loc 1 317 28 is_stmt 0 view .LVU217
  814 018a FFF7FEFF 		bl	HAL_GetTick
  815              	.LVL67:
  816 018e 0446     		mov	r4, r0
  817              	.LVL68:
- 318:Src/main.c    ****           }
- 818              		.loc 1 318 28 view .LVU218
+ 317:Src/main.c    ****           }
+ 818              		.loc 1 317 28 view .LVU218
  819 0190 89E0     		b	.L43
  820              	.LVL69:
  821              	.L38:
- 330:Src/main.c    ****     {
- 822              		.loc 1 330 10 is_stmt 1 view .LVU219
- 330:Src/main.c    ****     {
-ARM GAS  /tmp/ccQOS06D.s 			page 28
+ 329:Src/main.c    ****     {
+ 822              		.loc 1 329 10 is_stmt 1 view .LVU219
+ 329:Src/main.c    ****     {
+ 823              		.loc 1 329 14 is_stmt 0 view .LVU220
+ARM GAS  /tmp/cccnRnbi.s 			page 28
 
 
- 823              		.loc 1 330 14 is_stmt 0 view .LVU220
  824 0192 624B     		ldr	r3, .L51+64
  825 0194 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 330:Src/main.c    ****     {
- 826              		.loc 1 330 13 view .LVU221
+ 329:Src/main.c    ****     {
+ 826              		.loc 1 329 13 view .LVU221
  827 0196 33B1     		cbz	r3, .L34
- 330:Src/main.c    ****     {
- 828              		.loc 1 330 42 discriminator 1 view .LVU222
+ 329:Src/main.c    ****     {
+ 828              		.loc 1 329 42 discriminator 1 view .LVU222
  829 0198 5E4B     		ldr	r3, .L51+56
  830 019a 1B88     		ldrh	r3, [r3]
  831 019c 9BB2     		uxth	r3, r3
- 330:Src/main.c    ****     {
- 832              		.loc 1 330 27 discriminator 1 view .LVU223
+ 329:Src/main.c    ****     {
+ 832              		.loc 1 329 27 discriminator 1 view .LVU223
  833 019e B3F5617F 		cmp	r3, #900
  834 01a2 C0F0D580 		bcc	.L47
  835              	.L34:
- 330:Src/main.c    ****     {
- 836              		.loc 1 330 27 discriminator 1 view .LVU224
+ 329:Src/main.c    ****     {
+ 836              		.loc 1 329 27 discriminator 1 view .LVU224
  837              	.LBE9:
  225:Src/main.c    ****   {
  838              		.loc 1 225 3 is_stmt 1 view .LVU225
@@ -1678,10 +1677,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  864 01c4 3FF662AF 		bhi	.L48
  865              	.LVL73:
  866              	.L35:
-ARM GAS  /tmp/ccQOS06D.s 			page 29
-
-
  245:Src/main.c    ****     hall_B = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
+ARM GAS  /tmp/cccnRnbi.s 			page 29
+
+
  867              		.loc 1 245 5 is_stmt 1 view .LVU234
  245:Src/main.c    ****     hall_B = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
  868              		.loc 1 245 14 is_stmt 0 view .LVU235
@@ -1738,10 +1737,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  259:Src/main.c    ****     {
  908              		.loc 1 259 9 is_stmt 0 view .LVU247
  909 0200 FFF7FEFF 		bl	HAL_GetTick
-ARM GAS  /tmp/ccQOS06D.s 			page 30
-
-
  910              	.LVL77:
+ARM GAS  /tmp/cccnRnbi.s 			page 30
+
+
  259:Src/main.c    ****     {
  911              		.loc 1 259 23 discriminator 1 view .LVU248
  912 0204 3A4B     		ldr	r3, .L51+20
@@ -1798,37 +1797,37 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  950              		.loc 1 281 36 is_stmt 0 view .LVU261
  951 0240 3E4B     		ldr	r3, .L51+96
  952 0242 0122     		movs	r2, #1
-ARM GAS  /tmp/ccQOS06D.s 			page 31
-
-
  953 0244 1A60     		str	r2, [r3]
- 284:Src/main.c    ****       if (mode == 0)
- 954              		.loc 1 284 7 is_stmt 1 view .LVU262
- 284:Src/main.c    ****       if (mode == 0)
- 955              		.loc 1 284 14 is_stmt 0 view .LVU263
+ARM GAS  /tmp/cccnRnbi.s 			page 31
+
+
+ 283:Src/main.c    ****       if (mode == 0)
+ 954              		.loc 1 283 7 is_stmt 1 view .LVU262
+ 283:Src/main.c    ****       if (mode == 0)
+ 955              		.loc 1 283 14 is_stmt 0 view .LVU263
  956 0246 2021     		movs	r1, #32
  957 0248 3D48     		ldr	r0, .L51+100
  958 024a FFF7FEFF 		bl	HAL_GPIO_ReadPin
  959              	.LVL80:
- 284:Src/main.c    ****       if (mode == 0)
- 960              		.loc 1 284 14 discriminator 1 view .LVU264
+ 283:Src/main.c    ****       if (mode == 0)
+ 960              		.loc 1 283 14 discriminator 1 view .LVU264
  961 024e 0028     		cmp	r0, #0
  962 0250 14BF     		ite	ne
  963 0252 0122     		movne	r2, #1
  964 0254 0022     		moveq	r2, #0
- 284:Src/main.c    ****       if (mode == 0)
- 965              		.loc 1 284 12 discriminator 1 view .LVU265
+ 283:Src/main.c    ****       if (mode == 0)
+ 965              		.loc 1 283 12 discriminator 1 view .LVU265
  966 0256 3B4B     		ldr	r3, .L51+104
  967 0258 1A70     		strb	r2, [r3]
- 285:Src/main.c    ****       {
- 968              		.loc 1 285 7 is_stmt 1 view .LVU266
- 285:Src/main.c    ****       {
- 969              		.loc 1 285 10 is_stmt 0 view .LVU267
+ 284:Src/main.c    ****       {
+ 968              		.loc 1 284 7 is_stmt 1 view .LVU266
+ 284:Src/main.c    ****       {
+ 969              		.loc 1 284 10 is_stmt 0 view .LVU267
  970 025a 7FF46AAF 		bne	.L39
- 287:Src/main.c    ****       }
- 971              		.loc 1 287 9 is_stmt 1 view .LVU268
- 287:Src/main.c    ****       }
- 972              		.loc 1 287 30 is_stmt 0 view .LVU269
+ 286:Src/main.c    ****       }
+ 971              		.loc 1 286 9 is_stmt 1 view .LVU268
+ 286:Src/main.c    ****       }
+ 972              		.loc 1 286 30 is_stmt 0 view .LVU269
  973 025e 2D4B     		ldr	r3, .L51+56
  974 0260 1888     		ldrh	r0, [r3]
  975 0262 42F21073 		movw	r3, #10000
@@ -1839,91 +1838,91 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  980 0272 80B2     		uxth	r0, r0
  981 0274 FFF7FEFF 		bl	map
  982              	.LVL81:
- 287:Src/main.c    ****       }
- 983              		.loc 1 287 28 discriminator 1 view .LVU270
+ 286:Src/main.c    ****       }
+ 983              		.loc 1 286 28 discriminator 1 view .LVU270
  984 0278 224B     		ldr	r3, .L51+40
  985 027a 1860     		str	r0, [r3]
  986              	.L40:
- 293:Src/main.c    **** 
- 987              		.loc 1 293 7 is_stmt 1 view .LVU271
+ 292:Src/main.c    **** 
+ 987              		.loc 1 292 7 is_stmt 1 view .LVU271
  988 027c 0A20     		movs	r0, #10
  989 027e FFF7FEFF 		bl	HAL_Delay
  990              	.LVL82:
- 295:Src/main.c    ****       {
- 991              		.loc 1 295 7 view .LVU272
- 295:Src/main.c    ****       {
- 992              		.loc 1 295 35 is_stmt 0 view .LVU273
+ 294:Src/main.c    ****       {
+ 991              		.loc 1 294 7 view .LVU272
+ 294:Src/main.c    ****       {
+ 992              		.loc 1 294 35 is_stmt 0 view .LVU273
  993 0282 314B     		ldr	r3, .L51+108
  994 0284 1A88     		ldrh	r2, [r3]
  995 0286 1F4B     		ldr	r3, .L51+40
  996 0288 1B68     		ldr	r3, [r3]
- 295:Src/main.c    ****       {
-ARM GAS  /tmp/ccQOS06D.s 			page 32
+ 294:Src/main.c    ****       {
+ 997              		.loc 1 294 10 view .LVU274
+ARM GAS  /tmp/cccnRnbi.s 			page 32
 
 
- 997              		.loc 1 295 10 view .LVU274
  998 028a 9A42     		cmp	r2, r3
  999 028c 7FF664AF 		bls	.L41
- 297:Src/main.c    ****         {
- 1000              		.loc 1 297 9 is_stmt 1 view .LVU275
- 297:Src/main.c    ****         {
- 1001              		.loc 1 297 23 is_stmt 0 view .LVU276
+ 296:Src/main.c    ****         {
+ 1000              		.loc 1 296 9 is_stmt 1 view .LVU275
+ 296:Src/main.c    ****         {
+ 1001              		.loc 1 296 23 is_stmt 0 view .LVU276
  1002 0290 214B     		ldr	r3, .L51+60
  1003 0292 1B88     		ldrh	r3, [r3]
  1004 0294 1D4A     		ldr	r2, .L51+48
  1005 0296 1268     		ldr	r2, [r2]
- 297:Src/main.c    ****         {
- 1006              		.loc 1 297 12 view .LVU277
+ 296:Src/main.c    ****         {
+ 1006              		.loc 1 296 12 view .LVU277
  1007 0298 9342     		cmp	r3, r2
  1008 029a BFF45AAF 		bcs	.L42
- 299:Src/main.c    ****         }
- 1009              		.loc 1 299 11 is_stmt 1 view .LVU278
- 299:Src/main.c    ****         }
- 1010              		.loc 1 299 21 is_stmt 0 view .LVU279
+ 298:Src/main.c    ****         }
+ 1009              		.loc 1 298 11 is_stmt 1 view .LVU278
+ 298:Src/main.c    ****         }
+ 1010              		.loc 1 298 21 is_stmt 0 view .LVU279
  1011 029e 1B4A     		ldr	r2, .L51+48
  1012 02a0 1368     		ldr	r3, [r2]
  1013 02a2 013B     		subs	r3, r3, #1
  1014 02a4 1360     		str	r3, [r2]
  1015              	.L43:
- 323:Src/main.c    ****       {
- 1016              		.loc 1 323 7 is_stmt 1 view .LVU280
- 323:Src/main.c    ****       {
- 1017              		.loc 1 323 11 is_stmt 0 view .LVU281
+ 322:Src/main.c    ****       {
+ 1016              		.loc 1 322 7 is_stmt 1 view .LVU280
+ 322:Src/main.c    ****       {
+ 1017              		.loc 1 322 11 is_stmt 0 view .LVU281
  1018 02a6 1D4B     		ldr	r3, .L51+64
  1019 02a8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 323:Src/main.c    ****       {
- 1020              		.loc 1 323 10 view .LVU282
+ 322:Src/main.c    ****       {
+ 1020              		.loc 1 322 10 view .LVU282
  1021 02aa 002B     		cmp	r3, #0
  1022 02ac 7FF47BAF 		bne	.L34
- 325:Src/main.c    ****         geri_vites = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
- 1023              		.loc 1 325 9 is_stmt 1 view .LVU283
- 325:Src/main.c    ****         geri_vites = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
- 1024              		.loc 1 325 20 is_stmt 0 view .LVU284
+ 324:Src/main.c    ****         geri_vites = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
+ 1023              		.loc 1 324 9 is_stmt 1 view .LVU283
+ 324:Src/main.c    ****         geri_vites = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
+ 1024              		.loc 1 324 20 is_stmt 0 view .LVU284
  1025 02b0 1A4B     		ldr	r3, .L51+64
  1026 02b2 0122     		movs	r2, #1
  1027 02b4 1A70     		strb	r2, [r3]
- 326:Src/main.c    ****         first_step(hall_A, hall_B, hall_C);
- 1028              		.loc 1 326 9 is_stmt 1 view .LVU285
- 326:Src/main.c    ****         first_step(hall_A, hall_B, hall_C);
- 1029              		.loc 1 326 22 is_stmt 0 view .LVU286
+ 325:Src/main.c    ****         first_step(hall_A, hall_B, hall_C);
+ 1028              		.loc 1 325 9 is_stmt 1 view .LVU285
+ 325:Src/main.c    ****         first_step(hall_A, hall_B, hall_C);
+ 1029              		.loc 1 325 22 is_stmt 0 view .LVU286
  1030 02b6 0821     		movs	r1, #8
  1031 02b8 1B48     		ldr	r0, .L51+76
  1032 02ba FFF7FEFF 		bl	HAL_GPIO_ReadPin
  1033              	.LVL83:
- 326:Src/main.c    ****         first_step(hall_A, hall_B, hall_C);
- 1034              		.loc 1 326 22 discriminator 1 view .LVU287
+ 325:Src/main.c    ****         first_step(hall_A, hall_B, hall_C);
+ 1034              		.loc 1 325 22 discriminator 1 view .LVU287
  1035 02be 0038     		subs	r0, r0, #0
  1036 02c0 18BF     		it	ne
  1037 02c2 0120     		movne	r0, #1
- 326:Src/main.c    ****         first_step(hall_A, hall_B, hall_C);
- 1038              		.loc 1 326 20 discriminator 1 view .LVU288
+ 325:Src/main.c    ****         first_step(hall_A, hall_B, hall_C);
+ 1038              		.loc 1 325 20 discriminator 1 view .LVU288
  1039 02c4 214B     		ldr	r3, .L51+112
-ARM GAS  /tmp/ccQOS06D.s 			page 33
-
-
  1040 02c6 1870     		strb	r0, [r3]
- 327:Src/main.c    ****       }
- 1041              		.loc 1 327 9 is_stmt 1 view .LVU289
+ARM GAS  /tmp/cccnRnbi.s 			page 33
+
+
+ 326:Src/main.c    ****       }
+ 1041              		.loc 1 326 9 is_stmt 1 view .LVU289
  1042 02c8 184B     		ldr	r3, .L51+80
  1043 02ca 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
  1044 02cc 184B     		ldr	r3, .L51+84
@@ -1966,155 +1965,155 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  1081 0348 00000000 		.word	temporary_current_value
  1082 034c 00000000 		.word	geri_vites
  1083              	.L47:
- 332:Src/main.c    ****       // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
- 1084              		.loc 1 332 7 view .LVU290
- 332:Src/main.c    ****       // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
- 1085              		.loc 1 332 17 is_stmt 0 view .LVU291
+ 331:Src/main.c    ****       // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
+ 1084              		.loc 1 331 7 view .LVU290
+ 331:Src/main.c    ****       // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
+ 1085              		.loc 1 331 17 is_stmt 0 view .LVU291
  1086 0350 0025     		movs	r5, #0
  1087 0352 204B     		ldr	r3, .L53
  1088 0354 1D60     		str	r5, [r3]
- 339:Src/main.c    ****       flagg = 1;
- 1089              		.loc 1 339 7 is_stmt 1 view .LVU292
- 339:Src/main.c    ****       flagg = 1;
- 1090              		.loc 1 339 18 is_stmt 0 view .LVU293
+ 338:Src/main.c    ****       flagg = 1;
+ 1089              		.loc 1 338 7 is_stmt 1 view .LVU292
+ 338:Src/main.c    ****       flagg = 1;
+ 1090              		.loc 1 338 18 is_stmt 0 view .LVU293
  1091 0356 204B     		ldr	r3, .L53+4
-ARM GAS  /tmp/ccQOS06D.s 			page 34
-
-
  1092 0358 40F6CC42 		movw	r2, #3276
+ARM GAS  /tmp/cccnRnbi.s 			page 34
+
+
  1093 035c 1A62     		str	r2, [r3, #32]
- 340:Src/main.c    ****       oldValue[0] = 0;
- 1094              		.loc 1 340 7 is_stmt 1 view .LVU294
- 340:Src/main.c    ****       oldValue[0] = 0;
- 1095              		.loc 1 340 13 is_stmt 0 view .LVU295
+ 339:Src/main.c    ****       oldValue[0] = 0;
+ 1094              		.loc 1 339 7 is_stmt 1 view .LVU294
+ 339:Src/main.c    ****       oldValue[0] = 0;
+ 1095              		.loc 1 339 13 is_stmt 0 view .LVU295
  1096 035e 0122     		movs	r2, #1
  1097 0360 1E4B     		ldr	r3, .L53+8
  1098 0362 1A70     		strb	r2, [r3]
- 341:Src/main.c    ****       oldValue[1] = 0;
- 1099              		.loc 1 341 7 is_stmt 1 view .LVU296
- 341:Src/main.c    ****       oldValue[1] = 0;
- 1100              		.loc 1 341 19 is_stmt 0 view .LVU297
+ 340:Src/main.c    ****       oldValue[1] = 0;
+ 1099              		.loc 1 340 7 is_stmt 1 view .LVU296
+ 340:Src/main.c    ****       oldValue[1] = 0;
+ 1100              		.loc 1 340 19 is_stmt 0 view .LVU297
  1101 0364 1E4B     		ldr	r3, .L53+12
  1102 0366 1D70     		strb	r5, [r3]
- 342:Src/main.c    ****       oldValue[2] = 0;
- 1103              		.loc 1 342 7 is_stmt 1 view .LVU298
- 342:Src/main.c    ****       oldValue[2] = 0;
- 1104              		.loc 1 342 19 is_stmt 0 view .LVU299
+ 341:Src/main.c    ****       oldValue[2] = 0;
+ 1103              		.loc 1 341 7 is_stmt 1 view .LVU298
+ 341:Src/main.c    ****       oldValue[2] = 0;
+ 1104              		.loc 1 341 19 is_stmt 0 view .LVU299
  1105 0368 5D70     		strb	r5, [r3, #1]
- 343:Src/main.c    ****       hall_A = 0;
- 1106              		.loc 1 343 7 is_stmt 1 view .LVU300
- 343:Src/main.c    ****       hall_A = 0;
- 1107              		.loc 1 343 19 is_stmt 0 view .LVU301
+ 342:Src/main.c    ****       hall_A = 0;
+ 1106              		.loc 1 342 7 is_stmt 1 view .LVU300
+ 342:Src/main.c    ****       hall_A = 0;
+ 1107              		.loc 1 342 19 is_stmt 0 view .LVU301
  1108 036a 9D70     		strb	r5, [r3, #2]
- 344:Src/main.c    ****       hall_B = 0;
- 1109              		.loc 1 344 7 is_stmt 1 view .LVU302
- 344:Src/main.c    ****       hall_B = 0;
- 1110              		.loc 1 344 14 is_stmt 0 view .LVU303
+ 343:Src/main.c    ****       hall_B = 0;
+ 1109              		.loc 1 343 7 is_stmt 1 view .LVU302
+ 343:Src/main.c    ****       hall_B = 0;
+ 1110              		.loc 1 343 14 is_stmt 0 view .LVU303
  1111 036c 1D4B     		ldr	r3, .L53+16
  1112 036e 1D70     		strb	r5, [r3]
- 345:Src/main.c    ****       hall_C = 0;
- 1113              		.loc 1 345 7 is_stmt 1 view .LVU304
- 345:Src/main.c    ****       hall_C = 0;
- 1114              		.loc 1 345 14 is_stmt 0 view .LVU305
+ 344:Src/main.c    ****       hall_C = 0;
+ 1113              		.loc 1 344 7 is_stmt 1 view .LVU304
+ 344:Src/main.c    ****       hall_C = 0;
+ 1114              		.loc 1 344 14 is_stmt 0 view .LVU305
  1115 0370 1D4B     		ldr	r3, .L53+20
  1116 0372 1D70     		strb	r5, [r3]
- 346:Src/main.c    ****       step = 0;
- 1117              		.loc 1 346 7 is_stmt 1 view .LVU306
- 346:Src/main.c    ****       step = 0;
- 1118              		.loc 1 346 14 is_stmt 0 view .LVU307
+ 345:Src/main.c    ****       step = 0;
+ 1117              		.loc 1 345 7 is_stmt 1 view .LVU306
+ 345:Src/main.c    ****       step = 0;
+ 1118              		.loc 1 345 14 is_stmt 0 view .LVU307
  1119 0374 1D4B     		ldr	r3, .L53+24
  1120 0376 1D70     		strb	r5, [r3]
- 347:Src/main.c    ****       pedal_value_mapped = 0;
- 1121              		.loc 1 347 7 is_stmt 1 view .LVU308
- 347:Src/main.c    ****       pedal_value_mapped = 0;
- 1122              		.loc 1 347 12 is_stmt 0 view .LVU309
+ 346:Src/main.c    ****       pedal_value_mapped = 0;
+ 1121              		.loc 1 346 7 is_stmt 1 view .LVU308
+ 346:Src/main.c    ****       pedal_value_mapped = 0;
+ 1122              		.loc 1 346 12 is_stmt 0 view .LVU309
  1123 0378 1D4B     		ldr	r3, .L53+28
  1124 037a 1D60     		str	r5, [r3]
- 348:Src/main.c    ****       first_step_flag = 1;
- 1125              		.loc 1 348 7 is_stmt 1 view .LVU310
- 348:Src/main.c    ****       first_step_flag = 1;
- 1126              		.loc 1 348 26 is_stmt 0 view .LVU311
+ 347:Src/main.c    ****       first_step_flag = 1;
+ 1125              		.loc 1 347 7 is_stmt 1 view .LVU310
+ 347:Src/main.c    ****       first_step_flag = 1;
+ 1126              		.loc 1 347 26 is_stmt 0 view .LVU311
  1127 037c 1D4B     		ldr	r3, .L53+32
  1128 037e 1D60     		str	r5, [r3]
- 349:Src/main.c    ****       run_status = false;
- 1129              		.loc 1 349 7 is_stmt 1 view .LVU312
-ARM GAS  /tmp/ccQOS06D.s 			page 35
+ 348:Src/main.c    ****       run_status = false;
+ 1129              		.loc 1 348 7 is_stmt 1 view .LVU312
+ 348:Src/main.c    ****       run_status = false;
+ARM GAS  /tmp/cccnRnbi.s 			page 35
 
 
- 349:Src/main.c    ****       run_status = false;
- 1130              		.loc 1 349 23 is_stmt 0 view .LVU313
+ 1130              		.loc 1 348 23 is_stmt 0 view .LVU313
  1131 0380 1D4B     		ldr	r3, .L53+36
  1132 0382 1A70     		strb	r2, [r3]
- 350:Src/main.c    **** 
- 1133              		.loc 1 350 7 is_stmt 1 view .LVU314
- 350:Src/main.c    **** 
- 1134              		.loc 1 350 18 is_stmt 0 view .LVU315
+ 349:Src/main.c    **** 
+ 1133              		.loc 1 349 7 is_stmt 1 view .LVU314
+ 349:Src/main.c    **** 
+ 1134              		.loc 1 349 18 is_stmt 0 view .LVU315
  1135 0384 1D4B     		ldr	r3, .L53+40
  1136 0386 1D70     		strb	r5, [r3]
- 352:Src/main.c    ****       HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_1);
- 1137              		.loc 1 352 7 is_stmt 1 view .LVU316
+ 351:Src/main.c    ****       HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_1);
+ 1137              		.loc 1 351 7 is_stmt 1 view .LVU316
  1138 0388 1D4E     		ldr	r6, .L53+44
  1139 038a 2946     		mov	r1, r5
  1140 038c 3046     		mov	r0, r6
  1141 038e FFF7FEFF 		bl	HAL_TIM_PWM_Stop
  1142              	.LVL85:
- 353:Src/main.c    ****       HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
- 1143              		.loc 1 353 7 view .LVU317
+ 352:Src/main.c    ****       HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
+ 1143              		.loc 1 352 7 view .LVU317
  1144 0392 2946     		mov	r1, r5
  1145 0394 3046     		mov	r0, r6
  1146 0396 FFF7FEFF 		bl	HAL_TIMEx_PWMN_Stop
  1147              	.LVL86:
- 354:Src/main.c    ****       HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2);
- 1148              		.loc 1 354 7 view .LVU318
+ 353:Src/main.c    ****       HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2);
+ 1148              		.loc 1 353 7 view .LVU318
  1149 039a 0421     		movs	r1, #4
  1150 039c 3046     		mov	r0, r6
  1151 039e FFF7FEFF 		bl	HAL_TIM_PWM_Stop
  1152              	.LVL87:
- 355:Src/main.c    ****       HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);
- 1153              		.loc 1 355 7 view .LVU319
+ 354:Src/main.c    ****       HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);
+ 1153              		.loc 1 354 7 view .LVU319
  1154 03a2 0421     		movs	r1, #4
  1155 03a4 3046     		mov	r0, r6
  1156 03a6 FFF7FEFF 		bl	HAL_TIMEx_PWMN_Stop
  1157              	.LVL88:
- 356:Src/main.c    ****       HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_3);
- 1158              		.loc 1 356 7 view .LVU320
+ 355:Src/main.c    ****       HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_3);
+ 1158              		.loc 1 355 7 view .LVU320
  1159 03aa 0821     		movs	r1, #8
  1160 03ac 3046     		mov	r0, r6
  1161 03ae FFF7FEFF 		bl	HAL_TIM_PWM_Stop
  1162              	.LVL89:
- 357:Src/main.c    ****       if (timeForRotorStopStatusMsFlag)
- 1163              		.loc 1 357 7 view .LVU321
+ 356:Src/main.c    ****       if (timeForRotorStopStatusMsFlag)
+ 1163              		.loc 1 356 7 view .LVU321
  1164 03b2 0821     		movs	r1, #8
  1165 03b4 3046     		mov	r0, r6
  1166 03b6 FFF7FEFF 		bl	HAL_TIMEx_PWMN_Stop
  1167              	.LVL90:
- 358:Src/main.c    ****       {
- 1168              		.loc 1 358 7 view .LVU322
- 358:Src/main.c    ****       {
- 1169              		.loc 1 358 11 is_stmt 0 view .LVU323
+ 357:Src/main.c    ****       {
+ 1168              		.loc 1 357 7 view .LVU322
+ 357:Src/main.c    ****       {
+ 1169              		.loc 1 357 11 is_stmt 0 view .LVU323
  1170 03ba 124B     		ldr	r3, .L53+48
  1171 03bc 1B68     		ldr	r3, [r3]
- 358:Src/main.c    ****       {
- 1172              		.loc 1 358 10 view .LVU324
+ 357:Src/main.c    ****       {
+ 1172              		.loc 1 357 10 view .LVU324
  1173 03be 002B     		cmp	r3, #0
  1174 03c0 3FF4F1AE 		beq	.L34
-ARM GAS  /tmp/ccQOS06D.s 			page 36
+ 359:Src/main.c    ****         timeForRotorStopStatusMsFlag = 0;
+ARM GAS  /tmp/cccnRnbi.s 			page 36
 
 
- 360:Src/main.c    ****         timeForRotorStopStatusMsFlag = 0;
- 1175              		.loc 1 360 9 is_stmt 1 view .LVU325
- 360:Src/main.c    ****         timeForRotorStopStatusMsFlag = 0;
- 1176              		.loc 1 360 36 is_stmt 0 view .LVU326
+ 1175              		.loc 1 359 9 is_stmt 1 view .LVU325
+ 359:Src/main.c    ****         timeForRotorStopStatusMsFlag = 0;
+ 1176              		.loc 1 359 36 is_stmt 0 view .LVU326
  1177 03c4 FFF7FEFF 		bl	HAL_GetTick
  1178              	.LVL91:
- 360:Src/main.c    ****         timeForRotorStopStatusMsFlag = 0;
- 1179              		.loc 1 360 34 discriminator 1 view .LVU327
+ 359:Src/main.c    ****         timeForRotorStopStatusMsFlag = 0;
+ 1179              		.loc 1 359 34 discriminator 1 view .LVU327
  1180 03c8 0F4B     		ldr	r3, .L53+52
  1181 03ca 1860     		str	r0, [r3]
- 361:Src/main.c    ****       }
- 1182              		.loc 1 361 9 is_stmt 1 view .LVU328
- 361:Src/main.c    ****       }
- 1183              		.loc 1 361 38 is_stmt 0 view .LVU329
+ 360:Src/main.c    ****       }
+ 1182              		.loc 1 360 9 is_stmt 1 view .LVU328
+ 360:Src/main.c    ****       }
+ 1183              		.loc 1 360 38 is_stmt 0 view .LVU329
  1184 03cc 0D4B     		ldr	r3, .L53+48
  1185 03ce 1D60     		str	r5, [r3]
  1186 03d0 E9E6     		b	.L34
@@ -2158,10 +2157,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  1227              		.global	temporary_current_value
  1228              		.section	.bss.temporary_current_value,"aw",%nobits
  1229              		.align	1
-ARM GAS  /tmp/ccQOS06D.s 			page 37
-
-
  1232              	temporary_current_value:
+ARM GAS  /tmp/cccnRnbi.s 			page 37
+
+
  1233 0000 0000     		.space	2
  1234              		.global	maxCurrent
  1235              		.section	.bss.maxCurrent,"aw",%nobits
@@ -2218,10 +2217,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  1306              		.align	1
  1309              	firstStepDelay:
  1310 0000 2800     		.short	40
-ARM GAS  /tmp/ccQOS06D.s 			page 38
-
-
  1311              		.global	min_pwm_limit
+ARM GAS  /tmp/cccnRnbi.s 			page 38
+
+
  1312              		.section	.data.min_pwm_limit,"aw"
  1313              		.align	1
  1316              	min_pwm_limit:
@@ -2278,10 +2277,10 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  1389 0000 0000     		.space	2
  1390              		.global	adcbuffer
  1391              		.section	.bss.adcbuffer,"aw",%nobits
-ARM GAS  /tmp/ccQOS06D.s 			page 39
-
-
  1392              		.align	2
+ARM GAS  /tmp/cccnRnbi.s 			page 39
+
+
  1395              	adcbuffer:
  1396 0000 00000000 		.space	8
  1396      00000000 
@@ -2326,92 +2325,92 @@ ARM GAS  /tmp/ccQOS06D.s 			page 1
  1443              		.file 22 "Inc/dma.h"
  1444              		.file 23 "Inc/gpio.h"
  1445              		.file 24 "<built-in>"
-ARM GAS  /tmp/ccQOS06D.s 			page 40
+ARM GAS  /tmp/cccnRnbi.s 			page 40
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-     /tmp/ccQOS06D.s:19     .text.map:00000000 $t
-     /tmp/ccQOS06D.s:25     .text.map:00000000 map
-     /tmp/ccQOS06D.s:55     .text.HAL_ADC_ConvCpltCallback:00000000 $t
-     /tmp/ccQOS06D.s:61     .text.HAL_ADC_ConvCpltCallback:00000000 HAL_ADC_ConvCpltCallback
-     /tmp/ccQOS06D.s:222    .text.HAL_ADC_ConvCpltCallback:000000c4 $d
-     /tmp/ccQOS06D.s:1395   .bss.adcbuffer:00000000 adcbuffer
-     /tmp/ccQOS06D.s:1381   .bss.currentValue:00000000 currentValue
-     /tmp/ccQOS06D.s:1374   .bss.filtered_current:00000000 filtered_current
-     /tmp/ccQOS06D.s:1232   .bss.temporary_current_value:00000000 temporary_current_value
-     /tmp/ccQOS06D.s:1388   .bss.speedInAdc:00000000 speedInAdc
-     /tmp/ccQOS06D.s:1330   .bss.pwm_value:00000000 pwm_value
-     /tmp/ccQOS06D.s:1246   .data.minCurrent:00000000 minCurrent
-     /tmp/ccQOS06D.s:1239   .bss.maxCurrent:00000000 maxCurrent
-     /tmp/ccQOS06D.s:235    .text.filtreye_koy:00000000 $t
-     /tmp/ccQOS06D.s:241    .text.filtreye_koy:00000000 filtreye_koy
-     /tmp/ccQOS06D.s:325    .text.filtreye_koy:0000003c $d
-     /tmp/ccQOS06D.s:1218   .bss.dizi_index.1:00000000 dizi_index.1
-     /tmp/ccQOS06D.s:1212   .bss.dizi.0:00000000 dizi.0
-     /tmp/ccQOS06D.s:332    .text.Error_Handler:00000000 $t
-     /tmp/ccQOS06D.s:338    .text.Error_Handler:00000000 Error_Handler
-     /tmp/ccQOS06D.s:370    .text.SystemClock_Config:00000000 $t
-     /tmp/ccQOS06D.s:376    .text.SystemClock_Config:00000000 SystemClock_Config
-     /tmp/ccQOS06D.s:506    .rodata.main.str1.4:00000000 $d
-     /tmp/ccQOS06D.s:519    .text.main:00000000 $t
-     /tmp/ccQOS06D.s:525    .text.main:00000000 main
-     /tmp/ccQOS06D.s:1054   .text.main:000002dc $d
-     /tmp/ccQOS06D.s:1302   .bss.previousTime2:00000000 previousTime2
-     /tmp/ccQOS06D.s:1253   .bss.previousTime3:00000000 previousTime3
-     /tmp/ccQOS06D.s:1267   .bss.rpm:00000000 rpm
-     /tmp/ccQOS06D.s:1323   .bss.pedal_value_mapped:00000000 pedal_value_mapped
-     /tmp/ccQOS06D.s:1316   .data.min_pwm_limit:00000000 min_pwm_limit
-     /tmp/ccQOS06D.s:1367   .bss.run_status:00000000 run_status
-     /tmp/ccQOS06D.s:1225   .bss.average:00000000 average
-     /tmp/ccQOS06D.s:1361   .bss.hall_A:00000000 hall_A
-     /tmp/ccQOS06D.s:1355   .bss.hall_B:00000000 hall_B
-     /tmp/ccQOS06D.s:1349   .bss.hall_C:00000000 hall_C
-     /tmp/ccQOS06D.s:1288   .bss.timeForRotorStopStatusMs:00000000 timeForRotorStopStatusMs
-     /tmp/ccQOS06D.s:1281   .bss.timeForRotorStopStatusMsFlag:00000000 timeForRotorStopStatusMsFlag
-     /tmp/ccQOS06D.s:1413   .data.mode:00000000 mode
-     /tmp/ccQOS06D.s:1343   .data.geri_vites:00000000 geri_vites
-     /tmp/ccQOS06D.s:1086   .text.main:00000350 $t
-     /tmp/ccQOS06D.s:1190   .text.main:000003d4 $d
-     /tmp/ccQOS06D.s:1401   .data.flagg:00000000 flagg
-     /tmp/ccQOS06D.s:1420   .bss.oldValue:00000000 oldValue
-     /tmp/ccQOS06D.s:1337   .bss.step:00000000 step
-     /tmp/ccQOS06D.s:1407   .data.first_step_flag:00000000 first_step_flag
-     /tmp/ccQOS06D.s:1209   .bss.dizi.0:00000000 $d
-     /tmp/ccQOS06D.s:1215   .bss.dizi_index.1:00000000 $d
-     /tmp/ccQOS06D.s:1222   .bss.average:00000000 $d
-     /tmp/ccQOS06D.s:1229   .bss.temporary_current_value:00000000 $d
-     /tmp/ccQOS06D.s:1236   .bss.maxCurrent:00000000 $d
-     /tmp/ccQOS06D.s:1243   .data.minCurrent:00000000 $d
-     /tmp/ccQOS06D.s:1250   .bss.previousTime3:00000000 $d
-     /tmp/ccQOS06D.s:1260   .data.difference_two_coummutation_time:00000000 difference_two_coummutation_time
-     /tmp/ccQOS06D.s:1257   .data.difference_two_coummutation_time:00000000 $d
-ARM GAS  /tmp/ccQOS06D.s 			page 41
+     /tmp/cccnRnbi.s:19     .text.map:00000000 $t
+     /tmp/cccnRnbi.s:25     .text.map:00000000 map
+     /tmp/cccnRnbi.s:55     .text.HAL_ADC_ConvCpltCallback:00000000 $t
+     /tmp/cccnRnbi.s:61     .text.HAL_ADC_ConvCpltCallback:00000000 HAL_ADC_ConvCpltCallback
+     /tmp/cccnRnbi.s:222    .text.HAL_ADC_ConvCpltCallback:000000c4 $d
+     /tmp/cccnRnbi.s:1395   .bss.adcbuffer:00000000 adcbuffer
+     /tmp/cccnRnbi.s:1381   .bss.currentValue:00000000 currentValue
+     /tmp/cccnRnbi.s:1374   .bss.filtered_current:00000000 filtered_current
+     /tmp/cccnRnbi.s:1232   .bss.temporary_current_value:00000000 temporary_current_value
+     /tmp/cccnRnbi.s:1388   .bss.speedInAdc:00000000 speedInAdc
+     /tmp/cccnRnbi.s:1330   .bss.pwm_value:00000000 pwm_value
+     /tmp/cccnRnbi.s:1246   .data.minCurrent:00000000 minCurrent
+     /tmp/cccnRnbi.s:1239   .bss.maxCurrent:00000000 maxCurrent
+     /tmp/cccnRnbi.s:235    .text.filtreye_koy:00000000 $t
+     /tmp/cccnRnbi.s:241    .text.filtreye_koy:00000000 filtreye_koy
+     /tmp/cccnRnbi.s:325    .text.filtreye_koy:0000003c $d
+     /tmp/cccnRnbi.s:1218   .bss.dizi_index.1:00000000 dizi_index.1
+     /tmp/cccnRnbi.s:1212   .bss.dizi.0:00000000 dizi.0
+     /tmp/cccnRnbi.s:332    .text.Error_Handler:00000000 $t
+     /tmp/cccnRnbi.s:338    .text.Error_Handler:00000000 Error_Handler
+     /tmp/cccnRnbi.s:370    .text.SystemClock_Config:00000000 $t
+     /tmp/cccnRnbi.s:376    .text.SystemClock_Config:00000000 SystemClock_Config
+     /tmp/cccnRnbi.s:506    .rodata.main.str1.4:00000000 $d
+     /tmp/cccnRnbi.s:519    .text.main:00000000 $t
+     /tmp/cccnRnbi.s:525    .text.main:00000000 main
+     /tmp/cccnRnbi.s:1054   .text.main:000002dc $d
+     /tmp/cccnRnbi.s:1302   .bss.previousTime2:00000000 previousTime2
+     /tmp/cccnRnbi.s:1253   .bss.previousTime3:00000000 previousTime3
+     /tmp/cccnRnbi.s:1267   .bss.rpm:00000000 rpm
+     /tmp/cccnRnbi.s:1323   .bss.pedal_value_mapped:00000000 pedal_value_mapped
+     /tmp/cccnRnbi.s:1316   .data.min_pwm_limit:00000000 min_pwm_limit
+     /tmp/cccnRnbi.s:1367   .bss.run_status:00000000 run_status
+     /tmp/cccnRnbi.s:1225   .bss.average:00000000 average
+     /tmp/cccnRnbi.s:1361   .bss.hall_A:00000000 hall_A
+     /tmp/cccnRnbi.s:1355   .bss.hall_B:00000000 hall_B
+     /tmp/cccnRnbi.s:1349   .bss.hall_C:00000000 hall_C
+     /tmp/cccnRnbi.s:1288   .bss.timeForRotorStopStatusMs:00000000 timeForRotorStopStatusMs
+     /tmp/cccnRnbi.s:1281   .bss.timeForRotorStopStatusMsFlag:00000000 timeForRotorStopStatusMsFlag
+     /tmp/cccnRnbi.s:1413   .data.mode:00000000 mode
+     /tmp/cccnRnbi.s:1343   .data.geri_vites:00000000 geri_vites
+     /tmp/cccnRnbi.s:1086   .text.main:00000350 $t
+     /tmp/cccnRnbi.s:1190   .text.main:000003d4 $d
+     /tmp/cccnRnbi.s:1401   .data.flagg:00000000 flagg
+     /tmp/cccnRnbi.s:1420   .bss.oldValue:00000000 oldValue
+     /tmp/cccnRnbi.s:1337   .bss.step:00000000 step
+     /tmp/cccnRnbi.s:1407   .data.first_step_flag:00000000 first_step_flag
+     /tmp/cccnRnbi.s:1209   .bss.dizi.0:00000000 $d
+     /tmp/cccnRnbi.s:1215   .bss.dizi_index.1:00000000 $d
+     /tmp/cccnRnbi.s:1222   .bss.average:00000000 $d
+     /tmp/cccnRnbi.s:1229   .bss.temporary_current_value:00000000 $d
+     /tmp/cccnRnbi.s:1236   .bss.maxCurrent:00000000 $d
+     /tmp/cccnRnbi.s:1243   .data.minCurrent:00000000 $d
+     /tmp/cccnRnbi.s:1250   .bss.previousTime3:00000000 $d
+     /tmp/cccnRnbi.s:1260   .data.difference_two_coummutation_time:00000000 difference_two_coummutation_time
+     /tmp/cccnRnbi.s:1257   .data.difference_two_coummutation_time:00000000 $d
+ARM GAS  /tmp/cccnRnbi.s 			page 41
 
 
-     /tmp/ccQOS06D.s:1264   .bss.rpm:00000000 $d
-     /tmp/ccQOS06D.s:1274   .bss.rpm_counter:00000000 rpm_counter
-     /tmp/ccQOS06D.s:1271   .bss.rpm_counter:00000000 $d
-     /tmp/ccQOS06D.s:1278   .bss.timeForRotorStopStatusMsFlag:00000000 $d
-     /tmp/ccQOS06D.s:1285   .bss.timeForRotorStopStatusMs:00000000 $d
-     /tmp/ccQOS06D.s:1295   .bss.oncekiDegerler:00000000 oncekiDegerler
-     /tmp/ccQOS06D.s:1292   .bss.oncekiDegerler:00000000 $d
-     /tmp/ccQOS06D.s:1299   .bss.previousTime2:00000000 $d
-     /tmp/ccQOS06D.s:1309   .data.firstStepDelay:00000000 firstStepDelay
-     /tmp/ccQOS06D.s:1306   .data.firstStepDelay:00000000 $d
-     /tmp/ccQOS06D.s:1313   .data.min_pwm_limit:00000000 $d
-     /tmp/ccQOS06D.s:1320   .bss.pedal_value_mapped:00000000 $d
-     /tmp/ccQOS06D.s:1327   .bss.pwm_value:00000000 $d
-     /tmp/ccQOS06D.s:1334   .bss.step:00000000 $d
-     /tmp/ccQOS06D.s:1350   .bss.hall_C:00000000 $d
-     /tmp/ccQOS06D.s:1356   .bss.hall_B:00000000 $d
-     /tmp/ccQOS06D.s:1362   .bss.hall_A:00000000 $d
-     /tmp/ccQOS06D.s:1368   .bss.run_status:00000000 $d
-     /tmp/ccQOS06D.s:1371   .bss.filtered_current:00000000 $d
-     /tmp/ccQOS06D.s:1378   .bss.currentValue:00000000 $d
-     /tmp/ccQOS06D.s:1385   .bss.speedInAdc:00000000 $d
-     /tmp/ccQOS06D.s:1392   .bss.adcbuffer:00000000 $d
-     /tmp/ccQOS06D.s:1417   .bss.oldValue:00000000 $d
+     /tmp/cccnRnbi.s:1264   .bss.rpm:00000000 $d
+     /tmp/cccnRnbi.s:1274   .bss.rpm_counter:00000000 rpm_counter
+     /tmp/cccnRnbi.s:1271   .bss.rpm_counter:00000000 $d
+     /tmp/cccnRnbi.s:1278   .bss.timeForRotorStopStatusMsFlag:00000000 $d
+     /tmp/cccnRnbi.s:1285   .bss.timeForRotorStopStatusMs:00000000 $d
+     /tmp/cccnRnbi.s:1295   .bss.oncekiDegerler:00000000 oncekiDegerler
+     /tmp/cccnRnbi.s:1292   .bss.oncekiDegerler:00000000 $d
+     /tmp/cccnRnbi.s:1299   .bss.previousTime2:00000000 $d
+     /tmp/cccnRnbi.s:1309   .data.firstStepDelay:00000000 firstStepDelay
+     /tmp/cccnRnbi.s:1306   .data.firstStepDelay:00000000 $d
+     /tmp/cccnRnbi.s:1313   .data.min_pwm_limit:00000000 $d
+     /tmp/cccnRnbi.s:1320   .bss.pedal_value_mapped:00000000 $d
+     /tmp/cccnRnbi.s:1327   .bss.pwm_value:00000000 $d
+     /tmp/cccnRnbi.s:1334   .bss.step:00000000 $d
+     /tmp/cccnRnbi.s:1350   .bss.hall_C:00000000 $d
+     /tmp/cccnRnbi.s:1356   .bss.hall_B:00000000 $d
+     /tmp/cccnRnbi.s:1362   .bss.hall_A:00000000 $d
+     /tmp/cccnRnbi.s:1368   .bss.run_status:00000000 $d
+     /tmp/cccnRnbi.s:1371   .bss.filtered_current:00000000 $d
+     /tmp/cccnRnbi.s:1378   .bss.currentValue:00000000 $d
+     /tmp/cccnRnbi.s:1385   .bss.speedInAdc:00000000 $d
+     /tmp/cccnRnbi.s:1392   .bss.adcbuffer:00000000 $d
+     /tmp/cccnRnbi.s:1417   .bss.oldValue:00000000 $d
 
 UNDEFINED SYMBOLS
 memset
