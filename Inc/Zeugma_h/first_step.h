@@ -7,10 +7,9 @@ extern "C" {
 #endif
 
 #include "stm32f1xx_hal.h"
-
+#include "main.h"
 #include <stdbool.h>
 
-#define FIRST_PWM 100
 extern uint8_t commutation_step;
 
 void first_step(bool _a, bool _b, bool _c);

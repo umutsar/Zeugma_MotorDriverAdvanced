@@ -117,12 +117,12 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
     filtered_current = 4500 - currentValue;
 
     // TEMPORARY DEVELOPING LINES
-    if (filtered_current <= 1000 && filtered_current >= 0)
-      temporary_current_value = map(filtered_current, 0, 1000, 0, 4430);
-    else if (filtered_current > 1000)
-      temporary_current_value = 1000;
+    if (filtered_current <= 1600 && filtered_current >= 1300)
+      temporary_current_value = map(filtered_current, 1300, 1600, 0, 4430);
+    else if (filtered_current > 1600)
+      temporary_current_value = 4430;
     else
-      temporary_current_value = 0;
+      temporary_current_value = 1300;
     // END
 
     speedInAdc = adcbuffer[0];
@@ -235,8 +235,8 @@ int main(void)
       // LOG_VAR(rpm);
       filtreli_akim = map(filtreli_akim, 1200, 1600, 20, 800);
       LOG_VAR(rpm);
-      LOG_VAR(filtreli_akim);
       LOG_VAR(pedal_value_mapped);
+      LOG_VAR(temporary_current_value);
       LOG_VAR(pwm_value);
       LOG_POST();
       previousTime3 = HAL_GetTick();
@@ -255,7 +255,6 @@ int main(void)
     // LOG_VAR(temporary_current_value);
 
     // LOG_POST();
-
     if (HAL_GetTick() - previousTime2 > 400)
     {
       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
@@ -266,7 +265,7 @@ int main(void)
       previousTime2 = HAL_GetTick();
     }
 
-    if (HAL_GetTick() - timeForRotorStopStatusMs > 450)
+    if (HAL_GetTick() - timeForRotorStopStatusMs > 500)
     {
       HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
       HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
@@ -274,8 +273,8 @@ int main(void)
       HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
       HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
       HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_3);
-      
     }
+    
     if (speedInAdc >= 900 && HAL_GetTick() - timeForRotorStopStatusMs > 450) // Checked
     {
       timeForRotorStopStatusMsFlag = 1;
@@ -309,11 +308,11 @@ int main(void)
         {
           pwm_value = min_pwm_limit;
         }
-        else if (pwm_value < 900)
+        else if (pwm_value < 400)
         {
           if (HAL_GetTick() - previousTime > 2)
           {
-            pwm_value += 4;
+            pwm_value += 1;
             previousTime = HAL_GetTick();
           }
         }

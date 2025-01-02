@@ -22,7 +22,7 @@ void first_step(bool _a, bool _b, bool _c)
       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
       TIM1->CCER = 0x00C5;
-      __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, FIRST_PWM);
+      __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, min_pwm_limit);
       commutation_step = 2;
       step_counter++;
       if (step_counter_control())
@@ -34,7 +34,7 @@ void first_step(bool _a, bool _b, bool _c)
       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
       TIM1->CCER = 0x0C05;
-      __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, FIRST_PWM);
+      __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, min_pwm_limit);
       commutation_step = 3;
       step_counter++;
       HAL_Delay(firstStepDelay);
@@ -47,7 +47,7 @@ void first_step(bool _a, bool _b, bool _c)
       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
       TIM1->CCER = 0x0C50;
-      __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, FIRST_PWM);
+      __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, min_pwm_limit);
       commutation_step = 4;
       step_counter++;
       HAL_Delay(firstStepDelay);
@@ -60,7 +60,7 @@ void first_step(bool _a, bool _b, bool _c)
       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
       TIM1->CCER = 0x005C;
-      __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, FIRST_PWM);
+      __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, min_pwm_limit);
       commutation_step = 5;
       step_counter++;
       HAL_Delay(firstStepDelay);
@@ -73,7 +73,7 @@ void first_step(bool _a, bool _b, bool _c)
       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
       TIM1->CCER = 0x050C;
-      __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, FIRST_PWM);
+      __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, min_pwm_limit);
       commutation_step = 6;
       step_counter++;
       HAL_Delay(firstStepDelay);
@@ -86,7 +86,7 @@ void first_step(bool _a, bool _b, bool _c)
       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
       TIM1->CCER = 0x05C0;
-      __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, FIRST_PWM);
+      __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, min_pwm_limit);
       commutation_step = 1;
       step_counter++;
       HAL_Delay(firstStepDelay);
