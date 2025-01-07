@@ -10,6 +10,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   hall_A = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
   hall_B = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
   hall_C = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2);
+  first_step_flag = 0;
   if (hall_A != oncekiDegerler[0] || hall_B != oncekiDegerler[1] || hall_C != oncekiDegerler[2])
   {
     // rpm_counter++;
