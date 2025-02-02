@@ -23,7 +23,8 @@
 #define __MAIN_H
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -32,25 +33,25 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdbool.h>
-/* USER CODE END Includes */
+  /* USER CODE END Includes */
 
-/* Exported types ------------------------------------------------------------*/
-/* USER CODE BEGIN ET */
+  /* Exported types ------------------------------------------------------------*/
+  /* USER CODE BEGIN ET */
 
-/* USER CODE END ET */
+  /* USER CODE END ET */
 
-/* Exported constants --------------------------------------------------------*/
-/* USER CODE BEGIN EC */
+  /* Exported constants --------------------------------------------------------*/
+  /* USER CODE BEGIN EC */
 
-/* USER CODE END EC */
+  /* USER CODE END EC */
 
-/* Exported macro ------------------------------------------------------------*/
-/* USER CODE BEGIN EM */
+  /* Exported macro ------------------------------------------------------------*/
+  /* USER CODE BEGIN EM */
 
-/* USER CODE END EM */
+  /* USER CODE END EM */
 
-/* Exported functions prototypes ---------------------------------------------*/
-void Error_Handler(void);
+  /* Exported functions prototypes ---------------------------------------------*/
+  void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 
@@ -75,13 +76,13 @@ void Error_Handler(void);
 #define BUMBA_Pin GPIO_PIN_5
 #define BUMBA_GPIO_Port GPIOB
 
-/* USER CODE BEGIN Private defines */
+  /* USER CODE BEGIN Private defines */
 
   extern volatile bool oldValue[3];
   extern bool mode;
   extern volatile bool first_step_flag;
   extern volatile bool flagg;
-  extern uint32_t adcbuffer[2];
+  extern uint32_t adcbuffer[6];
   extern volatile uint16_t speedInAdc;
   extern volatile uint16_t currentValue;
   extern volatile uint16_t filtered_current;
@@ -97,12 +98,34 @@ void Error_Handler(void);
   extern volatile uint8_t oncekiDegerler[3];
   extern uint32_t timeForRotorStopStatusMs;
   extern uint32_t timeForRotorStopStatusMsFlag;
-
   extern volatile uint32_t rpm_counter; // removable
   extern volatile uint32_t rpm;
   extern volatile uint32_t difference_two_coummutation_time;
+  extern uint8_t logvarflag;
+  extern uint16_t temporary_current_value;
+  extern uint32_t new_ARR;
+  extern uint32_t tim3sayi;
+  extern uint8_t isStoppedTimers;
 
-/* USER CODE END Private defines */
+  extern volatile uint16_t saved_pwm_rpm[30];
+
+  extern uint32_t interval_of_runstatus;
+
+  extern volatile uint32_t phase_A;
+  extern volatile uint32_t phase_B;
+  extern volatile uint32_t phase_C;
+
+  extern volatile uint16_t motor_voltage;
+
+  extern uint16_t target_rpm;
+  extern uint16_t max_rpm_limit;
+  extern uint16_t max_current_limit;
+
+  extern uint16_t battery_voltage;
+
+  extern uint8_t step_counter;
+
+  /* USER CODE END Private defines */
 
 #ifdef __cplusplus
 }

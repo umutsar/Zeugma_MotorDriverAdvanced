@@ -1,0 +1,303 @@
+ARM GAS  /tmp/ccjYSjVp.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"rpm.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Src/Zeugma_c/rpm.c"
+  18              		.section	.text.get_rpm,"ax",%progbits
+  19              		.align	1
+  20              		.global	get_rpm
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	get_rpm:
+  26              	.LVL0:
+  27              	.LFB65:
+   1:Src/Zeugma_c/rpm.c **** 
+   2:Src/Zeugma_c/rpm.c **** 
+   3:Src/Zeugma_c/rpm.c **** #include "rpm.h"
+   4:Src/Zeugma_c/rpm.c **** 
+   5:Src/Zeugma_c/rpm.c **** uint32_t rpm_sampling_array[6] = {0};
+   6:Src/Zeugma_c/rpm.c **** uint8_t array_index = 0;
+   7:Src/Zeugma_c/rpm.c **** uint8_t first_filterless_count = 0;
+   8:Src/Zeugma_c/rpm.c **** uint16_t filtered_rpm = 0;
+   9:Src/Zeugma_c/rpm.c **** 
+  10:Src/Zeugma_c/rpm.c **** uint16_t get_rpm(int32_t _difference_two_coummutation_time)
+  11:Src/Zeugma_c/rpm.c **** {   
+  28              		.loc 1 11 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  12:Src/Zeugma_c/rpm.c ****     if(_difference_two_coummutation_time == -1) {
+  33              		.loc 1 12 5 view .LVU1
+  34              		.loc 1 12 7 is_stmt 0 view .LVU2
+  35 0000 B0F1FF3F 		cmp	r0, #-1
+  36 0004 3FD0     		beq	.L8
+  13:Src/Zeugma_c/rpm.c ****         return 0;
+  14:Src/Zeugma_c/rpm.c ****     }
+  15:Src/Zeugma_c/rpm.c ****     rpm_sampling_array[array_index++] = _difference_two_coummutation_time;
+  37              		.loc 1 15 5 is_stmt 1 view .LVU3
+  38              		.loc 1 15 35 is_stmt 0 view .LVU4
+  39 0006 2149     		ldr	r1, .L10
+  40 0008 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+  41 000a 531C     		adds	r3, r2, #1
+  42 000c DBB2     		uxtb	r3, r3
+  43 000e 0B70     		strb	r3, [r1]
+ARM GAS  /tmp/ccjYSjVp.s 			page 2
+
+
+  44              		.loc 1 15 39 view .LVU5
+  45 0010 1F49     		ldr	r1, .L10+4
+  46 0012 41F82200 		str	r0, [r1, r2, lsl #2]
+  16:Src/Zeugma_c/rpm.c **** 
+  17:Src/Zeugma_c/rpm.c ****     if (array_index == 6)
+  47              		.loc 1 17 5 is_stmt 1 view .LVU6
+  48              		.loc 1 17 8 is_stmt 0 view .LVU7
+  49 0016 062B     		cmp	r3, #6
+  50 0018 01D0     		beq	.L9
+  51              	.L3:
+  18:Src/Zeugma_c/rpm.c ****     {
+  19:Src/Zeugma_c/rpm.c ****         array_index = 0;
+  20:Src/Zeugma_c/rpm.c ****     }
+  21:Src/Zeugma_c/rpm.c **** 
+  22:Src/Zeugma_c/rpm.c ****     uint32_t sum = 0;
+  52              		.loc 1 22 5 is_stmt 1 view .LVU8
+  53              	.LVL1:
+  23:Src/Zeugma_c/rpm.c ****     for (uint8_t i = 0; i < first_filterless_count; i++)
+  54              		.loc 1 23 5 view .LVU9
+  55              	.LBB2:
+  56              		.loc 1 23 10 view .LVU10
+  57              		.loc 1 23 18 is_stmt 0 view .LVU11
+  58 001a 0023     		movs	r3, #0
+  59              		.loc 1 23 5 view .LVU12
+  60 001c 05E0     		b	.L4
+  61              	.LVL2:
+  62              	.L9:
+  63              		.loc 1 23 5 view .LVU13
+  64              	.LBE2:
+  19:Src/Zeugma_c/rpm.c ****     }
+  65              		.loc 1 19 9 is_stmt 1 view .LVU14
+  19:Src/Zeugma_c/rpm.c ****     }
+  66              		.loc 1 19 21 is_stmt 0 view .LVU15
+  67 001e 1B4B     		ldr	r3, .L10
+  68 0020 0022     		movs	r2, #0
+  69 0022 1A70     		strb	r2, [r3]
+  70 0024 F9E7     		b	.L3
+  71              	.LVL3:
+  72              	.L5:
+  73              	.LBB3:
+  24:Src/Zeugma_c/rpm.c ****     {
+  25:Src/Zeugma_c/rpm.c ****         sum += rpm_sampling_array[i];
+  74              		.loc 1 25 9 is_stmt 1 view .LVU16
+  23:Src/Zeugma_c/rpm.c ****     {
+  75              		.loc 1 23 54 discriminator 3 view .LVU17
+  76 0026 0133     		adds	r3, r3, #1
+  77              	.LVL4:
+  23:Src/Zeugma_c/rpm.c ****     {
+  78              		.loc 1 23 54 is_stmt 0 discriminator 3 view .LVU18
+  79 0028 DBB2     		uxtb	r3, r3
+  80              	.LVL5:
+  81              	.L4:
+  23:Src/Zeugma_c/rpm.c ****     {
+  82              		.loc 1 23 27 is_stmt 1 discriminator 1 view .LVU19
+  83 002a 1A4A     		ldr	r2, .L10+8
+  84 002c 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+  85 002e 9A42     		cmp	r2, r3
+ARM GAS  /tmp/ccjYSjVp.s 			page 3
+
+
+  86 0030 F9D8     		bhi	.L5
+  87              	.LBE3:
+  26:Src/Zeugma_c/rpm.c ****     }
+  27:Src/Zeugma_c/rpm.c **** 
+  28:Src/Zeugma_c/rpm.c ****     if (first_filterless_count < 6)
+  88              		.loc 1 28 5 view .LVU20
+  89              		.loc 1 28 8 is_stmt 0 view .LVU21
+  90 0032 052A     		cmp	r2, #5
+  91 0034 14D8     		bhi	.L6
+  29:Src/Zeugma_c/rpm.c ****     {
+  30:Src/Zeugma_c/rpm.c ****         filtered_rpm = rpm_sampling_array[first_filterless_count++];
+  92              		.loc 1 30 9 is_stmt 1 view .LVU22
+  93              		.loc 1 30 65 is_stmt 0 view .LVU23
+  94 0036 511C     		adds	r1, r2, #1
+  95 0038 164B     		ldr	r3, .L10+8
+  96              	.LVL6:
+  97              		.loc 1 30 65 view .LVU24
+  98 003a 1970     		strb	r1, [r3]
+  99              		.loc 1 30 42 view .LVU25
+ 100 003c 144B     		ldr	r3, .L10+4
+ 101 003e 53F82220 		ldr	r2, [r3, r2, lsl #2]
+ 102              		.loc 1 30 22 view .LVU26
+ 103 0042 154B     		ldr	r3, .L10+12
+ 104 0044 1A80     		strh	r2, [r3]	@ movhi
+ 105              	.L7:
+  31:Src/Zeugma_c/rpm.c ****     }
+  32:Src/Zeugma_c/rpm.c ****     else
+  33:Src/Zeugma_c/rpm.c ****     {
+  34:Src/Zeugma_c/rpm.c ****         filtered_rpm = (rpm_sampling_array[0] + rpm_sampling_array[1] + rpm_sampling_array[2] +
+  35:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+  36:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+  37:Src/Zeugma_c/rpm.c ****     }
+  38:Src/Zeugma_c/rpm.c **** 
+  39:Src/Zeugma_c/rpm.c ****     if (filtered_rpm == 0)
+ 106              		.loc 1 39 5 is_stmt 1 view .LVU27
+ 107              		.loc 1 39 22 is_stmt 0 view .LVU28
+ 108 0046 144B     		ldr	r3, .L10+12
+ 109 0048 1888     		ldrh	r0, [r3]
+ 110              	.LVL7:
+ 111              		.loc 1 39 8 view .LVU29
+ 112 004a E8B1     		cbz	r0, .L2
+  40:Src/Zeugma_c/rpm.c ****     {
+  41:Src/Zeugma_c/rpm.c ****         return 0;
+  42:Src/Zeugma_c/rpm.c ****     }
+  43:Src/Zeugma_c/rpm.c **** 
+  44:Src/Zeugma_c/rpm.c ****     filtered_rpm = (TIMER_SETTING / (filtered_rpm * COMMUTATIONS_PER_REVOLUTION));
+ 113              		.loc 1 44 5 is_stmt 1 view .LVU30
+ 114              		.loc 1 44 51 is_stmt 0 view .LVU31
+ 115 004c 00EB4000 		add	r0, r0, r0, lsl #1
+ 116 0050 C000     		lsls	r0, r0, #3
+ 117              		.loc 1 44 35 view .LVU32
+ 118 0052 124B     		ldr	r3, .L10+16
+ 119 0054 93FBF0F3 		sdiv	r3, r3, r0
+ 120              		.loc 1 44 18 view .LVU33
+ 121 0058 98B2     		uxth	r0, r3
+ 122 005a 0F4B     		ldr	r3, .L10+12
+ 123 005c 1880     		strh	r0, [r3]	@ movhi
+ARM GAS  /tmp/ccjYSjVp.s 			page 4
+
+
+  45:Src/Zeugma_c/rpm.c ****     return filtered_rpm;
+ 124              		.loc 1 45 5 is_stmt 1 view .LVU34
+ 125              		.loc 1 45 12 is_stmt 0 view .LVU35
+ 126 005e 7047     		bx	lr
+ 127              	.LVL8:
+ 128              	.L6:
+  34:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 129              		.loc 1 34 9 is_stmt 1 view .LVU36
+  34:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 130              		.loc 1 34 43 is_stmt 0 view .LVU37
+ 131 0060 0B4A     		ldr	r2, .L10+4
+ 132 0062 1368     		ldr	r3, [r2]
+ 133              	.LVL9:
+  34:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 134              		.loc 1 34 67 view .LVU38
+ 135 0064 5168     		ldr	r1, [r2, #4]
+  34:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 136              		.loc 1 34 47 view .LVU39
+ 137 0066 0B44     		add	r3, r3, r1
+  34:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 138              		.loc 1 34 91 view .LVU40
+ 139 0068 9168     		ldr	r1, [r2, #8]
+  34:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 140              		.loc 1 34 71 view .LVU41
+ 141 006a 0B44     		add	r3, r3, r1
+  35:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+ 142              		.loc 1 35 43 view .LVU42
+ 143 006c D168     		ldr	r1, [r2, #12]
+  34:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 144              		.loc 1 34 95 view .LVU43
+ 145 006e 0B44     		add	r3, r3, r1
+  35:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+ 146              		.loc 1 35 67 view .LVU44
+ 147 0070 1169     		ldr	r1, [r2, #16]
+  35:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+ 148              		.loc 1 35 47 view .LVU45
+ 149 0072 0B44     		add	r3, r3, r1
+  35:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+ 150              		.loc 1 35 91 view .LVU46
+ 151 0074 5269     		ldr	r2, [r2, #20]
+  35:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+ 152              		.loc 1 35 71 view .LVU47
+ 153 0076 1344     		add	r3, r3, r2
+  35:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+ 154              		.loc 1 35 96 view .LVU48
+ 155 0078 094A     		ldr	r2, .L10+20
+ 156 007a A2FB0323 		umull	r2, r3, r2, r3
+ 157 007e 9B08     		lsrs	r3, r3, #2
+  34:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 158              		.loc 1 34 22 view .LVU49
+ 159 0080 054A     		ldr	r2, .L10+12
+ 160 0082 1380     		strh	r3, [r2]	@ movhi
+ 161 0084 DFE7     		b	.L7
+ 162              	.LVL10:
+ 163              	.L8:
+  13:Src/Zeugma_c/rpm.c ****     }
+ 164              		.loc 1 13 16 view .LVU50
+ARM GAS  /tmp/ccjYSjVp.s 			page 5
+
+
+ 165 0086 0020     		movs	r0, #0
+ 166              	.LVL11:
+ 167              	.L2:
+  46:Src/Zeugma_c/rpm.c **** }
+ 168              		.loc 1 46 1 view .LVU51
+ 169 0088 7047     		bx	lr
+ 170              	.L11:
+ 171 008a 00BF     		.align	2
+ 172              	.L10:
+ 173 008c 00000000 		.word	array_index
+ 174 0090 00000000 		.word	rpm_sampling_array
+ 175 0094 00000000 		.word	first_filterless_count
+ 176 0098 00000000 		.word	filtered_rpm
+ 177 009c 808D5B00 		.word	6000000
+ 178 00a0 ABAAAAAA 		.word	-1431655765
+ 179              		.cfi_endproc
+ 180              	.LFE65:
+ 182              		.global	filtered_rpm
+ 183              		.section	.bss.filtered_rpm,"aw",%nobits
+ 184              		.align	1
+ 187              	filtered_rpm:
+ 188 0000 0000     		.space	2
+ 189              		.global	first_filterless_count
+ 190              		.section	.bss.first_filterless_count,"aw",%nobits
+ 193              	first_filterless_count:
+ 194 0000 00       		.space	1
+ 195              		.global	array_index
+ 196              		.section	.bss.array_index,"aw",%nobits
+ 199              	array_index:
+ 200 0000 00       		.space	1
+ 201              		.global	rpm_sampling_array
+ 202              		.section	.bss.rpm_sampling_array,"aw",%nobits
+ 203              		.align	2
+ 206              	rpm_sampling_array:
+ 207 0000 00000000 		.space	24
+ 207      00000000 
+ 207      00000000 
+ 207      00000000 
+ 207      00000000 
+ 208              		.text
+ 209              	.Letext0:
+ 210              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h"
+ARM GAS  /tmp/ccjYSjVp.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 rpm.c
+     /tmp/ccjYSjVp.s:19     .text.get_rpm:00000000 $t
+     /tmp/ccjYSjVp.s:25     .text.get_rpm:00000000 get_rpm
+     /tmp/ccjYSjVp.s:173    .text.get_rpm:0000008c $d
+     /tmp/ccjYSjVp.s:199    .bss.array_index:00000000 array_index
+     /tmp/ccjYSjVp.s:206    .bss.rpm_sampling_array:00000000 rpm_sampling_array
+     /tmp/ccjYSjVp.s:193    .bss.first_filterless_count:00000000 first_filterless_count
+     /tmp/ccjYSjVp.s:187    .bss.filtered_rpm:00000000 filtered_rpm
+     /tmp/ccjYSjVp.s:184    .bss.filtered_rpm:00000000 $d
+     /tmp/ccjYSjVp.s:194    .bss.first_filterless_count:00000000 $d
+     /tmp/ccjYSjVp.s:200    .bss.array_index:00000000 $d
+     /tmp/ccjYSjVp.s:203    .bss.rpm_sampling_array:00000000 $d
+
+NO UNDEFINED SYMBOLS

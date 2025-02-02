@@ -61,6 +61,7 @@ void EXTI2_IRQHandler(void);
 void DMA1_Channel1_IRQHandler(void);
 void USB_LP_CAN1_RX0_IRQHandler(void);
 void TIM2_IRQHandler(void);
+void TIM3_IRQHandler(void);
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */

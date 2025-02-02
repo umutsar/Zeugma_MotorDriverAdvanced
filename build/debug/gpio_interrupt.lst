@@ -1,0 +1,460 @@
+ARM GAS  /tmp/cciVUP8l.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gpio_interrupt.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Src/Zeugma_c/gpio_interrupt.c"
+  18              		.section	.text.HAL_GPIO_EXTI_Callback,"ax",%progbits
+  19              		.align	1
+  20              		.global	HAL_GPIO_EXTI_Callback
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	HAL_GPIO_EXTI_Callback:
+  26              	.LVL0:
+  27              	.LFB65:
+   1:Src/Zeugma_c/gpio_interrupt.c **** 
+   2:Src/Zeugma_c/gpio_interrupt.c **** #include "gpio_interrupt.h"
+   3:Src/Zeugma_c/gpio_interrupt.c **** #include "tim.h"
+   4:Src/Zeugma_c/gpio_interrupt.c **** #include "rpm.h"
+   5:Src/Zeugma_c/gpio_interrupt.c **** #include "old_value_hall.h"
+   6:Src/Zeugma_c/gpio_interrupt.c **** #include "steps.h"
+   7:Src/Zeugma_c/gpio_interrupt.c **** 
+   8:Src/Zeugma_c/gpio_interrupt.c **** void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+   9:Src/Zeugma_c/gpio_interrupt.c **** {
+  28              		.loc 1 9 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 9 1 is_stmt 0 view .LVU1
+  33 0000 38B5     		push	{r3, r4, r5, lr}
+  34              		.cfi_def_cfa_offset 16
+  35              		.cfi_offset 3, -16
+  36              		.cfi_offset 4, -12
+  37              		.cfi_offset 5, -8
+  38              		.cfi_offset 14, -4
+  10:Src/Zeugma_c/gpio_interrupt.c ****   hall_A = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
+  39              		.loc 1 10 3 is_stmt 1 view .LVU2
+  40              		.loc 1 10 12 is_stmt 0 view .LVU3
+  41 0002 504C     		ldr	r4, .L14
+  42 0004 0121     		movs	r1, #1
+  43 0006 2046     		mov	r0, r4
+  44              	.LVL1:
+  45              		.loc 1 10 12 view .LVU4
+  46 0008 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+  47              	.LVL2:
+  48              		.loc 1 10 12 discriminator 1 view .LVU5
+ARM GAS  /tmp/cciVUP8l.s 			page 2
+
+
+  49 000c 0038     		subs	r0, r0, #0
+  50 000e 18BF     		it	ne
+  51 0010 0120     		movne	r0, #1
+  52              		.loc 1 10 10 discriminator 1 view .LVU6
+  53 0012 4D4D     		ldr	r5, .L14+4
+  54 0014 2870     		strb	r0, [r5]
+  11:Src/Zeugma_c/gpio_interrupt.c ****   hall_B = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
+  55              		.loc 1 11 3 is_stmt 1 view .LVU7
+  56              		.loc 1 11 12 is_stmt 0 view .LVU8
+  57 0016 0221     		movs	r1, #2
+  58 0018 2046     		mov	r0, r4
+  59 001a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+  60              	.LVL3:
+  61              		.loc 1 11 12 discriminator 1 view .LVU9
+  62 001e 0038     		subs	r0, r0, #0
+  63 0020 18BF     		it	ne
+  64 0022 0120     		movne	r0, #1
+  65              		.loc 1 11 10 discriminator 1 view .LVU10
+  66 0024 494B     		ldr	r3, .L14+8
+  67 0026 1870     		strb	r0, [r3]
+  12:Src/Zeugma_c/gpio_interrupt.c ****   hall_C = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2);
+  68              		.loc 1 12 3 is_stmt 1 view .LVU11
+  69              		.loc 1 12 12 is_stmt 0 view .LVU12
+  70 0028 0421     		movs	r1, #4
+  71 002a 2046     		mov	r0, r4
+  72 002c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+  73              	.LVL4:
+  74              		.loc 1 12 12 discriminator 1 view .LVU13
+  75 0030 0038     		subs	r0, r0, #0
+  76 0032 18BF     		it	ne
+  77 0034 0120     		movne	r0, #1
+  78              		.loc 1 12 10 discriminator 1 view .LVU14
+  79 0036 464B     		ldr	r3, .L14+12
+  80 0038 1870     		strb	r0, [r3]
+  13:Src/Zeugma_c/gpio_interrupt.c ****   first_step_flag = 1;
+  81              		.loc 1 13 3 is_stmt 1 view .LVU15
+  82              		.loc 1 13 19 is_stmt 0 view .LVU16
+  83 003a 464B     		ldr	r3, .L14+16
+  84 003c 0122     		movs	r2, #1
+  85 003e 1A70     		strb	r2, [r3]
+  14:Src/Zeugma_c/gpio_interrupt.c ****   if (hall_A != oncekiDegerler[0] || hall_B != oncekiDegerler[1] || hall_C != oncekiDegerler[2])
+  86              		.loc 1 14 3 is_stmt 1 view .LVU17
+  87              		.loc 1 14 14 is_stmt 0 view .LVU18
+  88 0040 2A78     		ldrb	r2, [r5]	@ zero_extendqisi2
+  89 0042 D2B2     		uxtb	r2, r2
+  90              		.loc 1 14 31 view .LVU19
+  91 0044 444B     		ldr	r3, .L14+20
+  92 0046 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  93 0048 DBB2     		uxtb	r3, r3
+  94              		.loc 1 14 6 view .LVU20
+  95 004a 9A42     		cmp	r2, r3
+  96 004c 07D1     		bne	.L2
+  97              		.loc 1 14 45 discriminator 1 view .LVU21
+  98 004e 3F4B     		ldr	r3, .L14+8
+  99 0050 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 100 0052 D2B2     		uxtb	r2, r2
+ 101              		.loc 1 14 62 discriminator 1 view .LVU22
+ARM GAS  /tmp/cciVUP8l.s 			page 3
+
+
+ 102 0054 404B     		ldr	r3, .L14+20
+ 103 0056 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 104 0058 DBB2     		uxtb	r3, r3
+ 105              		.loc 1 14 35 discriminator 1 view .LVU23
+ 106 005a 9A42     		cmp	r2, r3
+ 107 005c 0BD0     		beq	.L12
+ 108              	.L2:
+  15:Src/Zeugma_c/gpio_interrupt.c ****   {
+  16:Src/Zeugma_c/gpio_interrupt.c ****     // rpm_counter++;
+  17:Src/Zeugma_c/gpio_interrupt.c ****     difference_two_coummutation_time = __HAL_TIM_GET_COUNTER(&htim2);
+ 109              		.loc 1 17 5 is_stmt 1 view .LVU24
+ 110              		.loc 1 17 40 is_stmt 0 view .LVU25
+ 111 005e 3F4B     		ldr	r3, .L14+24
+ 112 0060 1B68     		ldr	r3, [r3]
+ 113 0062 5A6A     		ldr	r2, [r3, #36]
+ 114              		.loc 1 17 38 view .LVU26
+ 115 0064 3E4B     		ldr	r3, .L14+28
+ 116 0066 1A60     		str	r2, [r3]
+  18:Src/Zeugma_c/gpio_interrupt.c ****     rpm = get_rpm(difference_two_coummutation_time);
+ 117              		.loc 1 18 5 is_stmt 1 view .LVU27
+ 118              		.loc 1 18 11 is_stmt 0 view .LVU28
+ 119 0068 1868     		ldr	r0, [r3]
+ 120 006a FFF7FEFF 		bl	get_rpm
+ 121              	.LVL5:
+ 122              		.loc 1 18 9 discriminator 1 view .LVU29
+ 123 006e 3D4B     		ldr	r3, .L14+32
+ 124 0070 1860     		str	r0, [r3]
+  19:Src/Zeugma_c/gpio_interrupt.c **** 
+  20:Src/Zeugma_c/gpio_interrupt.c ****     // if (rpm < 100 && rpm > 0)
+  21:Src/Zeugma_c/gpio_interrupt.c ****     //   saved_pwm_rpm[0] = pwm_value;
+  22:Src/Zeugma_c/gpio_interrupt.c ****     // else if (rpm < 200 && rpm > 100)
+  23:Src/Zeugma_c/gpio_interrupt.c ****     //   saved_pwm_rpm[1] = pwm_value;
+  24:Src/Zeugma_c/gpio_interrupt.c ****     // else if (rpm < 300 && rpm > 200)
+  25:Src/Zeugma_c/gpio_interrupt.c ****     //   saved_pwm_rpm[2] = pwm_value;
+  26:Src/Zeugma_c/gpio_interrupt.c ****     // else if (rpm < 400 && rpm > 300)
+  27:Src/Zeugma_c/gpio_interrupt.c ****     //   saved_pwm_rpm[3] = pwm_value;
+  28:Src/Zeugma_c/gpio_interrupt.c ****     // else if (rpm < 500 && rpm > 400)
+  29:Src/Zeugma_c/gpio_interrupt.c ****     //   saved_pwm_rpm[4] = pwm_value;
+  30:Src/Zeugma_c/gpio_interrupt.c **** 
+  31:Src/Zeugma_c/gpio_interrupt.c ****     for (int i = 0; i < 30; i++)
+ 125              		.loc 1 31 5 is_stmt 1 view .LVU30
+ 126              	.LBB2:
+ 127              		.loc 1 31 10 view .LVU31
+ 128              	.LVL6:
+ 129              		.loc 1 31 14 is_stmt 0 view .LVU32
+ 130 0072 0023     		movs	r3, #0
+ 131              		.loc 1 31 5 view .LVU33
+ 132 0074 09E0     		b	.L4
+ 133              	.LVL7:
+ 134              	.L12:
+ 135              		.loc 1 31 5 view .LVU34
+ 136              	.LBE2:
+  14:Src/Zeugma_c/gpio_interrupt.c ****   {
+ 137              		.loc 1 14 76 discriminator 2 view .LVU35
+ 138 0076 364B     		ldr	r3, .L14+12
+ 139 0078 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 140 007a D2B2     		uxtb	r2, r2
+ARM GAS  /tmp/cciVUP8l.s 			page 4
+
+
+  14:Src/Zeugma_c/gpio_interrupt.c ****   {
+ 141              		.loc 1 14 93 discriminator 2 view .LVU36
+ 142 007c 364B     		ldr	r3, .L14+20
+ 143 007e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 144 0080 DBB2     		uxtb	r3, r3
+  14:Src/Zeugma_c/gpio_interrupt.c ****   {
+ 145              		.loc 1 14 66 discriminator 2 view .LVU37
+ 146 0082 9A42     		cmp	r2, r3
+ 147 0084 EBD1     		bne	.L2
+ 148 0086 40E0     		b	.L1
+ 149              	.LVL8:
+ 150              	.L5:
+ 151              	.LBB3:
+ 152              		.loc 1 31 30 is_stmt 1 discriminator 2 view .LVU38
+ 153 0088 0133     		adds	r3, r3, #1
+ 154              	.LVL9:
+ 155              	.L4:
+ 156              		.loc 1 31 23 discriminator 1 view .LVU39
+ 157 008a 1D2B     		cmp	r3, #29
+ 158 008c 13DC     		bgt	.L6
+  32:Src/Zeugma_c/gpio_interrupt.c ****     {
+  33:Src/Zeugma_c/gpio_interrupt.c ****       if (rpm > (i * 100) && rpm <= ((i + 1) * 100))
+ 159              		.loc 1 33 7 view .LVU40
+ 160              		.loc 1 33 20 is_stmt 0 view .LVU41
+ 161 008e 6422     		movs	r2, #100
+ 162 0090 03FB02F2 		mul	r2, r3, r2
+ 163              		.loc 1 33 15 view .LVU42
+ 164 0094 3349     		ldr	r1, .L14+32
+ 165 0096 0968     		ldr	r1, [r1]
+ 166              		.loc 1 33 10 view .LVU43
+ 167 0098 8A42     		cmp	r2, r1
+ 168 009a F5D2     		bcs	.L5
+ 169              		.loc 1 33 46 discriminator 1 view .LVU44
+ 170 009c 6422     		movs	r2, #100
+ 171 009e 03FB0222 		mla	r2, r3, r2, r2
+ 172              		.loc 1 33 34 discriminator 1 view .LVU45
+ 173 00a2 3049     		ldr	r1, .L14+32
+ 174 00a4 0968     		ldr	r1, [r1]
+ 175              		.loc 1 33 27 discriminator 1 view .LVU46
+ 176 00a6 8A42     		cmp	r2, r1
+ 177 00a8 EED3     		bcc	.L5
+  34:Src/Zeugma_c/gpio_interrupt.c ****       {
+  35:Src/Zeugma_c/gpio_interrupt.c ****         saved_pwm_rpm[i] = pwm_value;
+ 178              		.loc 1 35 9 is_stmt 1 view .LVU47
+ 179              		.loc 1 35 26 is_stmt 0 view .LVU48
+ 180 00aa 2F4A     		ldr	r2, .L14+36
+ 181 00ac 1268     		ldr	r2, [r2]
+ 182 00ae 92B2     		uxth	r2, r2
+ 183 00b0 2E49     		ldr	r1, .L14+40
+ 184 00b2 21F81320 		strh	r2, [r1, r3, lsl #1]	@ movhi
+  36:Src/Zeugma_c/gpio_interrupt.c ****         break;
+ 185              		.loc 1 36 9 is_stmt 1 view .LVU49
+ 186              	.L6:
+ 187              	.LBE3:
+  37:Src/Zeugma_c/gpio_interrupt.c ****       }
+  38:Src/Zeugma_c/gpio_interrupt.c ****     }
+  39:Src/Zeugma_c/gpio_interrupt.c **** 
+ARM GAS  /tmp/cciVUP8l.s 			page 5
+
+
+  40:Src/Zeugma_c/gpio_interrupt.c ****     if (rpm < 100)
+ 188              		.loc 1 40 5 view .LVU50
+ 189              		.loc 1 40 13 is_stmt 0 view .LVU51
+ 190 00b6 2B4B     		ldr	r3, .L14+32
+ 191              	.LVL10:
+ 192              		.loc 1 40 13 view .LVU52
+ 193 00b8 1B68     		ldr	r3, [r3]
+ 194              		.loc 1 40 8 view .LVU53
+ 195 00ba 632B     		cmp	r3, #99
+ 196 00bc 02D8     		bhi	.L8
+  41:Src/Zeugma_c/gpio_interrupt.c ****       rpm = 0;
+ 197              		.loc 1 41 7 is_stmt 1 view .LVU54
+ 198              		.loc 1 41 11 is_stmt 0 view .LVU55
+ 199 00be 294B     		ldr	r3, .L14+32
+ 200 00c0 0022     		movs	r2, #0
+ 201 00c2 1A60     		str	r2, [r3]
+ 202              	.L8:
+  42:Src/Zeugma_c/gpio_interrupt.c ****     __HAL_TIM_SET_COUNTER(&htim2, 0);
+ 203              		.loc 1 42 5 is_stmt 1 view .LVU56
+ 204 00c4 254B     		ldr	r3, .L14+24
+ 205 00c6 1B68     		ldr	r3, [r3]
+ 206 00c8 0022     		movs	r2, #0
+ 207 00ca 5A62     		str	r2, [r3, #36]
+  43:Src/Zeugma_c/gpio_interrupt.c ****   }
+  44:Src/Zeugma_c/gpio_interrupt.c **** 
+  45:Src/Zeugma_c/gpio_interrupt.c ****   else
+  46:Src/Zeugma_c/gpio_interrupt.c ****   {
+  47:Src/Zeugma_c/gpio_interrupt.c ****     return;
+  48:Src/Zeugma_c/gpio_interrupt.c ****   }
+  49:Src/Zeugma_c/gpio_interrupt.c **** 
+  50:Src/Zeugma_c/gpio_interrupt.c ****   if (run_status)
+ 208              		.loc 1 50 3 view .LVU57
+ 209              		.loc 1 50 7 is_stmt 0 view .LVU58
+ 210 00cc 284B     		ldr	r3, .L14+44
+ 211 00ce 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 212              		.loc 1 50 6 view .LVU59
+ 213 00d0 A3B1     		cbz	r3, .L9
+  51:Src/Zeugma_c/gpio_interrupt.c ****   {
+  52:Src/Zeugma_c/gpio_interrupt.c ****     if ((hall_A == hall_C) && (hall_A == hall_B))
+ 214              		.loc 1 52 5 is_stmt 1 view .LVU60
+ 215              		.loc 1 52 17 is_stmt 0 view .LVU61
+ 216 00d2 1D4B     		ldr	r3, .L14+4
+ 217 00d4 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 218 00d6 D2B2     		uxtb	r2, r2
+ 219 00d8 1D4B     		ldr	r3, .L14+12
+ 220 00da 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 221 00dc DBB2     		uxtb	r3, r3
+ 222              		.loc 1 52 8 view .LVU62
+ 223 00de 9A42     		cmp	r2, r3
+ 224 00e0 14D0     		beq	.L13
+ 225              	.L10:
+  53:Src/Zeugma_c/gpio_interrupt.c ****     {
+  54:Src/Zeugma_c/gpio_interrupt.c ****       hall_A = oncekiDegerler[0];
+  55:Src/Zeugma_c/gpio_interrupt.c ****       hall_B = oncekiDegerler[1];
+  56:Src/Zeugma_c/gpio_interrupt.c ****       hall_C = oncekiDegerler[2];
+  57:Src/Zeugma_c/gpio_interrupt.c ****     }
+  58:Src/Zeugma_c/gpio_interrupt.c ****     else
+ARM GAS  /tmp/cciVUP8l.s 			page 6
+
+
+  59:Src/Zeugma_c/gpio_interrupt.c ****     {
+  60:Src/Zeugma_c/gpio_interrupt.c ****       oncekiDegerler[0] = hall_A;
+ 226              		.loc 1 60 7 is_stmt 1 view .LVU63
+ 227              		.loc 1 60 25 is_stmt 0 view .LVU64
+ 228 00e2 194B     		ldr	r3, .L14+4
+ 229 00e4 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 230 00e6 D2B2     		uxtb	r2, r2
+ 231 00e8 1B4B     		ldr	r3, .L14+20
+ 232 00ea 1A70     		strb	r2, [r3]
+  61:Src/Zeugma_c/gpio_interrupt.c ****       oncekiDegerler[1] = hall_B;
+ 233              		.loc 1 61 7 is_stmt 1 view .LVU65
+ 234              		.loc 1 61 25 is_stmt 0 view .LVU66
+ 235 00ec 174A     		ldr	r2, .L14+8
+ 236 00ee 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 237 00f0 D2B2     		uxtb	r2, r2
+ 238 00f2 5A70     		strb	r2, [r3, #1]
+  62:Src/Zeugma_c/gpio_interrupt.c ****       oncekiDegerler[2] = hall_C;
+ 239              		.loc 1 62 7 is_stmt 1 view .LVU67
+ 240              		.loc 1 62 25 is_stmt 0 view .LVU68
+ 241 00f4 164A     		ldr	r2, .L14+12
+ 242 00f6 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 243 00f8 D2B2     		uxtb	r2, r2
+ 244 00fa 9A70     		strb	r2, [r3, #2]
+ 245              	.L9:
+  63:Src/Zeugma_c/gpio_interrupt.c ****     }
+  64:Src/Zeugma_c/gpio_interrupt.c ****   }
+  65:Src/Zeugma_c/gpio_interrupt.c **** 
+  66:Src/Zeugma_c/gpio_interrupt.c ****   set_old_value();
+ 246              		.loc 1 66 3 is_stmt 1 view .LVU69
+ 247 00fc FFF7FEFF 		bl	set_old_value
+ 248              	.LVL11:
+  67:Src/Zeugma_c/gpio_interrupt.c ****   execute_step(step);
+ 249              		.loc 1 67 3 view .LVU70
+ 250 0100 1C4B     		ldr	r3, .L14+48
+ 251 0102 1868     		ldr	r0, [r3]
+ 252 0104 C0B2     		uxtb	r0, r0
+ 253 0106 FFF7FEFF 		bl	execute_step
+ 254              	.LVL12:
+ 255              	.L1:
+  68:Src/Zeugma_c/gpio_interrupt.c **** }...
+ 256              		.loc 1 68 1 is_stmt 0 view .LVU71
+ 257 010a 38BD     		pop	{r3, r4, r5, pc}
+ 258              	.LVL13:
+ 259              	.L13:
+  52:Src/Zeugma_c/gpio_interrupt.c ****     if ((hall_A == hall_C) && (hall_A == hall_B))
+ 260              		.loc 1 52 39 discriminator 1 view .LVU72
+ 261 010c 0E4B     		ldr	r3, .L14+4
+ 262 010e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 263 0110 D2B2     		uxtb	r2, r2
+ 264 0112 0E4B     		ldr	r3, .L14+8
+ 265 0114 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 266 0116 DBB2     		uxtb	r3, r3
+  52:Src/Zeugma_c/gpio_interrupt.c ****     if ((hall_A == hall_C) && (hall_A == hall_B))
+ 267              		.loc 1 52 28 discriminator 1 view .LVU73
+ 268 0118 9A42     		cmp	r2, r3
+ 269 011a E2D1     		bne	.L10
+  54:Src/Zeugma_c/gpio_interrupt.c ****       hall_A = oncekiDegerler[0];
+ARM GAS  /tmp/cciVUP8l.s 			page 7
+
+
+ 270              		.loc 1 54 7 is_stmt 1 view .LVU74
+  54:Src/Zeugma_c/gpio_interrupt.c ****       hall_A = oncekiDegerler[0];
+ 271              		.loc 1 54 30 is_stmt 0 view .LVU75
+ 272 011c 0E4B     		ldr	r3, .L14+20
+ 273 011e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 274 0120 003A     		subs	r2, r2, #0
+ 275 0122 18BF     		it	ne
+ 276 0124 0122     		movne	r2, #1
+  54:Src/Zeugma_c/gpio_interrupt.c ****       hall_A = oncekiDegerler[0];
+ 277              		.loc 1 54 14 view .LVU76
+ 278 0126 0849     		ldr	r1, .L14+4
+ 279 0128 0A70     		strb	r2, [r1]
+  55:Src/Zeugma_c/gpio_interrupt.c ****       hall_B = oncekiDegerler[1];
+ 280              		.loc 1 55 7 is_stmt 1 view .LVU77
+  55:Src/Zeugma_c/gpio_interrupt.c ****       hall_B = oncekiDegerler[1];
+ 281              		.loc 1 55 30 is_stmt 0 view .LVU78
+ 282 012a 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+ 283 012c 003A     		subs	r2, r2, #0
+ 284 012e 18BF     		it	ne
+ 285 0130 0122     		movne	r2, #1
+  55:Src/Zeugma_c/gpio_interrupt.c ****       hall_B = oncekiDegerler[1];
+ 286              		.loc 1 55 14 view .LVU79
+ 287 0132 0649     		ldr	r1, .L14+8
+ 288 0134 0A70     		strb	r2, [r1]
+  56:Src/Zeugma_c/gpio_interrupt.c ****       hall_C = oncekiDegerler[2];
+ 289              		.loc 1 56 7 is_stmt 1 view .LVU80
+  56:Src/Zeugma_c/gpio_interrupt.c ****       hall_C = oncekiDegerler[2];
+ 290              		.loc 1 56 30 is_stmt 0 view .LVU81
+ 291 0136 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 292 0138 003B     		subs	r3, r3, #0
+ 293 013a 18BF     		it	ne
+ 294 013c 0123     		movne	r3, #1
+  56:Src/Zeugma_c/gpio_interrupt.c ****       hall_C = oncekiDegerler[2];
+ 295              		.loc 1 56 14 view .LVU82
+ 296 013e 044A     		ldr	r2, .L14+12
+ 297 0140 1370     		strb	r3, [r2]
+ 298 0142 DBE7     		b	.L9
+ 299              	.L15:
+ 300              		.align	2
+ 301              	.L14:
+ 302 0144 00080140 		.word	1073809408
+ 303 0148 00000000 		.word	hall_A
+ 304 014c 00000000 		.word	hall_B
+ 305 0150 00000000 		.word	hall_C
+ 306 0154 00000000 		.word	first_step_flag
+ 307 0158 00000000 		.word	oncekiDegerler
+ 308 015c 00000000 		.word	htim2
+ 309 0160 00000000 		.word	difference_two_coummutation_time
+ 310 0164 00000000 		.word	rpm
+ 311 0168 00000000 		.word	pwm_value
+ 312 016c 00000000 		.word	saved_pwm_rpm
+ 313 0170 00000000 		.word	run_status
+ 314 0174 00000000 		.word	step
+ 315              		.cfi_endproc
+ 316              	.LFE65:
+ 318              		.text
+ 319              	.Letext0:
+ARM GAS  /tmp/cciVUP8l.s 			page 8
+
+
+ 320              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h"
+ 321              		.file 3 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 322              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 323              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 324              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 325              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 326              		.file 8 "Inc/main.h"
+ 327              		.file 9 "Inc/tim.h"
+ 328              		.file 10 "Inc/Zeugma_h/rpm.h"
+ 329              		.file 11 "Inc/Zeugma_h/steps.h"
+ 330              		.file 12 "Inc/Zeugma_h/old_value_hall.h"
+ARM GAS  /tmp/cciVUP8l.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gpio_interrupt.c
+     /tmp/cciVUP8l.s:19     .text.HAL_GPIO_EXTI_Callback:00000000 $t
+     /tmp/cciVUP8l.s:25     .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
+     /tmp/cciVUP8l.s:302    .text.HAL_GPIO_EXTI_Callback:00000144 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_ReadPin
+get_rpm
+set_old_value
+execute_step
+hall_A
+hall_B
+hall_C
+first_step_flag
+oncekiDegerler
+htim2
+difference_two_coummutation_time
+rpm
+pwm_value
+saved_pwm_rpm
+run_status
+step

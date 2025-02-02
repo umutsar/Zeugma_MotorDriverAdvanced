@@ -15,6 +15,7 @@ void first_step(bool _a, bool _b, bool _c)
 
   find_commutation_step(_a, _b, _c);
 
+  pwm_value = min_pwm_limit;
   while (1)
   {
     if (first_step_flag && commutation_step == 1)

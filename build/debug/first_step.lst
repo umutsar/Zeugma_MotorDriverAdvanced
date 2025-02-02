@@ -1,0 +1,952 @@
+ARM GAS  /tmp/cc5ZgeDz.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"first_step.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Src/Zeugma_c/first_step.c"
+  18              		.section	.text.step_counter_control,"ax",%progbits
+  19              		.align	1
+  20              		.global	step_counter_control
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	step_counter_control:
+  26              	.LFB66:
+   1:Src/Zeugma_c/first_step.c **** 
+   2:Src/Zeugma_c/first_step.c **** #include <tim.h>
+   3:Src/Zeugma_c/first_step.c **** #include <main.h>
+   4:Src/Zeugma_c/first_step.c **** #include "first_step.h"
+   5:Src/Zeugma_c/first_step.c **** 
+   6:Src/Zeugma_c/first_step.c **** uint8_t commutation_step = 0;
+   7:Src/Zeugma_c/first_step.c **** uint8_t step_counter = 0;
+   8:Src/Zeugma_c/first_step.c **** 
+   9:Src/Zeugma_c/first_step.c **** uint8_t newflag = 0;
+  10:Src/Zeugma_c/first_step.c **** 
+  11:Src/Zeugma_c/first_step.c **** void first_step(bool _a, bool _b, bool _c)
+  12:Src/Zeugma_c/first_step.c **** { // KALKIS
+  13:Src/Zeugma_c/first_step.c **** 
+  14:Src/Zeugma_c/first_step.c ****   previousTime2 = HAL_GetTick();
+  15:Src/Zeugma_c/first_step.c **** 
+  16:Src/Zeugma_c/first_step.c ****   find_commutation_step(_a, _b, _c);
+  17:Src/Zeugma_c/first_step.c **** 
+  18:Src/Zeugma_c/first_step.c ****   pwm_value = min_pwm_limit;
+  19:Src/Zeugma_c/first_step.c ****   while (1)
+  20:Src/Zeugma_c/first_step.c ****   {
+  21:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 1)
+  22:Src/Zeugma_c/first_step.c ****     {
+  23:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+  24:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+  25:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x00C5;
+  26:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, min_pwm_limit);
+  27:Src/Zeugma_c/first_step.c ****       commutation_step = 2;
+  28:Src/Zeugma_c/first_step.c ****       step_counter++;
+  29:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+  30:Src/Zeugma_c/first_step.c ****         break;
+  31:Src/Zeugma_c/first_step.c ****     }
+  32:Src/Zeugma_c/first_step.c **** 
+ARM GAS  /tmp/cc5ZgeDz.s 			page 2
+
+
+  33:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 2)
+  34:Src/Zeugma_c/first_step.c ****     {
+  35:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+  36:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+  37:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x0C05;
+  38:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, min_pwm_limit);
+  39:Src/Zeugma_c/first_step.c ****       commutation_step = 3;
+  40:Src/Zeugma_c/first_step.c ****       step_counter++;
+  41:Src/Zeugma_c/first_step.c ****       HAL_Delay(firstStepDelay);
+  42:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+  43:Src/Zeugma_c/first_step.c ****         break;
+  44:Src/Zeugma_c/first_step.c ****     }
+  45:Src/Zeugma_c/first_step.c **** 
+  46:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 3)
+  47:Src/Zeugma_c/first_step.c ****     {
+  48:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+  49:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+  50:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x0C50;
+  51:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, min_pwm_limit);
+  52:Src/Zeugma_c/first_step.c ****       commutation_step = 4;
+  53:Src/Zeugma_c/first_step.c ****       step_counter++;
+  54:Src/Zeugma_c/first_step.c ****       HAL_Delay(firstStepDelay);
+  55:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+  56:Src/Zeugma_c/first_step.c ****         break;
+  57:Src/Zeugma_c/first_step.c ****     }
+  58:Src/Zeugma_c/first_step.c **** 
+  59:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 4)
+  60:Src/Zeugma_c/first_step.c ****     {
+  61:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+  62:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+  63:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x005C;
+  64:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, min_pwm_limit);
+  65:Src/Zeugma_c/first_step.c ****       commutation_step = 5;
+  66:Src/Zeugma_c/first_step.c ****       step_counter++;
+  67:Src/Zeugma_c/first_step.c ****       HAL_Delay(firstStepDelay);
+  68:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+  69:Src/Zeugma_c/first_step.c ****         break;
+  70:Src/Zeugma_c/first_step.c ****     }
+  71:Src/Zeugma_c/first_step.c **** 
+  72:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 5)
+  73:Src/Zeugma_c/first_step.c ****     {
+  74:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+  75:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+  76:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x050C;
+  77:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, min_pwm_limit);
+  78:Src/Zeugma_c/first_step.c ****       commutation_step = 6;
+  79:Src/Zeugma_c/first_step.c ****       step_counter++;
+  80:Src/Zeugma_c/first_step.c ****       HAL_Delay(firstStepDelay);
+  81:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+  82:Src/Zeugma_c/first_step.c ****         break;
+  83:Src/Zeugma_c/first_step.c ****     }
+  84:Src/Zeugma_c/first_step.c **** 
+  85:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 6)
+  86:Src/Zeugma_c/first_step.c ****     {
+  87:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+  88:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+  89:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x05C0;
+ARM GAS  /tmp/cc5ZgeDz.s 			page 3
+
+
+  90:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, min_pwm_limit);
+  91:Src/Zeugma_c/first_step.c ****       commutation_step = 1;
+  92:Src/Zeugma_c/first_step.c ****       step_counter++;
+  93:Src/Zeugma_c/first_step.c ****       HAL_Delay(firstStepDelay);
+  94:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+  95:Src/Zeugma_c/first_step.c ****         break;
+  96:Src/Zeugma_c/first_step.c ****     }
+  97:Src/Zeugma_c/first_step.c **** 
+  98:Src/Zeugma_c/first_step.c ****     else
+  99:Src/Zeugma_c/first_step.c ****       break;
+ 100:Src/Zeugma_c/first_step.c ****   }
+ 101:Src/Zeugma_c/first_step.c **** 
+ 102:Src/Zeugma_c/first_step.c ****   HAL_Delay(firstStepDelay);
+ 103:Src/Zeugma_c/first_step.c ****   if (first_step_flag)
+ 104:Src/Zeugma_c/first_step.c ****   {
+ 105:Src/Zeugma_c/first_step.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+ 106:Src/Zeugma_c/first_step.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+ 107:Src/Zeugma_c/first_step.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+ 108:Src/Zeugma_c/first_step.c ****     TIM1->CCER = 0x0000;
+ 109:Src/Zeugma_c/first_step.c ****   }
+ 110:Src/Zeugma_c/first_step.c **** }
+ 111:Src/Zeugma_c/first_step.c **** 
+ 112:Src/Zeugma_c/first_step.c **** int step_counter_control()
+ 113:Src/Zeugma_c/first_step.c **** {
+  27              		.loc 1 113 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+ 114:Src/Zeugma_c/first_step.c ****   if (step_counter == 6)
+  32              		.loc 1 114 3 view .LVU1
+  33              		.loc 1 114 20 is_stmt 0 view .LVU2
+  34 0000 054B     		ldr	r3, .L5
+  35 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  36              		.loc 1 114 6 view .LVU3
+  37 0004 062B     		cmp	r3, #6
+  38 0006 01D0     		beq	.L4
+ 115:Src/Zeugma_c/first_step.c ****   {
+ 116:Src/Zeugma_c/first_step.c ****     step_counter = 0;
+ 117:Src/Zeugma_c/first_step.c ****     return 1;
+ 118:Src/Zeugma_c/first_step.c ****   }
+ 119:Src/Zeugma_c/first_step.c ****   else
+ 120:Src/Zeugma_c/first_step.c ****     return 0;
+  39              		.loc 1 120 12 view .LVU4
+  40 0008 0020     		movs	r0, #0
+ 121:Src/Zeugma_c/first_step.c **** }
+  41              		.loc 1 121 1 view .LVU5
+  42 000a 7047     		bx	lr
+  43              	.L4:
+ 116:Src/Zeugma_c/first_step.c ****     return 1;
+  44              		.loc 1 116 5 is_stmt 1 view .LVU6
+ 116:Src/Zeugma_c/first_step.c ****     return 1;
+  45              		.loc 1 116 18 is_stmt 0 view .LVU7
+  46 000c 024B     		ldr	r3, .L5
+  47 000e 0022     		movs	r2, #0
+  48 0010 1A70     		strb	r2, [r3]
+ 117:Src/Zeugma_c/first_step.c ****   }
+ARM GAS  /tmp/cc5ZgeDz.s 			page 4
+
+
+  49              		.loc 1 117 5 is_stmt 1 view .LVU8
+ 117:Src/Zeugma_c/first_step.c ****   }
+  50              		.loc 1 117 12 is_stmt 0 view .LVU9
+  51 0012 0120     		movs	r0, #1
+  52 0014 7047     		bx	lr
+  53              	.L6:
+  54 0016 00BF     		.align	2
+  55              	.L5:
+  56 0018 00000000 		.word	step_counter
+  57              		.cfi_endproc
+  58              	.LFE66:
+  60              		.section	.text.find_commutation_step,"ax",%progbits
+  61              		.align	1
+  62              		.global	find_commutation_step
+  63              		.syntax unified
+  64              		.thumb
+  65              		.thumb_func
+  67              	find_commutation_step:
+  68              	.LVL0:
+  69              	.LFB67:
+ 122:Src/Zeugma_c/first_step.c **** 
+ 123:Src/Zeugma_c/first_step.c **** void find_commutation_step(bool _a, bool _b, bool _c)
+ 124:Src/Zeugma_c/first_step.c **** {
+  70              		.loc 1 124 1 is_stmt 1 view -0
+  71              		.cfi_startproc
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 0, uses_anonymous_args = 0
+  74              		@ link register save eliminated.
+ 125:Src/Zeugma_c/first_step.c ****   if (_a && !_b && _c)
+  75              		.loc 1 125 3 view .LVU11
+  76              		.loc 1 125 6 is_stmt 0 view .LVU12
+  77 0000 0346     		mov	r3, r0
+  78 0002 58B1     		cbz	r0, .L8
+  79              		.loc 1 125 10 discriminator 1 view .LVU13
+  80 0004 21B9     		cbnz	r1, .L9
+  81              		.loc 1 125 17 discriminator 2 view .LVU14
+  82 0006 1AB1     		cbz	r2, .L9
+ 126:Src/Zeugma_c/first_step.c ****     commutation_step = 4; // 4
+  83              		.loc 1 126 5 is_stmt 1 view .LVU15
+  84              		.loc 1 126 22 is_stmt 0 view .LVU16
+  85 0008 114B     		ldr	r3, .L14
+  86 000a 0422     		movs	r2, #4
+  87              	.LVL1:
+  88              		.loc 1 126 22 view .LVU17
+  89 000c 1A70     		strb	r2, [r3]
+  90 000e 7047     		bx	lr
+  91              	.LVL2:
+  92              	.L9:
+ 127:Src/Zeugma_c/first_step.c ****   else if (_a && !_b && !_c)
+  93              		.loc 1 127 8 is_stmt 1 view .LVU18
+  94              		.loc 1 127 15 is_stmt 0 discriminator 1 view .LVU19
+  95 0010 21B9     		cbnz	r1, .L8
+  96              		.loc 1 127 22 discriminator 2 view .LVU20
+  97 0012 1AB9     		cbnz	r2, .L8
+ 128:Src/Zeugma_c/first_step.c ****     commutation_step = 5; // 5
+  98              		.loc 1 128 5 is_stmt 1 view .LVU21
+  99              		.loc 1 128 22 is_stmt 0 view .LVU22
+ARM GAS  /tmp/cc5ZgeDz.s 			page 5
+
+
+ 100 0014 0E4B     		ldr	r3, .L14
+ 101 0016 0522     		movs	r2, #5
+ 102              	.LVL3:
+ 103              		.loc 1 128 22 view .LVU23
+ 104 0018 1A70     		strb	r2, [r3]
+ 105 001a 7047     		bx	lr
+ 106              	.LVL4:
+ 107              	.L8:
+ 129:Src/Zeugma_c/first_step.c ****   else if (_a && _b && !_c)
+ 108              		.loc 1 129 8 is_stmt 1 view .LVU24
+ 109              		.loc 1 129 11 is_stmt 0 view .LVU25
+ 110 001c 2BB1     		cbz	r3, .L11
+ 111              		.loc 1 129 15 discriminator 1 view .LVU26
+ 112 001e B1B1     		cbz	r1, .L7
+ 113              		.loc 1 129 21 discriminator 2 view .LVU27
+ 114 0020 AAB9     		cbnz	r2, .L7
+ 130:Src/Zeugma_c/first_step.c ****     commutation_step = 6; // 6
+ 115              		.loc 1 130 5 is_stmt 1 view .LVU28
+ 116              		.loc 1 130 22 is_stmt 0 view .LVU29
+ 117 0022 0B4B     		ldr	r3, .L14
+ 118 0024 0622     		movs	r2, #6
+ 119              	.LVL5:
+ 120              		.loc 1 130 22 view .LVU30
+ 121 0026 1A70     		strb	r2, [r3]
+ 122 0028 7047     		bx	lr
+ 123              	.LVL6:
+ 124              	.L11:
+ 131:Src/Zeugma_c/first_step.c ****   else if (!_a && _b && !_c)
+ 125              		.loc 1 131 8 is_stmt 1 view .LVU31
+ 126              		.loc 1 131 16 is_stmt 0 discriminator 1 view .LVU32
+ 127 002a 21B1     		cbz	r1, .L12
+ 128              		.loc 1 131 22 discriminator 2 view .LVU33
+ 129 002c 1AB9     		cbnz	r2, .L12
+ 132:Src/Zeugma_c/first_step.c ****     commutation_step = 1; // 1
+ 130              		.loc 1 132 5 is_stmt 1 view .LVU34
+ 131              		.loc 1 132 22 is_stmt 0 view .LVU35
+ 132 002e 084B     		ldr	r3, .L14
+ 133 0030 0122     		movs	r2, #1
+ 134              	.LVL7:
+ 135              		.loc 1 132 22 view .LVU36
+ 136 0032 1A70     		strb	r2, [r3]
+ 137 0034 7047     		bx	lr
+ 138              	.LVL8:
+ 139              	.L12:
+ 133:Src/Zeugma_c/first_step.c ****   else if (!_a && _b && _c)
+ 140              		.loc 1 133 8 is_stmt 1 view .LVU37
+ 141              		.loc 1 133 11 is_stmt 0 view .LVU38
+ 142 0036 53B9     		cbnz	r3, .L7
+ 143              		.loc 1 133 16 discriminator 1 view .LVU39
+ 144 0038 21B1     		cbz	r1, .L13
+ 145              		.loc 1 133 22 discriminator 2 view .LVU40
+ 146 003a 1AB1     		cbz	r2, .L13
+ 134:Src/Zeugma_c/first_step.c ****     commutation_step = 2; // 2
+ 147              		.loc 1 134 5 is_stmt 1 view .LVU41
+ 148              		.loc 1 134 22 is_stmt 0 view .LVU42
+ 149 003c 044B     		ldr	r3, .L14
+ 150 003e 0222     		movs	r2, #2
+ARM GAS  /tmp/cc5ZgeDz.s 			page 6
+
+
+ 151              	.LVL9:
+ 152              		.loc 1 134 22 view .LVU43
+ 153 0040 1A70     		strb	r2, [r3]
+ 154 0042 7047     		bx	lr
+ 155              	.LVL10:
+ 156              	.L13:
+ 135:Src/Zeugma_c/first_step.c ****   else if (!_a && !_b && _c)
+ 157              		.loc 1 135 8 is_stmt 1 view .LVU44
+ 158              		.loc 1 135 16 is_stmt 0 discriminator 1 view .LVU45
+ 159 0044 19B9     		cbnz	r1, .L7
+ 160              		.loc 1 135 23 discriminator 2 view .LVU46
+ 161 0046 12B1     		cbz	r2, .L7
+ 136:Src/Zeugma_c/first_step.c ****     commutation_step = 3; // 3
+ 162              		.loc 1 136 5 is_stmt 1 view .LVU47
+ 163              		.loc 1 136 22 is_stmt 0 view .LVU48
+ 164 0048 014B     		ldr	r3, .L14
+ 165 004a 0322     		movs	r2, #3
+ 166              	.LVL11:
+ 167              		.loc 1 136 22 view .LVU49
+ 168 004c 1A70     		strb	r2, [r3]
+ 169              	.L7:
+ 137:Src/Zeugma_c/first_step.c **** }...
+ 170              		.loc 1 137 1 view .LVU50
+ 171 004e 7047     		bx	lr
+ 172              	.L15:
+ 173              		.align	2
+ 174              	.L14:
+ 175 0050 00000000 		.word	commutation_step
+ 176              		.cfi_endproc
+ 177              	.LFE67:
+ 179              		.section	.text.first_step,"ax",%progbits
+ 180              		.align	1
+ 181              		.global	first_step
+ 182              		.syntax unified
+ 183              		.thumb
+ 184              		.thumb_func
+ 186              	first_step:
+ 187              	.LVL12:
+ 188              	.LFB65:
+  12:Src/Zeugma_c/first_step.c **** { // KALKIS
+ 189              		.loc 1 12 1 is_stmt 1 view -0
+ 190              		.cfi_startproc
+ 191              		@ args = 0, pretend = 0, frame = 0
+ 192              		@ frame_needed = 0, uses_anonymous_args = 0
+  12:Src/Zeugma_c/first_step.c **** { // KALKIS
+ 193              		.loc 1 12 1 is_stmt 0 view .LVU52
+ 194 0000 70B5     		push	{r4, r5, r6, lr}
+ 195              		.cfi_def_cfa_offset 16
+ 196              		.cfi_offset 4, -16
+ 197              		.cfi_offset 5, -12
+ 198              		.cfi_offset 6, -8
+ 199              		.cfi_offset 14, -4
+ 200 0002 0446     		mov	r4, r0
+ 201 0004 0D46     		mov	r5, r1
+ 202 0006 1646     		mov	r6, r2
+  14:Src/Zeugma_c/first_step.c ****   previousTime2 = HAL_GetTick();
+ 203              		.loc 1 14 3 is_stmt 1 view .LVU53
+ARM GAS  /tmp/cc5ZgeDz.s 			page 7
+
+
+  14:Src/Zeugma_c/first_step.c ****   previousTime2 = HAL_GetTick();
+ 204              		.loc 1 14 19 is_stmt 0 view .LVU54
+ 205 0008 FFF7FEFF 		bl	HAL_GetTick
+ 206              	.LVL13:
+  14:Src/Zeugma_c/first_step.c ****   previousTime2 = HAL_GetTick();
+ 207              		.loc 1 14 17 discriminator 1 view .LVU55
+ 208 000c 784B     		ldr	r3, .L30
+ 209 000e 1860     		str	r0, [r3]
+  16:Src/Zeugma_c/first_step.c ****   find_commutation_step(_a, _b, _c);
+ 210              		.loc 1 16 3 is_stmt 1 view .LVU56
+ 211 0010 3246     		mov	r2, r6
+ 212 0012 2946     		mov	r1, r5
+ 213 0014 2046     		mov	r0, r4
+ 214 0016 FFF7FEFF 		bl	find_commutation_step
+ 215              	.LVL14:
+  18:Src/Zeugma_c/first_step.c ****   pwm_value = min_pwm_limit;
+ 216              		.loc 1 18 3 view .LVU57
+  18:Src/Zeugma_c/first_step.c ****   pwm_value = min_pwm_limit;
+ 217              		.loc 1 18 13 is_stmt 0 view .LVU58
+ 218 001a 764B     		ldr	r3, .L30+4
+ 219 001c 1A88     		ldrh	r2, [r3]
+ 220 001e 764B     		ldr	r3, .L30+8
+ 221 0020 1A60     		str	r2, [r3]
+ 222 0022 A2E0     		b	.L23
+ 223              	.L26:
+  23:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+ 224              		.loc 1 23 7 is_stmt 1 view .LVU59
+ 225 0024 754B     		ldr	r3, .L30+12
+ 226 0026 1B68     		ldr	r3, [r3]
+ 227 0028 0022     		movs	r2, #0
+ 228 002a DA63     		str	r2, [r3, #60]
+  24:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+ 229              		.loc 1 24 7 view .LVU60
+ 230 002c 9A63     		str	r2, [r3, #56]
+  25:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x00C5;
+ 231              		.loc 1 25 7 view .LVU61
+  25:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x00C5;
+ 232              		.loc 1 25 18 is_stmt 0 view .LVU62
+ 233 002e 744A     		ldr	r2, .L30+16
+ 234 0030 C521     		movs	r1, #197
+ 235 0032 1162     		str	r1, [r2, #32]
+  26:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, min_pwm_limit);
+ 236              		.loc 1 26 7 is_stmt 1 view .LVU63
+ 237 0034 6F4A     		ldr	r2, .L30+4
+ 238 0036 1288     		ldrh	r2, [r2]
+ 239 0038 5A63     		str	r2, [r3, #52]
+  27:Src/Zeugma_c/first_step.c ****       commutation_step = 2;
+ 240              		.loc 1 27 7 view .LVU64
+  27:Src/Zeugma_c/first_step.c ****       commutation_step = 2;
+ 241              		.loc 1 27 24 is_stmt 0 view .LVU65
+ 242 003a 724B     		ldr	r3, .L30+20
+ 243 003c 0222     		movs	r2, #2
+ 244 003e 1A70     		strb	r2, [r3]
+  28:Src/Zeugma_c/first_step.c ****       step_counter++;
+ 245              		.loc 1 28 7 is_stmt 1 view .LVU66
+  28:Src/Zeugma_c/first_step.c ****       step_counter++;
+ 246              		.loc 1 28 19 is_stmt 0 view .LVU67
+ARM GAS  /tmp/cc5ZgeDz.s 			page 8
+
+
+ 247 0040 714A     		ldr	r2, .L30+24
+ 248 0042 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 249 0044 0133     		adds	r3, r3, #1
+ 250 0046 1370     		strb	r3, [r2]
+  29:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 251              		.loc 1 29 7 is_stmt 1 view .LVU68
+  29:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 252              		.loc 1 29 11 is_stmt 0 view .LVU69
+ 253 0048 FFF7FEFF 		bl	step_counter_control
+ 254              	.LVL15:
+  29:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 255              		.loc 1 29 10 discriminator 1 view .LVU70
+ 256 004c 0028     		cmp	r0, #0
+ 257 004e 00F09480 		beq	.L17
+ 258              	.L18:
+ 102:Src/Zeugma_c/first_step.c ****   HAL_Delay(firstStepDelay);
+ 259              		.loc 1 102 3 is_stmt 1 view .LVU71
+ 260 0052 6E4B     		ldr	r3, .L30+28
+ 261 0054 1888     		ldrh	r0, [r3]
+ 262 0056 80B2     		uxth	r0, r0
+ 263 0058 FFF7FEFF 		bl	HAL_Delay
+ 264              	.LVL16:
+ 103:Src/Zeugma_c/first_step.c ****   if (first_step_flag)
+ 265              		.loc 1 103 3 view .LVU72
+ 103:Src/Zeugma_c/first_step.c ****   if (first_step_flag)
+ 266              		.loc 1 103 7 is_stmt 0 view .LVU73
+ 267 005c 6C4B     		ldr	r3, .L30+32
+ 268 005e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 103:Src/Zeugma_c/first_step.c ****   if (first_step_flag)
+ 269              		.loc 1 103 6 view .LVU74
+ 270 0060 3BB1     		cbz	r3, .L16
+ 105:Src/Zeugma_c/first_step.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+ 271              		.loc 1 105 5 is_stmt 1 view .LVU75
+ 272 0062 664B     		ldr	r3, .L30+12
+ 273 0064 1A68     		ldr	r2, [r3]
+ 274 0066 0023     		movs	r3, #0
+ 275 0068 5363     		str	r3, [r2, #52]
+ 106:Src/Zeugma_c/first_step.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+ 276              		.loc 1 106 5 view .LVU76
+ 277 006a 9363     		str	r3, [r2, #56]
+ 107:Src/Zeugma_c/first_step.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+ 278              		.loc 1 107 5 view .LVU77
+ 279 006c D363     		str	r3, [r2, #60]
+ 108:Src/Zeugma_c/first_step.c ****     TIM1->CCER = 0x0000;
+ 280              		.loc 1 108 5 view .LVU78
+ 108:Src/Zeugma_c/first_step.c ****     TIM1->CCER = 0x0000;
+ 281              		.loc 1 108 16 is_stmt 0 view .LVU79
+ 282 006e 644A     		ldr	r2, .L30+16
+ 283 0070 1362     		str	r3, [r2, #32]
+ 284              	.L16:
+ 110:Src/Zeugma_c/first_step.c **** }
+ 285              		.loc 1 110 1 view .LVU80
+ 286 0072 70BD     		pop	{r4, r5, r6, pc}
+ 287              	.LVL17:
+ 288              	.L27:
+  35:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+ 289              		.loc 1 35 7 is_stmt 1 view .LVU81
+ARM GAS  /tmp/cc5ZgeDz.s 			page 9
+
+
+ 290 0074 614B     		ldr	r3, .L30+12
+ 291 0076 1B68     		ldr	r3, [r3]
+ 292 0078 0022     		movs	r2, #0
+ 293 007a DA63     		str	r2, [r3, #60]
+  36:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+ 294              		.loc 1 36 7 view .LVU82
+ 295 007c 9A63     		str	r2, [r3, #56]
+  37:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x0C05;
+ 296              		.loc 1 37 7 view .LVU83
+  37:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x0C05;
+ 297              		.loc 1 37 18 is_stmt 0 view .LVU84
+ 298 007e 604A     		ldr	r2, .L30+16
+ 299 0080 40F60541 		movw	r1, #3077
+ 300 0084 1162     		str	r1, [r2, #32]
+  38:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, min_pwm_limit);
+ 301              		.loc 1 38 7 is_stmt 1 view .LVU85
+ 302 0086 5B4A     		ldr	r2, .L30+4
+ 303 0088 1288     		ldrh	r2, [r2]
+ 304 008a 5A63     		str	r2, [r3, #52]
+  39:Src/Zeugma_c/first_step.c ****       commutation_step = 3;
+ 305              		.loc 1 39 7 view .LVU86
+  39:Src/Zeugma_c/first_step.c ****       commutation_step = 3;
+ 306              		.loc 1 39 24 is_stmt 0 view .LVU87
+ 307 008c 5D4B     		ldr	r3, .L30+20
+ 308 008e 0322     		movs	r2, #3
+ 309 0090 1A70     		strb	r2, [r3]
+  40:Src/Zeugma_c/first_step.c ****       step_counter++;
+ 310              		.loc 1 40 7 is_stmt 1 view .LVU88
+  40:Src/Zeugma_c/first_step.c ****       step_counter++;
+ 311              		.loc 1 40 19 is_stmt 0 view .LVU89
+ 312 0092 5D4A     		ldr	r2, .L30+24
+ 313 0094 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 314 0096 0133     		adds	r3, r3, #1
+ 315 0098 1370     		strb	r3, [r2]
+  41:Src/Zeugma_c/first_step.c ****       HAL_Delay(firstStepDelay);
+ 316              		.loc 1 41 7 is_stmt 1 view .LVU90
+ 317 009a 5C4B     		ldr	r3, .L30+28
+ 318 009c 1888     		ldrh	r0, [r3]
+ 319 009e 80B2     		uxth	r0, r0
+ 320 00a0 FFF7FEFF 		bl	HAL_Delay
+ 321              	.LVL18:
+  42:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 322              		.loc 1 42 7 view .LVU91
+  42:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 323              		.loc 1 42 11 is_stmt 0 view .LVU92
+ 324 00a4 FFF7FEFF 		bl	step_counter_control
+ 325              	.LVL19:
+  42:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 326              		.loc 1 42 10 discriminator 1 view .LVU93
+ 327 00a8 0028     		cmp	r0, #0
+ 328 00aa 6ED0     		beq	.L19
+ 329 00ac D1E7     		b	.L18
+ 330              	.L28:
+  48:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+ 331              		.loc 1 48 7 is_stmt 1 view .LVU94
+ 332 00ae 534B     		ldr	r3, .L30+12
+ 333 00b0 1B68     		ldr	r3, [r3]
+ARM GAS  /tmp/cc5ZgeDz.s 			page 10
+
+
+ 334 00b2 0022     		movs	r2, #0
+ 335 00b4 5A63     		str	r2, [r3, #52]
+  49:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+ 336              		.loc 1 49 7 view .LVU95
+ 337 00b6 DA63     		str	r2, [r3, #60]
+  50:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x0C50;
+ 338              		.loc 1 50 7 view .LVU96
+  50:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x0C50;
+ 339              		.loc 1 50 18 is_stmt 0 view .LVU97
+ 340 00b8 514A     		ldr	r2, .L30+16
+ 341 00ba 4FF44561 		mov	r1, #3152
+ 342 00be 1162     		str	r1, [r2, #32]
+  51:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, min_pwm_limit);
+ 343              		.loc 1 51 7 is_stmt 1 view .LVU98
+ 344 00c0 4C4A     		ldr	r2, .L30+4
+ 345 00c2 1288     		ldrh	r2, [r2]
+ 346 00c4 9A63     		str	r2, [r3, #56]
+  52:Src/Zeugma_c/first_step.c ****       commutation_step = 4;
+ 347              		.loc 1 52 7 view .LVU99
+  52:Src/Zeugma_c/first_step.c ****       commutation_step = 4;
+ 348              		.loc 1 52 24 is_stmt 0 view .LVU100
+ 349 00c6 4F4B     		ldr	r3, .L30+20
+ 350 00c8 0422     		movs	r2, #4
+ 351 00ca 1A70     		strb	r2, [r3]
+  53:Src/Zeugma_c/first_step.c ****       step_counter++;
+ 352              		.loc 1 53 7 is_stmt 1 view .LVU101
+  53:Src/Zeugma_c/first_step.c ****       step_counter++;
+ 353              		.loc 1 53 19 is_stmt 0 view .LVU102
+ 354 00cc 4E4A     		ldr	r2, .L30+24
+ 355 00ce 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 356 00d0 0133     		adds	r3, r3, #1
+ 357 00d2 1370     		strb	r3, [r2]
+  54:Src/Zeugma_c/first_step.c ****       HAL_Delay(firstStepDelay);
+ 358              		.loc 1 54 7 is_stmt 1 view .LVU103
+ 359 00d4 4D4B     		ldr	r3, .L30+28
+ 360 00d6 1888     		ldrh	r0, [r3]
+ 361 00d8 80B2     		uxth	r0, r0
+ 362 00da FFF7FEFF 		bl	HAL_Delay
+ 363              	.LVL20:
+  55:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 364              		.loc 1 55 7 view .LVU104
+  55:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 365              		.loc 1 55 11 is_stmt 0 view .LVU105
+ 366 00de FFF7FEFF 		bl	step_counter_control
+ 367              	.LVL21:
+  55:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 368              		.loc 1 55 10 discriminator 1 view .LVU106
+ 369 00e2 0028     		cmp	r0, #0
+ 370 00e4 58D0     		beq	.L20
+ 371 00e6 B4E7     		b	.L18
+ 372              	.L29:
+  61:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+ 373              		.loc 1 61 7 is_stmt 1 view .LVU107
+ 374 00e8 444B     		ldr	r3, .L30+12
+ 375 00ea 1B68     		ldr	r3, [r3]
+ 376 00ec 0022     		movs	r2, #0
+ 377 00ee 5A63     		str	r2, [r3, #52]
+ARM GAS  /tmp/cc5ZgeDz.s 			page 11
+
+
+  62:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+ 378              		.loc 1 62 7 view .LVU108
+ 379 00f0 DA63     		str	r2, [r3, #60]
+  63:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x005C;
+ 380              		.loc 1 63 7 view .LVU109
+  63:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x005C;
+ 381              		.loc 1 63 18 is_stmt 0 view .LVU110
+ 382 00f2 434A     		ldr	r2, .L30+16
+ 383 00f4 5C21     		movs	r1, #92
+ 384 00f6 1162     		str	r1, [r2, #32]
+  64:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, min_pwm_limit);
+ 385              		.loc 1 64 7 is_stmt 1 view .LVU111
+ 386 00f8 3E4A     		ldr	r2, .L30+4
+ 387 00fa 1288     		ldrh	r2, [r2]
+ 388 00fc 9A63     		str	r2, [r3, #56]
+  65:Src/Zeugma_c/first_step.c ****       commutation_step = 5;
+ 389              		.loc 1 65 7 view .LVU112
+  65:Src/Zeugma_c/first_step.c ****       commutation_step = 5;
+ 390              		.loc 1 65 24 is_stmt 0 view .LVU113
+ 391 00fe 414B     		ldr	r3, .L30+20
+ 392 0100 0522     		movs	r2, #5
+ 393 0102 1A70     		strb	r2, [r3]
+  66:Src/Zeugma_c/first_step.c ****       step_counter++;
+ 394              		.loc 1 66 7 is_stmt 1 view .LVU114
+  66:Src/Zeugma_c/first_step.c ****       step_counter++;
+ 395              		.loc 1 66 19 is_stmt 0 view .LVU115
+ 396 0104 404A     		ldr	r2, .L30+24
+ 397 0106 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 398 0108 0133     		adds	r3, r3, #1
+ 399 010a 1370     		strb	r3, [r2]
+  67:Src/Zeugma_c/first_step.c ****       HAL_Delay(firstStepDelay);
+ 400              		.loc 1 67 7 is_stmt 1 view .LVU116
+ 401 010c 3F4B     		ldr	r3, .L30+28
+ 402 010e 1888     		ldrh	r0, [r3]
+ 403 0110 80B2     		uxth	r0, r0
+ 404 0112 FFF7FEFF 		bl	HAL_Delay
+ 405              	.LVL22:
+  68:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 406              		.loc 1 68 7 view .LVU117
+  68:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 407              		.loc 1 68 11 is_stmt 0 view .LVU118
+ 408 0116 FFF7FEFF 		bl	step_counter_control
+ 409              	.LVL23:
+  68:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 410              		.loc 1 68 10 discriminator 1 view .LVU119
+ 411 011a 0028     		cmp	r0, #0
+ 412 011c 43D0     		beq	.L21
+ 413 011e 98E7     		b	.L18
+ 414              	.L22:
+  85:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 6)
+ 415              		.loc 1 85 5 is_stmt 1 view .LVU120
+  85:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 6)
+ 416              		.loc 1 85 9 is_stmt 0 view .LVU121
+ 417 0120 3B4B     		ldr	r3, .L30+32
+ 418 0122 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  85:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 6)
+ 419              		.loc 1 85 8 view .LVU122
+ARM GAS  /tmp/cc5ZgeDz.s 			page 12
+
+
+ 420 0124 002B     		cmp	r3, #0
+ 421 0126 94D0     		beq	.L18
+  85:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 6)
+ 422              		.loc 1 85 45 discriminator 1 view .LVU123
+ 423 0128 364B     		ldr	r3, .L30+20
+ 424 012a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  85:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 6)
+ 425              		.loc 1 85 25 discriminator 1 view .LVU124
+ 426 012c 062B     		cmp	r3, #6
+ 427 012e 90D1     		bne	.L18
+  87:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+ 428              		.loc 1 87 7 is_stmt 1 view .LVU125
+ 429 0130 324B     		ldr	r3, .L30+12
+ 430 0132 1B68     		ldr	r3, [r3]
+ 431 0134 0022     		movs	r2, #0
+ 432 0136 5A63     		str	r2, [r3, #52]
+  88:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+ 433              		.loc 1 88 7 view .LVU126
+ 434 0138 9A63     		str	r2, [r3, #56]
+  89:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x05C0;
+ 435              		.loc 1 89 7 view .LVU127
+  89:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x05C0;
+ 436              		.loc 1 89 18 is_stmt 0 view .LVU128
+ 437 013a 314A     		ldr	r2, .L30+16
+ 438 013c 4FF4B861 		mov	r1, #1472
+ 439 0140 1162     		str	r1, [r2, #32]
+  90:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, min_pwm_limit);
+ 440              		.loc 1 90 7 is_stmt 1 view .LVU129
+ 441 0142 2C4A     		ldr	r2, .L30+4
+ 442 0144 1288     		ldrh	r2, [r2]
+ 443 0146 DA63     		str	r2, [r3, #60]
+  91:Src/Zeugma_c/first_step.c ****       commutation_step = 1;
+ 444              		.loc 1 91 7 view .LVU130
+  91:Src/Zeugma_c/first_step.c ****       commutation_step = 1;
+ 445              		.loc 1 91 24 is_stmt 0 view .LVU131
+ 446 0148 2E4B     		ldr	r3, .L30+20
+ 447 014a 0122     		movs	r2, #1
+ 448 014c 1A70     		strb	r2, [r3]
+  92:Src/Zeugma_c/first_step.c ****       step_counter++;
+ 449              		.loc 1 92 7 is_stmt 1 view .LVU132
+  92:Src/Zeugma_c/first_step.c ****       step_counter++;
+ 450              		.loc 1 92 19 is_stmt 0 view .LVU133
+ 451 014e 2E4A     		ldr	r2, .L30+24
+ 452 0150 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 453 0152 0133     		adds	r3, r3, #1
+ 454 0154 1370     		strb	r3, [r2]
+  93:Src/Zeugma_c/first_step.c ****       HAL_Delay(firstStepDelay);
+ 455              		.loc 1 93 7 is_stmt 1 view .LVU134
+ 456 0156 2D4B     		ldr	r3, .L30+28
+ 457 0158 1888     		ldrh	r0, [r3]
+ 458 015a 80B2     		uxth	r0, r0
+ 459 015c FFF7FEFF 		bl	HAL_Delay
+ 460              	.LVL24:
+  94:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 461              		.loc 1 94 7 view .LVU135
+  94:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 462              		.loc 1 94 11 is_stmt 0 view .LVU136
+ARM GAS  /tmp/cc5ZgeDz.s 			page 13
+
+
+ 463 0160 FFF7FEFF 		bl	step_counter_control
+ 464              	.LVL25:
+  94:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 465              		.loc 1 94 10 discriminator 1 view .LVU137
+ 466 0164 0028     		cmp	r0, #0
+ 467 0166 7FF474AF 		bne	.L18
+ 468              	.L23:
+  19:Src/Zeugma_c/first_step.c ****   while (1)
+ 469              		.loc 1 19 3 is_stmt 1 view .LVU138
+  21:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 1)
+ 470              		.loc 1 21 5 view .LVU139
+  21:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 1)
+ 471              		.loc 1 21 9 is_stmt 0 view .LVU140
+ 472 016a 294B     		ldr	r3, .L30+32
+ 473 016c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  21:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 1)
+ 474              		.loc 1 21 8 view .LVU141
+ 475 016e 23B1     		cbz	r3, .L17
+  21:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 1)
+ 476              		.loc 1 21 45 discriminator 1 view .LVU142
+ 477 0170 244B     		ldr	r3, .L30+20
+ 478 0172 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  21:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 1)
+ 479              		.loc 1 21 25 discriminator 1 view .LVU143
+ 480 0174 012B     		cmp	r3, #1
+ 481 0176 3FF455AF 		beq	.L26
+ 482              	.L17:
+  33:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 2)
+ 483              		.loc 1 33 5 is_stmt 1 view .LVU144
+  33:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 2)
+ 484              		.loc 1 33 9 is_stmt 0 view .LVU145
+ 485 017a 254B     		ldr	r3, .L30+32
+ 486 017c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  33:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 2)
+ 487              		.loc 1 33 8 view .LVU146
+ 488 017e 23B1     		cbz	r3, .L19
+  33:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 2)
+ 489              		.loc 1 33 45 discriminator 1 view .LVU147
+ 490 0180 204B     		ldr	r3, .L30+20
+ 491 0182 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  33:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 2)
+ 492              		.loc 1 33 25 discriminator 1 view .LVU148
+ 493 0184 022B     		cmp	r3, #2
+ 494 0186 3FF475AF 		beq	.L27
+ 495              	.L19:
+  46:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 3)
+ 496              		.loc 1 46 5 is_stmt 1 view .LVU149
+  46:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 3)
+ 497              		.loc 1 46 9 is_stmt 0 view .LVU150
+ 498 018a 214B     		ldr	r3, .L30+32
+ 499 018c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  46:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 3)
+ 500              		.loc 1 46 8 view .LVU151
+ 501 018e 1BB1     		cbz	r3, .L20
+  46:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 3)
+ 502              		.loc 1 46 45 discriminator 1 view .LVU152
+ 503 0190 1C4B     		ldr	r3, .L30+20
+ARM GAS  /tmp/cc5ZgeDz.s 			page 14
+
+
+ 504 0192 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  46:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 3)
+ 505              		.loc 1 46 25 discriminator 1 view .LVU153
+ 506 0194 032B     		cmp	r3, #3
+ 507 0196 8AD0     		beq	.L28
+ 508              	.L20:
+  59:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 4)
+ 509              		.loc 1 59 5 is_stmt 1 view .LVU154
+  59:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 4)
+ 510              		.loc 1 59 9 is_stmt 0 view .LVU155
+ 511 0198 1D4B     		ldr	r3, .L30+32
+ 512 019a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  59:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 4)
+ 513              		.loc 1 59 8 view .LVU156
+ 514 019c 1BB1     		cbz	r3, .L21
+  59:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 4)
+ 515              		.loc 1 59 45 discriminator 1 view .LVU157
+ 516 019e 194B     		ldr	r3, .L30+20
+ 517 01a0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  59:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 4)
+ 518              		.loc 1 59 25 discriminator 1 view .LVU158
+ 519 01a2 042B     		cmp	r3, #4
+ 520 01a4 A0D0     		beq	.L29
+ 521              	.L21:
+  72:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 5)
+ 522              		.loc 1 72 5 is_stmt 1 view .LVU159
+  72:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 5)
+ 523              		.loc 1 72 9 is_stmt 0 view .LVU160
+ 524 01a6 1A4B     		ldr	r3, .L30+32
+ 525 01a8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  72:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 5)
+ 526              		.loc 1 72 8 view .LVU161
+ 527 01aa 002B     		cmp	r3, #0
+ 528 01ac B8D0     		beq	.L22
+  72:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 5)
+ 529              		.loc 1 72 45 discriminator 1 view .LVU162
+ 530 01ae 154B     		ldr	r3, .L30+20
+ 531 01b0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  72:Src/Zeugma_c/first_step.c ****     if (first_step_flag && commutation_step == 5)
+ 532              		.loc 1 72 25 discriminator 1 view .LVU163
+ 533 01b2 052B     		cmp	r3, #5
+ 534 01b4 B4D1     		bne	.L22
+  74:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+ 535              		.loc 1 74 7 is_stmt 1 view .LVU164
+ 536 01b6 114B     		ldr	r3, .L30+12
+ 537 01b8 1B68     		ldr	r3, [r3]
+ 538 01ba 0022     		movs	r2, #0
+ 539 01bc 5A63     		str	r2, [r3, #52]
+  75:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+ 540              		.loc 1 75 7 view .LVU165
+ 541 01be 9A63     		str	r2, [r3, #56]
+  76:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x050C;
+ 542              		.loc 1 76 7 view .LVU166
+  76:Src/Zeugma_c/first_step.c ****       TIM1->CCER = 0x050C;
+ 543              		.loc 1 76 18 is_stmt 0 view .LVU167
+ 544 01c0 0F4A     		ldr	r2, .L30+16
+ 545 01c2 40F20C51 		movw	r1, #1292
+ARM GAS  /tmp/cc5ZgeDz.s 			page 15
+
+
+ 546 01c6 1162     		str	r1, [r2, #32]
+  77:Src/Zeugma_c/first_step.c ****       __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, min_pwm_limit);
+ 547              		.loc 1 77 7 is_stmt 1 view .LVU168
+ 548 01c8 0A4A     		ldr	r2, .L30+4
+ 549 01ca 1288     		ldrh	r2, [r2]
+ 550 01cc DA63     		str	r2, [r3, #60]
+  78:Src/Zeugma_c/first_step.c ****       commutation_step = 6;
+ 551              		.loc 1 78 7 view .LVU169
+  78:Src/Zeugma_c/first_step.c ****       commutation_step = 6;
+ 552              		.loc 1 78 24 is_stmt 0 view .LVU170
+ 553 01ce 0D4B     		ldr	r3, .L30+20
+ 554 01d0 0622     		movs	r2, #6
+ 555 01d2 1A70     		strb	r2, [r3]
+  79:Src/Zeugma_c/first_step.c ****       step_counter++;
+ 556              		.loc 1 79 7 is_stmt 1 view .LVU171
+  79:Src/Zeugma_c/first_step.c ****       step_counter++;
+ 557              		.loc 1 79 19 is_stmt 0 view .LVU172
+ 558 01d4 0C4A     		ldr	r2, .L30+24
+ 559 01d6 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 560 01d8 0133     		adds	r3, r3, #1
+ 561 01da 1370     		strb	r3, [r2]
+  80:Src/Zeugma_c/first_step.c ****       HAL_Delay(firstStepDelay);
+ 562              		.loc 1 80 7 is_stmt 1 view .LVU173
+ 563 01dc 0B4B     		ldr	r3, .L30+28
+ 564 01de 1888     		ldrh	r0, [r3]
+ 565 01e0 80B2     		uxth	r0, r0
+ 566 01e2 FFF7FEFF 		bl	HAL_Delay
+ 567              	.LVL26:
+  81:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 568              		.loc 1 81 7 view .LVU174
+  81:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 569              		.loc 1 81 11 is_stmt 0 view .LVU175
+ 570 01e6 FFF7FEFF 		bl	step_counter_control
+ 571              	.LVL27:
+  81:Src/Zeugma_c/first_step.c ****       if (step_counter_control())
+ 572              		.loc 1 81 10 discriminator 1 view .LVU176
+ 573 01ea 0028     		cmp	r0, #0
+ 574 01ec 98D0     		beq	.L22
+ 575 01ee 30E7     		b	.L18
+ 576              	.L31:
+ 577              		.align	2
+ 578              	.L30:
+ 579 01f0 00000000 		.word	previousTime2
+ 580 01f4 00000000 		.word	min_pwm_limit
+ 581 01f8 00000000 		.word	pwm_value
+ 582 01fc 00000000 		.word	htim1
+ 583 0200 002C0140 		.word	1073818624
+ 584 0204 00000000 		.word	commutation_step
+ 585 0208 00000000 		.word	step_counter
+ 586 020c 00000000 		.word	firstStepDelay
+ 587 0210 00000000 		.word	first_step_flag
+ 588              		.cfi_endproc
+ 589              	.LFE65:
+ 591              		.global	newflag
+ 592              		.section	.bss.newflag,"aw",%nobits
+ 595              	newflag:
+ 596 0000 00       		.space	1
+ARM GAS  /tmp/cc5ZgeDz.s 			page 16
+
+
+ 597              		.global	step_counter
+ 598              		.section	.bss.step_counter,"aw",%nobits
+ 601              	step_counter:
+ 602 0000 00       		.space	1
+ 603              		.global	commutation_step
+ 604              		.section	.bss.commutation_step,"aw",%nobits
+ 607              	commutation_step:
+ 608 0000 00       		.space	1
+ 609              		.text
+ 610              	.Letext0:
+ 611              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h"
+ 612              		.file 3 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 613              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 614              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 615              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 616              		.file 7 "Inc/main.h"
+ 617              		.file 8 "Inc/tim.h"
+ 618              		.file 9 "Inc/Zeugma_h/first_step.h"
+ 619              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ARM GAS  /tmp/cc5ZgeDz.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 first_step.c
+     /tmp/cc5ZgeDz.s:19     .text.step_counter_control:00000000 $t
+     /tmp/cc5ZgeDz.s:25     .text.step_counter_control:00000000 step_counter_control
+     /tmp/cc5ZgeDz.s:56     .text.step_counter_control:00000018 $d
+     /tmp/cc5ZgeDz.s:601    .bss.step_counter:00000000 step_counter
+     /tmp/cc5ZgeDz.s:61     .text.find_commutation_step:00000000 $t
+     /tmp/cc5ZgeDz.s:67     .text.find_commutation_step:00000000 find_commutation_step
+     /tmp/cc5ZgeDz.s:175    .text.find_commutation_step:00000050 $d
+     /tmp/cc5ZgeDz.s:607    .bss.commutation_step:00000000 commutation_step
+     /tmp/cc5ZgeDz.s:180    .text.first_step:00000000 $t
+     /tmp/cc5ZgeDz.s:186    .text.first_step:00000000 first_step
+     /tmp/cc5ZgeDz.s:579    .text.first_step:000001f0 $d
+     /tmp/cc5ZgeDz.s:595    .bss.newflag:00000000 newflag
+     /tmp/cc5ZgeDz.s:596    .bss.newflag:00000000 $d
+     /tmp/cc5ZgeDz.s:602    .bss.step_counter:00000000 $d
+     /tmp/cc5ZgeDz.s:608    .bss.commutation_step:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GetTick
+HAL_Delay
+previousTime2
+min_pwm_limit
+pwm_value
+htim1
+firstStepDelay
+first_step_flag

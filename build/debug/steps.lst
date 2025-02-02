@@ -1,0 +1,369 @@
+ARM GAS  /tmp/ccJgcVGo.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"steps.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Src/Zeugma_c/steps.c"
+  18              		.section	.text.execute_step,"ax",%progbits
+  19              		.align	1
+  20              		.global	execute_step
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	execute_step:
+  26              	.LVL0:
+  27              	.LFB65:
+   1:Src/Zeugma_c/steps.c **** 
+   2:Src/Zeugma_c/steps.c **** #include "steps.h"
+   3:Src/Zeugma_c/steps.c **** 
+   4:Src/Zeugma_c/steps.c **** void execute_step(uint8_t _step)
+   5:Src/Zeugma_c/steps.c **** {
+  28              		.loc 1 5 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 5 1 is_stmt 0 view .LVU1
+  33 0000 08B5     		push	{r3, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+   6:Src/Zeugma_c/steps.c ****     if (run_status)
+  37              		.loc 1 6 5 is_stmt 1 view .LVU2
+  38              		.loc 1 6 9 is_stmt 0 view .LVU3
+  39 0002 374B     		ldr	r3, .L12
+  40 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  41              		.loc 1 6 8 view .LVU4
+  42 0006 B3B1     		cbz	r3, .L1
+   7:Src/Zeugma_c/steps.c ****     {
+   8:Src/Zeugma_c/steps.c ****         switch (_step)
+  43              		.loc 1 8 9 is_stmt 1 view .LVU5
+  44 0008 0138     		subs	r0, r0, #1
+  45              	.LVL1:
+  46              		.loc 1 8 9 is_stmt 0 view .LVU6
+  47 000a 0528     		cmp	r0, #5
+  48 000c 13D8     		bhi	.L1
+  49 000e DFE800F0 		tbb	[pc, r0]
+  50              	.L4:
+ARM GAS  /tmp/ccJgcVGo.s 			page 2
+
+
+  51 0012 03       		.byte	(.L9-.L4)/2
+  52 0013 13       		.byte	(.L8-.L4)/2
+  53 0014 24       		.byte	(.L7-.L4)/2
+  54 0015 35       		.byte	(.L6-.L4)/2
+  55 0016 45       		.byte	(.L5-.L4)/2
+  56 0017 56       		.byte	(.L3-.L4)/2
+  57              		.p2align 1
+  58              	.L9:
+   9:Src/Zeugma_c/steps.c ****         {
+  10:Src/Zeugma_c/steps.c ****         case 1:
+  11:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+  59              		.loc 1 11 13 is_stmt 1 view .LVU7
+  60 0018 324B     		ldr	r3, .L12+4
+  61 001a 1B68     		ldr	r3, [r3]
+  62 001c 0022     		movs	r2, #0
+  63 001e DA63     		str	r2, [r3, #60]
+  12:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+  64              		.loc 1 12 13 view .LVU8
+  65 0020 9A63     		str	r2, [r3, #56]
+  13:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x00C5;
+  66              		.loc 1 13 13 view .LVU9
+  67              		.loc 1 13 24 is_stmt 0 view .LVU10
+  68 0022 314A     		ldr	r2, .L12+8
+  69 0024 C521     		movs	r1, #197
+  70 0026 1162     		str	r1, [r2, #32]
+  14:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, pwm_value);
+  71              		.loc 1 14 13 is_stmt 1 view .LVU11
+  72 0028 304A     		ldr	r2, .L12+12
+  73 002a 1268     		ldr	r2, [r2]
+  74 002c 5A63     		str	r2, [r3, #52]
+  15:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+  75              		.loc 1 15 13 view .LVU12
+  76              		.loc 1 15 29 is_stmt 0 view .LVU13
+  77 002e FFF7FEFF 		bl	HAL_GetTick
+  78              	.LVL2:
+  79              		.loc 1 15 27 discriminator 1 view .LVU14
+  80 0032 2F4B     		ldr	r3, .L12+16
+  81 0034 1860     		str	r0, [r3]
+  16:Src/Zeugma_c/steps.c ****             break;
+  82              		.loc 1 16 13 is_stmt 1 view .LVU15
+  83              	.L1:
+  17:Src/Zeugma_c/steps.c ****         case 2:
+  18:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+  19:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+  20:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x0C05;
+  21:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, pwm_value);
+  22:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+  23:Src/Zeugma_c/steps.c ****             break;
+  24:Src/Zeugma_c/steps.c ****         case 3:
+  25:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+  26:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+  27:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x0C50;
+  28:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, pwm_value);
+  29:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+  30:Src/Zeugma_c/steps.c ****             break;
+  31:Src/Zeugma_c/steps.c ****         case 4:
+  32:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+ARM GAS  /tmp/ccJgcVGo.s 			page 3
+
+
+  33:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+  34:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x005C;
+  35:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, pwm_value);
+  36:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+  37:Src/Zeugma_c/steps.c ****             break;
+  38:Src/Zeugma_c/steps.c ****         case 5:
+  39:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+  40:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+  41:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x050C;
+  42:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, pwm_value);
+  43:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+  44:Src/Zeugma_c/steps.c ****             break;
+  45:Src/Zeugma_c/steps.c ****         case 6:
+  46:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+  47:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+  48:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x05C0;
+  49:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, pwm_value);
+  50:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+  51:Src/Zeugma_c/steps.c ****             break;
+  52:Src/Zeugma_c/steps.c ****         }
+  53:Src/Zeugma_c/steps.c ****     }
+  54:Src/Zeugma_c/steps.c **** }...
+  84              		.loc 1 54 1 is_stmt 0 view .LVU16
+  85 0036 08BD     		pop	{r3, pc}
+  86              	.L8:
+  18:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+  87              		.loc 1 18 13 is_stmt 1 view .LVU17
+  88 0038 2A4B     		ldr	r3, .L12+4
+  89 003a 1B68     		ldr	r3, [r3]
+  90 003c 0022     		movs	r2, #0
+  91 003e DA63     		str	r2, [r3, #60]
+  19:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+  92              		.loc 1 19 13 view .LVU18
+  93 0040 9A63     		str	r2, [r3, #56]
+  20:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x0C05;
+  94              		.loc 1 20 13 view .LVU19
+  20:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x0C05;
+  95              		.loc 1 20 24 is_stmt 0 view .LVU20
+  96 0042 294A     		ldr	r2, .L12+8
+  97 0044 40F60541 		movw	r1, #3077
+  98 0048 1162     		str	r1, [r2, #32]
+  21:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, pwm_value);
+  99              		.loc 1 21 13 is_stmt 1 view .LVU21
+ 100 004a 284A     		ldr	r2, .L12+12
+ 101 004c 1268     		ldr	r2, [r2]
+ 102 004e 5A63     		str	r2, [r3, #52]
+  22:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 103              		.loc 1 22 13 view .LVU22
+  22:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 104              		.loc 1 22 29 is_stmt 0 view .LVU23
+ 105 0050 FFF7FEFF 		bl	HAL_GetTick
+ 106              	.LVL3:
+  22:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 107              		.loc 1 22 27 discriminator 1 view .LVU24
+ 108 0054 264B     		ldr	r3, .L12+16
+ 109 0056 1860     		str	r0, [r3]
+  23:Src/Zeugma_c/steps.c ****             break;
+ARM GAS  /tmp/ccJgcVGo.s 			page 4
+
+
+ 110              		.loc 1 23 13 is_stmt 1 view .LVU25
+ 111 0058 EDE7     		b	.L1
+ 112              	.L7:
+  25:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+ 113              		.loc 1 25 13 view .LVU26
+ 114 005a 224B     		ldr	r3, .L12+4
+ 115 005c 1B68     		ldr	r3, [r3]
+ 116 005e 0022     		movs	r2, #0
+ 117 0060 5A63     		str	r2, [r3, #52]
+  26:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+ 118              		.loc 1 26 13 view .LVU27
+ 119 0062 DA63     		str	r2, [r3, #60]
+  27:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x0C50;
+ 120              		.loc 1 27 13 view .LVU28
+  27:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x0C50;
+ 121              		.loc 1 27 24 is_stmt 0 view .LVU29
+ 122 0064 204A     		ldr	r2, .L12+8
+ 123 0066 4FF44561 		mov	r1, #3152
+ 124 006a 1162     		str	r1, [r2, #32]
+  28:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, pwm_value);
+ 125              		.loc 1 28 13 is_stmt 1 view .LVU30
+ 126 006c 1F4A     		ldr	r2, .L12+12
+ 127 006e 1268     		ldr	r2, [r2]
+ 128 0070 9A63     		str	r2, [r3, #56]
+  29:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 129              		.loc 1 29 13 view .LVU31
+  29:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 130              		.loc 1 29 29 is_stmt 0 view .LVU32
+ 131 0072 FFF7FEFF 		bl	HAL_GetTick
+ 132              	.LVL4:
+  29:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 133              		.loc 1 29 27 discriminator 1 view .LVU33
+ 134 0076 1E4B     		ldr	r3, .L12+16
+ 135 0078 1860     		str	r0, [r3]
+  30:Src/Zeugma_c/steps.c ****             break;
+ 136              		.loc 1 30 13 is_stmt 1 view .LVU34
+ 137 007a DCE7     		b	.L1
+ 138              	.L6:
+  32:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+ 139              		.loc 1 32 13 view .LVU35
+ 140 007c 194B     		ldr	r3, .L12+4
+ 141 007e 1B68     		ldr	r3, [r3]
+ 142 0080 0022     		movs	r2, #0
+ 143 0082 5A63     		str	r2, [r3, #52]
+  33:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 0);
+ 144              		.loc 1 33 13 view .LVU36
+ 145 0084 DA63     		str	r2, [r3, #60]
+  34:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x005C;
+ 146              		.loc 1 34 13 view .LVU37
+  34:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x005C;
+ 147              		.loc 1 34 24 is_stmt 0 view .LVU38
+ 148 0086 184A     		ldr	r2, .L12+8
+ 149 0088 5C21     		movs	r1, #92
+ 150 008a 1162     		str	r1, [r2, #32]
+  35:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, pwm_value);
+ 151              		.loc 1 35 13 is_stmt 1 view .LVU39
+ 152 008c 174A     		ldr	r2, .L12+12
+ARM GAS  /tmp/ccJgcVGo.s 			page 5
+
+
+ 153 008e 1268     		ldr	r2, [r2]
+ 154 0090 9A63     		str	r2, [r3, #56]
+  36:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 155              		.loc 1 36 13 view .LVU40
+  36:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 156              		.loc 1 36 29 is_stmt 0 view .LVU41
+ 157 0092 FFF7FEFF 		bl	HAL_GetTick
+ 158              	.LVL5:
+  36:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 159              		.loc 1 36 27 discriminator 1 view .LVU42
+ 160 0096 164B     		ldr	r3, .L12+16
+ 161 0098 1860     		str	r0, [r3]
+  37:Src/Zeugma_c/steps.c ****             break;
+ 162              		.loc 1 37 13 is_stmt 1 view .LVU43
+ 163 009a CCE7     		b	.L1
+ 164              	.L5:
+  39:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+ 165              		.loc 1 39 13 view .LVU44
+ 166 009c 114B     		ldr	r3, .L12+4
+ 167 009e 1B68     		ldr	r3, [r3]
+ 168 00a0 0022     		movs	r2, #0
+ 169 00a2 5A63     		str	r2, [r3, #52]
+  40:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+ 170              		.loc 1 40 13 view .LVU45
+ 171 00a4 9A63     		str	r2, [r3, #56]
+  41:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x050C;
+ 172              		.loc 1 41 13 view .LVU46
+  41:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x050C;
+ 173              		.loc 1 41 24 is_stmt 0 view .LVU47
+ 174 00a6 104A     		ldr	r2, .L12+8
+ 175 00a8 40F20C51 		movw	r1, #1292
+ 176 00ac 1162     		str	r1, [r2, #32]
+  42:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, pwm_value);
+ 177              		.loc 1 42 13 is_stmt 1 view .LVU48
+ 178 00ae 0F4A     		ldr	r2, .L12+12
+ 179 00b0 1268     		ldr	r2, [r2]
+ 180 00b2 DA63     		str	r2, [r3, #60]
+  43:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 181              		.loc 1 43 13 view .LVU49
+  43:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 182              		.loc 1 43 29 is_stmt 0 view .LVU50
+ 183 00b4 FFF7FEFF 		bl	HAL_GetTick
+ 184              	.LVL6:
+  43:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 185              		.loc 1 43 27 discriminator 1 view .LVU51
+ 186 00b8 0D4B     		ldr	r3, .L12+16
+ 187 00ba 1860     		str	r0, [r3]
+  44:Src/Zeugma_c/steps.c ****             break;
+ 188              		.loc 1 44 13 is_stmt 1 view .LVU52
+ 189 00bc BBE7     		b	.L1
+ 190              	.L3:
+  46:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
+ 191              		.loc 1 46 13 view .LVU53
+ 192 00be 094B     		ldr	r3, .L12+4
+ 193 00c0 1B68     		ldr	r3, [r3]
+ 194 00c2 0022     		movs	r2, #0
+ 195 00c4 5A63     		str	r2, [r3, #52]
+ARM GAS  /tmp/ccJgcVGo.s 			page 6
+
+
+  47:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+ 196              		.loc 1 47 13 view .LVU54
+ 197 00c6 9A63     		str	r2, [r3, #56]
+  48:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x05C0;
+ 198              		.loc 1 48 13 view .LVU55
+  48:Src/Zeugma_c/steps.c ****             TIM1->CCER = 0x05C0;
+ 199              		.loc 1 48 24 is_stmt 0 view .LVU56
+ 200 00c8 074A     		ldr	r2, .L12+8
+ 201 00ca 4FF4B861 		mov	r1, #1472
+ 202 00ce 1162     		str	r1, [r2, #32]
+  49:Src/Zeugma_c/steps.c ****             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, pwm_value);
+ 203              		.loc 1 49 13 is_stmt 1 view .LVU57
+ 204 00d0 064A     		ldr	r2, .L12+12
+ 205 00d2 1268     		ldr	r2, [r2]
+ 206 00d4 DA63     		str	r2, [r3, #60]
+  50:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 207              		.loc 1 50 13 view .LVU58
+  50:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 208              		.loc 1 50 29 is_stmt 0 view .LVU59
+ 209 00d6 FFF7FEFF 		bl	HAL_GetTick
+ 210              	.LVL7:
+  50:Src/Zeugma_c/steps.c ****             previousTime2 = HAL_GetTick();
+ 211              		.loc 1 50 27 discriminator 1 view .LVU60
+ 212 00da 054B     		ldr	r3, .L12+16
+ 213 00dc 1860     		str	r0, [r3]
+  51:Src/Zeugma_c/steps.c ****             break;
+ 214              		.loc 1 51 13 is_stmt 1 view .LVU61
+ 215              		.loc 1 54 1 is_stmt 0 view .LVU62
+ 216 00de AAE7     		b	.L1
+ 217              	.L13:
+ 218              		.align	2
+ 219              	.L12:
+ 220 00e0 00000000 		.word	run_status
+ 221 00e4 00000000 		.word	htim1
+ 222 00e8 002C0140 		.word	1073818624
+ 223 00ec 00000000 		.word	pwm_value
+ 224 00f0 00000000 		.word	previousTime2
+ 225              		.cfi_endproc
+ 226              	.LFE65:
+ 228              		.text
+ 229              	.Letext0:
+ 230              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h"
+ 231              		.file 3 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 232              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 233              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 234              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 235              		.file 7 "Inc/main.h"
+ 236              		.file 8 "Inc/tim.h"
+ 237              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ARM GAS  /tmp/ccJgcVGo.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 steps.c
+     /tmp/ccJgcVGo.s:19     .text.execute_step:00000000 $t
+     /tmp/ccJgcVGo.s:25     .text.execute_step:00000000 execute_step
+     /tmp/ccJgcVGo.s:51     .text.execute_step:00000012 $d
+     /tmp/ccJgcVGo.s:57     .text.execute_step:00000018 $t
+     /tmp/ccJgcVGo.s:220    .text.execute_step:000000e0 $d
+
+UNDEFINED SYMBOLS
+HAL_GetTick
+run_status
+htim1
+pwm_value
+previousTime2

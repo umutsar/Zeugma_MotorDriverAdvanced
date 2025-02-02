@@ -15,7 +15,7 @@ void set_old_value()
             oldValue[0] = 1;
             oldValue[1] = 0;
             oldValue[2] = 1;
-            flagg = 0;
+            flagg = 1;
         }
         else if ((hall_A && !hall_B && !hall_C) &&
                  ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 100'den 110'a geçiş
@@ -24,7 +24,7 @@ void set_old_value()
             oldValue[0] = 1;
             oldValue[1] = 0;
             oldValue[2] = 0;
-            flagg = 0;
+            flagg = 1;
         }
         else if ((hall_A && hall_B && !hall_C) &&
                  ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 110'dan 010'a geçiş
@@ -33,7 +33,7 @@ void set_old_value()
             oldValue[0] = 1;
             oldValue[1] = 1;
             oldValue[2] = 0;
-            flagg = 0;
+            flagg = 1;
         }
         else if ((!hall_A && hall_B && !hall_C) &&
                  ((!oldValue[0] && oldValue[1] && oldValue[2]) || flagg)) // 010'dan 011'e geçiş
@@ -42,7 +42,7 @@ void set_old_value()
             oldValue[0] = 0;
             oldValue[1] = 1;
             oldValue[2] = 0;
-            flagg = 0;
+            flagg = 1;
         }
         else if ((!hall_A && hall_B && hall_C) &&
                  ((!oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 011'den 001'e geçiş
@@ -51,7 +51,7 @@ void set_old_value()
             oldValue[0] = 0;
             oldValue[1] = 1;
             oldValue[2] = 1;
-            flagg = 0;
+            flagg = 1;
         }
         else if ((!hall_A && !hall_B && hall_C) &&
                  ((oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 001'den 101'e geçiş
@@ -60,7 +60,7 @@ void set_old_value()
             oldValue[0] = 0;
             oldValue[1] = 0;
             oldValue[2] = 1;
-            flagg = 0;
+            flagg = 1;
         }
     }
 
@@ -72,7 +72,7 @@ void set_old_value()
             oldValue[0] = 1;
             oldValue[1] = 0;
             oldValue[2] = 1;
-            flagg = 0;
+            flagg = 1;
         }
         if ((hall_A && !hall_B && !hall_C) && ((oldValue[0] && !oldValue[1] && oldValue[2]) || flagg))
         { // 011
@@ -80,7 +80,7 @@ void set_old_value()
             oldValue[0] = 1;
             oldValue[1] = 0;
             oldValue[2] = 0;
-            flagg = 0;
+            flagg = 1;
         }
         if ((hall_A && hall_B && !hall_C) && ((oldValue[0] && !oldValue[1] && !oldValue[2]) || flagg))
         { // 001
@@ -88,7 +88,7 @@ void set_old_value()
             oldValue[0] = 1;
             oldValue[1] = 1;
             oldValue[2] = 0;
-            flagg = 0;
+            flagg = 1;
         }
         if ((!hall_A && hall_B && !hall_C) && ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg))
         { // 101
@@ -96,7 +96,7 @@ void set_old_value()
             oldValue[0] = 0;
             oldValue[1] = 1;
             oldValue[2] = 0;
-            flagg = 0;
+            flagg = 1;
         }
         if ((!hall_A && hall_B && hall_C) && ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flagg))
         { // 100
@@ -104,7 +104,7 @@ void set_old_value()
             oldValue[0] = 0;
             oldValue[1] = 1;
             oldValue[2] = 1;
-            flagg = 0;
+            flagg = 1;
         }
         if ((!hall_A && !hall_B && hall_C) && ((!oldValue[0] && oldValue[1] && oldValue[2]) || flagg))
         { // 110
@@ -112,7 +112,7 @@ void set_old_value()
             oldValue[0] = 0;
             oldValue[1] = 0;
             oldValue[2] = 1;
-            flagg = 0;
+            flagg = 1;
         }
     }
 }

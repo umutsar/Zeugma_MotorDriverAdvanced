@@ -5,6 +5,13 @@
     "files.associations": {
         "rpm.h": "c",
         "stm32f1xx_hal.h": "c",
-        "old_value_hall.C": "cpp"
+        "old_value_hall.C": "cpp",
+        "first_step.h": "c",
+        "debug_monitor.h": "c",
+        "stdbool.h": "c",
+        "main.h": "c",
+        "stdint.h": "c",
+        "old_value_hall.h": "c",
+        "tim.h": "c"
     }
 }
