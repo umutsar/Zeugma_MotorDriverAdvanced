@@ -28,14 +28,14 @@ except serial.SerialException as e:
 plt.ion()
 fig = plt.figure(figsize=(12, 6))
 ax = fig.add_subplot(111)
-plt.ylim([0, 5000])
-plt.xlim([0, 300])
+plt.ylim([0, 800])
+plt.xlim([0, 50])
 
 ax.legend();
 
-data1 = np.zeros(400)
-data2 = np.zeros(400)
-data3 = np.zeros(400)
+data1 = np.zeros(10)
+data2 = np.zeros(10)
+data3 = np.zeros(10)
 
 received_data1 = 0;
 received_data2 = 0;
