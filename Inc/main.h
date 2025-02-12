@@ -23,8 +23,7 @@
 #define __MAIN_H
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -33,25 +32,25 @@ extern "C"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdbool.h>
-  /* USER CODE END Includes */
+/* USER CODE END Includes */
 
-  /* Exported types ------------------------------------------------------------*/
-  /* USER CODE BEGIN ET */
+/* Exported types ------------------------------------------------------------*/
+/* USER CODE BEGIN ET */
 
-  /* USER CODE END ET */
+/* USER CODE END ET */
 
-  /* Exported constants --------------------------------------------------------*/
-  /* USER CODE BEGIN EC */
+/* Exported constants --------------------------------------------------------*/
+/* USER CODE BEGIN EC */
 
-  /* USER CODE END EC */
+/* USER CODE END EC */
 
-  /* Exported macro ------------------------------------------------------------*/
-  /* USER CODE BEGIN EM */
+/* Exported macro ------------------------------------------------------------*/
+/* USER CODE BEGIN EM */
 
-  /* USER CODE END EM */
+/* USER CODE END EM */
 
-  /* Exported functions prototypes ---------------------------------------------*/
-  void Error_Handler(void);
+/* Exported functions prototypes ---------------------------------------------*/
+void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 
@@ -67,22 +66,18 @@ extern "C"
 #define HALL_3_Pin GPIO_PIN_2
 #define HALL_3_GPIO_Port GPIOA
 #define HALL_3_EXTI_IRQn EXTI2_IRQn
-#define Reverse_Pin GPIO_PIN_3
-#define Reverse_GPIO_Port GPIOA
-#define Speed_Pin GPIO_PIN_5
-#define Speed_GPIO_Port GPIOA
 #define Current_Pin GPIO_PIN_0
 #define Current_GPIO_Port GPIOB
 #define BUMBA_Pin GPIO_PIN_5
 #define BUMBA_GPIO_Port GPIOB
 
-  /* USER CODE BEGIN Private defines */
+/* USER CODE BEGIN Private defines */
 
   extern volatile bool oldValue[3];
   extern bool mode;
   extern volatile bool first_step_flag;
   extern volatile bool flagg;
-  extern uint32_t adcbuffer[6];
+  extern uint32_t adcbuffer[7];
   extern volatile uint16_t speedInAdc;
   extern volatile uint16_t currentValue;
   extern volatile uint16_t filtered_current;
@@ -125,7 +120,39 @@ extern "C"
 
   extern uint8_t step_counter;
 
-  /* USER CODE END Private defines */
+  extern uint16_t analyze_data_1[480];
+  extern uint8_t sender_flag;
+  extern uint16_t array_counter;
+
+  extern uint16_t rpm_analysis[1024];
+
+  extern uint16_t interval_of_steps[1024];
+
+  extern uint32_t analyze_step_counter;
+
+  extern uint8_t step_atlandi;
+  extern uint16_t rpm_max_limit_flag;
+  extern uint8_t backEMF_mode;
+
+  // Back EMF Variables
+  extern uint32_t tim4Counter;
+
+  extern uint8_t polarity_A;
+  extern uint8_t polarity_B;
+  extern uint8_t polarity_C;
+
+  extern uint8_t polarity_A_old;
+  extern uint8_t polarity_B_old;
+  extern uint8_t polarity_C_old;
+
+  extern uint32_t intersection_interval;
+  extern uint16_t a, b, c, d, e, f;
+
+  extern uint16_t notr;
+  extern uint8_t bemf_execute_flag;
+
+
+/* USER CODE END Private defines */
 
 #ifdef __cplusplus
 }

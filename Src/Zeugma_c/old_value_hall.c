@@ -1,5 +1,11 @@
 
 #include "old_value_hall.h"
+#include "main.h"
+#include "usbd_cdc_if.h"
+#include "usb_device.h"
+
+uint8_t counter = 0;
+uint8_t sender_flag = 0;
 
 void set_old_value()
 {
@@ -115,5 +121,40 @@ void set_old_value()
             flagg = 1;
         }
     }
+
+    // for (uint8_t i = 0; i < 160; i++)
+    // {
+    //     if (i == rpm / 10 && counter < 160 && rpm > 99)
+    //     {
+    //         analyze_data_1[i] = (uint16_t)phase_A;
+    //         analyze_data_1[i + 160] = (uint16_t)phase_B;
+    //         analyze_data_1[i + 320] = (uint16_t)phase_C;
+    //         counter++;
+
+    //         if (counter == 159) // Buffer tamamlandığında veri gönder
+    //         {
+    //             sender_flag = 1;
+    //         }
+    //     }
+    // }
 }
 
+
+
+// Deactive
+void sample_phase_data(uint16_t rpm, uint16_t phase_A, uint16_t phase_B, uint16_t phase_C)
+{
+    if (rpm > 99 && counter < 160)
+    {
+        analyze_data_1[counter] = phase_A;
+        analyze_data_1[counter + 160] = phase_B;
+        analyze_data_1[counter + (160 * 2)] = phase_C;
+
+        counter++;
+
+        if (counter == 160)
+        {
+            sender_flag = 1; // 160 örnek tamamlandığında veri gönderimi işaretle
+        }
+    }
+}

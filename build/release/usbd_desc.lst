@@ -1,0 +1,380 @@
+ARM GAS  /tmp/ccY7dUX1.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"usbd_desc.c"
+  14              		.text
+  15              		.section	.text.USBD_FS_DeviceDescriptor,"ax",%progbits
+  16              		.align	1
+  17              		.global	USBD_FS_DeviceDescriptor
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	USBD_FS_DeviceDescriptor:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 1223     		movs	r3, #18
+  27 0002 0B80     		strh	r3, [r1]	@ movhi
+  28 0004 0048     		ldr	r0, .L2
+  29 0006 7047     		bx	lr
+  30              	.L3:
+  31              		.align	2
+  32              	.L2:
+  33 0008 00000000 		.word	USBD_FS_DeviceDesc
+  35              		.section	.text.USBD_FS_LangIDStrDescriptor,"ax",%progbits
+  36              		.align	1
+  37              		.global	USBD_FS_LangIDStrDescriptor
+  38              		.syntax unified
+  39              		.thumb
+  40              		.thumb_func
+  42              	USBD_FS_LangIDStrDescriptor:
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45              		@ link register save eliminated.
+  46 0000 0423     		movs	r3, #4
+  47 0002 0B80     		strh	r3, [r1]	@ movhi
+  48 0004 0048     		ldr	r0, .L5
+  49 0006 7047     		bx	lr
+  50              	.L6:
+  51              		.align	2
+  52              	.L5:
+  53 0008 00000000 		.word	USBD_LangIDDesc
+  55              		.section	.text.IntToUnicode,"ax",%progbits
+  56              		.align	1
+  57              		.syntax unified
+  58              		.thumb
+  59              		.thumb_func
+  61              	IntToUnicode:
+  62              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/ccY7dUX1.s 			page 2
+
+
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64 0000 0023     		movs	r3, #0
+  65 0002 9342     		cmp	r3, r2
+  66 0004 1ED2     		bcs	.L15
+  67 0006 00B5     		push	{lr}
+  68 0008 10E0     		b	.L11
+  69              	.L9:
+  70 000a 0CF1370C 		add	ip, ip, #55
+  71 000e 01F813C0 		strb	ip, [r1, r3, lsl #1]
+  72              	.L10:
+  73 0012 0001     		lsls	r0, r0, #4
+  74 0014 4FEA430C 		lsl	ip, r3, #1
+  75 0018 0CF1010C 		add	ip, ip, #1
+  76 001c 4FF0000E 		mov	lr, #0
+  77 0020 01F80CE0 		strb	lr, [r1, ip]
+  78 0024 0133     		adds	r3, r3, #1
+  79 0026 DBB2     		uxtb	r3, r3
+  80 0028 9342     		cmp	r3, r2
+  81 002a 09D2     		bcs	.L16
+  82              	.L11:
+  83 002c 4FEA107C 		lsr	ip, r0, #28
+  84 0030 B0F1204F 		cmp	r0, #-1610612736
+  85 0034 E9D2     		bcs	.L9
+  86 0036 0CF1300C 		add	ip, ip, #48
+  87 003a 01F813C0 		strb	ip, [r1, r3, lsl #1]
+  88 003e E8E7     		b	.L10
+  89              	.L16:
+  90 0040 5DF804FB 		ldr	pc, [sp], #4
+  91              	.L15:
+  92 0044 7047     		bx	lr
+  94              		.section	.text.Get_SerialNum,"ax",%progbits
+  95              		.align	1
+  96              		.syntax unified
+  97              		.thumb
+  98              		.thumb_func
+ 100              	Get_SerialNum:
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 0, uses_anonymous_args = 0
+ 103 0000 38B5     		push	{r3, r4, r5, lr}
+ 104 0002 0B4B     		ldr	r3, .L21
+ 105 0004 D3F8E807 		ldr	r0, [r3, #2024]
+ 106 0008 D3F8EC47 		ldr	r4, [r3, #2028]
+ 107 000c D3F8F037 		ldr	r3, [r3, #2032]
+ 108 0010 C018     		adds	r0, r0, r3
+ 109 0012 00D1     		bne	.L20
+ 110              	.L17:
+ 111 0014 38BD     		pop	{r3, r4, r5, pc}
+ 112              	.L20:
+ 113 0016 074D     		ldr	r5, .L21+4
+ 114 0018 0822     		movs	r2, #8
+ 115 001a 2946     		mov	r1, r5
+ 116 001c FFF7FEFF 		bl	IntToUnicode
+ 117 0020 0422     		movs	r2, #4
+ 118 0022 05F11001 		add	r1, r5, #16
+ 119 0026 2046     		mov	r0, r4
+ 120 0028 FFF7FEFF 		bl	IntToUnicode
+ 121 002c F2E7     		b	.L17
+ARM GAS  /tmp/ccY7dUX1.s 			page 3
+
+
+ 122              	.L22:
+ 123 002e 00BF     		.align	2
+ 124              	.L21:
+ 125 0030 00F0FF1F 		.word	536866816
+ 126 0034 02000000 		.word	USBD_StringSerial+2
+ 128              		.section	.text.USBD_FS_SerialStrDescriptor,"ax",%progbits
+ 129              		.align	1
+ 130              		.global	USBD_FS_SerialStrDescriptor
+ 131              		.syntax unified
+ 132              		.thumb
+ 133              		.thumb_func
+ 135              	USBD_FS_SerialStrDescriptor:
+ 136              		@ args = 0, pretend = 0, frame = 0
+ 137              		@ frame_needed = 0, uses_anonymous_args = 0
+ 138 0000 08B5     		push	{r3, lr}
+ 139 0002 1A23     		movs	r3, #26
+ 140 0004 0B80     		strh	r3, [r1]	@ movhi
+ 141 0006 FFF7FEFF 		bl	Get_SerialNum
+ 142 000a 0148     		ldr	r0, .L25
+ 143 000c 08BD     		pop	{r3, pc}
+ 144              	.L26:
+ 145 000e 00BF     		.align	2
+ 146              	.L25:
+ 147 0010 00000000 		.word	USBD_StringSerial
+ 149              		.section	.rodata.USBD_FS_ProductStrDescriptor.str1.4,"aMS",%progbits,1
+ 150              		.align	2
+ 151              	.LC0:
+ 152 0000 4D6F746F 		.ascii	"Motor Surucu\000"
+ 152      72205375 
+ 152      72756375 
+ 152      00
+ 153              		.section	.text.USBD_FS_ProductStrDescriptor,"ax",%progbits
+ 154              		.align	1
+ 155              		.global	USBD_FS_ProductStrDescriptor
+ 156              		.syntax unified
+ 157              		.thumb
+ 158              		.thumb_func
+ 160              	USBD_FS_ProductStrDescriptor:
+ 161              		@ args = 0, pretend = 0, frame = 0
+ 162              		@ frame_needed = 0, uses_anonymous_args = 0
+ 163 0000 08B5     		push	{r3, lr}
+ 164 0002 0A46     		mov	r2, r1
+ 165 0004 28B9     		cbnz	r0, .L28
+ 166 0006 0549     		ldr	r1, .L31
+ 167 0008 0548     		ldr	r0, .L31+4
+ 168 000a FFF7FEFF 		bl	USBD_GetString
+ 169              	.L29:
+ 170 000e 0348     		ldr	r0, .L31
+ 171 0010 08BD     		pop	{r3, pc}
+ 172              	.L28:
+ 173 0012 0249     		ldr	r1, .L31
+ 174 0014 0248     		ldr	r0, .L31+4
+ 175 0016 FFF7FEFF 		bl	USBD_GetString
+ 176 001a F8E7     		b	.L29
+ 177              	.L32:
+ 178              		.align	2
+ 179              	.L31:
+ARM GAS  /tmp/ccY7dUX1.s 			page 4
+
+
+ 180 001c 00000000 		.word	USBD_StrDesc
+ 181 0020 00000000 		.word	.LC0
+ 183              		.section	.rodata.USBD_FS_ManufacturerStrDescriptor.str1.4,"aMS",%progbits,1
+ 184              		.align	2
+ 185              	.LC1:
+ 186 0000 5A657567 		.ascii	"Zeugma\000"
+ 186      6D6100
+ 187              		.section	.text.USBD_FS_ManufacturerStrDescriptor,"ax",%progbits
+ 188              		.align	1
+ 189              		.global	USBD_FS_ManufacturerStrDescriptor
+ 190              		.syntax unified
+ 191              		.thumb
+ 192              		.thumb_func
+ 194              	USBD_FS_ManufacturerStrDescriptor:
+ 195              		@ args = 0, pretend = 0, frame = 0
+ 196              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197 0000 10B5     		push	{r4, lr}
+ 198 0002 0A46     		mov	r2, r1
+ 199 0004 034C     		ldr	r4, .L35
+ 200 0006 2146     		mov	r1, r4
+ 201 0008 0348     		ldr	r0, .L35+4
+ 202 000a FFF7FEFF 		bl	USBD_GetString
+ 203 000e 2046     		mov	r0, r4
+ 204 0010 10BD     		pop	{r4, pc}
+ 205              	.L36:
+ 206 0012 00BF     		.align	2
+ 207              	.L35:
+ 208 0014 00000000 		.word	USBD_StrDesc
+ 209 0018 00000000 		.word	.LC1
+ 211              		.section	.rodata.USBD_FS_ConfigStrDescriptor.str1.4,"aMS",%progbits,1
+ 212              		.align	2
+ 213              	.LC2:
+ 214 0000 43444320 		.ascii	"CDC Config\000"
+ 214      436F6E66 
+ 214      696700
+ 215              		.section	.text.USBD_FS_ConfigStrDescriptor,"ax",%progbits
+ 216              		.align	1
+ 217              		.global	USBD_FS_ConfigStrDescriptor
+ 218              		.syntax unified
+ 219              		.thumb
+ 220              		.thumb_func
+ 222              	USBD_FS_ConfigStrDescriptor:
+ 223              		@ args = 0, pretend = 0, frame = 0
+ 224              		@ frame_needed = 0, uses_anonymous_args = 0
+ 225 0000 08B5     		push	{r3, lr}
+ 226 0002 0A46     		mov	r2, r1
+ 227 0004 28B9     		cbnz	r0, .L38
+ 228 0006 0549     		ldr	r1, .L41
+ 229 0008 0548     		ldr	r0, .L41+4
+ 230 000a FFF7FEFF 		bl	USBD_GetString
+ 231              	.L39:
+ 232 000e 0348     		ldr	r0, .L41
+ 233 0010 08BD     		pop	{r3, pc}
+ 234              	.L38:
+ 235 0012 0249     		ldr	r1, .L41
+ 236 0014 0248     		ldr	r0, .L41+4
+ 237 0016 FFF7FEFF 		bl	USBD_GetString
+ARM GAS  /tmp/ccY7dUX1.s 			page 5
+
+
+ 238 001a F8E7     		b	.L39
+ 239              	.L42:
+ 240              		.align	2
+ 241              	.L41:
+ 242 001c 00000000 		.word	USBD_StrDesc
+ 243 0020 00000000 		.word	.LC2
+ 245              		.section	.rodata.USBD_FS_InterfaceStrDescriptor.str1.4,"aMS",%progbits,1
+ 246              		.align	2
+ 247              	.LC3:
+ 248 0000 43444320 		.ascii	"CDC Interface\000"
+ 248      496E7465 
+ 248      72666163 
+ 248      6500
+ 249              		.section	.text.USBD_FS_InterfaceStrDescriptor,"ax",%progbits
+ 250              		.align	1
+ 251              		.global	USBD_FS_InterfaceStrDescriptor
+ 252              		.syntax unified
+ 253              		.thumb
+ 254              		.thumb_func
+ 256              	USBD_FS_InterfaceStrDescriptor:
+ 257              		@ args = 0, pretend = 0, frame = 0
+ 258              		@ frame_needed = 0, uses_anonymous_args = 0
+ 259 0000 08B5     		push	{r3, lr}
+ 260 0002 0A46     		mov	r2, r1
+ 261 0004 28B9     		cbnz	r0, .L44
+ 262 0006 0549     		ldr	r1, .L47
+ 263 0008 0548     		ldr	r0, .L47+4
+ 264 000a FFF7FEFF 		bl	USBD_GetString
+ 265              	.L45:
+ 266 000e 0348     		ldr	r0, .L47
+ 267 0010 08BD     		pop	{r3, pc}
+ 268              	.L44:
+ 269 0012 0249     		ldr	r1, .L47
+ 270 0014 0248     		ldr	r0, .L47+4
+ 271 0016 FFF7FEFF 		bl	USBD_GetString
+ 272 001a F8E7     		b	.L45
+ 273              	.L48:
+ 274              		.align	2
+ 275              	.L47:
+ 276 001c 00000000 		.word	USBD_StrDesc
+ 277 0020 00000000 		.word	.LC3
+ 279              		.global	USBD_StringSerial
+ 280              		.section	.data.USBD_StringSerial,"aw"
+ 281              		.align	2
+ 284              	USBD_StringSerial:
+ 285 0000 1A0300   		.ascii	"\032\003\000"
+ 286 0003 00000000 		.space	23
+ 286      00000000 
+ 286      00000000 
+ 286      00000000 
+ 286      00000000 
+ 287              		.global	USBD_StrDesc
+ 288              		.section	.bss.USBD_StrDesc,"aw",%nobits
+ 289              		.align	2
+ 292              	USBD_StrDesc:
+ 293 0000 00000000 		.space	512
+ 293      00000000 
+ARM GAS  /tmp/ccY7dUX1.s 			page 6
+
+
+ 293      00000000 
+ 293      00000000 
+ 293      00000000 
+ 294              		.global	USBD_LangIDDesc
+ 295              		.section	.data.USBD_LangIDDesc,"aw"
+ 296              		.align	2
+ 299              	USBD_LangIDDesc:
+ 300 0000 04030904 		.ascii	"\004\003\011\004"
+ 301              		.global	USBD_FS_DeviceDesc
+ 302              		.section	.data.USBD_FS_DeviceDesc,"aw"
+ 303              		.align	2
+ 306              	USBD_FS_DeviceDesc:
+ 307 0000 12010002 		.ascii	"\022\001\000\002\002\002\000@\203\004@W\000\002\001"
+ 307      02020040 
+ 307      83044057 
+ 307      000201
+ 308 000f 020301   		.ascii	"\002\003\001"
+ 309              		.global	FS_Desc
+ 310              		.section	.data.FS_Desc,"aw"
+ 311              		.align	2
+ 314              	FS_Desc:
+ 315 0000 00000000 		.word	USBD_FS_DeviceDescriptor
+ 316 0004 00000000 		.word	USBD_FS_LangIDStrDescriptor
+ 317 0008 00000000 		.word	USBD_FS_ManufacturerStrDescriptor
+ 318 000c 00000000 		.word	USBD_FS_ProductStrDescriptor
+ 319 0010 00000000 		.word	USBD_FS_SerialStrDescriptor
+ 320 0014 00000000 		.word	USBD_FS_ConfigStrDescriptor
+ 321 0018 00000000 		.word	USBD_FS_InterfaceStrDescriptor
+ 322              		.ident	"GCC: (15:13.3.rel1-1) 13.3.1 20240614"
+ARM GAS  /tmp/ccY7dUX1.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 usbd_desc.c
+     /tmp/ccY7dUX1.s:16     .text.USBD_FS_DeviceDescriptor:00000000 $t
+     /tmp/ccY7dUX1.s:22     .text.USBD_FS_DeviceDescriptor:00000000 USBD_FS_DeviceDescriptor
+     /tmp/ccY7dUX1.s:33     .text.USBD_FS_DeviceDescriptor:00000008 $d
+     /tmp/ccY7dUX1.s:306    .data.USBD_FS_DeviceDesc:00000000 USBD_FS_DeviceDesc
+     /tmp/ccY7dUX1.s:36     .text.USBD_FS_LangIDStrDescriptor:00000000 $t
+     /tmp/ccY7dUX1.s:42     .text.USBD_FS_LangIDStrDescriptor:00000000 USBD_FS_LangIDStrDescriptor
+     /tmp/ccY7dUX1.s:53     .text.USBD_FS_LangIDStrDescriptor:00000008 $d
+     /tmp/ccY7dUX1.s:299    .data.USBD_LangIDDesc:00000000 USBD_LangIDDesc
+     /tmp/ccY7dUX1.s:56     .text.IntToUnicode:00000000 $t
+     /tmp/ccY7dUX1.s:61     .text.IntToUnicode:00000000 IntToUnicode
+     /tmp/ccY7dUX1.s:95     .text.Get_SerialNum:00000000 $t
+     /tmp/ccY7dUX1.s:100    .text.Get_SerialNum:00000000 Get_SerialNum
+     /tmp/ccY7dUX1.s:125    .text.Get_SerialNum:00000030 $d
+     /tmp/ccY7dUX1.s:284    .data.USBD_StringSerial:00000000 USBD_StringSerial
+     /tmp/ccY7dUX1.s:129    .text.USBD_FS_SerialStrDescriptor:00000000 $t
+     /tmp/ccY7dUX1.s:135    .text.USBD_FS_SerialStrDescriptor:00000000 USBD_FS_SerialStrDescriptor
+     /tmp/ccY7dUX1.s:147    .text.USBD_FS_SerialStrDescriptor:00000010 $d
+     /tmp/ccY7dUX1.s:150    .rodata.USBD_FS_ProductStrDescriptor.str1.4:00000000 $d
+     /tmp/ccY7dUX1.s:154    .text.USBD_FS_ProductStrDescriptor:00000000 $t
+     /tmp/ccY7dUX1.s:160    .text.USBD_FS_ProductStrDescriptor:00000000 USBD_FS_ProductStrDescriptor
+     /tmp/ccY7dUX1.s:180    .text.USBD_FS_ProductStrDescriptor:0000001c $d
+     /tmp/ccY7dUX1.s:292    .bss.USBD_StrDesc:00000000 USBD_StrDesc
+     /tmp/ccY7dUX1.s:184    .rodata.USBD_FS_ManufacturerStrDescriptor.str1.4:00000000 $d
+     /tmp/ccY7dUX1.s:188    .text.USBD_FS_ManufacturerStrDescriptor:00000000 $t
+     /tmp/ccY7dUX1.s:194    .text.USBD_FS_ManufacturerStrDescriptor:00000000 USBD_FS_ManufacturerStrDescriptor
+     /tmp/ccY7dUX1.s:208    .text.USBD_FS_ManufacturerStrDescriptor:00000014 $d
+     /tmp/ccY7dUX1.s:212    .rodata.USBD_FS_ConfigStrDescriptor.str1.4:00000000 $d
+     /tmp/ccY7dUX1.s:216    .text.USBD_FS_ConfigStrDescriptor:00000000 $t
+     /tmp/ccY7dUX1.s:222    .text.USBD_FS_ConfigStrDescriptor:00000000 USBD_FS_ConfigStrDescriptor
+     /tmp/ccY7dUX1.s:242    .text.USBD_FS_ConfigStrDescriptor:0000001c $d
+     /tmp/ccY7dUX1.s:246    .rodata.USBD_FS_InterfaceStrDescriptor.str1.4:00000000 $d
+     /tmp/ccY7dUX1.s:250    .text.USBD_FS_InterfaceStrDescriptor:00000000 $t
+     /tmp/ccY7dUX1.s:256    .text.USBD_FS_InterfaceStrDescriptor:00000000 USBD_FS_InterfaceStrDescriptor
+     /tmp/ccY7dUX1.s:276    .text.USBD_FS_InterfaceStrDescriptor:0000001c $d
+     /tmp/ccY7dUX1.s:281    .data.USBD_StringSerial:00000000 $d
+     /tmp/ccY7dUX1.s:289    .bss.USBD_StrDesc:00000000 $d
+     /tmp/ccY7dUX1.s:296    .data.USBD_LangIDDesc:00000000 $d
+     /tmp/ccY7dUX1.s:303    .data.USBD_FS_DeviceDesc:00000000 $d
+     /tmp/ccY7dUX1.s:314    .data.FS_Desc:00000000 FS_Desc
+     /tmp/ccY7dUX1.s:311    .data.FS_Desc:00000000 $d
+
+UNDEFINED SYMBOLS
+USBD_GetString

@@ -1,0 +1,320 @@
+ARM GAS  /tmp/cc5blUZm.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f1xx_it.c"
+  14              		.text
+  15              		.section	.text.NMI_Handler,"ax",%progbits
+  16              		.align	1
+  17              		.global	NMI_Handler
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	NMI_Handler:
+  23              		@ Volatile: function does not return.
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26              		@ link register save eliminated.
+  27              	.L2:
+  28 0000 FEE7     		b	.L2
+  30              		.section	.text.HardFault_Handler,"ax",%progbits
+  31              		.align	1
+  32              		.global	HardFault_Handler
+  33              		.syntax unified
+  34              		.thumb
+  35              		.thumb_func
+  37              	HardFault_Handler:
+  38              		@ Volatile: function does not return.
+  39              		@ args = 0, pretend = 0, frame = 0
+  40              		@ frame_needed = 0, uses_anonymous_args = 0
+  41              		@ link register save eliminated.
+  42              	.L4:
+  43 0000 FEE7     		b	.L4
+  45              		.section	.text.MemManage_Handler,"ax",%progbits
+  46              		.align	1
+  47              		.global	MemManage_Handler
+  48              		.syntax unified
+  49              		.thumb
+  50              		.thumb_func
+  52              	MemManage_Handler:
+  53              		@ Volatile: function does not return.
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+  56              		@ link register save eliminated.
+  57              	.L6:
+  58 0000 FEE7     		b	.L6
+  60              		.section	.text.BusFault_Handler,"ax",%progbits
+  61              		.align	1
+  62              		.global	BusFault_Handler
+  63              		.syntax unified
+ARM GAS  /tmp/cc5blUZm.s 			page 2
+
+
+  64              		.thumb
+  65              		.thumb_func
+  67              	BusFault_Handler:
+  68              		@ Volatile: function does not return.
+  69              		@ args = 0, pretend = 0, frame = 0
+  70              		@ frame_needed = 0, uses_anonymous_args = 0
+  71              		@ link register save eliminated.
+  72              	.L8:
+  73 0000 FEE7     		b	.L8
+  75              		.section	.text.UsageFault_Handler,"ax",%progbits
+  76              		.align	1
+  77              		.global	UsageFault_Handler
+  78              		.syntax unified
+  79              		.thumb
+  80              		.thumb_func
+  82              	UsageFault_Handler:
+  83              		@ Volatile: function does not return.
+  84              		@ args = 0, pretend = 0, frame = 0
+  85              		@ frame_needed = 0, uses_anonymous_args = 0
+  86              		@ link register save eliminated.
+  87              	.L10:
+  88 0000 FEE7     		b	.L10
+  90              		.section	.text.SVC_Handler,"ax",%progbits
+  91              		.align	1
+  92              		.global	SVC_Handler
+  93              		.syntax unified
+  94              		.thumb
+  95              		.thumb_func
+  97              	SVC_Handler:
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100              		@ link register save eliminated.
+ 101 0000 7047     		bx	lr
+ 103              		.section	.text.DebugMon_Handler,"ax",%progbits
+ 104              		.align	1
+ 105              		.global	DebugMon_Handler
+ 106              		.syntax unified
+ 107              		.thumb
+ 108              		.thumb_func
+ 110              	DebugMon_Handler:
+ 111              		@ args = 0, pretend = 0, frame = 0
+ 112              		@ frame_needed = 0, uses_anonymous_args = 0
+ 113              		@ link register save eliminated.
+ 114 0000 7047     		bx	lr
+ 116              		.section	.text.PendSV_Handler,"ax",%progbits
+ 117              		.align	1
+ 118              		.global	PendSV_Handler
+ 119              		.syntax unified
+ 120              		.thumb
+ 121              		.thumb_func
+ 123              	PendSV_Handler:
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126              		@ link register save eliminated.
+ 127 0000 7047     		bx	lr
+ 129              		.section	.text.SysTick_Handler,"ax",%progbits
+ 130              		.align	1
+ARM GAS  /tmp/cc5blUZm.s 			page 3
+
+
+ 131              		.global	SysTick_Handler
+ 132              		.syntax unified
+ 133              		.thumb
+ 134              		.thumb_func
+ 136              	SysTick_Handler:
+ 137              		@ args = 0, pretend = 0, frame = 0
+ 138              		@ frame_needed = 0, uses_anonymous_args = 0
+ 139 0000 08B5     		push	{r3, lr}
+ 140 0002 FFF7FEFF 		bl	HAL_IncTick
+ 141 0006 08BD     		pop	{r3, pc}
+ 143              		.section	.text.EXTI0_IRQHandler,"ax",%progbits
+ 144              		.align	1
+ 145              		.global	EXTI0_IRQHandler
+ 146              		.syntax unified
+ 147              		.thumb
+ 148              		.thumb_func
+ 150              	EXTI0_IRQHandler:
+ 151              		@ args = 0, pretend = 0, frame = 0
+ 152              		@ frame_needed = 0, uses_anonymous_args = 0
+ 153 0000 08B5     		push	{r3, lr}
+ 154 0002 0120     		movs	r0, #1
+ 155 0004 FFF7FEFF 		bl	HAL_GPIO_EXTI_IRQHandler
+ 156 0008 08BD     		pop	{r3, pc}
+ 158              		.section	.text.EXTI1_IRQHandler,"ax",%progbits
+ 159              		.align	1
+ 160              		.global	EXTI1_IRQHandler
+ 161              		.syntax unified
+ 162              		.thumb
+ 163              		.thumb_func
+ 165              	EXTI1_IRQHandler:
+ 166              		@ args = 0, pretend = 0, frame = 0
+ 167              		@ frame_needed = 0, uses_anonymous_args = 0
+ 168 0000 08B5     		push	{r3, lr}
+ 169 0002 0220     		movs	r0, #2
+ 170 0004 FFF7FEFF 		bl	HAL_GPIO_EXTI_IRQHandler
+ 171 0008 08BD     		pop	{r3, pc}
+ 173              		.section	.text.EXTI2_IRQHandler,"ax",%progbits
+ 174              		.align	1
+ 175              		.global	EXTI2_IRQHandler
+ 176              		.syntax unified
+ 177              		.thumb
+ 178              		.thumb_func
+ 180              	EXTI2_IRQHandler:
+ 181              		@ args = 0, pretend = 0, frame = 0
+ 182              		@ frame_needed = 0, uses_anonymous_args = 0
+ 183 0000 08B5     		push	{r3, lr}
+ 184 0002 0420     		movs	r0, #4
+ 185 0004 FFF7FEFF 		bl	HAL_GPIO_EXTI_IRQHandler
+ 186 0008 08BD     		pop	{r3, pc}
+ 188              		.section	.text.DMA1_Channel1_IRQHandler,"ax",%progbits
+ 189              		.align	1
+ 190              		.global	DMA1_Channel1_IRQHandler
+ 191              		.syntax unified
+ 192              		.thumb
+ 193              		.thumb_func
+ 195              	DMA1_Channel1_IRQHandler:
+ 196              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/cc5blUZm.s 			page 4
+
+
+ 197              		@ frame_needed = 0, uses_anonymous_args = 0
+ 198 0000 08B5     		push	{r3, lr}
+ 199 0002 0248     		ldr	r0, .L24
+ 200 0004 FFF7FEFF 		bl	HAL_DMA_IRQHandler
+ 201 0008 08BD     		pop	{r3, pc}
+ 202              	.L25:
+ 203 000a 00BF     		.align	2
+ 204              	.L24:
+ 205 000c 00000000 		.word	hdma_adc1
+ 207              		.section	.text.USB_LP_CAN1_RX0_IRQHandler,"ax",%progbits
+ 208              		.align	1
+ 209              		.global	USB_LP_CAN1_RX0_IRQHandler
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 214              	USB_LP_CAN1_RX0_IRQHandler:
+ 215              		@ args = 0, pretend = 0, frame = 0
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217 0000 08B5     		push	{r3, lr}
+ 218 0002 0248     		ldr	r0, .L28
+ 219 0004 FFF7FEFF 		bl	HAL_PCD_IRQHandler
+ 220 0008 08BD     		pop	{r3, pc}
+ 221              	.L29:
+ 222 000a 00BF     		.align	2
+ 223              	.L28:
+ 224 000c 00000000 		.word	hpcd_USB_FS
+ 226              		.section	.text.TIM2_IRQHandler,"ax",%progbits
+ 227              		.align	1
+ 228              		.global	TIM2_IRQHandler
+ 229              		.syntax unified
+ 230              		.thumb
+ 231              		.thumb_func
+ 233              	TIM2_IRQHandler:
+ 234              		@ args = 0, pretend = 0, frame = 0
+ 235              		@ frame_needed = 0, uses_anonymous_args = 0
+ 236 0000 08B5     		push	{r3, lr}
+ 237 0002 0248     		ldr	r0, .L32
+ 238 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
+ 239 0008 08BD     		pop	{r3, pc}
+ 240              	.L33:
+ 241 000a 00BF     		.align	2
+ 242              	.L32:
+ 243 000c 00000000 		.word	htim2
+ 245              		.section	.text.TIM3_IRQHandler,"ax",%progbits
+ 246              		.align	1
+ 247              		.global	TIM3_IRQHandler
+ 248              		.syntax unified
+ 249              		.thumb
+ 250              		.thumb_func
+ 252              	TIM3_IRQHandler:
+ 253              		@ args = 0, pretend = 0, frame = 0
+ 254              		@ frame_needed = 0, uses_anonymous_args = 0
+ 255 0000 08B5     		push	{r3, lr}
+ 256 0002 0248     		ldr	r0, .L36
+ 257 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
+ 258 0008 08BD     		pop	{r3, pc}
+ 259              	.L37:
+ARM GAS  /tmp/cc5blUZm.s 			page 5
+
+
+ 260 000a 00BF     		.align	2
+ 261              	.L36:
+ 262 000c 00000000 		.word	htim3
+ 264              		.section	.text.TIM4_IRQHandler,"ax",%progbits
+ 265              		.align	1
+ 266              		.global	TIM4_IRQHandler
+ 267              		.syntax unified
+ 268              		.thumb
+ 269              		.thumb_func
+ 271              	TIM4_IRQHandler:
+ 272              		@ args = 0, pretend = 0, frame = 0
+ 273              		@ frame_needed = 0, uses_anonymous_args = 0
+ 274 0000 08B5     		push	{r3, lr}
+ 275 0002 0248     		ldr	r0, .L40
+ 276 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
+ 277 0008 08BD     		pop	{r3, pc}
+ 278              	.L41:
+ 279 000a 00BF     		.align	2
+ 280              	.L40:
+ 281 000c 00000000 		.word	htim4
+ 283              		.ident	"GCC: (15:13.3.rel1-1) 13.3.1 20240614"
+ARM GAS  /tmp/cc5blUZm.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f1xx_it.c
+     /tmp/cc5blUZm.s:16     .text.NMI_Handler:00000000 $t
+     /tmp/cc5blUZm.s:22     .text.NMI_Handler:00000000 NMI_Handler
+     /tmp/cc5blUZm.s:31     .text.HardFault_Handler:00000000 $t
+     /tmp/cc5blUZm.s:37     .text.HardFault_Handler:00000000 HardFault_Handler
+     /tmp/cc5blUZm.s:46     .text.MemManage_Handler:00000000 $t
+     /tmp/cc5blUZm.s:52     .text.MemManage_Handler:00000000 MemManage_Handler
+     /tmp/cc5blUZm.s:61     .text.BusFault_Handler:00000000 $t
+     /tmp/cc5blUZm.s:67     .text.BusFault_Handler:00000000 BusFault_Handler
+     /tmp/cc5blUZm.s:76     .text.UsageFault_Handler:00000000 $t
+     /tmp/cc5blUZm.s:82     .text.UsageFault_Handler:00000000 UsageFault_Handler
+     /tmp/cc5blUZm.s:91     .text.SVC_Handler:00000000 $t
+     /tmp/cc5blUZm.s:97     .text.SVC_Handler:00000000 SVC_Handler
+     /tmp/cc5blUZm.s:104    .text.DebugMon_Handler:00000000 $t
+     /tmp/cc5blUZm.s:110    .text.DebugMon_Handler:00000000 DebugMon_Handler
+     /tmp/cc5blUZm.s:117    .text.PendSV_Handler:00000000 $t
+     /tmp/cc5blUZm.s:123    .text.PendSV_Handler:00000000 PendSV_Handler
+     /tmp/cc5blUZm.s:130    .text.SysTick_Handler:00000000 $t
+     /tmp/cc5blUZm.s:136    .text.SysTick_Handler:00000000 SysTick_Handler
+     /tmp/cc5blUZm.s:144    .text.EXTI0_IRQHandler:00000000 $t
+     /tmp/cc5blUZm.s:150    .text.EXTI0_IRQHandler:00000000 EXTI0_IRQHandler
+     /tmp/cc5blUZm.s:159    .text.EXTI1_IRQHandler:00000000 $t
+     /tmp/cc5blUZm.s:165    .text.EXTI1_IRQHandler:00000000 EXTI1_IRQHandler
+     /tmp/cc5blUZm.s:174    .text.EXTI2_IRQHandler:00000000 $t
+     /tmp/cc5blUZm.s:180    .text.EXTI2_IRQHandler:00000000 EXTI2_IRQHandler
+     /tmp/cc5blUZm.s:189    .text.DMA1_Channel1_IRQHandler:00000000 $t
+     /tmp/cc5blUZm.s:195    .text.DMA1_Channel1_IRQHandler:00000000 DMA1_Channel1_IRQHandler
+     /tmp/cc5blUZm.s:205    .text.DMA1_Channel1_IRQHandler:0000000c $d
+     /tmp/cc5blUZm.s:208    .text.USB_LP_CAN1_RX0_IRQHandler:00000000 $t
+     /tmp/cc5blUZm.s:214    .text.USB_LP_CAN1_RX0_IRQHandler:00000000 USB_LP_CAN1_RX0_IRQHandler
+     /tmp/cc5blUZm.s:224    .text.USB_LP_CAN1_RX0_IRQHandler:0000000c $d
+     /tmp/cc5blUZm.s:227    .text.TIM2_IRQHandler:00000000 $t
+     /tmp/cc5blUZm.s:233    .text.TIM2_IRQHandler:00000000 TIM2_IRQHandler
+     /tmp/cc5blUZm.s:243    .text.TIM2_IRQHandler:0000000c $d
+     /tmp/cc5blUZm.s:246    .text.TIM3_IRQHandler:00000000 $t
+     /tmp/cc5blUZm.s:252    .text.TIM3_IRQHandler:00000000 TIM3_IRQHandler
+     /tmp/cc5blUZm.s:262    .text.TIM3_IRQHandler:0000000c $d
+     /tmp/cc5blUZm.s:265    .text.TIM4_IRQHandler:00000000 $t
+     /tmp/cc5blUZm.s:271    .text.TIM4_IRQHandler:00000000 TIM4_IRQHandler
+     /tmp/cc5blUZm.s:281    .text.TIM4_IRQHandler:0000000c $d
+
+UNDEFINED SYMBOLS
+HAL_IncTick
+HAL_GPIO_EXTI_IRQHandler
+HAL_DMA_IRQHandler
+hdma_adc1
+HAL_PCD_IRQHandler
+hpcd_USB_FS
+HAL_TIM_IRQHandler
+htim2
+htim3
+htim4

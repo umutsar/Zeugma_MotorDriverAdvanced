@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cctIVEZT.s 			page 1
+ARM GAS  /tmp/ccdh5c19.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -55,95 +55,96 @@ ARM GAS  /tmp/cctIVEZT.s 			page 1
   27:Src/tim.c     **** TIM_HandleTypeDef htim1;
   28:Src/tim.c     **** TIM_HandleTypeDef htim2;
   29:Src/tim.c     **** TIM_HandleTypeDef htim3;
-  30:Src/tim.c     **** 
-  31:Src/tim.c     **** /* TIM1 init function */
-  32:Src/tim.c     **** void MX_TIM1_Init(void)
-ARM GAS  /tmp/cctIVEZT.s 			page 2
+  30:Src/tim.c     **** TIM_HandleTypeDef htim4;
+  31:Src/tim.c     **** 
+  32:Src/tim.c     **** /* TIM1 init function */
+ARM GAS  /tmp/ccdh5c19.s 			page 2
 
 
-  33:Src/tim.c     **** {
-  34:Src/tim.c     **** 
-  35:Src/tim.c     ****   /* USER CODE BEGIN TIM1_Init 0 */
-  36:Src/tim.c     **** 
-  37:Src/tim.c     ****   /* USER CODE END TIM1_Init 0 */
-  38:Src/tim.c     **** 
-  39:Src/tim.c     ****   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  40:Src/tim.c     ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
-  41:Src/tim.c     ****   TIM_OC_InitTypeDef sConfigOC = {0};
-  42:Src/tim.c     ****   TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
-  43:Src/tim.c     **** 
-  44:Src/tim.c     ****   /* USER CODE BEGIN TIM1_Init 1 */
-  45:Src/tim.c     **** 
-  46:Src/tim.c     ****   /* USER CODE END TIM1_Init 1 */
-  47:Src/tim.c     ****   htim1.Instance = TIM1;
-  48:Src/tim.c     ****   htim1.Init.Prescaler = 3;
-  49:Src/tim.c     ****   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  50:Src/tim.c     ****   htim1.Init.Period = 1168;
-  51:Src/tim.c     ****   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  52:Src/tim.c     ****   htim1.Init.RepetitionCounter = 0;
-  53:Src/tim.c     ****   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  54:Src/tim.c     ****   if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
-  55:Src/tim.c     ****   {
-  56:Src/tim.c     ****     Error_Handler();
-  57:Src/tim.c     ****   }
-  58:Src/tim.c     ****   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  59:Src/tim.c     ****   if (HAL_TIM_ConfigClockSource(&htim1, &sClockSourceConfig) != HAL_OK)
-  60:Src/tim.c     ****   {
-  61:Src/tim.c     ****     Error_Handler();
-  62:Src/tim.c     ****   }
-  63:Src/tim.c     ****   if (HAL_TIM_PWM_Init(&htim1) != HAL_OK)
-  64:Src/tim.c     ****   {
-  65:Src/tim.c     ****     Error_Handler();
-  66:Src/tim.c     ****   }
-  67:Src/tim.c     ****   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  68:Src/tim.c     ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  69:Src/tim.c     ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
-  70:Src/tim.c     ****   {
-  71:Src/tim.c     ****     Error_Handler();
-  72:Src/tim.c     ****   }
-  73:Src/tim.c     ****   sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  74:Src/tim.c     ****   sConfigOC.Pulse = 0;
-  75:Src/tim.c     ****   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-  76:Src/tim.c     ****   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
-  77:Src/tim.c     ****   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  78:Src/tim.c     ****   sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
-  79:Src/tim.c     ****   sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
-  80:Src/tim.c     ****   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
-  81:Src/tim.c     ****   {
-  82:Src/tim.c     ****     Error_Handler();
-  83:Src/tim.c     ****   }
-  84:Src/tim.c     ****   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
-  85:Src/tim.c     ****   {
-  86:Src/tim.c     ****     Error_Handler();
-  87:Src/tim.c     ****   }
-  88:Src/tim.c     ****   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
-  89:Src/tim.c     ****   {
-ARM GAS  /tmp/cctIVEZT.s 			page 3
+  33:Src/tim.c     **** void MX_TIM1_Init(void)
+  34:Src/tim.c     **** {
+  35:Src/tim.c     **** 
+  36:Src/tim.c     ****   /* USER CODE BEGIN TIM1_Init 0 */
+  37:Src/tim.c     **** 
+  38:Src/tim.c     ****   /* USER CODE END TIM1_Init 0 */
+  39:Src/tim.c     **** 
+  40:Src/tim.c     ****   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  41:Src/tim.c     ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
+  42:Src/tim.c     ****   TIM_OC_InitTypeDef sConfigOC = {0};
+  43:Src/tim.c     ****   TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
+  44:Src/tim.c     **** 
+  45:Src/tim.c     ****   /* USER CODE BEGIN TIM1_Init 1 */
+  46:Src/tim.c     **** 
+  47:Src/tim.c     ****   /* USER CODE END TIM1_Init 1 */
+  48:Src/tim.c     ****   htim1.Instance = TIM1;
+  49:Src/tim.c     ****   htim1.Init.Prescaler = 3;
+  50:Src/tim.c     ****   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
+  51:Src/tim.c     ****   htim1.Init.Period = 1168;
+  52:Src/tim.c     ****   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  53:Src/tim.c     ****   htim1.Init.RepetitionCounter = 0;
+  54:Src/tim.c     ****   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  55:Src/tim.c     ****   if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
+  56:Src/tim.c     ****   {
+  57:Src/tim.c     ****     Error_Handler();
+  58:Src/tim.c     ****   }
+  59:Src/tim.c     ****   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  60:Src/tim.c     ****   if (HAL_TIM_ConfigClockSource(&htim1, &sClockSourceConfig) != HAL_OK)
+  61:Src/tim.c     ****   {
+  62:Src/tim.c     ****     Error_Handler();
+  63:Src/tim.c     ****   }
+  64:Src/tim.c     ****   if (HAL_TIM_PWM_Init(&htim1) != HAL_OK)
+  65:Src/tim.c     ****   {
+  66:Src/tim.c     ****     Error_Handler();
+  67:Src/tim.c     ****   }
+  68:Src/tim.c     ****   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  69:Src/tim.c     ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  70:Src/tim.c     ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
+  71:Src/tim.c     ****   {
+  72:Src/tim.c     ****     Error_Handler();
+  73:Src/tim.c     ****   }
+  74:Src/tim.c     ****   sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  75:Src/tim.c     ****   sConfigOC.Pulse = 0;
+  76:Src/tim.c     ****   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  77:Src/tim.c     ****   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
+  78:Src/tim.c     ****   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  79:Src/tim.c     ****   sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
+  80:Src/tim.c     ****   sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+  81:Src/tim.c     ****   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  82:Src/tim.c     ****   {
+  83:Src/tim.c     ****     Error_Handler();
+  84:Src/tim.c     ****   }
+  85:Src/tim.c     ****   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
+  86:Src/tim.c     ****   {
+  87:Src/tim.c     ****     Error_Handler();
+  88:Src/tim.c     ****   }
+  89:Src/tim.c     ****   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
+ARM GAS  /tmp/ccdh5c19.s 			page 3
 
 
-  90:Src/tim.c     ****     Error_Handler();
-  91:Src/tim.c     ****   }
-  92:Src/tim.c     ****   sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
-  93:Src/tim.c     ****   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
-  94:Src/tim.c     ****   sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
-  95:Src/tim.c     ****   sBreakDeadTimeConfig.DeadTime = 60;
-  96:Src/tim.c     ****   sBreakDeadTimeConfig.BreakState = TIM_BREAK_ENABLE;
-  97:Src/tim.c     ****   sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
-  98:Src/tim.c     ****   sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
-  99:Src/tim.c     ****   if (HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBreakDeadTimeConfig) != HAL_OK)
- 100:Src/tim.c     ****   {
- 101:Src/tim.c     ****     Error_Handler();
- 102:Src/tim.c     ****   }
- 103:Src/tim.c     ****   /* USER CODE BEGIN TIM1_Init 2 */
- 104:Src/tim.c     **** 
- 105:Src/tim.c     ****   /* USER CODE END TIM1_Init 2 */
- 106:Src/tim.c     ****   HAL_TIM_MspPostInit(&htim1);
- 107:Src/tim.c     **** 
- 108:Src/tim.c     **** }
- 109:Src/tim.c     **** /* TIM2 init function */
- 110:Src/tim.c     **** void MX_TIM2_Init(void)
- 111:Src/tim.c     **** {
-  27              		.loc 1 111 1 view -0
+  90:Src/tim.c     ****   {
+  91:Src/tim.c     ****     Error_Handler();
+  92:Src/tim.c     ****   }
+  93:Src/tim.c     ****   sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
+  94:Src/tim.c     ****   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
+  95:Src/tim.c     ****   sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
+  96:Src/tim.c     ****   sBreakDeadTimeConfig.DeadTime = 60;
+  97:Src/tim.c     ****   sBreakDeadTimeConfig.BreakState = TIM_BREAK_ENABLE;
+  98:Src/tim.c     ****   sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
+  99:Src/tim.c     ****   sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
+ 100:Src/tim.c     ****   if (HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBreakDeadTimeConfig) != HAL_OK)
+ 101:Src/tim.c     ****   {
+ 102:Src/tim.c     ****     Error_Handler();
+ 103:Src/tim.c     ****   }
+ 104:Src/tim.c     ****   /* USER CODE BEGIN TIM1_Init 2 */
+ 105:Src/tim.c     **** 
+ 106:Src/tim.c     ****   /* USER CODE END TIM1_Init 2 */
+ 107:Src/tim.c     ****   HAL_TIM_MspPostInit(&htim1);
+ 108:Src/tim.c     **** 
+ 109:Src/tim.c     **** }
+ 110:Src/tim.c     **** /* TIM2 init function */
+ 111:Src/tim.c     **** void MX_TIM2_Init(void)
+ 112:Src/tim.c     **** {
+  27              		.loc 1 112 1 view -0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 24
   30              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -152,119 +153,119 @@ ARM GAS  /tmp/cctIVEZT.s 			page 1
   33              		.cfi_offset 14, -4
   34 0002 87B0     		sub	sp, sp, #28
   35              		.cfi_def_cfa_offset 32
- 112:Src/tim.c     **** 
- 113:Src/tim.c     ****   /* USER CODE BEGIN TIM2_Init 0 */
- 114:Src/tim.c     **** 
- 115:Src/tim.c     ****   /* USER CODE END TIM2_Init 0 */
- 116:Src/tim.c     **** 
- 117:Src/tim.c     ****   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  36              		.loc 1 117 3 view .LVU1
-  37              		.loc 1 117 26 is_stmt 0 view .LVU2
+ 113:Src/tim.c     **** 
+ 114:Src/tim.c     ****   /* USER CODE BEGIN TIM2_Init 0 */
+ 115:Src/tim.c     **** 
+ 116:Src/tim.c     ****   /* USER CODE END TIM2_Init 0 */
+ 117:Src/tim.c     **** 
+ 118:Src/tim.c     ****   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  36              		.loc 1 118 3 view .LVU1
+  37              		.loc 1 118 26 is_stmt 0 view .LVU2
   38 0004 0023     		movs	r3, #0
   39 0006 0293     		str	r3, [sp, #8]
   40 0008 0393     		str	r3, [sp, #12]
   41 000a 0493     		str	r3, [sp, #16]
   42 000c 0593     		str	r3, [sp, #20]
- 118:Src/tim.c     ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
-  43              		.loc 1 118 3 is_stmt 1 view .LVU3
-  44              		.loc 1 118 27 is_stmt 0 view .LVU4
+ 119:Src/tim.c     ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
+  43              		.loc 1 119 3 is_stmt 1 view .LVU3
+  44              		.loc 1 119 27 is_stmt 0 view .LVU4
   45 000e 0093     		str	r3, [sp]
   46 0010 0193     		str	r3, [sp, #4]
- 119:Src/tim.c     **** 
- 120:Src/tim.c     ****   /* USER CODE BEGIN TIM2_Init 1 */
- 121:Src/tim.c     **** 
- 122:Src/tim.c     ****   /* USER CODE END TIM2_Init 1 */
- 123:Src/tim.c     ****   htim2.Instance = TIM2;
-  47              		.loc 1 123 3 is_stmt 1 view .LVU5
-  48              		.loc 1 123 18 is_stmt 0 view .LVU6
+ 120:Src/tim.c     **** 
+ 121:Src/tim.c     ****   /* USER CODE BEGIN TIM2_Init 1 */
+ 122:Src/tim.c     **** 
+ 123:Src/tim.c     ****   /* USER CODE END TIM2_Init 1 */
+ 124:Src/tim.c     ****   htim2.Instance = TIM2;
+  47              		.loc 1 124 3 is_stmt 1 view .LVU5
+  48              		.loc 1 124 18 is_stmt 0 view .LVU6
+ARM GAS  /tmp/ccdh5c19.s 			page 4
+
+
   49 0012 1648     		ldr	r0, .L9
-ARM GAS  /tmp/cctIVEZT.s 			page 4
-
-
   50 0014 4FF08042 		mov	r2, #1073741824
   51 0018 0260     		str	r2, [r0]
- 124:Src/tim.c     ****   htim2.Init.Prescaler = 719;
-  52              		.loc 1 124 3 is_stmt 1 view .LVU7
-  53              		.loc 1 124 24 is_stmt 0 view .LVU8
+ 125:Src/tim.c     ****   htim2.Init.Prescaler = 719;
+  52              		.loc 1 125 3 is_stmt 1 view .LVU7
+  53              		.loc 1 125 24 is_stmt 0 view .LVU8
   54 001a 40F2CF22 		movw	r2, #719
   55 001e 4260     		str	r2, [r0, #4]
- 125:Src/tim.c     ****   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  56              		.loc 1 125 3 is_stmt 1 view .LVU9
-  57              		.loc 1 125 26 is_stmt 0 view .LVU10
+ 126:Src/tim.c     ****   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  56              		.loc 1 126 3 is_stmt 1 view .LVU9
+  57              		.loc 1 126 26 is_stmt 0 view .LVU10
   58 0020 8360     		str	r3, [r0, #8]
- 126:Src/tim.c     ****   htim2.Init.Period = 65535;
-  59              		.loc 1 126 3 is_stmt 1 view .LVU11
-  60              		.loc 1 126 21 is_stmt 0 view .LVU12
-  61 0022 4FF6FF72 		movw	r2, #65535
+ 127:Src/tim.c     ****   htim2.Init.Period = 5000;
+  59              		.loc 1 127 3 is_stmt 1 view .LVU11
+  60              		.loc 1 127 21 is_stmt 0 view .LVU12
+  61 0022 41F28832 		movw	r2, #5000
   62 0026 C260     		str	r2, [r0, #12]
- 127:Src/tim.c     ****   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  63              		.loc 1 127 3 is_stmt 1 view .LVU13
-  64              		.loc 1 127 28 is_stmt 0 view .LVU14
+ 128:Src/tim.c     ****   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  63              		.loc 1 128 3 is_stmt 1 view .LVU13
+  64              		.loc 1 128 28 is_stmt 0 view .LVU14
   65 0028 0361     		str	r3, [r0, #16]
- 128:Src/tim.c     ****   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  66              		.loc 1 128 3 is_stmt 1 view .LVU15
-  67              		.loc 1 128 32 is_stmt 0 view .LVU16
+ 129:Src/tim.c     ****   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  66              		.loc 1 129 3 is_stmt 1 view .LVU15
+  67              		.loc 1 129 32 is_stmt 0 view .LVU16
   68 002a 8361     		str	r3, [r0, #24]
- 129:Src/tim.c     ****   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
-  69              		.loc 1 129 3 is_stmt 1 view .LVU17
-  70              		.loc 1 129 7 is_stmt 0 view .LVU18
+ 130:Src/tim.c     ****   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  69              		.loc 1 130 3 is_stmt 1 view .LVU17
+  70              		.loc 1 130 7 is_stmt 0 view .LVU18
   71 002c FFF7FEFF 		bl	HAL_TIM_Base_Init
   72              	.LVL0:
-  73              		.loc 1 129 6 discriminator 1 view .LVU19
+  73              		.loc 1 130 6 discriminator 1 view .LVU19
   74 0030 90B9     		cbnz	r0, .L6
   75              	.L2:
- 130:Src/tim.c     ****   {
- 131:Src/tim.c     ****     Error_Handler();
- 132:Src/tim.c     ****   }
- 133:Src/tim.c     ****   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  76              		.loc 1 133 3 is_stmt 1 view .LVU20
-  77              		.loc 1 133 34 is_stmt 0 view .LVU21
+ 131:Src/tim.c     ****   {
+ 132:Src/tim.c     ****     Error_Handler();
+ 133:Src/tim.c     ****   }
+ 134:Src/tim.c     ****   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  76              		.loc 1 134 3 is_stmt 1 view .LVU20
+  77              		.loc 1 134 34 is_stmt 0 view .LVU21
   78 0032 4FF48053 		mov	r3, #4096
   79 0036 0293     		str	r3, [sp, #8]
- 134:Src/tim.c     ****   if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
-  80              		.loc 1 134 3 is_stmt 1 view .LVU22
-  81              		.loc 1 134 7 is_stmt 0 view .LVU23
+ 135:Src/tim.c     ****   if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  80              		.loc 1 135 3 is_stmt 1 view .LVU22
+  81              		.loc 1 135 7 is_stmt 0 view .LVU23
   82 0038 02A9     		add	r1, sp, #8
   83 003a 0C48     		ldr	r0, .L9
   84 003c FFF7FEFF 		bl	HAL_TIM_ConfigClockSource
   85              	.LVL1:
-  86              		.loc 1 134 6 discriminator 1 view .LVU24
+  86              		.loc 1 135 6 discriminator 1 view .LVU24
   87 0040 68B9     		cbnz	r0, .L7
   88              	.L3:
- 135:Src/tim.c     ****   {
- 136:Src/tim.c     ****     Error_Handler();
- 137:Src/tim.c     ****   }
- 138:Src/tim.c     ****   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  89              		.loc 1 138 3 is_stmt 1 view .LVU25
-  90              		.loc 1 138 37 is_stmt 0 view .LVU26
+ 136:Src/tim.c     ****   {
+ 137:Src/tim.c     ****     Error_Handler();
+ 138:Src/tim.c     ****   }
+ 139:Src/tim.c     ****   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  89              		.loc 1 139 3 is_stmt 1 view .LVU25
+  90              		.loc 1 139 37 is_stmt 0 view .LVU26
+ARM GAS  /tmp/ccdh5c19.s 			page 5
+
+
   91 0042 0023     		movs	r3, #0
-ARM GAS  /tmp/cctIVEZT.s 			page 5
-
-
   92 0044 0093     		str	r3, [sp]
- 139:Src/tim.c     ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  93              		.loc 1 139 3 is_stmt 1 view .LVU27
-  94              		.loc 1 139 33 is_stmt 0 view .LVU28
+ 140:Src/tim.c     ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  93              		.loc 1 140 3 is_stmt 1 view .LVU27
+  94              		.loc 1 140 33 is_stmt 0 view .LVU28
   95 0046 0193     		str	r3, [sp, #4]
- 140:Src/tim.c     ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
-  96              		.loc 1 140 3 is_stmt 1 view .LVU29
-  97              		.loc 1 140 7 is_stmt 0 view .LVU30
+ 141:Src/tim.c     ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  96              		.loc 1 141 3 is_stmt 1 view .LVU29
+  97              		.loc 1 141 7 is_stmt 0 view .LVU30
   98 0048 6946     		mov	r1, sp
   99 004a 0848     		ldr	r0, .L9
  100 004c FFF7FEFF 		bl	HAL_TIMEx_MasterConfigSynchronization
  101              	.LVL2:
- 102              		.loc 1 140 6 discriminator 1 view .LVU31
+ 102              		.loc 1 141 6 discriminator 1 view .LVU31
  103 0050 40B9     		cbnz	r0, .L8
  104              	.L1:
- 141:Src/tim.c     ****   {
- 142:Src/tim.c     ****     Error_Handler();
- 143:Src/tim.c     ****   }
- 144:Src/tim.c     ****   /* USER CODE BEGIN TIM2_Init 2 */
- 145:Src/tim.c     **** 
- 146:Src/tim.c     ****   /* USER CODE END TIM2_Init 2 */
- 147:Src/tim.c     **** 
- 148:Src/tim.c     **** }
- 105              		.loc 1 148 1 view .LVU32
+ 142:Src/tim.c     ****   {
+ 143:Src/tim.c     ****     Error_Handler();
+ 144:Src/tim.c     ****   }
+ 145:Src/tim.c     ****   /* USER CODE BEGIN TIM2_Init 2 */
+ 146:Src/tim.c     **** 
+ 147:Src/tim.c     ****   /* USER CODE END TIM2_Init 2 */
+ 148:Src/tim.c     **** 
+ 149:Src/tim.c     **** }
+ 105              		.loc 1 149 1 view .LVU32
  106 0052 07B0     		add	sp, sp, #28
  107              		.cfi_remember_state
  108              		.cfi_def_cfa_offset 4
@@ -272,23 +273,23 @@ ARM GAS  /tmp/cctIVEZT.s 			page 1
  110 0054 5DF804FB 		ldr	pc, [sp], #4
  111              	.L6:
  112              		.cfi_restore_state
- 131:Src/tim.c     ****   }
- 113              		.loc 1 131 5 is_stmt 1 view .LVU33
+ 132:Src/tim.c     ****   }
+ 113              		.loc 1 132 5 is_stmt 1 view .LVU33
  114 0058 FFF7FEFF 		bl	Error_Handler
  115              	.LVL3:
  116 005c E9E7     		b	.L2
  117              	.L7:
- 136:Src/tim.c     ****   }
- 118              		.loc 1 136 5 view .LVU34
+ 137:Src/tim.c     ****   }
+ 118              		.loc 1 137 5 view .LVU34
  119 005e FFF7FEFF 		bl	Error_Handler
  120              	.LVL4:
  121 0062 EEE7     		b	.L3
  122              	.L8:
- 142:Src/tim.c     ****   }
- 123              		.loc 1 142 5 view .LVU35
+ 143:Src/tim.c     ****   }
+ 123              		.loc 1 143 5 view .LVU35
  124 0064 FFF7FEFF 		bl	Error_Handler
  125              	.LVL5:
- 126              		.loc 1 148 1 is_stmt 0 view .LVU36
+ 126              		.loc 1 149 1 is_stmt 0 view .LVU36
  127 0068 F3E7     		b	.L1
  128              	.L10:
  129 006a 00BF     		.align	2
@@ -297,20 +298,20 @@ ARM GAS  /tmp/cctIVEZT.s 			page 1
  132              		.cfi_endproc
  133              	.LFE66:
  135              		.section	.text.MX_TIM3_Init,"ax",%progbits
+ARM GAS  /tmp/ccdh5c19.s 			page 6
+
+
  136              		.align	1
-ARM GAS  /tmp/cctIVEZT.s 			page 6
-
-
  137              		.global	MX_TIM3_Init
  138              		.syntax unified
  139              		.thumb
  140              		.thumb_func
  142              	MX_TIM3_Init:
  143              	.LFB67:
- 149:Src/tim.c     **** /* TIM3 init function */
- 150:Src/tim.c     **** void MX_TIM3_Init(void)
- 151:Src/tim.c     **** {
- 144              		.loc 1 151 1 is_stmt 1 view -0
+ 150:Src/tim.c     **** /* TIM3 init function */
+ 151:Src/tim.c     **** void MX_TIM3_Init(void)
+ 152:Src/tim.c     **** {
+ 144              		.loc 1 152 1 is_stmt 1 view -0
  145              		.cfi_startproc
  146              		@ args = 0, pretend = 0, frame = 24
  147              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -319,119 +320,119 @@ ARM GAS  /tmp/cctIVEZT.s 			page 1
  150              		.cfi_offset 14, -4
  151 0002 87B0     		sub	sp, sp, #28
  152              		.cfi_def_cfa_offset 32
- 152:Src/tim.c     **** 
- 153:Src/tim.c     ****   /* USER CODE BEGIN TIM3_Init 0 */
- 154:Src/tim.c     **** 
- 155:Src/tim.c     ****   /* USER CODE END TIM3_Init 0 */
- 156:Src/tim.c     **** 
- 157:Src/tim.c     ****   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
- 153              		.loc 1 157 3 view .LVU38
- 154              		.loc 1 157 26 is_stmt 0 view .LVU39
+ 153:Src/tim.c     **** 
+ 154:Src/tim.c     ****   /* USER CODE BEGIN TIM3_Init 0 */
+ 155:Src/tim.c     **** 
+ 156:Src/tim.c     ****   /* USER CODE END TIM3_Init 0 */
+ 157:Src/tim.c     **** 
+ 158:Src/tim.c     ****   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+ 153              		.loc 1 158 3 view .LVU38
+ 154              		.loc 1 158 26 is_stmt 0 view .LVU39
  155 0004 0023     		movs	r3, #0
  156 0006 0293     		str	r3, [sp, #8]
  157 0008 0393     		str	r3, [sp, #12]
  158 000a 0493     		str	r3, [sp, #16]
  159 000c 0593     		str	r3, [sp, #20]
- 158:Src/tim.c     ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
- 160              		.loc 1 158 3 is_stmt 1 view .LVU40
- 161              		.loc 1 158 27 is_stmt 0 view .LVU41
+ 159:Src/tim.c     ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
+ 160              		.loc 1 159 3 is_stmt 1 view .LVU40
+ 161              		.loc 1 159 27 is_stmt 0 view .LVU41
  162 000e 0093     		str	r3, [sp]
  163 0010 0193     		str	r3, [sp, #4]
- 159:Src/tim.c     **** 
- 160:Src/tim.c     ****   /* USER CODE BEGIN TIM3_Init 1 */
- 161:Src/tim.c     **** 
- 162:Src/tim.c     ****   /* USER CODE END TIM3_Init 1 */
- 163:Src/tim.c     ****   htim3.Instance = TIM3;
- 164              		.loc 1 163 3 is_stmt 1 view .LVU42
- 165              		.loc 1 163 18 is_stmt 0 view .LVU43
+ 160:Src/tim.c     **** 
+ 161:Src/tim.c     ****   /* USER CODE BEGIN TIM3_Init 1 */
+ 162:Src/tim.c     **** 
+ 163:Src/tim.c     ****   /* USER CODE END TIM3_Init 1 */
+ 164:Src/tim.c     ****   htim3.Instance = TIM3;
+ 164              		.loc 1 164 3 is_stmt 1 view .LVU42
+ 165              		.loc 1 164 18 is_stmt 0 view .LVU43
  166 0012 1548     		ldr	r0, .L19
  167 0014 154A     		ldr	r2, .L19+4
  168 0016 0260     		str	r2, [r0]
- 164:Src/tim.c     ****   htim3.Init.Prescaler = 7199;
- 169              		.loc 1 164 3 is_stmt 1 view .LVU44
- 170              		.loc 1 164 24 is_stmt 0 view .LVU45
- 171 0018 41F61F42 		movw	r2, #7199
+ 165:Src/tim.c     ****   htim3.Init.Prescaler = 359;
+ 169              		.loc 1 165 3 is_stmt 1 view .LVU44
+ 170              		.loc 1 165 24 is_stmt 0 view .LVU45
+ 171 0018 40F26712 		movw	r2, #359
  172 001c 4260     		str	r2, [r0, #4]
- 165:Src/tim.c     ****   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
- 173              		.loc 1 165 3 is_stmt 1 view .LVU46
- 174              		.loc 1 165 26 is_stmt 0 view .LVU47
+ 166:Src/tim.c     ****   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+ 173              		.loc 1 166 3 is_stmt 1 view .LVU46
+ 174              		.loc 1 166 26 is_stmt 0 view .LVU47
  175 001e 8360     		str	r3, [r0, #8]
- 166:Src/tim.c     ****   htim3.Init.Period = 199;
- 176              		.loc 1 166 3 is_stmt 1 view .LVU48
-ARM GAS  /tmp/cctIVEZT.s 			page 7
+ 167:Src/tim.c     ****   htim3.Init.Period = 250;
+ARM GAS  /tmp/ccdh5c19.s 			page 7
 
 
- 177              		.loc 1 166 21 is_stmt 0 view .LVU49
- 178 0020 C722     		movs	r2, #199
+ 176              		.loc 1 167 3 is_stmt 1 view .LVU48
+ 177              		.loc 1 167 21 is_stmt 0 view .LVU49
+ 178 0020 FA22     		movs	r2, #250
  179 0022 C260     		str	r2, [r0, #12]
- 167:Src/tim.c     ****   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
- 180              		.loc 1 167 3 is_stmt 1 view .LVU50
- 181              		.loc 1 167 28 is_stmt 0 view .LVU51
+ 168:Src/tim.c     ****   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+ 180              		.loc 1 168 3 is_stmt 1 view .LVU50
+ 181              		.loc 1 168 28 is_stmt 0 view .LVU51
  182 0024 0361     		str	r3, [r0, #16]
- 168:Src/tim.c     ****   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
- 183              		.loc 1 168 3 is_stmt 1 view .LVU52
- 184              		.loc 1 168 32 is_stmt 0 view .LVU53
+ 169:Src/tim.c     ****   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+ 183              		.loc 1 169 3 is_stmt 1 view .LVU52
+ 184              		.loc 1 169 32 is_stmt 0 view .LVU53
  185 0026 8361     		str	r3, [r0, #24]
- 169:Src/tim.c     ****   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
- 186              		.loc 1 169 3 is_stmt 1 view .LVU54
- 187              		.loc 1 169 7 is_stmt 0 view .LVU55
+ 170:Src/tim.c     ****   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+ 186              		.loc 1 170 3 is_stmt 1 view .LVU54
+ 187              		.loc 1 170 7 is_stmt 0 view .LVU55
  188 0028 FFF7FEFF 		bl	HAL_TIM_Base_Init
  189              	.LVL6:
- 190              		.loc 1 169 6 discriminator 1 view .LVU56
+ 190              		.loc 1 170 6 discriminator 1 view .LVU56
  191 002c 90B9     		cbnz	r0, .L16
  192              	.L12:
- 170:Src/tim.c     ****   {
- 171:Src/tim.c     ****     Error_Handler();
- 172:Src/tim.c     ****   }
- 173:Src/tim.c     ****   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
- 193              		.loc 1 173 3 is_stmt 1 view .LVU57
- 194              		.loc 1 173 34 is_stmt 0 view .LVU58
+ 171:Src/tim.c     ****   {
+ 172:Src/tim.c     ****     Error_Handler();
+ 173:Src/tim.c     ****   }
+ 174:Src/tim.c     ****   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+ 193              		.loc 1 174 3 is_stmt 1 view .LVU57
+ 194              		.loc 1 174 34 is_stmt 0 view .LVU58
  195 002e 4FF48053 		mov	r3, #4096
  196 0032 0293     		str	r3, [sp, #8]
- 174:Src/tim.c     ****   if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
- 197              		.loc 1 174 3 is_stmt 1 view .LVU59
- 198              		.loc 1 174 7 is_stmt 0 view .LVU60
+ 175:Src/tim.c     ****   if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+ 197              		.loc 1 175 3 is_stmt 1 view .LVU59
+ 198              		.loc 1 175 7 is_stmt 0 view .LVU60
  199 0034 02A9     		add	r1, sp, #8
  200 0036 0C48     		ldr	r0, .L19
  201 0038 FFF7FEFF 		bl	HAL_TIM_ConfigClockSource
  202              	.LVL7:
- 203              		.loc 1 174 6 discriminator 1 view .LVU61
+ 203              		.loc 1 175 6 discriminator 1 view .LVU61
  204 003c 68B9     		cbnz	r0, .L17
  205              	.L13:
- 175:Src/tim.c     ****   {
- 176:Src/tim.c     ****     Error_Handler();
- 177:Src/tim.c     ****   }
- 178:Src/tim.c     ****   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
- 206              		.loc 1 178 3 is_stmt 1 view .LVU62
- 207              		.loc 1 178 37 is_stmt 0 view .LVU63
+ 176:Src/tim.c     ****   {
+ 177:Src/tim.c     ****     Error_Handler();
+ 178:Src/tim.c     ****   }
+ 179:Src/tim.c     ****   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+ 206              		.loc 1 179 3 is_stmt 1 view .LVU62
+ 207              		.loc 1 179 37 is_stmt 0 view .LVU63
  208 003e 0023     		movs	r3, #0
  209 0040 0093     		str	r3, [sp]
- 179:Src/tim.c     ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
- 210              		.loc 1 179 3 is_stmt 1 view .LVU64
- 211              		.loc 1 179 33 is_stmt 0 view .LVU65
+ 180:Src/tim.c     ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+ 210              		.loc 1 180 3 is_stmt 1 view .LVU64
+ 211              		.loc 1 180 33 is_stmt 0 view .LVU65
  212 0042 0193     		str	r3, [sp, #4]
- 180:Src/tim.c     ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
- 213              		.loc 1 180 3 is_stmt 1 view .LVU66
- 214              		.loc 1 180 7 is_stmt 0 view .LVU67
+ 181:Src/tim.c     ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+ 213              		.loc 1 181 3 is_stmt 1 view .LVU66
+ 214              		.loc 1 181 7 is_stmt 0 view .LVU67
  215 0044 6946     		mov	r1, sp
  216 0046 0848     		ldr	r0, .L19
  217 0048 FFF7FEFF 		bl	HAL_TIMEx_MasterConfigSynchronization
  218              	.LVL8:
- 219              		.loc 1 180 6 discriminator 1 view .LVU68
-ARM GAS  /tmp/cctIVEZT.s 			page 8
+ARM GAS  /tmp/ccdh5c19.s 			page 8
 
 
+ 219              		.loc 1 181 6 discriminator 1 view .LVU68
  220 004c 40B9     		cbnz	r0, .L18
  221              	.L11:
- 181:Src/tim.c     ****   {
- 182:Src/tim.c     ****     Error_Handler();
- 183:Src/tim.c     ****   }
- 184:Src/tim.c     ****   /* USER CODE BEGIN TIM3_Init 2 */
- 185:Src/tim.c     **** 
- 186:Src/tim.c     ****   /* USER CODE END TIM3_Init 2 */
- 187:Src/tim.c     **** 
- 188:Src/tim.c     **** }
- 222              		.loc 1 188 1 view .LVU69
+ 182:Src/tim.c     ****   {
+ 183:Src/tim.c     ****     Error_Handler();
+ 184:Src/tim.c     ****   }
+ 185:Src/tim.c     ****   /* USER CODE BEGIN TIM3_Init 2 */
+ 186:Src/tim.c     **** 
+ 187:Src/tim.c     ****   /* USER CODE END TIM3_Init 2 */
+ 188:Src/tim.c     **** 
+ 189:Src/tim.c     **** }
+ 222              		.loc 1 189 1 view .LVU69
  223 004e 07B0     		add	sp, sp, #28
  224              		.cfi_remember_state
  225              		.cfi_def_cfa_offset 4
@@ -439,23 +440,23 @@ ARM GAS  /tmp/cctIVEZT.s 			page 1
  227 0050 5DF804FB 		ldr	pc, [sp], #4
  228              	.L16:
  229              		.cfi_restore_state
- 171:Src/tim.c     ****   }
- 230              		.loc 1 171 5 is_stmt 1 view .LVU70
+ 172:Src/tim.c     ****   }
+ 230              		.loc 1 172 5 is_stmt 1 view .LVU70
  231 0054 FFF7FEFF 		bl	Error_Handler
  232              	.LVL9:
  233 0058 E9E7     		b	.L12
  234              	.L17:
- 176:Src/tim.c     ****   }
- 235              		.loc 1 176 5 view .LVU71
+ 177:Src/tim.c     ****   }
+ 235              		.loc 1 177 5 view .LVU71
  236 005a FFF7FEFF 		bl	Error_Handler
  237              	.LVL10:
  238 005e EEE7     		b	.L13
  239              	.L18:
- 182:Src/tim.c     ****   }
- 240              		.loc 1 182 5 view .LVU72
+ 183:Src/tim.c     ****   }
+ 240              		.loc 1 183 5 view .LVU72
  241 0060 FFF7FEFF 		bl	Error_Handler
  242              	.LVL11:
- 243              		.loc 1 188 1 is_stmt 0 view .LVU73
+ 243              		.loc 1 189 1 is_stmt 0 view .LVU73
  244 0064 F3E7     		b	.L11
  245              	.L20:
  246 0066 00BF     		.align	2
@@ -464,1092 +465,1378 @@ ARM GAS  /tmp/cctIVEZT.s 			page 1
  249 006c 00040040 		.word	1073742848
  250              		.cfi_endproc
  251              	.LFE67:
- 253              		.section	.text.HAL_TIM_Base_MspInit,"ax",%progbits
+ 253              		.section	.text.MX_TIM4_Init,"ax",%progbits
  254              		.align	1
- 255              		.global	HAL_TIM_Base_MspInit
+ 255              		.global	MX_TIM4_Init
  256              		.syntax unified
  257              		.thumb
  258              		.thumb_func
- 260              	HAL_TIM_Base_MspInit:
- 261              	.LVL12:
- 262              	.LFB68:
- 189:Src/tim.c     **** 
- 190:Src/tim.c     **** void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
- 191:Src/tim.c     **** {
- 263              		.loc 1 191 1 is_stmt 1 view -0
- 264              		.cfi_startproc
-ARM GAS  /tmp/cctIVEZT.s 			page 9
+ 260              	MX_TIM4_Init:
+ 261              	.LFB68:
+ 190:Src/tim.c     **** /* TIM4 init function */
+ 191:Src/tim.c     **** void MX_TIM4_Init(void)
+ 192:Src/tim.c     **** {
+ 262              		.loc 1 192 1 is_stmt 1 view -0
+ 263              		.cfi_startproc
+ARM GAS  /tmp/ccdh5c19.s 			page 9
 
 
- 265              		@ args = 0, pretend = 0, frame = 32
- 266              		@ frame_needed = 0, uses_anonymous_args = 0
- 267              		.loc 1 191 1 is_stmt 0 view .LVU75
- 268 0000 00B5     		push	{lr}
- 269              		.cfi_def_cfa_offset 4
- 270              		.cfi_offset 14, -4
- 271 0002 89B0     		sub	sp, sp, #36
- 272              		.cfi_def_cfa_offset 40
- 192:Src/tim.c     **** 
- 193:Src/tim.c     ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
- 273              		.loc 1 193 3 is_stmt 1 view .LVU76
- 274              		.loc 1 193 20 is_stmt 0 view .LVU77
- 275 0004 0023     		movs	r3, #0
- 276 0006 0493     		str	r3, [sp, #16]
- 277 0008 0593     		str	r3, [sp, #20]
- 278 000a 0693     		str	r3, [sp, #24]
- 279 000c 0793     		str	r3, [sp, #28]
- 194:Src/tim.c     ****   if(tim_baseHandle->Instance==TIM1)
- 280              		.loc 1 194 3 is_stmt 1 view .LVU78
- 281              		.loc 1 194 20 is_stmt 0 view .LVU79
- 282 000e 0368     		ldr	r3, [r0]
- 283              		.loc 1 194 5 view .LVU80
- 284 0010 264A     		ldr	r2, .L29
- 285 0012 9342     		cmp	r3, r2
- 286 0014 08D0     		beq	.L26
- 195:Src/tim.c     ****   {
- 196:Src/tim.c     ****   /* USER CODE BEGIN TIM1_MspInit 0 */
+ 264              		@ args = 0, pretend = 0, frame = 24
+ 265              		@ frame_needed = 0, uses_anonymous_args = 0
+ 266 0000 00B5     		push	{lr}
+ 267              		.cfi_def_cfa_offset 4
+ 268              		.cfi_offset 14, -4
+ 269 0002 87B0     		sub	sp, sp, #28
+ 270              		.cfi_def_cfa_offset 32
+ 193:Src/tim.c     **** 
+ 194:Src/tim.c     ****   /* USER CODE BEGIN TIM4_Init 0 */
+ 195:Src/tim.c     **** 
+ 196:Src/tim.c     ****   /* USER CODE END TIM4_Init 0 */
  197:Src/tim.c     **** 
- 198:Src/tim.c     ****   /* USER CODE END TIM1_MspInit 0 */
- 199:Src/tim.c     ****     /* TIM1 clock enable */
- 200:Src/tim.c     ****     __HAL_RCC_TIM1_CLK_ENABLE();
- 201:Src/tim.c     **** 
- 202:Src/tim.c     ****     __HAL_RCC_GPIOB_CLK_ENABLE();
- 203:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 204:Src/tim.c     ****     PB12     ------> TIM1_BKIN
- 205:Src/tim.c     ****     */
- 206:Src/tim.c     ****     GPIO_InitStruct.Pin = GPIO_PIN_12;
- 207:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
- 208:Src/tim.c     ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 209:Src/tim.c     ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
- 210:Src/tim.c     **** 
- 211:Src/tim.c     ****   /* USER CODE BEGIN TIM1_MspInit 1 */
- 212:Src/tim.c     **** 
- 213:Src/tim.c     ****   /* USER CODE END TIM1_MspInit 1 */
- 214:Src/tim.c     ****   }
- 215:Src/tim.c     ****   else if(tim_baseHandle->Instance==TIM2)
- 287              		.loc 1 215 8 is_stmt 1 view .LVU81
- 288              		.loc 1 215 10 is_stmt 0 view .LVU82
- 289 0016 B3F1804F 		cmp	r3, #1073741824
- 290 001a 20D0     		beq	.L27
+ 198:Src/tim.c     ****   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+ 271              		.loc 1 198 3 view .LVU75
+ 272              		.loc 1 198 26 is_stmt 0 view .LVU76
+ 273 0004 0023     		movs	r3, #0
+ 274 0006 0293     		str	r3, [sp, #8]
+ 275 0008 0393     		str	r3, [sp, #12]
+ 276 000a 0493     		str	r3, [sp, #16]
+ 277 000c 0593     		str	r3, [sp, #20]
+ 199:Src/tim.c     ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
+ 278              		.loc 1 199 3 is_stmt 1 view .LVU77
+ 279              		.loc 1 199 27 is_stmt 0 view .LVU78
+ 280 000e 0093     		str	r3, [sp]
+ 281 0010 0193     		str	r3, [sp, #4]
+ 200:Src/tim.c     **** 
+ 201:Src/tim.c     ****   /* USER CODE BEGIN TIM4_Init 1 */
+ 202:Src/tim.c     **** 
+ 203:Src/tim.c     ****   /* USER CODE END TIM4_Init 1 */
+ 204:Src/tim.c     ****   htim4.Instance = TIM4;
+ 282              		.loc 1 204 3 is_stmt 1 view .LVU79
+ 283              		.loc 1 204 18 is_stmt 0 view .LVU80
+ 284 0012 1548     		ldr	r0, .L29
+ 285 0014 154A     		ldr	r2, .L29+4
+ 286 0016 0260     		str	r2, [r0]
+ 205:Src/tim.c     ****   htim4.Init.Prescaler = 359;
+ 287              		.loc 1 205 3 is_stmt 1 view .LVU81
+ 288              		.loc 1 205 24 is_stmt 0 view .LVU82
+ 289 0018 40F26712 		movw	r2, #359
+ 290 001c 4260     		str	r2, [r0, #4]
+ 206:Src/tim.c     ****   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
+ 291              		.loc 1 206 3 is_stmt 1 view .LVU83
+ 292              		.loc 1 206 26 is_stmt 0 view .LVU84
+ 293 001e 8360     		str	r3, [r0, #8]
+ 207:Src/tim.c     ****   htim4.Init.Period = 19999;
+ 294              		.loc 1 207 3 is_stmt 1 view .LVU85
+ 295              		.loc 1 207 21 is_stmt 0 view .LVU86
+ 296 0020 44F61F62 		movw	r2, #19999
+ 297 0024 C260     		str	r2, [r0, #12]
+ 208:Src/tim.c     ****   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+ 298              		.loc 1 208 3 is_stmt 1 view .LVU87
+ 299              		.loc 1 208 28 is_stmt 0 view .LVU88
+ 300 0026 0361     		str	r3, [r0, #16]
+ 209:Src/tim.c     ****   htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+ 301              		.loc 1 209 3 is_stmt 1 view .LVU89
+ 302              		.loc 1 209 32 is_stmt 0 view .LVU90
+ 303 0028 8361     		str	r3, [r0, #24]
+ARM GAS  /tmp/ccdh5c19.s 			page 10
+
+
+ 210:Src/tim.c     ****   if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
+ 304              		.loc 1 210 3 is_stmt 1 view .LVU91
+ 305              		.loc 1 210 7 is_stmt 0 view .LVU92
+ 306 002a FFF7FEFF 		bl	HAL_TIM_Base_Init
+ 307              	.LVL12:
+ 308              		.loc 1 210 6 discriminator 1 view .LVU93
+ 309 002e 90B9     		cbnz	r0, .L26
+ 310              	.L22:
+ 211:Src/tim.c     ****   {
+ 212:Src/tim.c     ****     Error_Handler();
+ 213:Src/tim.c     ****   }
+ 214:Src/tim.c     ****   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+ 311              		.loc 1 214 3 is_stmt 1 view .LVU94
+ 312              		.loc 1 214 34 is_stmt 0 view .LVU95
+ 313 0030 4FF48053 		mov	r3, #4096
+ 314 0034 0293     		str	r3, [sp, #8]
+ 215:Src/tim.c     ****   if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
+ 315              		.loc 1 215 3 is_stmt 1 view .LVU96
+ 316              		.loc 1 215 7 is_stmt 0 view .LVU97
+ 317 0036 02A9     		add	r1, sp, #8
+ 318 0038 0B48     		ldr	r0, .L29
+ 319 003a FFF7FEFF 		bl	HAL_TIM_ConfigClockSource
+ 320              	.LVL13:
+ 321              		.loc 1 215 6 discriminator 1 view .LVU98
+ 322 003e 68B9     		cbnz	r0, .L27
+ 323              	.L23:
  216:Src/tim.c     ****   {
- 217:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspInit 0 */
- 218:Src/tim.c     **** 
- 219:Src/tim.c     ****   /* USER CODE END TIM2_MspInit 0 */
- 220:Src/tim.c     ****     /* TIM2 clock enable */
- 221:Src/tim.c     ****     __HAL_RCC_TIM2_CLK_ENABLE();
- 222:Src/tim.c     **** 
-ARM GAS  /tmp/cctIVEZT.s 			page 10
+ 217:Src/tim.c     ****     Error_Handler();
+ 218:Src/tim.c     ****   }
+ 219:Src/tim.c     ****   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+ 324              		.loc 1 219 3 is_stmt 1 view .LVU99
+ 325              		.loc 1 219 37 is_stmt 0 view .LVU100
+ 326 0040 0023     		movs	r3, #0
+ 327 0042 0093     		str	r3, [sp]
+ 220:Src/tim.c     ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+ 328              		.loc 1 220 3 is_stmt 1 view .LVU101
+ 329              		.loc 1 220 33 is_stmt 0 view .LVU102
+ 330 0044 0193     		str	r3, [sp, #4]
+ 221:Src/tim.c     ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
+ 331              		.loc 1 221 3 is_stmt 1 view .LVU103
+ 332              		.loc 1 221 7 is_stmt 0 view .LVU104
+ 333 0046 6946     		mov	r1, sp
+ 334 0048 0748     		ldr	r0, .L29
+ 335 004a FFF7FEFF 		bl	HAL_TIMEx_MasterConfigSynchronization
+ 336              	.LVL14:
+ 337              		.loc 1 221 6 discriminator 1 view .LVU105
+ 338 004e 40B9     		cbnz	r0, .L28
+ 339              	.L21:
+ 222:Src/tim.c     ****   {
+ 223:Src/tim.c     ****     Error_Handler();
+ 224:Src/tim.c     ****   }
+ 225:Src/tim.c     ****   /* USER CODE BEGIN TIM4_Init 2 */
+ 226:Src/tim.c     **** 
+ 227:Src/tim.c     ****   /* USER CODE END TIM4_Init 2 */
+ 228:Src/tim.c     **** 
+ 229:Src/tim.c     **** }
+ 340              		.loc 1 229 1 view .LVU106
+ARM GAS  /tmp/ccdh5c19.s 			page 11
 
 
- 223:Src/tim.c     ****     /* TIM2 interrupt Init */
- 224:Src/tim.c     ****     HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0);
- 225:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM2_IRQn);
- 226:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspInit 1 */
- 227:Src/tim.c     **** 
- 228:Src/tim.c     ****   /* USER CODE END TIM2_MspInit 1 */
- 229:Src/tim.c     ****   }
- 230:Src/tim.c     ****   else if(tim_baseHandle->Instance==TIM3)
- 291              		.loc 1 230 8 is_stmt 1 view .LVU83
- 292              		.loc 1 230 10 is_stmt 0 view .LVU84
- 293 001c 244A     		ldr	r2, .L29+4
- 294 001e 9342     		cmp	r3, r2
- 295 0020 31D0     		beq	.L28
- 296              	.LVL13:
- 297              	.L21:
- 231:Src/tim.c     ****   {
- 232:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspInit 0 */
+ 341 0050 07B0     		add	sp, sp, #28
+ 342              		.cfi_remember_state
+ 343              		.cfi_def_cfa_offset 4
+ 344              		@ sp needed
+ 345 0052 5DF804FB 		ldr	pc, [sp], #4
+ 346              	.L26:
+ 347              		.cfi_restore_state
+ 212:Src/tim.c     ****   }
+ 348              		.loc 1 212 5 is_stmt 1 view .LVU107
+ 349 0056 FFF7FEFF 		bl	Error_Handler
+ 350              	.LVL15:
+ 351 005a E9E7     		b	.L22
+ 352              	.L27:
+ 217:Src/tim.c     ****   }
+ 353              		.loc 1 217 5 view .LVU108
+ 354 005c FFF7FEFF 		bl	Error_Handler
+ 355              	.LVL16:
+ 356 0060 EEE7     		b	.L23
+ 357              	.L28:
+ 223:Src/tim.c     ****   }
+ 358              		.loc 1 223 5 view .LVU109
+ 359 0062 FFF7FEFF 		bl	Error_Handler
+ 360              	.LVL17:
+ 361              		.loc 1 229 1 is_stmt 0 view .LVU110
+ 362 0066 F3E7     		b	.L21
+ 363              	.L30:
+ 364              		.align	2
+ 365              	.L29:
+ 366 0068 00000000 		.word	htim4
+ 367 006c 00080040 		.word	1073743872
+ 368              		.cfi_endproc
+ 369              	.LFE68:
+ 371              		.section	.text.HAL_TIM_Base_MspInit,"ax",%progbits
+ 372              		.align	1
+ 373              		.global	HAL_TIM_Base_MspInit
+ 374              		.syntax unified
+ 375              		.thumb
+ 376              		.thumb_func
+ 378              	HAL_TIM_Base_MspInit:
+ 379              	.LVL18:
+ 380              	.LFB69:
+ 230:Src/tim.c     **** 
+ 231:Src/tim.c     **** void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
+ 232:Src/tim.c     **** {
+ 381              		.loc 1 232 1 is_stmt 1 view -0
+ 382              		.cfi_startproc
+ 383              		@ args = 0, pretend = 0, frame = 40
+ 384              		@ frame_needed = 0, uses_anonymous_args = 0
+ 385              		.loc 1 232 1 is_stmt 0 view .LVU112
+ 386 0000 00B5     		push	{lr}
+ 387              		.cfi_def_cfa_offset 4
+ 388              		.cfi_offset 14, -4
+ 389 0002 8BB0     		sub	sp, sp, #44
+ 390              		.cfi_def_cfa_offset 48
  233:Src/tim.c     **** 
- 234:Src/tim.c     ****   /* USER CODE END TIM3_MspInit 0 */
- 235:Src/tim.c     ****     /* TIM3 clock enable */
- 236:Src/tim.c     ****     __HAL_RCC_TIM3_CLK_ENABLE();
- 237:Src/tim.c     **** 
- 238:Src/tim.c     ****     /* TIM3 interrupt Init */
- 239:Src/tim.c     ****     HAL_NVIC_SetPriority(TIM3_IRQn, 0, 0);
- 240:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM3_IRQn);
- 241:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspInit 1 */
+ 234:Src/tim.c     ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 391              		.loc 1 234 3 is_stmt 1 view .LVU113
+ARM GAS  /tmp/ccdh5c19.s 			page 12
+
+
+ 392              		.loc 1 234 20 is_stmt 0 view .LVU114
+ 393 0004 0023     		movs	r3, #0
+ 394 0006 0693     		str	r3, [sp, #24]
+ 395 0008 0793     		str	r3, [sp, #28]
+ 396 000a 0893     		str	r3, [sp, #32]
+ 397 000c 0993     		str	r3, [sp, #36]
+ 235:Src/tim.c     ****   if(tim_baseHandle->Instance==TIM1)
+ 398              		.loc 1 235 3 is_stmt 1 view .LVU115
+ 399              		.loc 1 235 20 is_stmt 0 view .LVU116
+ 400 000e 0368     		ldr	r3, [r0]
+ 401              		.loc 1 235 5 view .LVU117
+ 402 0010 314A     		ldr	r2, .L41
+ 403 0012 9342     		cmp	r3, r2
+ 404 0014 0BD0     		beq	.L37
+ 236:Src/tim.c     ****   {
+ 237:Src/tim.c     ****   /* USER CODE BEGIN TIM1_MspInit 0 */
+ 238:Src/tim.c     **** 
+ 239:Src/tim.c     ****   /* USER CODE END TIM1_MspInit 0 */
+ 240:Src/tim.c     ****     /* TIM1 clock enable */
+ 241:Src/tim.c     ****     __HAL_RCC_TIM1_CLK_ENABLE();
  242:Src/tim.c     **** 
- 243:Src/tim.c     ****   /* USER CODE END TIM3_MspInit 1 */
- 244:Src/tim.c     ****   }
- 245:Src/tim.c     **** }
- 298              		.loc 1 245 1 view .LVU85
- 299 0022 09B0     		add	sp, sp, #36
- 300              		.cfi_remember_state
- 301              		.cfi_def_cfa_offset 4
- 302              		@ sp needed
- 303 0024 5DF804FB 		ldr	pc, [sp], #4
- 304              	.LVL14:
- 305              	.L26:
- 306              		.cfi_restore_state
- 200:Src/tim.c     **** 
- 307              		.loc 1 200 5 is_stmt 1 view .LVU86
- 308              	.LBB2:
- 200:Src/tim.c     **** 
- 309              		.loc 1 200 5 view .LVU87
- 200:Src/tim.c     **** 
- 310              		.loc 1 200 5 view .LVU88
- 311 0028 224B     		ldr	r3, .L29+8
- 312 002a 9A69     		ldr	r2, [r3, #24]
- 313 002c 42F40062 		orr	r2, r2, #2048
- 314 0030 9A61     		str	r2, [r3, #24]
- 200:Src/tim.c     **** 
- 315              		.loc 1 200 5 view .LVU89
- 316 0032 9A69     		ldr	r2, [r3, #24]
- 317 0034 02F40062 		and	r2, r2, #2048
- 318 0038 0092     		str	r2, [sp]
- 200:Src/tim.c     **** 
- 319              		.loc 1 200 5 view .LVU90
-ARM GAS  /tmp/cctIVEZT.s 			page 11
-
-
- 320 003a 009A     		ldr	r2, [sp]
- 321              	.LBE2:
- 200:Src/tim.c     **** 
- 322              		.loc 1 200 5 view .LVU91
- 202:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 323              		.loc 1 202 5 view .LVU92
- 324              	.LBB3:
- 202:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 325              		.loc 1 202 5 view .LVU93
- 202:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 326              		.loc 1 202 5 view .LVU94
- 327 003c 9A69     		ldr	r2, [r3, #24]
- 328 003e 42F00802 		orr	r2, r2, #8
- 329 0042 9A61     		str	r2, [r3, #24]
- 202:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 330              		.loc 1 202 5 view .LVU95
- 331 0044 9B69     		ldr	r3, [r3, #24]
- 332 0046 03F00803 		and	r3, r3, #8
- 333 004a 0193     		str	r3, [sp, #4]
- 202:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 334              		.loc 1 202 5 view .LVU96
- 335 004c 019B     		ldr	r3, [sp, #4]
- 336              	.LBE3:
- 202:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 337              		.loc 1 202 5 view .LVU97
- 206:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
- 338              		.loc 1 206 5 view .LVU98
- 206:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
- 339              		.loc 1 206 25 is_stmt 0 view .LVU99
- 340 004e 4FF48053 		mov	r3, #4096
- 341 0052 0493     		str	r3, [sp, #16]
- 207:Src/tim.c     ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 342              		.loc 1 207 5 is_stmt 1 view .LVU100
- 208:Src/tim.c     ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
- 343              		.loc 1 208 5 view .LVU101
- 209:Src/tim.c     **** 
- 344              		.loc 1 209 5 view .LVU102
- 345 0054 04A9     		add	r1, sp, #16
- 346 0056 1848     		ldr	r0, .L29+12
- 347              	.LVL15:
- 209:Src/tim.c     **** 
- 348              		.loc 1 209 5 is_stmt 0 view .LVU103
- 349 0058 FFF7FEFF 		bl	HAL_GPIO_Init
- 350              	.LVL16:
- 351 005c E1E7     		b	.L21
- 352              	.LVL17:
- 353              	.L27:
- 221:Src/tim.c     **** 
- 354              		.loc 1 221 5 is_stmt 1 view .LVU104
- 355              	.LBB4:
- 221:Src/tim.c     **** 
- 356              		.loc 1 221 5 view .LVU105
- 221:Src/tim.c     **** 
- 357              		.loc 1 221 5 view .LVU106
- 358 005e 03F50433 		add	r3, r3, #135168
- 359 0062 DA69     		ldr	r2, [r3, #28]
- 360 0064 42F00102 		orr	r2, r2, #1
-ARM GAS  /tmp/cctIVEZT.s 			page 12
-
-
- 361 0068 DA61     		str	r2, [r3, #28]
- 221:Src/tim.c     **** 
- 362              		.loc 1 221 5 view .LVU107
- 363 006a DB69     		ldr	r3, [r3, #28]
- 364 006c 03F00103 		and	r3, r3, #1
- 365 0070 0293     		str	r3, [sp, #8]
- 221:Src/tim.c     **** 
- 366              		.loc 1 221 5 view .LVU108
- 367 0072 029B     		ldr	r3, [sp, #8]
- 368              	.LBE4:
- 221:Src/tim.c     **** 
- 369              		.loc 1 221 5 view .LVU109
- 224:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM2_IRQn);
- 370              		.loc 1 224 5 view .LVU110
- 371 0074 0022     		movs	r2, #0
- 372 0076 1146     		mov	r1, r2
- 373 0078 1C20     		movs	r0, #28
- 374              	.LVL18:
- 224:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM2_IRQn);
- 375              		.loc 1 224 5 is_stmt 0 view .LVU111
- 376 007a FFF7FEFF 		bl	HAL_NVIC_SetPriority
- 377              	.LVL19:
- 225:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspInit 1 */
- 378              		.loc 1 225 5 is_stmt 1 view .LVU112
- 379 007e 1C20     		movs	r0, #28
- 380 0080 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
- 381              	.LVL20:
- 382 0084 CDE7     		b	.L21
- 383              	.LVL21:
- 384              	.L28:
- 236:Src/tim.c     **** 
- 385              		.loc 1 236 5 view .LVU113
- 386              	.LBB5:
- 236:Src/tim.c     **** 
- 387              		.loc 1 236 5 view .LVU114
- 236:Src/tim.c     **** 
- 388              		.loc 1 236 5 view .LVU115
- 389 0086 0B4B     		ldr	r3, .L29+8
- 390 0088 DA69     		ldr	r2, [r3, #28]
- 391 008a 42F00202 		orr	r2, r2, #2
- 392 008e DA61     		str	r2, [r3, #28]
- 236:Src/tim.c     **** 
- 393              		.loc 1 236 5 view .LVU116
- 394 0090 DB69     		ldr	r3, [r3, #28]
- 395 0092 03F00203 		and	r3, r3, #2
- 396 0096 0393     		str	r3, [sp, #12]
- 236:Src/tim.c     **** 
- 397              		.loc 1 236 5 view .LVU117
- 398 0098 039B     		ldr	r3, [sp, #12]
- 399              	.LBE5:
- 236:Src/tim.c     **** 
- 400              		.loc 1 236 5 view .LVU118
- 239:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM3_IRQn);
- 401              		.loc 1 239 5 view .LVU119
- 402 009a 0022     		movs	r2, #0
- 403 009c 1146     		mov	r1, r2
- 404 009e 1D20     		movs	r0, #29
-ARM GAS  /tmp/cctIVEZT.s 			page 13
-
-
- 405              	.LVL22:
- 239:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM3_IRQn);
- 406              		.loc 1 239 5 is_stmt 0 view .LVU120
- 407 00a0 FFF7FEFF 		bl	HAL_NVIC_SetPriority
- 408              	.LVL23:
- 240:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspInit 1 */
- 409              		.loc 1 240 5 is_stmt 1 view .LVU121
- 410 00a4 1D20     		movs	r0, #29
- 411 00a6 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
- 412              	.LVL24:
- 413              		.loc 1 245 1 is_stmt 0 view .LVU122
- 414 00aa BAE7     		b	.L21
- 415              	.L30:
- 416              		.align	2
- 417              	.L29:
- 418 00ac 002C0140 		.word	1073818624
- 419 00b0 00040040 		.word	1073742848
- 420 00b4 00100240 		.word	1073876992
- 421 00b8 000C0140 		.word	1073810432
- 422              		.cfi_endproc
- 423              	.LFE68:
- 425              		.section	.text.HAL_TIM_MspPostInit,"ax",%progbits
- 426              		.align	1
- 427              		.global	HAL_TIM_MspPostInit
- 428              		.syntax unified
- 429              		.thumb
- 430              		.thumb_func
- 432              	HAL_TIM_MspPostInit:
- 433              	.LVL25:
- 434              	.LFB69:
- 246:Src/tim.c     **** void HAL_TIM_MspPostInit(TIM_HandleTypeDef* timHandle)
- 247:Src/tim.c     **** {
- 435              		.loc 1 247 1 is_stmt 1 view -0
- 436              		.cfi_startproc
- 437              		@ args = 0, pretend = 0, frame = 24
- 438              		@ frame_needed = 0, uses_anonymous_args = 0
- 439              		.loc 1 247 1 is_stmt 0 view .LVU124
- 440 0000 10B5     		push	{r4, lr}
- 441              		.cfi_def_cfa_offset 8
- 442              		.cfi_offset 4, -8
- 443              		.cfi_offset 14, -4
- 444 0002 86B0     		sub	sp, sp, #24
- 445              		.cfi_def_cfa_offset 32
- 248:Src/tim.c     **** 
- 249:Src/tim.c     ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
- 446              		.loc 1 249 3 is_stmt 1 view .LVU125
- 447              		.loc 1 249 20 is_stmt 0 view .LVU126
- 448 0004 0023     		movs	r3, #0
- 449 0006 0293     		str	r3, [sp, #8]
- 450 0008 0393     		str	r3, [sp, #12]
- 451 000a 0493     		str	r3, [sp, #16]
- 452 000c 0593     		str	r3, [sp, #20]
- 250:Src/tim.c     ****   if(timHandle->Instance==TIM1)
- 453              		.loc 1 250 3 is_stmt 1 view .LVU127
- 454              		.loc 1 250 15 is_stmt 0 view .LVU128
- 455 000e 0268     		ldr	r2, [r0]
- 456              		.loc 1 250 5 view .LVU129
-ARM GAS  /tmp/cctIVEZT.s 			page 14
-
-
- 457 0010 164B     		ldr	r3, .L35
- 458 0012 9A42     		cmp	r2, r3
- 459 0014 01D0     		beq	.L34
- 460              	.LVL26:
- 461              	.L31:
- 251:Src/tim.c     ****   {
- 252:Src/tim.c     ****   /* USER CODE BEGIN TIM1_MspPostInit 0 */
+ 243:Src/tim.c     ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 244:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 245:Src/tim.c     ****     PB12     ------> TIM1_BKIN
+ 246:Src/tim.c     ****     */
+ 247:Src/tim.c     ****     GPIO_InitStruct.Pin = GPIO_PIN_12;
+ 248:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+ 249:Src/tim.c     ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 250:Src/tim.c     ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 251:Src/tim.c     **** 
+ 252:Src/tim.c     ****   /* USER CODE BEGIN TIM1_MspInit 1 */
  253:Src/tim.c     **** 
- 254:Src/tim.c     ****   /* USER CODE END TIM1_MspPostInit 0 */
- 255:Src/tim.c     **** 
- 256:Src/tim.c     ****     __HAL_RCC_GPIOB_CLK_ENABLE();
- 257:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
- 258:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 259:Src/tim.c     ****     PB13     ------> TIM1_CH1N
- 260:Src/tim.c     ****     PB14     ------> TIM1_CH2N
- 261:Src/tim.c     ****     PB15     ------> TIM1_CH3N
- 262:Src/tim.c     ****     PA8     ------> TIM1_CH1
- 263:Src/tim.c     ****     PA9     ------> TIM1_CH2
- 264:Src/tim.c     ****     PA10     ------> TIM1_CH3
- 265:Src/tim.c     ****     */
- 266:Src/tim.c     ****     GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
- 267:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 268:Src/tim.c     ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
- 269:Src/tim.c     ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
- 270:Src/tim.c     **** 
- 271:Src/tim.c     ****     GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
- 272:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 273:Src/tim.c     ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
- 274:Src/tim.c     ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 275:Src/tim.c     **** 
- 276:Src/tim.c     ****   /* USER CODE BEGIN TIM1_MspPostInit 1 */
- 277:Src/tim.c     **** 
- 278:Src/tim.c     ****   /* USER CODE END TIM1_MspPostInit 1 */
- 279:Src/tim.c     ****   }
- 280:Src/tim.c     **** 
- 281:Src/tim.c     **** }
- 462              		.loc 1 281 1 view .LVU130
- 463 0016 06B0     		add	sp, sp, #24
- 464              		.cfi_remember_state
- 465              		.cfi_def_cfa_offset 8
- 466              		@ sp needed
- 467 0018 10BD     		pop	{r4, pc}
- 468              	.LVL27:
- 469              	.L34:
- 470              		.cfi_restore_state
- 256:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
- 471              		.loc 1 256 5 is_stmt 1 view .LVU131
- 472              	.LBB6:
- 256:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
- 473              		.loc 1 256 5 view .LVU132
- 256:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
- 474              		.loc 1 256 5 view .LVU133
- 475 001a 03F56443 		add	r3, r3, #58368
- 476 001e 9A69     		ldr	r2, [r3, #24]
- 477 0020 42F00802 		orr	r2, r2, #8
- 478 0024 9A61     		str	r2, [r3, #24]
- 256:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
-ARM GAS  /tmp/cctIVEZT.s 			page 15
+ 254:Src/tim.c     ****   /* USER CODE END TIM1_MspInit 1 */
+ 255:Src/tim.c     ****   }
+ 256:Src/tim.c     ****   else if(tim_baseHandle->Instance==TIM2)
+ 405              		.loc 1 256 8 is_stmt 1 view .LVU118
+ 406              		.loc 1 256 10 is_stmt 0 view .LVU119
+ 407 0016 B3F1804F 		cmp	r3, #1073741824
+ 408 001a 23D0     		beq	.L38
+ 257:Src/tim.c     ****   {
+ 258:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspInit 0 */
+ 259:Src/tim.c     **** 
+ 260:Src/tim.c     ****   /* USER CODE END TIM2_MspInit 0 */
+ 261:Src/tim.c     ****     /* TIM2 clock enable */
+ 262:Src/tim.c     ****     __HAL_RCC_TIM2_CLK_ENABLE();
+ 263:Src/tim.c     **** 
+ 264:Src/tim.c     ****     /* TIM2 interrupt Init */
+ 265:Src/tim.c     ****     HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0);
+ 266:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM2_IRQn);
+ 267:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspInit 1 */
+ 268:Src/tim.c     **** 
+ 269:Src/tim.c     ****   /* USER CODE END TIM2_MspInit 1 */
+ 270:Src/tim.c     ****   }
+ 271:Src/tim.c     ****   else if(tim_baseHandle->Instance==TIM3)
+ 409              		.loc 1 271 8 is_stmt 1 view .LVU120
+ 410              		.loc 1 271 10 is_stmt 0 view .LVU121
+ 411 001c 2F4A     		ldr	r2, .L41+4
+ARM GAS  /tmp/ccdh5c19.s 			page 13
 
 
- 479              		.loc 1 256 5 view .LVU134
- 480 0026 9A69     		ldr	r2, [r3, #24]
- 481 0028 02F00802 		and	r2, r2, #8
- 482 002c 0092     		str	r2, [sp]
- 256:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
- 483              		.loc 1 256 5 view .LVU135
- 484 002e 009A     		ldr	r2, [sp]
- 485              	.LBE6:
- 256:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
- 486              		.loc 1 256 5 view .LVU136
- 257:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 487              		.loc 1 257 5 view .LVU137
- 488              	.LBB7:
- 257:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 489              		.loc 1 257 5 view .LVU138
- 257:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 490              		.loc 1 257 5 view .LVU139
- 491 0030 9A69     		ldr	r2, [r3, #24]
- 492 0032 42F00402 		orr	r2, r2, #4
- 493 0036 9A61     		str	r2, [r3, #24]
- 257:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 494              		.loc 1 257 5 view .LVU140
- 495 0038 9B69     		ldr	r3, [r3, #24]
- 496 003a 03F00403 		and	r3, r3, #4
- 497 003e 0193     		str	r3, [sp, #4]
- 257:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 498              		.loc 1 257 5 view .LVU141
- 499 0040 019B     		ldr	r3, [sp, #4]
- 500              	.LBE7:
- 257:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 501              		.loc 1 257 5 view .LVU142
- 266:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 502              		.loc 1 266 5 view .LVU143
- 266:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 503              		.loc 1 266 25 is_stmt 0 view .LVU144
- 504 0042 4FF46043 		mov	r3, #57344
- 505 0046 0293     		str	r3, [sp, #8]
- 267:Src/tim.c     ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
- 506              		.loc 1 267 5 is_stmt 1 view .LVU145
- 267:Src/tim.c     ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
- 507              		.loc 1 267 26 is_stmt 0 view .LVU146
- 508 0048 0224     		movs	r4, #2
- 509 004a 0394     		str	r4, [sp, #12]
- 268:Src/tim.c     ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
- 510              		.loc 1 268 5 is_stmt 1 view .LVU147
- 268:Src/tim.c     ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
- 511              		.loc 1 268 27 is_stmt 0 view .LVU148
- 512 004c 0594     		str	r4, [sp, #20]
- 269:Src/tim.c     **** 
- 513              		.loc 1 269 5 is_stmt 1 view .LVU149
- 514 004e 02A9     		add	r1, sp, #8
- 515 0050 0748     		ldr	r0, .L35+4
- 516              	.LVL28:
- 269:Src/tim.c     **** 
- 517              		.loc 1 269 5 is_stmt 0 view .LVU150
- 518 0052 FFF7FEFF 		bl	HAL_GPIO_Init
- 519              	.LVL29:
-ARM GAS  /tmp/cctIVEZT.s 			page 16
-
-
- 271:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 520              		.loc 1 271 5 is_stmt 1 view .LVU151
- 271:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 521              		.loc 1 271 25 is_stmt 0 view .LVU152
- 522 0056 4FF4E063 		mov	r3, #1792
- 523 005a 0293     		str	r3, [sp, #8]
- 272:Src/tim.c     ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
- 524              		.loc 1 272 5 is_stmt 1 view .LVU153
- 272:Src/tim.c     ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
- 525              		.loc 1 272 26 is_stmt 0 view .LVU154
- 526 005c 0394     		str	r4, [sp, #12]
- 273:Src/tim.c     ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 527              		.loc 1 273 5 is_stmt 1 view .LVU155
- 273:Src/tim.c     ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 528              		.loc 1 273 27 is_stmt 0 view .LVU156
- 529 005e 0594     		str	r4, [sp, #20]
+ 412 001e 9342     		cmp	r3, r2
+ 413 0020 34D0     		beq	.L39
+ 272:Src/tim.c     ****   {
+ 273:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspInit 0 */
  274:Src/tim.c     **** 
- 530              		.loc 1 274 5 is_stmt 1 view .LVU157
- 531 0060 02A9     		add	r1, sp, #8
- 532 0062 0448     		ldr	r0, .L35+8
- 533 0064 FFF7FEFF 		bl	HAL_GPIO_Init
- 534              	.LVL30:
- 535              		.loc 1 281 1 is_stmt 0 view .LVU158
- 536 0068 D5E7     		b	.L31
- 537              	.L36:
- 538 006a 00BF     		.align	2
- 539              	.L35:
- 540 006c 002C0140 		.word	1073818624
- 541 0070 000C0140 		.word	1073810432
- 542 0074 00080140 		.word	1073809408
- 543              		.cfi_endproc
- 544              	.LFE69:
- 546              		.section	.text.MX_TIM1_Init,"ax",%progbits
- 547              		.align	1
- 548              		.global	MX_TIM1_Init
- 549              		.syntax unified
- 550              		.thumb
- 551              		.thumb_func
- 553              	MX_TIM1_Init:
- 554              	.LFB65:
-  33:Src/tim.c     **** 
- 555              		.loc 1 33 1 is_stmt 1 view -0
- 556              		.cfi_startproc
- 557              		@ args = 0, pretend = 0, frame = 88
- 558              		@ frame_needed = 0, uses_anonymous_args = 0
- 559 0000 10B5     		push	{r4, lr}
- 560              		.cfi_def_cfa_offset 8
- 561              		.cfi_offset 4, -8
- 562              		.cfi_offset 14, -4
- 563 0002 96B0     		sub	sp, sp, #88
- 564              		.cfi_def_cfa_offset 96
-  39:Src/tim.c     ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
- 565              		.loc 1 39 3 view .LVU160
-  39:Src/tim.c     ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
- 566              		.loc 1 39 26 is_stmt 0 view .LVU161
- 567 0004 0024     		movs	r4, #0
- 568 0006 1294     		str	r4, [sp, #72]
-ARM GAS  /tmp/cctIVEZT.s 			page 17
-
-
- 569 0008 1394     		str	r4, [sp, #76]
- 570 000a 1494     		str	r4, [sp, #80]
- 571 000c 1594     		str	r4, [sp, #84]
-  40:Src/tim.c     ****   TIM_OC_InitTypeDef sConfigOC = {0};
- 572              		.loc 1 40 3 is_stmt 1 view .LVU162
-  40:Src/tim.c     ****   TIM_OC_InitTypeDef sConfigOC = {0};
- 573              		.loc 1 40 27 is_stmt 0 view .LVU163
- 574 000e 1094     		str	r4, [sp, #64]
- 575 0010 1194     		str	r4, [sp, #68]
-  41:Src/tim.c     ****   TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
- 576              		.loc 1 41 3 is_stmt 1 view .LVU164
-  41:Src/tim.c     ****   TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
- 577              		.loc 1 41 22 is_stmt 0 view .LVU165
- 578 0012 0994     		str	r4, [sp, #36]
- 579 0014 0A94     		str	r4, [sp, #40]
- 580 0016 0B94     		str	r4, [sp, #44]
- 581 0018 0C94     		str	r4, [sp, #48]
- 582 001a 0D94     		str	r4, [sp, #52]
- 583 001c 0E94     		str	r4, [sp, #56]
- 584 001e 0F94     		str	r4, [sp, #60]
-  42:Src/tim.c     **** 
- 585              		.loc 1 42 3 is_stmt 1 view .LVU166
-  42:Src/tim.c     **** 
- 586              		.loc 1 42 34 is_stmt 0 view .LVU167
- 587 0020 2022     		movs	r2, #32
- 588 0022 2146     		mov	r1, r4
- 589 0024 01A8     		add	r0, sp, #4
- 590 0026 FFF7FEFF 		bl	memset
- 591              	.LVL31:
-  47:Src/tim.c     ****   htim1.Init.Prescaler = 3;
- 592              		.loc 1 47 3 is_stmt 1 view .LVU168
-  47:Src/tim.c     ****   htim1.Init.Prescaler = 3;
- 593              		.loc 1 47 18 is_stmt 0 view .LVU169
- 594 002a 3848     		ldr	r0, .L55
- 595 002c 384B     		ldr	r3, .L55+4
- 596 002e 0360     		str	r3, [r0]
-  48:Src/tim.c     ****   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
- 597              		.loc 1 48 3 is_stmt 1 view .LVU170
-  48:Src/tim.c     ****   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
- 598              		.loc 1 48 24 is_stmt 0 view .LVU171
- 599 0030 0323     		movs	r3, #3
- 600 0032 4360     		str	r3, [r0, #4]
-  49:Src/tim.c     ****   htim1.Init.Period = 1168;
- 601              		.loc 1 49 3 is_stmt 1 view .LVU172
-  49:Src/tim.c     ****   htim1.Init.Period = 1168;
- 602              		.loc 1 49 26 is_stmt 0 view .LVU173
- 603 0034 8460     		str	r4, [r0, #8]
-  50:Src/tim.c     ****   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
- 604              		.loc 1 50 3 is_stmt 1 view .LVU174
-  50:Src/tim.c     ****   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
- 605              		.loc 1 50 21 is_stmt 0 view .LVU175
- 606 0036 4FF49263 		mov	r3, #1168
- 607 003a C360     		str	r3, [r0, #12]
-  51:Src/tim.c     ****   htim1.Init.RepetitionCounter = 0;
- 608              		.loc 1 51 3 is_stmt 1 view .LVU176
-  51:Src/tim.c     ****   htim1.Init.RepetitionCounter = 0;
- 609              		.loc 1 51 28 is_stmt 0 view .LVU177
-ARM GAS  /tmp/cctIVEZT.s 			page 18
-
-
- 610 003c 0461     		str	r4, [r0, #16]
-  52:Src/tim.c     ****   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
- 611              		.loc 1 52 3 is_stmt 1 view .LVU178
-  52:Src/tim.c     ****   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
- 612              		.loc 1 52 32 is_stmt 0 view .LVU179
- 613 003e 4461     		str	r4, [r0, #20]
-  53:Src/tim.c     ****   if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
- 614              		.loc 1 53 3 is_stmt 1 view .LVU180
-  53:Src/tim.c     ****   if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
- 615              		.loc 1 53 32 is_stmt 0 view .LVU181
- 616 0040 8461     		str	r4, [r0, #24]
-  54:Src/tim.c     ****   {
- 617              		.loc 1 54 3 is_stmt 1 view .LVU182
-  54:Src/tim.c     ****   {
- 618              		.loc 1 54 7 is_stmt 0 view .LVU183
- 619 0042 FFF7FEFF 		bl	HAL_TIM_Base_Init
- 620              	.LVL32:
-  54:Src/tim.c     ****   {
- 621              		.loc 1 54 6 discriminator 1 view .LVU184
- 622 0046 0028     		cmp	r0, #0
- 623 0048 47D1     		bne	.L47
- 624              	.L38:
-  58:Src/tim.c     ****   if (HAL_TIM_ConfigClockSource(&htim1, &sClockSourceConfig) != HAL_OK)
- 625              		.loc 1 58 3 is_stmt 1 view .LVU185
-  58:Src/tim.c     ****   if (HAL_TIM_ConfigClockSource(&htim1, &sClockSourceConfig) != HAL_OK)
- 626              		.loc 1 58 34 is_stmt 0 view .LVU186
- 627 004a 4FF48053 		mov	r3, #4096
- 628 004e 1293     		str	r3, [sp, #72]
-  59:Src/tim.c     ****   {
- 629              		.loc 1 59 3 is_stmt 1 view .LVU187
-  59:Src/tim.c     ****   {
- 630              		.loc 1 59 7 is_stmt 0 view .LVU188
- 631 0050 12A9     		add	r1, sp, #72
- 632 0052 2E48     		ldr	r0, .L55
- 633 0054 FFF7FEFF 		bl	HAL_TIM_ConfigClockSource
- 634              	.LVL33:
-  59:Src/tim.c     ****   {
- 635              		.loc 1 59 6 discriminator 1 view .LVU189
- 636 0058 0028     		cmp	r0, #0
- 637 005a 41D1     		bne	.L48
- 638              	.L39:
-  63:Src/tim.c     ****   {
- 639              		.loc 1 63 3 is_stmt 1 view .LVU190
-  63:Src/tim.c     ****   {
- 640              		.loc 1 63 7 is_stmt 0 view .LVU191
- 641 005c 2B48     		ldr	r0, .L55
- 642 005e FFF7FEFF 		bl	HAL_TIM_PWM_Init
- 643              	.LVL34:
-  63:Src/tim.c     ****   {
- 644              		.loc 1 63 6 discriminator 1 view .LVU192
- 645 0062 0028     		cmp	r0, #0
- 646 0064 3FD1     		bne	.L49
- 647              	.L40:
-  67:Src/tim.c     ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
- 648              		.loc 1 67 3 is_stmt 1 view .LVU193
-  67:Src/tim.c     ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
- 649              		.loc 1 67 37 is_stmt 0 view .LVU194
-ARM GAS  /tmp/cctIVEZT.s 			page 19
-
-
- 650 0066 0023     		movs	r3, #0
- 651 0068 1093     		str	r3, [sp, #64]
-  68:Src/tim.c     ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
- 652              		.loc 1 68 3 is_stmt 1 view .LVU195
-  68:Src/tim.c     ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
- 653              		.loc 1 68 33 is_stmt 0 view .LVU196
- 654 006a 1193     		str	r3, [sp, #68]
-  69:Src/tim.c     ****   {
- 655              		.loc 1 69 3 is_stmt 1 view .LVU197
-  69:Src/tim.c     ****   {
- 656              		.loc 1 69 7 is_stmt 0 view .LVU198
- 657 006c 10A9     		add	r1, sp, #64
- 658 006e 2748     		ldr	r0, .L55
- 659 0070 FFF7FEFF 		bl	HAL_TIMEx_MasterConfigSynchronization
- 660              	.LVL35:
-  69:Src/tim.c     ****   {
- 661              		.loc 1 69 6 discriminator 1 view .LVU199
- 662 0074 0028     		cmp	r0, #0
- 663 0076 39D1     		bne	.L50
- 664              	.L41:
-  73:Src/tim.c     ****   sConfigOC.Pulse = 0;
- 665              		.loc 1 73 3 is_stmt 1 view .LVU200
-  73:Src/tim.c     ****   sConfigOC.Pulse = 0;
- 666              		.loc 1 73 20 is_stmt 0 view .LVU201
- 667 0078 6023     		movs	r3, #96
- 668 007a 0993     		str	r3, [sp, #36]
-  74:Src/tim.c     ****   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
- 669              		.loc 1 74 3 is_stmt 1 view .LVU202
-  74:Src/tim.c     ****   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
- 670              		.loc 1 74 19 is_stmt 0 view .LVU203
- 671 007c 0022     		movs	r2, #0
- 672 007e 0A92     		str	r2, [sp, #40]
-  75:Src/tim.c     ****   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
- 673              		.loc 1 75 3 is_stmt 1 view .LVU204
-  75:Src/tim.c     ****   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
- 674              		.loc 1 75 24 is_stmt 0 view .LVU205
- 675 0080 0B92     		str	r2, [sp, #44]
-  76:Src/tim.c     ****   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
- 676              		.loc 1 76 3 is_stmt 1 view .LVU206
-  76:Src/tim.c     ****   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
- 677              		.loc 1 76 25 is_stmt 0 view .LVU207
- 678 0082 0C92     		str	r2, [sp, #48]
-  77:Src/tim.c     ****   sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
- 679              		.loc 1 77 3 is_stmt 1 view .LVU208
-  77:Src/tim.c     ****   sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
- 680              		.loc 1 77 24 is_stmt 0 view .LVU209
- 681 0084 0D92     		str	r2, [sp, #52]
-  78:Src/tim.c     ****   sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
- 682              		.loc 1 78 3 is_stmt 1 view .LVU210
-  78:Src/tim.c     ****   sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
- 683              		.loc 1 78 25 is_stmt 0 view .LVU211
- 684 0086 0E92     		str	r2, [sp, #56]
-  79:Src/tim.c     ****   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
- 685              		.loc 1 79 3 is_stmt 1 view .LVU212
-  79:Src/tim.c     ****   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
- 686              		.loc 1 79 26 is_stmt 0 view .LVU213
- 687 0088 0F92     		str	r2, [sp, #60]
-ARM GAS  /tmp/cctIVEZT.s 			page 20
-
-
-  80:Src/tim.c     ****   {
- 688              		.loc 1 80 3 is_stmt 1 view .LVU214
-  80:Src/tim.c     ****   {
- 689              		.loc 1 80 7 is_stmt 0 view .LVU215
- 690 008a 09A9     		add	r1, sp, #36
- 691 008c 1F48     		ldr	r0, .L55
- 692 008e FFF7FEFF 		bl	HAL_TIM_PWM_ConfigChannel
- 693              	.LVL36:
-  80:Src/tim.c     ****   {
- 694              		.loc 1 80 6 discriminator 1 view .LVU216
- 695 0092 70BB     		cbnz	r0, .L51
- 696              	.L42:
-  84:Src/tim.c     ****   {
- 697              		.loc 1 84 3 is_stmt 1 view .LVU217
-  84:Src/tim.c     ****   {
- 698              		.loc 1 84 7 is_stmt 0 view .LVU218
- 699 0094 0422     		movs	r2, #4
- 700 0096 09A9     		add	r1, sp, #36
- 701 0098 1C48     		ldr	r0, .L55
- 702 009a FFF7FEFF 		bl	HAL_TIM_PWM_ConfigChannel
- 703              	.LVL37:
-  84:Src/tim.c     ****   {
- 704              		.loc 1 84 6 discriminator 1 view .LVU219
- 705 009e 58BB     		cbnz	r0, .L52
- 706              	.L43:
-  88:Src/tim.c     ****   {
- 707              		.loc 1 88 3 is_stmt 1 view .LVU220
-  88:Src/tim.c     ****   {
- 708              		.loc 1 88 7 is_stmt 0 view .LVU221
- 709 00a0 0822     		movs	r2, #8
- 710 00a2 09A9     		add	r1, sp, #36
- 711 00a4 1948     		ldr	r0, .L55
- 712 00a6 FFF7FEFF 		bl	HAL_TIM_PWM_ConfigChannel
- 713              	.LVL38:
-  88:Src/tim.c     ****   {
- 714              		.loc 1 88 6 discriminator 1 view .LVU222
- 715 00aa 40BB     		cbnz	r0, .L53
- 716              	.L44:
-  92:Src/tim.c     ****   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
- 717              		.loc 1 92 3 is_stmt 1 view .LVU223
-  92:Src/tim.c     ****   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
- 718              		.loc 1 92 40 is_stmt 0 view .LVU224
- 719 00ac 0023     		movs	r3, #0
- 720 00ae 0193     		str	r3, [sp, #4]
-  93:Src/tim.c     ****   sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
- 721              		.loc 1 93 3 is_stmt 1 view .LVU225
-  93:Src/tim.c     ****   sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
- 722              		.loc 1 93 41 is_stmt 0 view .LVU226
- 723 00b0 0293     		str	r3, [sp, #8]
-  94:Src/tim.c     ****   sBreakDeadTimeConfig.DeadTime = 60;
- 724              		.loc 1 94 3 is_stmt 1 view .LVU227
-  94:Src/tim.c     ****   sBreakDeadTimeConfig.DeadTime = 60;
- 725              		.loc 1 94 34 is_stmt 0 view .LVU228
- 726 00b2 0393     		str	r3, [sp, #12]
-  95:Src/tim.c     ****   sBreakDeadTimeConfig.BreakState = TIM_BREAK_ENABLE;
- 727              		.loc 1 95 3 is_stmt 1 view .LVU229
-  95:Src/tim.c     ****   sBreakDeadTimeConfig.BreakState = TIM_BREAK_ENABLE;
-ARM GAS  /tmp/cctIVEZT.s 			page 21
-
-
- 728              		.loc 1 95 33 is_stmt 0 view .LVU230
- 729 00b4 3C22     		movs	r2, #60
- 730 00b6 0492     		str	r2, [sp, #16]
-  96:Src/tim.c     ****   sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
- 731              		.loc 1 96 3 is_stmt 1 view .LVU231
-  96:Src/tim.c     ****   sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
- 732              		.loc 1 96 35 is_stmt 0 view .LVU232
- 733 00b8 4FF48052 		mov	r2, #4096
- 734 00bc 0592     		str	r2, [sp, #20]
-  97:Src/tim.c     ****   sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
- 735              		.loc 1 97 3 is_stmt 1 view .LVU233
-  97:Src/tim.c     ****   sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
- 736              		.loc 1 97 38 is_stmt 0 view .LVU234
- 737 00be 4FF40052 		mov	r2, #8192
- 738 00c2 0692     		str	r2, [sp, #24]
-  98:Src/tim.c     ****   if (HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBreakDeadTimeConfig) != HAL_OK)
- 739              		.loc 1 98 3 is_stmt 1 view .LVU235
-  98:Src/tim.c     ****   if (HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBreakDeadTimeConfig) != HAL_OK)
- 740              		.loc 1 98 40 is_stmt 0 view .LVU236
- 741 00c4 0893     		str	r3, [sp, #32]
-  99:Src/tim.c     ****   {
- 742              		.loc 1 99 3 is_stmt 1 view .LVU237
-  99:Src/tim.c     ****   {
- 743              		.loc 1 99 7 is_stmt 0 view .LVU238
- 744 00c6 01A9     		add	r1, sp, #4
- 745 00c8 1048     		ldr	r0, .L55
- 746 00ca FFF7FEFF 		bl	HAL_TIMEx_ConfigBreakDeadTime
- 747              	.LVL39:
-  99:Src/tim.c     ****   {
- 748              		.loc 1 99 6 discriminator 1 view .LVU239
- 749 00ce C8B9     		cbnz	r0, .L54
- 750              	.L45:
- 106:Src/tim.c     **** 
- 751              		.loc 1 106 3 is_stmt 1 view .LVU240
- 752 00d0 0E48     		ldr	r0, .L55
- 753 00d2 FFF7FEFF 		bl	HAL_TIM_MspPostInit
- 754              	.LVL40:
- 108:Src/tim.c     **** /* TIM2 init function */
- 755              		.loc 1 108 1 is_stmt 0 view .LVU241
- 756 00d6 16B0     		add	sp, sp, #88
- 757              		.cfi_remember_state
- 758              		.cfi_def_cfa_offset 8
- 759              		@ sp needed
- 760 00d8 10BD     		pop	{r4, pc}
- 761              	.L47:
- 762              		.cfi_restore_state
-  56:Src/tim.c     ****   }
- 763              		.loc 1 56 5 is_stmt 1 view .LVU242
- 764 00da FFF7FEFF 		bl	Error_Handler
- 765              	.LVL41:
- 766 00de B4E7     		b	.L38
- 767              	.L48:
-  61:Src/tim.c     ****   }
- 768              		.loc 1 61 5 view .LVU243
- 769 00e0 FFF7FEFF 		bl	Error_Handler
- 770              	.LVL42:
- 771 00e4 BAE7     		b	.L39
-ARM GAS  /tmp/cctIVEZT.s 			page 22
-
-
- 772              	.L49:
-  65:Src/tim.c     ****   }
- 773              		.loc 1 65 5 view .LVU244
- 774 00e6 FFF7FEFF 		bl	Error_Handler
- 775              	.LVL43:
- 776 00ea BCE7     		b	.L40
- 777              	.L50:
-  71:Src/tim.c     ****   }
- 778              		.loc 1 71 5 view .LVU245
- 779 00ec FFF7FEFF 		bl	Error_Handler
- 780              	.LVL44:
- 781 00f0 C2E7     		b	.L41
- 782              	.L51:
-  82:Src/tim.c     ****   }
- 783              		.loc 1 82 5 view .LVU246
- 784 00f2 FFF7FEFF 		bl	Error_Handler
- 785              	.LVL45:
- 786 00f6 CDE7     		b	.L42
- 787              	.L52:
-  86:Src/tim.c     ****   }
- 788              		.loc 1 86 5 view .LVU247
- 789 00f8 FFF7FEFF 		bl	Error_Handler
- 790              	.LVL46:
- 791 00fc D0E7     		b	.L43
- 792              	.L53:
-  90:Src/tim.c     ****   }
- 793              		.loc 1 90 5 view .LVU248
- 794 00fe FFF7FEFF 		bl	Error_Handler
- 795              	.LVL47:
- 796 0102 D3E7     		b	.L44
- 797              	.L54:
- 101:Src/tim.c     ****   }
- 798              		.loc 1 101 5 view .LVU249
- 799 0104 FFF7FEFF 		bl	Error_Handler
- 800              	.LVL48:
- 801 0108 E2E7     		b	.L45
- 802              	.L56:
- 803 010a 00BF     		.align	2
- 804              	.L55:
- 805 010c 00000000 		.word	htim1
- 806 0110 002C0140 		.word	1073818624
- 807              		.cfi_endproc
- 808              	.LFE65:
- 810              		.section	.text.HAL_TIM_Base_MspDeInit,"ax",%progbits
- 811              		.align	1
- 812              		.global	HAL_TIM_Base_MspDeInit
- 813              		.syntax unified
- 814              		.thumb
- 815              		.thumb_func
- 817              	HAL_TIM_Base_MspDeInit:
- 818              	.LVL49:
- 819              	.LFB70:
- 282:Src/tim.c     **** 
- 283:Src/tim.c     **** void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
- 284:Src/tim.c     **** {
- 820              		.loc 1 284 1 view -0
- 821              		.cfi_startproc
-ARM GAS  /tmp/cctIVEZT.s 			page 23
-
-
- 822              		@ args = 0, pretend = 0, frame = 0
- 823              		@ frame_needed = 0, uses_anonymous_args = 0
- 824              		.loc 1 284 1 is_stmt 0 view .LVU251
- 825 0000 08B5     		push	{r3, lr}
- 826              		.cfi_def_cfa_offset 8
- 827              		.cfi_offset 3, -8
- 828              		.cfi_offset 14, -4
- 285:Src/tim.c     **** 
- 286:Src/tim.c     ****   if(tim_baseHandle->Instance==TIM1)
- 829              		.loc 1 286 3 is_stmt 1 view .LVU252
- 830              		.loc 1 286 20 is_stmt 0 view .LVU253
- 831 0002 0368     		ldr	r3, [r0]
- 832              		.loc 1 286 5 view .LVU254
- 833 0004 164A     		ldr	r2, .L65
- 834 0006 9342     		cmp	r3, r2
- 835 0008 06D0     		beq	.L62
+ 275:Src/tim.c     ****   /* USER CODE END TIM3_MspInit 0 */
+ 276:Src/tim.c     ****     /* TIM3 clock enable */
+ 277:Src/tim.c     ****     __HAL_RCC_TIM3_CLK_ENABLE();
+ 278:Src/tim.c     **** 
+ 279:Src/tim.c     ****     /* TIM3 interrupt Init */
+ 280:Src/tim.c     ****     HAL_NVIC_SetPriority(TIM3_IRQn, 0, 0);
+ 281:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM3_IRQn);
+ 282:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspInit 1 */
+ 283:Src/tim.c     **** 
+ 284:Src/tim.c     ****   /* USER CODE END TIM3_MspInit 1 */
+ 285:Src/tim.c     ****   }
+ 286:Src/tim.c     ****   else if(tim_baseHandle->Instance==TIM4)
+ 414              		.loc 1 286 8 is_stmt 1 view .LVU122
+ 415              		.loc 1 286 10 is_stmt 0 view .LVU123
+ 416 0022 2F4A     		ldr	r2, .L41+8
+ 417 0024 9342     		cmp	r3, r2
+ 418 0026 44D0     		beq	.L40
+ 419              	.LVL19:
+ 420              	.L31:
  287:Src/tim.c     ****   {
- 288:Src/tim.c     ****   /* USER CODE BEGIN TIM1_MspDeInit 0 */
+ 288:Src/tim.c     ****   /* USER CODE BEGIN TIM4_MspInit 0 */
  289:Src/tim.c     **** 
- 290:Src/tim.c     ****   /* USER CODE END TIM1_MspDeInit 0 */
- 291:Src/tim.c     ****     /* Peripheral clock disable */
- 292:Src/tim.c     ****     __HAL_RCC_TIM1_CLK_DISABLE();
+ 290:Src/tim.c     ****   /* USER CODE END TIM4_MspInit 0 */
+ 291:Src/tim.c     ****     /* TIM4 clock enable */
+ 292:Src/tim.c     ****     __HAL_RCC_TIM4_CLK_ENABLE();
  293:Src/tim.c     **** 
- 294:Src/tim.c     ****     /**TIM1 GPIO Configuration
- 295:Src/tim.c     ****     PB12     ------> TIM1_BKIN
- 296:Src/tim.c     ****     PB13     ------> TIM1_CH1N
- 297:Src/tim.c     ****     PB14     ------> TIM1_CH2N
- 298:Src/tim.c     ****     PB15     ------> TIM1_CH3N
- 299:Src/tim.c     ****     PA8     ------> TIM1_CH1
- 300:Src/tim.c     ****     PA9     ------> TIM1_CH2
- 301:Src/tim.c     ****     PA10     ------> TIM1_CH3
- 302:Src/tim.c     ****     */
- 303:Src/tim.c     ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15);
- 304:Src/tim.c     **** 
- 305:Src/tim.c     ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10);
- 306:Src/tim.c     **** 
- 307:Src/tim.c     ****   /* USER CODE BEGIN TIM1_MspDeInit 1 */
- 308:Src/tim.c     **** 
- 309:Src/tim.c     ****   /* USER CODE END TIM1_MspDeInit 1 */
- 310:Src/tim.c     ****   }
- 311:Src/tim.c     ****   else if(tim_baseHandle->Instance==TIM2)
- 836              		.loc 1 311 8 is_stmt 1 view .LVU255
- 837              		.loc 1 311 10 is_stmt 0 view .LVU256
- 838 000a B3F1804F 		cmp	r3, #1073741824
- 839 000e 14D0     		beq	.L63
- 312:Src/tim.c     ****   {
- 313:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspDeInit 0 */
- 314:Src/tim.c     **** 
- 315:Src/tim.c     ****   /* USER CODE END TIM2_MspDeInit 0 */
- 316:Src/tim.c     ****     /* Peripheral clock disable */
- 317:Src/tim.c     ****     __HAL_RCC_TIM2_CLK_DISABLE();
- 318:Src/tim.c     **** 
- 319:Src/tim.c     ****     /* TIM2 interrupt Deinit */
- 320:Src/tim.c     ****     HAL_NVIC_DisableIRQ(TIM2_IRQn);
- 321:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspDeInit 1 */
- 322:Src/tim.c     **** 
- 323:Src/tim.c     ****   /* USER CODE END TIM2_MspDeInit 1 */
-ARM GAS  /tmp/cctIVEZT.s 			page 24
+ 294:Src/tim.c     ****     /* TIM4 interrupt Init */
+ 295:Src/tim.c     ****     HAL_NVIC_SetPriority(TIM4_IRQn, 0, 0);
+ 296:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM4_IRQn);
+ 297:Src/tim.c     ****   /* USER CODE BEGIN TIM4_MspInit 1 */
+ 298:Src/tim.c     **** 
+ 299:Src/tim.c     ****   /* USER CODE END TIM4_MspInit 1 */
+ 300:Src/tim.c     ****   }
+ 301:Src/tim.c     **** }
+ 421              		.loc 1 301 1 view .LVU124
+ 422 0028 0BB0     		add	sp, sp, #44
+ 423              		.cfi_remember_state
+ 424              		.cfi_def_cfa_offset 4
+ 425              		@ sp needed
+ 426 002a 5DF804FB 		ldr	pc, [sp], #4
+ 427              	.LVL20:
+ 428              	.L37:
+ 429              		.cfi_restore_state
+ 241:Src/tim.c     **** 
+ 430              		.loc 1 241 5 is_stmt 1 view .LVU125
+ 431              	.LBB2:
+ 241:Src/tim.c     **** 
+ 432              		.loc 1 241 5 view .LVU126
+ 241:Src/tim.c     **** 
+ 433              		.loc 1 241 5 view .LVU127
+ 434 002e 2D4B     		ldr	r3, .L41+12
+ 435 0030 9A69     		ldr	r2, [r3, #24]
+ARM GAS  /tmp/ccdh5c19.s 			page 14
 
 
- 324:Src/tim.c     ****   }
- 325:Src/tim.c     ****   else if(tim_baseHandle->Instance==TIM3)
- 840              		.loc 1 325 8 is_stmt 1 view .LVU257
- 841              		.loc 1 325 10 is_stmt 0 view .LVU258
- 842 0010 144A     		ldr	r2, .L65+4
- 843 0012 9342     		cmp	r3, r2
- 844 0014 1AD0     		beq	.L64
- 845              	.LVL50:
- 846              	.L57:
- 326:Src/tim.c     ****   {
- 327:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspDeInit 0 */
- 328:Src/tim.c     **** 
- 329:Src/tim.c     ****   /* USER CODE END TIM3_MspDeInit 0 */
- 330:Src/tim.c     ****     /* Peripheral clock disable */
- 331:Src/tim.c     ****     __HAL_RCC_TIM3_CLK_DISABLE();
- 332:Src/tim.c     **** 
- 333:Src/tim.c     ****     /* TIM3 interrupt Deinit */
- 334:Src/tim.c     ****     HAL_NVIC_DisableIRQ(TIM3_IRQn);
- 335:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspDeInit 1 */
- 336:Src/tim.c     **** 
- 337:Src/tim.c     ****   /* USER CODE END TIM3_MspDeInit 1 */
- 338:Src/tim.c     ****   }
- 339:Src/tim.c     **** }
- 847              		.loc 1 339 1 view .LVU259
- 848 0016 08BD     		pop	{r3, pc}
- 849              	.LVL51:
- 850              	.L62:
+ 436 0032 42F40062 		orr	r2, r2, #2048
+ 437 0036 9A61     		str	r2, [r3, #24]
+ 241:Src/tim.c     **** 
+ 438              		.loc 1 241 5 view .LVU128
+ 439 0038 9A69     		ldr	r2, [r3, #24]
+ 440 003a 02F40062 		and	r2, r2, #2048
+ 441 003e 0192     		str	r2, [sp, #4]
+ 241:Src/tim.c     **** 
+ 442              		.loc 1 241 5 view .LVU129
+ 443 0040 019A     		ldr	r2, [sp, #4]
+ 444              	.LBE2:
+ 241:Src/tim.c     **** 
+ 445              		.loc 1 241 5 view .LVU130
+ 243:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 446              		.loc 1 243 5 view .LVU131
+ 447              	.LBB3:
+ 243:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 448              		.loc 1 243 5 view .LVU132
+ 243:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 449              		.loc 1 243 5 view .LVU133
+ 450 0042 9A69     		ldr	r2, [r3, #24]
+ 451 0044 42F00802 		orr	r2, r2, #8
+ 452 0048 9A61     		str	r2, [r3, #24]
+ 243:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 453              		.loc 1 243 5 view .LVU134
+ 454 004a 9B69     		ldr	r3, [r3, #24]
+ 455 004c 03F00803 		and	r3, r3, #8
+ 456 0050 0293     		str	r3, [sp, #8]
+ 243:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 457              		.loc 1 243 5 view .LVU135
+ 458 0052 029B     		ldr	r3, [sp, #8]
+ 459              	.LBE3:
+ 243:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 460              		.loc 1 243 5 view .LVU136
+ 247:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+ 461              		.loc 1 247 5 view .LVU137
+ 247:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+ 462              		.loc 1 247 25 is_stmt 0 view .LVU138
+ 463 0054 4FF48053 		mov	r3, #4096
+ 464 0058 0693     		str	r3, [sp, #24]
+ 248:Src/tim.c     ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 465              		.loc 1 248 5 is_stmt 1 view .LVU139
+ 249:Src/tim.c     ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 466              		.loc 1 249 5 view .LVU140
+ 250:Src/tim.c     **** 
+ 467              		.loc 1 250 5 view .LVU141
+ 468 005a 06A9     		add	r1, sp, #24
+ 469 005c 2248     		ldr	r0, .L41+16
+ 470              	.LVL21:
+ 250:Src/tim.c     **** 
+ 471              		.loc 1 250 5 is_stmt 0 view .LVU142
+ 472 005e FFF7FEFF 		bl	HAL_GPIO_Init
+ 473              	.LVL22:
+ 474 0062 E1E7     		b	.L31
+ 475              	.LVL23:
+ 476              	.L38:
+ 262:Src/tim.c     **** 
+ARM GAS  /tmp/ccdh5c19.s 			page 15
+
+
+ 477              		.loc 1 262 5 is_stmt 1 view .LVU143
+ 478              	.LBB4:
+ 262:Src/tim.c     **** 
+ 479              		.loc 1 262 5 view .LVU144
+ 262:Src/tim.c     **** 
+ 480              		.loc 1 262 5 view .LVU145
+ 481 0064 03F50433 		add	r3, r3, #135168
+ 482 0068 DA69     		ldr	r2, [r3, #28]
+ 483 006a 42F00102 		orr	r2, r2, #1
+ 484 006e DA61     		str	r2, [r3, #28]
+ 262:Src/tim.c     **** 
+ 485              		.loc 1 262 5 view .LVU146
+ 486 0070 DB69     		ldr	r3, [r3, #28]
+ 487 0072 03F00103 		and	r3, r3, #1
+ 488 0076 0393     		str	r3, [sp, #12]
+ 262:Src/tim.c     **** 
+ 489              		.loc 1 262 5 view .LVU147
+ 490 0078 039B     		ldr	r3, [sp, #12]
+ 491              	.LBE4:
+ 262:Src/tim.c     **** 
+ 492              		.loc 1 262 5 view .LVU148
+ 265:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM2_IRQn);
+ 493              		.loc 1 265 5 view .LVU149
+ 494 007a 0022     		movs	r2, #0
+ 495 007c 1146     		mov	r1, r2
+ 496 007e 1C20     		movs	r0, #28
+ 497              	.LVL24:
+ 265:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM2_IRQn);
+ 498              		.loc 1 265 5 is_stmt 0 view .LVU150
+ 499 0080 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 500              	.LVL25:
+ 266:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspInit 1 */
+ 501              		.loc 1 266 5 is_stmt 1 view .LVU151
+ 502 0084 1C20     		movs	r0, #28
+ 503 0086 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 504              	.LVL26:
+ 505 008a CDE7     		b	.L31
+ 506              	.LVL27:
+ 507              	.L39:
+ 277:Src/tim.c     **** 
+ 508              		.loc 1 277 5 view .LVU152
+ 509              	.LBB5:
+ 277:Src/tim.c     **** 
+ 510              		.loc 1 277 5 view .LVU153
+ 277:Src/tim.c     **** 
+ 511              		.loc 1 277 5 view .LVU154
+ 512 008c 154B     		ldr	r3, .L41+12
+ 513 008e DA69     		ldr	r2, [r3, #28]
+ 514 0090 42F00202 		orr	r2, r2, #2
+ 515 0094 DA61     		str	r2, [r3, #28]
+ 277:Src/tim.c     **** 
+ 516              		.loc 1 277 5 view .LVU155
+ 517 0096 DB69     		ldr	r3, [r3, #28]
+ 518 0098 03F00203 		and	r3, r3, #2
+ 519 009c 0493     		str	r3, [sp, #16]
+ 277:Src/tim.c     **** 
+ 520              		.loc 1 277 5 view .LVU156
+ARM GAS  /tmp/ccdh5c19.s 			page 16
+
+
+ 521 009e 049B     		ldr	r3, [sp, #16]
+ 522              	.LBE5:
+ 277:Src/tim.c     **** 
+ 523              		.loc 1 277 5 view .LVU157
+ 280:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM3_IRQn);
+ 524              		.loc 1 280 5 view .LVU158
+ 525 00a0 0022     		movs	r2, #0
+ 526 00a2 1146     		mov	r1, r2
+ 527 00a4 1D20     		movs	r0, #29
+ 528              	.LVL28:
+ 280:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM3_IRQn);
+ 529              		.loc 1 280 5 is_stmt 0 view .LVU159
+ 530 00a6 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 531              	.LVL29:
+ 281:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspInit 1 */
+ 532              		.loc 1 281 5 is_stmt 1 view .LVU160
+ 533 00aa 1D20     		movs	r0, #29
+ 534 00ac FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 535              	.LVL30:
+ 536 00b0 BAE7     		b	.L31
+ 537              	.LVL31:
+ 538              	.L40:
  292:Src/tim.c     **** 
- 851              		.loc 1 292 5 is_stmt 1 view .LVU260
- 852 0018 02F56442 		add	r2, r2, #58368
- 853 001c 9369     		ldr	r3, [r2, #24]
- 854 001e 23F40063 		bic	r3, r3, #2048
- 855 0022 9361     		str	r3, [r2, #24]
- 303:Src/tim.c     **** 
- 856              		.loc 1 303 5 view .LVU261
- 857 0024 4FF47041 		mov	r1, #61440
- 858 0028 0F48     		ldr	r0, .L65+8
- 859              	.LVL52:
- 303:Src/tim.c     **** 
- 860              		.loc 1 303 5 is_stmt 0 view .LVU262
- 861 002a FFF7FEFF 		bl	HAL_GPIO_DeInit
- 862              	.LVL53:
- 305:Src/tim.c     **** 
- 863              		.loc 1 305 5 is_stmt 1 view .LVU263
- 864 002e 4FF4E061 		mov	r1, #1792
- 865 0032 0E48     		ldr	r0, .L65+12
- 866 0034 FFF7FEFF 		bl	HAL_GPIO_DeInit
- 867              	.LVL54:
- 868 0038 EDE7     		b	.L57
- 869              	.LVL55:
- 870              	.L63:
- 317:Src/tim.c     **** 
- 871              		.loc 1 317 5 view .LVU264
- 872 003a 0D4A     		ldr	r2, .L65+16
- 873 003c D369     		ldr	r3, [r2, #28]
- 874 003e 23F00103 		bic	r3, r3, #1
- 875 0042 D361     		str	r3, [r2, #28]
-ARM GAS  /tmp/cctIVEZT.s 			page 25
+ 539              		.loc 1 292 5 view .LVU161
+ 540              	.LBB6:
+ 292:Src/tim.c     **** 
+ 541              		.loc 1 292 5 view .LVU162
+ 292:Src/tim.c     **** 
+ 542              		.loc 1 292 5 view .LVU163
+ 543 00b2 0C4B     		ldr	r3, .L41+12
+ 544 00b4 DA69     		ldr	r2, [r3, #28]
+ 545 00b6 42F00402 		orr	r2, r2, #4
+ 546 00ba DA61     		str	r2, [r3, #28]
+ 292:Src/tim.c     **** 
+ 547              		.loc 1 292 5 view .LVU164
+ 548 00bc DB69     		ldr	r3, [r3, #28]
+ 549 00be 03F00403 		and	r3, r3, #4
+ 550 00c2 0593     		str	r3, [sp, #20]
+ 292:Src/tim.c     **** 
+ 551              		.loc 1 292 5 view .LVU165
+ 552 00c4 059B     		ldr	r3, [sp, #20]
+ 553              	.LBE6:
+ 292:Src/tim.c     **** 
+ 554              		.loc 1 292 5 view .LVU166
+ 295:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM4_IRQn);
+ 555              		.loc 1 295 5 view .LVU167
+ 556 00c6 0022     		movs	r2, #0
+ 557 00c8 1146     		mov	r1, r2
+ 558 00ca 1E20     		movs	r0, #30
+ 559              	.LVL32:
+ 295:Src/tim.c     ****     HAL_NVIC_EnableIRQ(TIM4_IRQn);
+ 560              		.loc 1 295 5 is_stmt 0 view .LVU168
+ 561 00cc FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 562              	.LVL33:
+ 296:Src/tim.c     ****   /* USER CODE BEGIN TIM4_MspInit 1 */
+ 563              		.loc 1 296 5 is_stmt 1 view .LVU169
+ 564 00d0 1E20     		movs	r0, #30
+ARM GAS  /tmp/ccdh5c19.s 			page 17
 
 
- 320:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspDeInit 1 */
- 876              		.loc 1 320 5 view .LVU265
- 877 0044 1C20     		movs	r0, #28
- 878              	.LVL56:
- 320:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspDeInit 1 */
- 879              		.loc 1 320 5 is_stmt 0 view .LVU266
- 880 0046 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
- 881              	.LVL57:
- 882 004a E4E7     		b	.L57
- 883              	.LVL58:
- 884              	.L64:
+ 565 00d2 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 566              	.LVL34:
+ 567              		.loc 1 301 1 is_stmt 0 view .LVU170
+ 568 00d6 A7E7     		b	.L31
+ 569              	.L42:
+ 570              		.align	2
+ 571              	.L41:
+ 572 00d8 002C0140 		.word	1073818624
+ 573 00dc 00040040 		.word	1073742848
+ 574 00e0 00080040 		.word	1073743872
+ 575 00e4 00100240 		.word	1073876992
+ 576 00e8 000C0140 		.word	1073810432
+ 577              		.cfi_endproc
+ 578              	.LFE69:
+ 580              		.section	.text.HAL_TIM_MspPostInit,"ax",%progbits
+ 581              		.align	1
+ 582              		.global	HAL_TIM_MspPostInit
+ 583              		.syntax unified
+ 584              		.thumb
+ 585              		.thumb_func
+ 587              	HAL_TIM_MspPostInit:
+ 588              	.LVL35:
+ 589              	.LFB70:
+ 302:Src/tim.c     **** void HAL_TIM_MspPostInit(TIM_HandleTypeDef* timHandle)
+ 303:Src/tim.c     **** {
+ 590              		.loc 1 303 1 is_stmt 1 view -0
+ 591              		.cfi_startproc
+ 592              		@ args = 0, pretend = 0, frame = 24
+ 593              		@ frame_needed = 0, uses_anonymous_args = 0
+ 594              		.loc 1 303 1 is_stmt 0 view .LVU172
+ 595 0000 10B5     		push	{r4, lr}
+ 596              		.cfi_def_cfa_offset 8
+ 597              		.cfi_offset 4, -8
+ 598              		.cfi_offset 14, -4
+ 599 0002 86B0     		sub	sp, sp, #24
+ 600              		.cfi_def_cfa_offset 32
+ 304:Src/tim.c     **** 
+ 305:Src/tim.c     ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 601              		.loc 1 305 3 is_stmt 1 view .LVU173
+ 602              		.loc 1 305 20 is_stmt 0 view .LVU174
+ 603 0004 0023     		movs	r3, #0
+ 604 0006 0293     		str	r3, [sp, #8]
+ 605 0008 0393     		str	r3, [sp, #12]
+ 606 000a 0493     		str	r3, [sp, #16]
+ 607 000c 0593     		str	r3, [sp, #20]
+ 306:Src/tim.c     ****   if(timHandle->Instance==TIM1)
+ 608              		.loc 1 306 3 is_stmt 1 view .LVU175
+ 609              		.loc 1 306 15 is_stmt 0 view .LVU176
+ 610 000e 0268     		ldr	r2, [r0]
+ 611              		.loc 1 306 5 view .LVU177
+ 612 0010 164B     		ldr	r3, .L47
+ 613 0012 9A42     		cmp	r2, r3
+ 614 0014 01D0     		beq	.L46
+ 615              	.LVL36:
+ 616              	.L43:
+ 307:Src/tim.c     ****   {
+ 308:Src/tim.c     ****   /* USER CODE BEGIN TIM1_MspPostInit 0 */
+ARM GAS  /tmp/ccdh5c19.s 			page 18
+
+
+ 309:Src/tim.c     **** 
+ 310:Src/tim.c     ****   /* USER CODE END TIM1_MspPostInit 0 */
+ 311:Src/tim.c     **** 
+ 312:Src/tim.c     ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 313:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ 314:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 315:Src/tim.c     ****     PB13     ------> TIM1_CH1N
+ 316:Src/tim.c     ****     PB14     ------> TIM1_CH2N
+ 317:Src/tim.c     ****     PB15     ------> TIM1_CH3N
+ 318:Src/tim.c     ****     PA8     ------> TIM1_CH1
+ 319:Src/tim.c     ****     PA9     ------> TIM1_CH2
+ 320:Src/tim.c     ****     PA10     ------> TIM1_CH3
+ 321:Src/tim.c     ****     */
+ 322:Src/tim.c     ****     GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
+ 323:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 324:Src/tim.c     ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 325:Src/tim.c     ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 326:Src/tim.c     **** 
+ 327:Src/tim.c     ****     GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
+ 328:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 329:Src/tim.c     ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 330:Src/tim.c     ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
  331:Src/tim.c     **** 
- 885              		.loc 1 331 5 is_stmt 1 view .LVU267
- 886 004c 02F50332 		add	r2, r2, #134144
- 887 0050 D369     		ldr	r3, [r2, #28]
- 888 0052 23F00203 		bic	r3, r3, #2
- 889 0056 D361     		str	r3, [r2, #28]
- 334:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspDeInit 1 */
- 890              		.loc 1 334 5 view .LVU268
- 891 0058 1D20     		movs	r0, #29
- 892              	.LVL59:
- 334:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspDeInit 1 */
- 893              		.loc 1 334 5 is_stmt 0 view .LVU269
- 894 005a FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
- 895              	.LVL60:
- 896              		.loc 1 339 1 view .LVU270
- 897 005e DAE7     		b	.L57
- 898              	.L66:
- 899              		.align	2
- 900              	.L65:
- 901 0060 002C0140 		.word	1073818624
- 902 0064 00040040 		.word	1073742848
- 903 0068 000C0140 		.word	1073810432
- 904 006c 00080140 		.word	1073809408
- 905 0070 00100240 		.word	1073876992
- 906              		.cfi_endproc
- 907              	.LFE70:
- 909              		.global	htim3
- 910              		.section	.bss.htim3,"aw",%nobits
- 911              		.align	2
- 914              	htim3:
- 915 0000 00000000 		.space	72
- 915      00000000 
- 915      00000000 
- 915      00000000 
- 915      00000000 
- 916              		.global	htim2
- 917              		.section	.bss.htim2,"aw",%nobits
- 918              		.align	2
- 921              	htim2:
- 922 0000 00000000 		.space	72
- 922      00000000 
- 922      00000000 
- 922      00000000 
- 922      00000000 
- 923              		.global	htim1
- 924              		.section	.bss.htim1,"aw",%nobits
-ARM GAS  /tmp/cctIVEZT.s 			page 26
+ 332:Src/tim.c     ****   /* USER CODE BEGIN TIM1_MspPostInit 1 */
+ 333:Src/tim.c     **** 
+ 334:Src/tim.c     ****   /* USER CODE END TIM1_MspPostInit 1 */
+ 335:Src/tim.c     ****   }
+ 336:Src/tim.c     **** 
+ 337:Src/tim.c     **** }
+ 617              		.loc 1 337 1 view .LVU178
+ 618 0016 06B0     		add	sp, sp, #24
+ 619              		.cfi_remember_state
+ 620              		.cfi_def_cfa_offset 8
+ 621              		@ sp needed
+ 622 0018 10BD     		pop	{r4, pc}
+ 623              	.LVL37:
+ 624              	.L46:
+ 625              		.cfi_restore_state
+ 312:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ 626              		.loc 1 312 5 is_stmt 1 view .LVU179
+ 627              	.LBB7:
+ 312:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ 628              		.loc 1 312 5 view .LVU180
+ 312:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ 629              		.loc 1 312 5 view .LVU181
+ 630 001a 03F56443 		add	r3, r3, #58368
+ 631 001e 9A69     		ldr	r2, [r3, #24]
+ 632 0020 42F00802 		orr	r2, r2, #8
+ 633 0024 9A61     		str	r2, [r3, #24]
+ 312:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ 634              		.loc 1 312 5 view .LVU182
+ 635 0026 9A69     		ldr	r2, [r3, #24]
+ 636 0028 02F00802 		and	r2, r2, #8
+ 637 002c 0092     		str	r2, [sp]
+ 312:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ 638              		.loc 1 312 5 view .LVU183
+ 639 002e 009A     		ldr	r2, [sp]
+ARM GAS  /tmp/ccdh5c19.s 			page 19
 
 
- 925              		.align	2
- 928              	htim1:
- 929 0000 00000000 		.space	72
- 929      00000000 
- 929      00000000 
- 929      00000000 
- 929      00000000 
- 930              		.text
- 931              	.Letext0:
- 932              		.file 2 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 933              		.file 3 "/usr/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h"
- 934              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 935              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 936              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 937              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
- 938              		.file 8 "Inc/tim.h"
- 939              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h"
- 940              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h"
- 941              		.file 11 "Inc/main.h"
- 942              		.file 12 "<built-in>"
-ARM GAS  /tmp/cctIVEZT.s 			page 27
+ 640              	.LBE7:
+ 312:Src/tim.c     ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ 641              		.loc 1 312 5 view .LVU184
+ 313:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 642              		.loc 1 313 5 view .LVU185
+ 643              	.LBB8:
+ 313:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 644              		.loc 1 313 5 view .LVU186
+ 313:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 645              		.loc 1 313 5 view .LVU187
+ 646 0030 9A69     		ldr	r2, [r3, #24]
+ 647 0032 42F00402 		orr	r2, r2, #4
+ 648 0036 9A61     		str	r2, [r3, #24]
+ 313:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 649              		.loc 1 313 5 view .LVU188
+ 650 0038 9B69     		ldr	r3, [r3, #24]
+ 651 003a 03F00403 		and	r3, r3, #4
+ 652 003e 0193     		str	r3, [sp, #4]
+ 313:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 653              		.loc 1 313 5 view .LVU189
+ 654 0040 019B     		ldr	r3, [sp, #4]
+ 655              	.LBE8:
+ 313:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 656              		.loc 1 313 5 view .LVU190
+ 322:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 657              		.loc 1 322 5 view .LVU191
+ 322:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 658              		.loc 1 322 25 is_stmt 0 view .LVU192
+ 659 0042 4FF46043 		mov	r3, #57344
+ 660 0046 0293     		str	r3, [sp, #8]
+ 323:Src/tim.c     ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 661              		.loc 1 323 5 is_stmt 1 view .LVU193
+ 323:Src/tim.c     ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 662              		.loc 1 323 26 is_stmt 0 view .LVU194
+ 663 0048 0224     		movs	r4, #2
+ 664 004a 0394     		str	r4, [sp, #12]
+ 324:Src/tim.c     ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 665              		.loc 1 324 5 is_stmt 1 view .LVU195
+ 324:Src/tim.c     ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 666              		.loc 1 324 27 is_stmt 0 view .LVU196
+ 667 004c 0594     		str	r4, [sp, #20]
+ 325:Src/tim.c     **** 
+ 668              		.loc 1 325 5 is_stmt 1 view .LVU197
+ 669 004e 02A9     		add	r1, sp, #8
+ 670 0050 0748     		ldr	r0, .L47+4
+ 671              	.LVL38:
+ 325:Src/tim.c     **** 
+ 672              		.loc 1 325 5 is_stmt 0 view .LVU198
+ 673 0052 FFF7FEFF 		bl	HAL_GPIO_Init
+ 674              	.LVL39:
+ 327:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 675              		.loc 1 327 5 is_stmt 1 view .LVU199
+ 327:Src/tim.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 676              		.loc 1 327 25 is_stmt 0 view .LVU200
+ 677 0056 4FF4E063 		mov	r3, #1792
+ 678 005a 0293     		str	r3, [sp, #8]
+ 328:Src/tim.c     ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ARM GAS  /tmp/ccdh5c19.s 			page 20
+
+
+ 679              		.loc 1 328 5 is_stmt 1 view .LVU201
+ 328:Src/tim.c     ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 680              		.loc 1 328 26 is_stmt 0 view .LVU202
+ 681 005c 0394     		str	r4, [sp, #12]
+ 329:Src/tim.c     ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 682              		.loc 1 329 5 is_stmt 1 view .LVU203
+ 329:Src/tim.c     ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 683              		.loc 1 329 27 is_stmt 0 view .LVU204
+ 684 005e 0594     		str	r4, [sp, #20]
+ 330:Src/tim.c     **** 
+ 685              		.loc 1 330 5 is_stmt 1 view .LVU205
+ 686 0060 02A9     		add	r1, sp, #8
+ 687 0062 0448     		ldr	r0, .L47+8
+ 688 0064 FFF7FEFF 		bl	HAL_GPIO_Init
+ 689              	.LVL40:
+ 690              		.loc 1 337 1 is_stmt 0 view .LVU206
+ 691 0068 D5E7     		b	.L43
+ 692              	.L48:
+ 693 006a 00BF     		.align	2
+ 694              	.L47:
+ 695 006c 002C0140 		.word	1073818624
+ 696 0070 000C0140 		.word	1073810432
+ 697 0074 00080140 		.word	1073809408
+ 698              		.cfi_endproc
+ 699              	.LFE70:
+ 701              		.section	.text.MX_TIM1_Init,"ax",%progbits
+ 702              		.align	1
+ 703              		.global	MX_TIM1_Init
+ 704              		.syntax unified
+ 705              		.thumb
+ 706              		.thumb_func
+ 708              	MX_TIM1_Init:
+ 709              	.LFB65:
+  34:Src/tim.c     **** 
+ 710              		.loc 1 34 1 is_stmt 1 view -0
+ 711              		.cfi_startproc
+ 712              		@ args = 0, pretend = 0, frame = 88
+ 713              		@ frame_needed = 0, uses_anonymous_args = 0
+ 714 0000 10B5     		push	{r4, lr}
+ 715              		.cfi_def_cfa_offset 8
+ 716              		.cfi_offset 4, -8
+ 717              		.cfi_offset 14, -4
+ 718 0002 96B0     		sub	sp, sp, #88
+ 719              		.cfi_def_cfa_offset 96
+  40:Src/tim.c     ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
+ 720              		.loc 1 40 3 view .LVU208
+  40:Src/tim.c     ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
+ 721              		.loc 1 40 26 is_stmt 0 view .LVU209
+ 722 0004 0024     		movs	r4, #0
+ 723 0006 1294     		str	r4, [sp, #72]
+ 724 0008 1394     		str	r4, [sp, #76]
+ 725 000a 1494     		str	r4, [sp, #80]
+ 726 000c 1594     		str	r4, [sp, #84]
+  41:Src/tim.c     ****   TIM_OC_InitTypeDef sConfigOC = {0};
+ 727              		.loc 1 41 3 is_stmt 1 view .LVU210
+  41:Src/tim.c     ****   TIM_OC_InitTypeDef sConfigOC = {0};
+ 728              		.loc 1 41 27 is_stmt 0 view .LVU211
+ARM GAS  /tmp/ccdh5c19.s 			page 21
+
+
+ 729 000e 1094     		str	r4, [sp, #64]
+ 730 0010 1194     		str	r4, [sp, #68]
+  42:Src/tim.c     ****   TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
+ 731              		.loc 1 42 3 is_stmt 1 view .LVU212
+  42:Src/tim.c     ****   TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
+ 732              		.loc 1 42 22 is_stmt 0 view .LVU213
+ 733 0012 0994     		str	r4, [sp, #36]
+ 734 0014 0A94     		str	r4, [sp, #40]
+ 735 0016 0B94     		str	r4, [sp, #44]
+ 736 0018 0C94     		str	r4, [sp, #48]
+ 737 001a 0D94     		str	r4, [sp, #52]
+ 738 001c 0E94     		str	r4, [sp, #56]
+ 739 001e 0F94     		str	r4, [sp, #60]
+  43:Src/tim.c     **** 
+ 740              		.loc 1 43 3 is_stmt 1 view .LVU214
+  43:Src/tim.c     **** 
+ 741              		.loc 1 43 34 is_stmt 0 view .LVU215
+ 742 0020 2022     		movs	r2, #32
+ 743 0022 2146     		mov	r1, r4
+ 744 0024 01A8     		add	r0, sp, #4
+ 745 0026 FFF7FEFF 		bl	memset
+ 746              	.LVL41:
+  48:Src/tim.c     ****   htim1.Init.Prescaler = 3;
+ 747              		.loc 1 48 3 is_stmt 1 view .LVU216
+  48:Src/tim.c     ****   htim1.Init.Prescaler = 3;
+ 748              		.loc 1 48 18 is_stmt 0 view .LVU217
+ 749 002a 3848     		ldr	r0, .L67
+ 750 002c 384B     		ldr	r3, .L67+4
+ 751 002e 0360     		str	r3, [r0]
+  49:Src/tim.c     ****   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
+ 752              		.loc 1 49 3 is_stmt 1 view .LVU218
+  49:Src/tim.c     ****   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
+ 753              		.loc 1 49 24 is_stmt 0 view .LVU219
+ 754 0030 0323     		movs	r3, #3
+ 755 0032 4360     		str	r3, [r0, #4]
+  50:Src/tim.c     ****   htim1.Init.Period = 1168;
+ 756              		.loc 1 50 3 is_stmt 1 view .LVU220
+  50:Src/tim.c     ****   htim1.Init.Period = 1168;
+ 757              		.loc 1 50 26 is_stmt 0 view .LVU221
+ 758 0034 8460     		str	r4, [r0, #8]
+  51:Src/tim.c     ****   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+ 759              		.loc 1 51 3 is_stmt 1 view .LVU222
+  51:Src/tim.c     ****   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+ 760              		.loc 1 51 21 is_stmt 0 view .LVU223
+ 761 0036 4FF49263 		mov	r3, #1168
+ 762 003a C360     		str	r3, [r0, #12]
+  52:Src/tim.c     ****   htim1.Init.RepetitionCounter = 0;
+ 763              		.loc 1 52 3 is_stmt 1 view .LVU224
+  52:Src/tim.c     ****   htim1.Init.RepetitionCounter = 0;
+ 764              		.loc 1 52 28 is_stmt 0 view .LVU225
+ 765 003c 0461     		str	r4, [r0, #16]
+  53:Src/tim.c     ****   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+ 766              		.loc 1 53 3 is_stmt 1 view .LVU226
+  53:Src/tim.c     ****   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+ 767              		.loc 1 53 32 is_stmt 0 view .LVU227
+ 768 003e 4461     		str	r4, [r0, #20]
+  54:Src/tim.c     ****   if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
+ARM GAS  /tmp/ccdh5c19.s 			page 22
+
+
+ 769              		.loc 1 54 3 is_stmt 1 view .LVU228
+  54:Src/tim.c     ****   if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
+ 770              		.loc 1 54 32 is_stmt 0 view .LVU229
+ 771 0040 8461     		str	r4, [r0, #24]
+  55:Src/tim.c     ****   {
+ 772              		.loc 1 55 3 is_stmt 1 view .LVU230
+  55:Src/tim.c     ****   {
+ 773              		.loc 1 55 7 is_stmt 0 view .LVU231
+ 774 0042 FFF7FEFF 		bl	HAL_TIM_Base_Init
+ 775              	.LVL42:
+  55:Src/tim.c     ****   {
+ 776              		.loc 1 55 6 discriminator 1 view .LVU232
+ 777 0046 0028     		cmp	r0, #0
+ 778 0048 47D1     		bne	.L59
+ 779              	.L50:
+  59:Src/tim.c     ****   if (HAL_TIM_ConfigClockSource(&htim1, &sClockSourceConfig) != HAL_OK)
+ 780              		.loc 1 59 3 is_stmt 1 view .LVU233
+  59:Src/tim.c     ****   if (HAL_TIM_ConfigClockSource(&htim1, &sClockSourceConfig) != HAL_OK)
+ 781              		.loc 1 59 34 is_stmt 0 view .LVU234
+ 782 004a 4FF48053 		mov	r3, #4096
+ 783 004e 1293     		str	r3, [sp, #72]
+  60:Src/tim.c     ****   {
+ 784              		.loc 1 60 3 is_stmt 1 view .LVU235
+  60:Src/tim.c     ****   {
+ 785              		.loc 1 60 7 is_stmt 0 view .LVU236
+ 786 0050 12A9     		add	r1, sp, #72
+ 787 0052 2E48     		ldr	r0, .L67
+ 788 0054 FFF7FEFF 		bl	HAL_TIM_ConfigClockSource
+ 789              	.LVL43:
+  60:Src/tim.c     ****   {
+ 790              		.loc 1 60 6 discriminator 1 view .LVU237
+ 791 0058 0028     		cmp	r0, #0
+ 792 005a 41D1     		bne	.L60
+ 793              	.L51:
+  64:Src/tim.c     ****   {
+ 794              		.loc 1 64 3 is_stmt 1 view .LVU238
+  64:Src/tim.c     ****   {
+ 795              		.loc 1 64 7 is_stmt 0 view .LVU239
+ 796 005c 2B48     		ldr	r0, .L67
+ 797 005e FFF7FEFF 		bl	HAL_TIM_PWM_Init
+ 798              	.LVL44:
+  64:Src/tim.c     ****   {
+ 799              		.loc 1 64 6 discriminator 1 view .LVU240
+ 800 0062 0028     		cmp	r0, #0
+ 801 0064 3FD1     		bne	.L61
+ 802              	.L52:
+  68:Src/tim.c     ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+ 803              		.loc 1 68 3 is_stmt 1 view .LVU241
+  68:Src/tim.c     ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+ 804              		.loc 1 68 37 is_stmt 0 view .LVU242
+ 805 0066 0023     		movs	r3, #0
+ 806 0068 1093     		str	r3, [sp, #64]
+  69:Src/tim.c     ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
+ 807              		.loc 1 69 3 is_stmt 1 view .LVU243
+  69:Src/tim.c     ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
+ 808              		.loc 1 69 33 is_stmt 0 view .LVU244
+ 809 006a 1193     		str	r3, [sp, #68]
+ARM GAS  /tmp/ccdh5c19.s 			page 23
+
+
+  70:Src/tim.c     ****   {
+ 810              		.loc 1 70 3 is_stmt 1 view .LVU245
+  70:Src/tim.c     ****   {
+ 811              		.loc 1 70 7 is_stmt 0 view .LVU246
+ 812 006c 10A9     		add	r1, sp, #64
+ 813 006e 2748     		ldr	r0, .L67
+ 814 0070 FFF7FEFF 		bl	HAL_TIMEx_MasterConfigSynchronization
+ 815              	.LVL45:
+  70:Src/tim.c     ****   {
+ 816              		.loc 1 70 6 discriminator 1 view .LVU247
+ 817 0074 0028     		cmp	r0, #0
+ 818 0076 39D1     		bne	.L62
+ 819              	.L53:
+  74:Src/tim.c     ****   sConfigOC.Pulse = 0;
+ 820              		.loc 1 74 3 is_stmt 1 view .LVU248
+  74:Src/tim.c     ****   sConfigOC.Pulse = 0;
+ 821              		.loc 1 74 20 is_stmt 0 view .LVU249
+ 822 0078 6023     		movs	r3, #96
+ 823 007a 0993     		str	r3, [sp, #36]
+  75:Src/tim.c     ****   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+ 824              		.loc 1 75 3 is_stmt 1 view .LVU250
+  75:Src/tim.c     ****   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+ 825              		.loc 1 75 19 is_stmt 0 view .LVU251
+ 826 007c 0022     		movs	r2, #0
+ 827 007e 0A92     		str	r2, [sp, #40]
+  76:Src/tim.c     ****   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
+ 828              		.loc 1 76 3 is_stmt 1 view .LVU252
+  76:Src/tim.c     ****   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
+ 829              		.loc 1 76 24 is_stmt 0 view .LVU253
+ 830 0080 0B92     		str	r2, [sp, #44]
+  77:Src/tim.c     ****   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+ 831              		.loc 1 77 3 is_stmt 1 view .LVU254
+  77:Src/tim.c     ****   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+ 832              		.loc 1 77 25 is_stmt 0 view .LVU255
+ 833 0082 0C92     		str	r2, [sp, #48]
+  78:Src/tim.c     ****   sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
+ 834              		.loc 1 78 3 is_stmt 1 view .LVU256
+  78:Src/tim.c     ****   sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
+ 835              		.loc 1 78 24 is_stmt 0 view .LVU257
+ 836 0084 0D92     		str	r2, [sp, #52]
+  79:Src/tim.c     ****   sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+ 837              		.loc 1 79 3 is_stmt 1 view .LVU258
+  79:Src/tim.c     ****   sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+ 838              		.loc 1 79 25 is_stmt 0 view .LVU259
+ 839 0086 0E92     		str	r2, [sp, #56]
+  80:Src/tim.c     ****   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+ 840              		.loc 1 80 3 is_stmt 1 view .LVU260
+  80:Src/tim.c     ****   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+ 841              		.loc 1 80 26 is_stmt 0 view .LVU261
+ 842 0088 0F92     		str	r2, [sp, #60]
+  81:Src/tim.c     ****   {
+ 843              		.loc 1 81 3 is_stmt 1 view .LVU262
+  81:Src/tim.c     ****   {
+ 844              		.loc 1 81 7 is_stmt 0 view .LVU263
+ 845 008a 09A9     		add	r1, sp, #36
+ 846 008c 1F48     		ldr	r0, .L67
+ 847 008e FFF7FEFF 		bl	HAL_TIM_PWM_ConfigChannel
+ARM GAS  /tmp/ccdh5c19.s 			page 24
+
+
+ 848              	.LVL46:
+  81:Src/tim.c     ****   {
+ 849              		.loc 1 81 6 discriminator 1 view .LVU264
+ 850 0092 70BB     		cbnz	r0, .L63
+ 851              	.L54:
+  85:Src/tim.c     ****   {
+ 852              		.loc 1 85 3 is_stmt 1 view .LVU265
+  85:Src/tim.c     ****   {
+ 853              		.loc 1 85 7 is_stmt 0 view .LVU266
+ 854 0094 0422     		movs	r2, #4
+ 855 0096 09A9     		add	r1, sp, #36
+ 856 0098 1C48     		ldr	r0, .L67
+ 857 009a FFF7FEFF 		bl	HAL_TIM_PWM_ConfigChannel
+ 858              	.LVL47:
+  85:Src/tim.c     ****   {
+ 859              		.loc 1 85 6 discriminator 1 view .LVU267
+ 860 009e 58BB     		cbnz	r0, .L64
+ 861              	.L55:
+  89:Src/tim.c     ****   {
+ 862              		.loc 1 89 3 is_stmt 1 view .LVU268
+  89:Src/tim.c     ****   {
+ 863              		.loc 1 89 7 is_stmt 0 view .LVU269
+ 864 00a0 0822     		movs	r2, #8
+ 865 00a2 09A9     		add	r1, sp, #36
+ 866 00a4 1948     		ldr	r0, .L67
+ 867 00a6 FFF7FEFF 		bl	HAL_TIM_PWM_ConfigChannel
+ 868              	.LVL48:
+  89:Src/tim.c     ****   {
+ 869              		.loc 1 89 6 discriminator 1 view .LVU270
+ 870 00aa 40BB     		cbnz	r0, .L65
+ 871              	.L56:
+  93:Src/tim.c     ****   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
+ 872              		.loc 1 93 3 is_stmt 1 view .LVU271
+  93:Src/tim.c     ****   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
+ 873              		.loc 1 93 40 is_stmt 0 view .LVU272
+ 874 00ac 0023     		movs	r3, #0
+ 875 00ae 0193     		str	r3, [sp, #4]
+  94:Src/tim.c     ****   sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
+ 876              		.loc 1 94 3 is_stmt 1 view .LVU273
+  94:Src/tim.c     ****   sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
+ 877              		.loc 1 94 41 is_stmt 0 view .LVU274
+ 878 00b0 0293     		str	r3, [sp, #8]
+  95:Src/tim.c     ****   sBreakDeadTimeConfig.DeadTime = 60;
+ 879              		.loc 1 95 3 is_stmt 1 view .LVU275
+  95:Src/tim.c     ****   sBreakDeadTimeConfig.DeadTime = 60;
+ 880              		.loc 1 95 34 is_stmt 0 view .LVU276
+ 881 00b2 0393     		str	r3, [sp, #12]
+  96:Src/tim.c     ****   sBreakDeadTimeConfig.BreakState = TIM_BREAK_ENABLE;
+ 882              		.loc 1 96 3 is_stmt 1 view .LVU277
+  96:Src/tim.c     ****   sBreakDeadTimeConfig.BreakState = TIM_BREAK_ENABLE;
+ 883              		.loc 1 96 33 is_stmt 0 view .LVU278
+ 884 00b4 3C22     		movs	r2, #60
+ 885 00b6 0492     		str	r2, [sp, #16]
+  97:Src/tim.c     ****   sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
+ 886              		.loc 1 97 3 is_stmt 1 view .LVU279
+  97:Src/tim.c     ****   sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
+ 887              		.loc 1 97 35 is_stmt 0 view .LVU280
+ARM GAS  /tmp/ccdh5c19.s 			page 25
+
+
+ 888 00b8 4FF48052 		mov	r2, #4096
+ 889 00bc 0592     		str	r2, [sp, #20]
+  98:Src/tim.c     ****   sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
+ 890              		.loc 1 98 3 is_stmt 1 view .LVU281
+  98:Src/tim.c     ****   sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
+ 891              		.loc 1 98 38 is_stmt 0 view .LVU282
+ 892 00be 4FF40052 		mov	r2, #8192
+ 893 00c2 0692     		str	r2, [sp, #24]
+  99:Src/tim.c     ****   if (HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBreakDeadTimeConfig) != HAL_OK)
+ 894              		.loc 1 99 3 is_stmt 1 view .LVU283
+  99:Src/tim.c     ****   if (HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBreakDeadTimeConfig) != HAL_OK)
+ 895              		.loc 1 99 40 is_stmt 0 view .LVU284
+ 896 00c4 0893     		str	r3, [sp, #32]
+ 100:Src/tim.c     ****   {
+ 897              		.loc 1 100 3 is_stmt 1 view .LVU285
+ 100:Src/tim.c     ****   {
+ 898              		.loc 1 100 7 is_stmt 0 view .LVU286
+ 899 00c6 01A9     		add	r1, sp, #4
+ 900 00c8 1048     		ldr	r0, .L67
+ 901 00ca FFF7FEFF 		bl	HAL_TIMEx_ConfigBreakDeadTime
+ 902              	.LVL49:
+ 100:Src/tim.c     ****   {
+ 903              		.loc 1 100 6 discriminator 1 view .LVU287
+ 904 00ce C8B9     		cbnz	r0, .L66
+ 905              	.L57:
+ 107:Src/tim.c     **** 
+ 906              		.loc 1 107 3 is_stmt 1 view .LVU288
+ 907 00d0 0E48     		ldr	r0, .L67
+ 908 00d2 FFF7FEFF 		bl	HAL_TIM_MspPostInit
+ 909              	.LVL50:
+ 109:Src/tim.c     **** /* TIM2 init function */
+ 910              		.loc 1 109 1 is_stmt 0 view .LVU289
+ 911 00d6 16B0     		add	sp, sp, #88
+ 912              		.cfi_remember_state
+ 913              		.cfi_def_cfa_offset 8
+ 914              		@ sp needed
+ 915 00d8 10BD     		pop	{r4, pc}
+ 916              	.L59:
+ 917              		.cfi_restore_state
+  57:Src/tim.c     ****   }
+ 918              		.loc 1 57 5 is_stmt 1 view .LVU290
+ 919 00da FFF7FEFF 		bl	Error_Handler
+ 920              	.LVL51:
+ 921 00de B4E7     		b	.L50
+ 922              	.L60:
+  62:Src/tim.c     ****   }
+ 923              		.loc 1 62 5 view .LVU291
+ 924 00e0 FFF7FEFF 		bl	Error_Handler
+ 925              	.LVL52:
+ 926 00e4 BAE7     		b	.L51
+ 927              	.L61:
+  66:Src/tim.c     ****   }
+ 928              		.loc 1 66 5 view .LVU292
+ 929 00e6 FFF7FEFF 		bl	Error_Handler
+ 930              	.LVL53:
+ 931 00ea BCE7     		b	.L52
+ 932              	.L62:
+ARM GAS  /tmp/ccdh5c19.s 			page 26
+
+
+  72:Src/tim.c     ****   }
+ 933              		.loc 1 72 5 view .LVU293
+ 934 00ec FFF7FEFF 		bl	Error_Handler
+ 935              	.LVL54:
+ 936 00f0 C2E7     		b	.L53
+ 937              	.L63:
+  83:Src/tim.c     ****   }
+ 938              		.loc 1 83 5 view .LVU294
+ 939 00f2 FFF7FEFF 		bl	Error_Handler
+ 940              	.LVL55:
+ 941 00f6 CDE7     		b	.L54
+ 942              	.L64:
+  87:Src/tim.c     ****   }
+ 943              		.loc 1 87 5 view .LVU295
+ 944 00f8 FFF7FEFF 		bl	Error_Handler
+ 945              	.LVL56:
+ 946 00fc D0E7     		b	.L55
+ 947              	.L65:
+  91:Src/tim.c     ****   }
+ 948              		.loc 1 91 5 view .LVU296
+ 949 00fe FFF7FEFF 		bl	Error_Handler
+ 950              	.LVL57:
+ 951 0102 D3E7     		b	.L56
+ 952              	.L66:
+ 102:Src/tim.c     ****   }
+ 953              		.loc 1 102 5 view .LVU297
+ 954 0104 FFF7FEFF 		bl	Error_Handler
+ 955              	.LVL58:
+ 956 0108 E2E7     		b	.L57
+ 957              	.L68:
+ 958 010a 00BF     		.align	2
+ 959              	.L67:
+ 960 010c 00000000 		.word	htim1
+ 961 0110 002C0140 		.word	1073818624
+ 962              		.cfi_endproc
+ 963              	.LFE65:
+ 965              		.section	.text.HAL_TIM_Base_MspDeInit,"ax",%progbits
+ 966              		.align	1
+ 967              		.global	HAL_TIM_Base_MspDeInit
+ 968              		.syntax unified
+ 969              		.thumb
+ 970              		.thumb_func
+ 972              	HAL_TIM_Base_MspDeInit:
+ 973              	.LVL59:
+ 974              	.LFB71:
+ 338:Src/tim.c     **** 
+ 339:Src/tim.c     **** void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
+ 340:Src/tim.c     **** {
+ 975              		.loc 1 340 1 view -0
+ 976              		.cfi_startproc
+ 977              		@ args = 0, pretend = 0, frame = 0
+ 978              		@ frame_needed = 0, uses_anonymous_args = 0
+ 979              		.loc 1 340 1 is_stmt 0 view .LVU299
+ 980 0000 08B5     		push	{r3, lr}
+ 981              		.cfi_def_cfa_offset 8
+ 982              		.cfi_offset 3, -8
+ 983              		.cfi_offset 14, -4
+ARM GAS  /tmp/ccdh5c19.s 			page 27
+
+
+ 341:Src/tim.c     **** 
+ 342:Src/tim.c     ****   if(tim_baseHandle->Instance==TIM1)
+ 984              		.loc 1 342 3 is_stmt 1 view .LVU300
+ 985              		.loc 1 342 20 is_stmt 0 view .LVU301
+ 986 0002 0368     		ldr	r3, [r0]
+ 987              		.loc 1 342 5 view .LVU302
+ 988 0004 1D4A     		ldr	r2, .L79
+ 989 0006 9342     		cmp	r3, r2
+ 990 0008 09D0     		beq	.L75
+ 343:Src/tim.c     ****   {
+ 344:Src/tim.c     ****   /* USER CODE BEGIN TIM1_MspDeInit 0 */
+ 345:Src/tim.c     **** 
+ 346:Src/tim.c     ****   /* USER CODE END TIM1_MspDeInit 0 */
+ 347:Src/tim.c     ****     /* Peripheral clock disable */
+ 348:Src/tim.c     ****     __HAL_RCC_TIM1_CLK_DISABLE();
+ 349:Src/tim.c     **** 
+ 350:Src/tim.c     ****     /**TIM1 GPIO Configuration
+ 351:Src/tim.c     ****     PB12     ------> TIM1_BKIN
+ 352:Src/tim.c     ****     PB13     ------> TIM1_CH1N
+ 353:Src/tim.c     ****     PB14     ------> TIM1_CH2N
+ 354:Src/tim.c     ****     PB15     ------> TIM1_CH3N
+ 355:Src/tim.c     ****     PA8     ------> TIM1_CH1
+ 356:Src/tim.c     ****     PA9     ------> TIM1_CH2
+ 357:Src/tim.c     ****     PA10     ------> TIM1_CH3
+ 358:Src/tim.c     ****     */
+ 359:Src/tim.c     ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15);
+ 360:Src/tim.c     **** 
+ 361:Src/tim.c     ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10);
+ 362:Src/tim.c     **** 
+ 363:Src/tim.c     ****   /* USER CODE BEGIN TIM1_MspDeInit 1 */
+ 364:Src/tim.c     **** 
+ 365:Src/tim.c     ****   /* USER CODE END TIM1_MspDeInit 1 */
+ 366:Src/tim.c     ****   }
+ 367:Src/tim.c     ****   else if(tim_baseHandle->Instance==TIM2)
+ 991              		.loc 1 367 8 is_stmt 1 view .LVU303
+ 992              		.loc 1 367 10 is_stmt 0 view .LVU304
+ 993 000a B3F1804F 		cmp	r3, #1073741824
+ 994 000e 17D0     		beq	.L76
+ 368:Src/tim.c     ****   {
+ 369:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspDeInit 0 */
+ 370:Src/tim.c     **** 
+ 371:Src/tim.c     ****   /* USER CODE END TIM2_MspDeInit 0 */
+ 372:Src/tim.c     ****     /* Peripheral clock disable */
+ 373:Src/tim.c     ****     __HAL_RCC_TIM2_CLK_DISABLE();
+ 374:Src/tim.c     **** 
+ 375:Src/tim.c     ****     /* TIM2 interrupt Deinit */
+ 376:Src/tim.c     ****     HAL_NVIC_DisableIRQ(TIM2_IRQn);
+ 377:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspDeInit 1 */
+ 378:Src/tim.c     **** 
+ 379:Src/tim.c     ****   /* USER CODE END TIM2_MspDeInit 1 */
+ 380:Src/tim.c     ****   }
+ 381:Src/tim.c     ****   else if(tim_baseHandle->Instance==TIM3)
+ 995              		.loc 1 381 8 is_stmt 1 view .LVU305
+ 996              		.loc 1 381 10 is_stmt 0 view .LVU306
+ 997 0010 1B4A     		ldr	r2, .L79+4
+ 998 0012 9342     		cmp	r3, r2
+ 999 0014 1DD0     		beq	.L77
+ARM GAS  /tmp/ccdh5c19.s 			page 28
+
+
+ 382:Src/tim.c     ****   {
+ 383:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspDeInit 0 */
+ 384:Src/tim.c     **** 
+ 385:Src/tim.c     ****   /* USER CODE END TIM3_MspDeInit 0 */
+ 386:Src/tim.c     ****     /* Peripheral clock disable */
+ 387:Src/tim.c     ****     __HAL_RCC_TIM3_CLK_DISABLE();
+ 388:Src/tim.c     **** 
+ 389:Src/tim.c     ****     /* TIM3 interrupt Deinit */
+ 390:Src/tim.c     ****     HAL_NVIC_DisableIRQ(TIM3_IRQn);
+ 391:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspDeInit 1 */
+ 392:Src/tim.c     **** 
+ 393:Src/tim.c     ****   /* USER CODE END TIM3_MspDeInit 1 */
+ 394:Src/tim.c     ****   }
+ 395:Src/tim.c     ****   else if(tim_baseHandle->Instance==TIM4)
+ 1000              		.loc 1 395 8 is_stmt 1 view .LVU307
+ 1001              		.loc 1 395 10 is_stmt 0 view .LVU308
+ 1002 0016 1B4A     		ldr	r2, .L79+8
+ 1003 0018 9342     		cmp	r3, r2
+ 1004 001a 24D0     		beq	.L78
+ 1005              	.LVL60:
+ 1006              	.L69:
+ 396:Src/tim.c     ****   {
+ 397:Src/tim.c     ****   /* USER CODE BEGIN TIM4_MspDeInit 0 */
+ 398:Src/tim.c     **** 
+ 399:Src/tim.c     ****   /* USER CODE END TIM4_MspDeInit 0 */
+ 400:Src/tim.c     ****     /* Peripheral clock disable */
+ 401:Src/tim.c     ****     __HAL_RCC_TIM4_CLK_DISABLE();
+ 402:Src/tim.c     **** 
+ 403:Src/tim.c     ****     /* TIM4 interrupt Deinit */
+ 404:Src/tim.c     ****     HAL_NVIC_DisableIRQ(TIM4_IRQn);
+ 405:Src/tim.c     ****   /* USER CODE BEGIN TIM4_MspDeInit 1 */
+ 406:Src/tim.c     **** 
+ 407:Src/tim.c     ****   /* USER CODE END TIM4_MspDeInit 1 */
+ 408:Src/tim.c     ****   }
+ 409:Src/tim.c     **** }
+ 1007              		.loc 1 409 1 view .LVU309
+ 1008 001c 08BD     		pop	{r3, pc}
+ 1009              	.LVL61:
+ 1010              	.L75:
+ 348:Src/tim.c     **** 
+ 1011              		.loc 1 348 5 is_stmt 1 view .LVU310
+ 1012 001e 02F56442 		add	r2, r2, #58368
+ 1013 0022 9369     		ldr	r3, [r2, #24]
+ 1014 0024 23F40063 		bic	r3, r3, #2048
+ 1015 0028 9361     		str	r3, [r2, #24]
+ 359:Src/tim.c     **** 
+ 1016              		.loc 1 359 5 view .LVU311
+ 1017 002a 4FF47041 		mov	r1, #61440
+ 1018 002e 1648     		ldr	r0, .L79+12
+ 1019              	.LVL62:
+ 359:Src/tim.c     **** 
+ 1020              		.loc 1 359 5 is_stmt 0 view .LVU312
+ 1021 0030 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 1022              	.LVL63:
+ 361:Src/tim.c     **** 
+ 1023              		.loc 1 361 5 is_stmt 1 view .LVU313
+ 1024 0034 4FF4E061 		mov	r1, #1792
+ARM GAS  /tmp/ccdh5c19.s 			page 29
+
+
+ 1025 0038 1448     		ldr	r0, .L79+16
+ 1026 003a FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 1027              	.LVL64:
+ 1028 003e EDE7     		b	.L69
+ 1029              	.LVL65:
+ 1030              	.L76:
+ 373:Src/tim.c     **** 
+ 1031              		.loc 1 373 5 view .LVU314
+ 1032 0040 134A     		ldr	r2, .L79+20
+ 1033 0042 D369     		ldr	r3, [r2, #28]
+ 1034 0044 23F00103 		bic	r3, r3, #1
+ 1035 0048 D361     		str	r3, [r2, #28]
+ 376:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspDeInit 1 */
+ 1036              		.loc 1 376 5 view .LVU315
+ 1037 004a 1C20     		movs	r0, #28
+ 1038              	.LVL66:
+ 376:Src/tim.c     ****   /* USER CODE BEGIN TIM2_MspDeInit 1 */
+ 1039              		.loc 1 376 5 is_stmt 0 view .LVU316
+ 1040 004c FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 1041              	.LVL67:
+ 1042 0050 E4E7     		b	.L69
+ 1043              	.LVL68:
+ 1044              	.L77:
+ 387:Src/tim.c     **** 
+ 1045              		.loc 1 387 5 is_stmt 1 view .LVU317
+ 1046 0052 02F50332 		add	r2, r2, #134144
+ 1047 0056 D369     		ldr	r3, [r2, #28]
+ 1048 0058 23F00203 		bic	r3, r3, #2
+ 1049 005c D361     		str	r3, [r2, #28]
+ 390:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspDeInit 1 */
+ 1050              		.loc 1 390 5 view .LVU318
+ 1051 005e 1D20     		movs	r0, #29
+ 1052              	.LVL69:
+ 390:Src/tim.c     ****   /* USER CODE BEGIN TIM3_MspDeInit 1 */
+ 1053              		.loc 1 390 5 is_stmt 0 view .LVU319
+ 1054 0060 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 1055              	.LVL70:
+ 1056 0064 DAE7     		b	.L69
+ 1057              	.LVL71:
+ 1058              	.L78:
+ 401:Src/tim.c     **** 
+ 1059              		.loc 1 401 5 is_stmt 1 view .LVU320
+ 1060 0066 02F50232 		add	r2, r2, #133120
+ 1061 006a D369     		ldr	r3, [r2, #28]
+ 1062 006c 23F00403 		bic	r3, r3, #4
+ 1063 0070 D361     		str	r3, [r2, #28]
+ 404:Src/tim.c     ****   /* USER CODE BEGIN TIM4_MspDeInit 1 */
+ 1064              		.loc 1 404 5 view .LVU321
+ 1065 0072 1E20     		movs	r0, #30
+ 1066              	.LVL72:
+ 404:Src/tim.c     ****   /* USER CODE BEGIN TIM4_MspDeInit 1 */
+ 1067              		.loc 1 404 5 is_stmt 0 view .LVU322
+ 1068 0074 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 1069              	.LVL73:
+ 1070              		.loc 1 409 1 view .LVU323
+ 1071 0078 D0E7     		b	.L69
+ 1072              	.L80:
+ARM GAS  /tmp/ccdh5c19.s 			page 30
+
+
+ 1073 007a 00BF     		.align	2
+ 1074              	.L79:
+ 1075 007c 002C0140 		.word	1073818624
+ 1076 0080 00040040 		.word	1073742848
+ 1077 0084 00080040 		.word	1073743872
+ 1078 0088 000C0140 		.word	1073810432
+ 1079 008c 00080140 		.word	1073809408
+ 1080 0090 00100240 		.word	1073876992
+ 1081              		.cfi_endproc
+ 1082              	.LFE71:
+ 1084              		.global	htim4
+ 1085              		.section	.bss.htim4,"aw",%nobits
+ 1086              		.align	2
+ 1089              	htim4:
+ 1090 0000 00000000 		.space	72
+ 1090      00000000 
+ 1090      00000000 
+ 1090      00000000 
+ 1090      00000000 
+ 1091              		.global	htim3
+ 1092              		.section	.bss.htim3,"aw",%nobits
+ 1093              		.align	2
+ 1096              	htim3:
+ 1097 0000 00000000 		.space	72
+ 1097      00000000 
+ 1097      00000000 
+ 1097      00000000 
+ 1097      00000000 
+ 1098              		.global	htim2
+ 1099              		.section	.bss.htim2,"aw",%nobits
+ 1100              		.align	2
+ 1103              	htim2:
+ 1104 0000 00000000 		.space	72
+ 1104      00000000 
+ 1104      00000000 
+ 1104      00000000 
+ 1104      00000000 
+ 1105              		.global	htim1
+ 1106              		.section	.bss.htim1,"aw",%nobits
+ 1107              		.align	2
+ 1110              	htim1:
+ 1111 0000 00000000 		.space	72
+ 1111      00000000 
+ 1111      00000000 
+ 1111      00000000 
+ 1111      00000000 
+ 1112              		.text
+ 1113              	.Letext0:
+ 1114              		.file 2 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 1115              		.file 3 "/usr/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h"
+ 1116              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 1117              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 1118              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 1119              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 1120              		.file 8 "Inc/tim.h"
+ 1121              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h"
+ 1122              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h"
+ARM GAS  /tmp/ccdh5c19.s 			page 31
+
+
+ 1123              		.file 11 "Inc/main.h"
+ 1124              		.file 12 "<built-in>"
+ARM GAS  /tmp/ccdh5c19.s 			page 32
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 tim.c
-     /tmp/cctIVEZT.s:19     .text.MX_TIM2_Init:00000000 $t
-     /tmp/cctIVEZT.s:25     .text.MX_TIM2_Init:00000000 MX_TIM2_Init
-     /tmp/cctIVEZT.s:131    .text.MX_TIM2_Init:0000006c $d
-     /tmp/cctIVEZT.s:921    .bss.htim2:00000000 htim2
-     /tmp/cctIVEZT.s:136    .text.MX_TIM3_Init:00000000 $t
-     /tmp/cctIVEZT.s:142    .text.MX_TIM3_Init:00000000 MX_TIM3_Init
-     /tmp/cctIVEZT.s:248    .text.MX_TIM3_Init:00000068 $d
-     /tmp/cctIVEZT.s:914    .bss.htim3:00000000 htim3
-     /tmp/cctIVEZT.s:254    .text.HAL_TIM_Base_MspInit:00000000 $t
-     /tmp/cctIVEZT.s:260    .text.HAL_TIM_Base_MspInit:00000000 HAL_TIM_Base_MspInit
-     /tmp/cctIVEZT.s:418    .text.HAL_TIM_Base_MspInit:000000ac $d
-     /tmp/cctIVEZT.s:426    .text.HAL_TIM_MspPostInit:00000000 $t
-     /tmp/cctIVEZT.s:432    .text.HAL_TIM_MspPostInit:00000000 HAL_TIM_MspPostInit
-     /tmp/cctIVEZT.s:540    .text.HAL_TIM_MspPostInit:0000006c $d
-     /tmp/cctIVEZT.s:547    .text.MX_TIM1_Init:00000000 $t
-     /tmp/cctIVEZT.s:553    .text.MX_TIM1_Init:00000000 MX_TIM1_Init
-     /tmp/cctIVEZT.s:805    .text.MX_TIM1_Init:0000010c $d
-     /tmp/cctIVEZT.s:928    .bss.htim1:00000000 htim1
-     /tmp/cctIVEZT.s:811    .text.HAL_TIM_Base_MspDeInit:00000000 $t
-     /tmp/cctIVEZT.s:817    .text.HAL_TIM_Base_MspDeInit:00000000 HAL_TIM_Base_MspDeInit
-     /tmp/cctIVEZT.s:901    .text.HAL_TIM_Base_MspDeInit:00000060 $d
-     /tmp/cctIVEZT.s:911    .bss.htim3:00000000 $d
-     /tmp/cctIVEZT.s:918    .bss.htim2:00000000 $d
-     /tmp/cctIVEZT.s:925    .bss.htim1:00000000 $d
+     /tmp/ccdh5c19.s:19     .text.MX_TIM2_Init:00000000 $t
+     /tmp/ccdh5c19.s:25     .text.MX_TIM2_Init:00000000 MX_TIM2_Init
+     /tmp/ccdh5c19.s:131    .text.MX_TIM2_Init:0000006c $d
+     /tmp/ccdh5c19.s:1103   .bss.htim2:00000000 htim2
+     /tmp/ccdh5c19.s:136    .text.MX_TIM3_Init:00000000 $t
+     /tmp/ccdh5c19.s:142    .text.MX_TIM3_Init:00000000 MX_TIM3_Init
+     /tmp/ccdh5c19.s:248    .text.MX_TIM3_Init:00000068 $d
+     /tmp/ccdh5c19.s:1096   .bss.htim3:00000000 htim3
+     /tmp/ccdh5c19.s:254    .text.MX_TIM4_Init:00000000 $t
+     /tmp/ccdh5c19.s:260    .text.MX_TIM4_Init:00000000 MX_TIM4_Init
+     /tmp/ccdh5c19.s:366    .text.MX_TIM4_Init:00000068 $d
+     /tmp/ccdh5c19.s:1089   .bss.htim4:00000000 htim4
+     /tmp/ccdh5c19.s:372    .text.HAL_TIM_Base_MspInit:00000000 $t
+     /tmp/ccdh5c19.s:378    .text.HAL_TIM_Base_MspInit:00000000 HAL_TIM_Base_MspInit
+     /tmp/ccdh5c19.s:572    .text.HAL_TIM_Base_MspInit:000000d8 $d
+     /tmp/ccdh5c19.s:581    .text.HAL_TIM_MspPostInit:00000000 $t
+     /tmp/ccdh5c19.s:587    .text.HAL_TIM_MspPostInit:00000000 HAL_TIM_MspPostInit
+     /tmp/ccdh5c19.s:695    .text.HAL_TIM_MspPostInit:0000006c $d
+     /tmp/ccdh5c19.s:702    .text.MX_TIM1_Init:00000000 $t
+     /tmp/ccdh5c19.s:708    .text.MX_TIM1_Init:00000000 MX_TIM1_Init
+     /tmp/ccdh5c19.s:960    .text.MX_TIM1_Init:0000010c $d
+     /tmp/ccdh5c19.s:1110   .bss.htim1:00000000 htim1
+     /tmp/ccdh5c19.s:966    .text.HAL_TIM_Base_MspDeInit:00000000 $t
+     /tmp/ccdh5c19.s:972    .text.HAL_TIM_Base_MspDeInit:00000000 HAL_TIM_Base_MspDeInit
+     /tmp/ccdh5c19.s:1075   .text.HAL_TIM_Base_MspDeInit:0000007c $d
+     /tmp/ccdh5c19.s:1086   .bss.htim4:00000000 $d
+     /tmp/ccdh5c19.s:1093   .bss.htim3:00000000 $d
+     /tmp/ccdh5c19.s:1100   .bss.htim2:00000000 $d
+     /tmp/ccdh5c19.s:1107   .bss.htim1:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_TIM_Base_Init

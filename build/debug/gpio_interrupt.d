@@ -28,7 +28,8 @@ build/debug/gpio_interrupt.o: Src/Zeugma_c/gpio_interrupt.c \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h Inc/tim.h \
  Inc/main.h Inc/Zeugma_h/rpm.h Inc/Zeugma_h/old_value_hall.h \
- Inc/Zeugma_h/old_value_hall.h Inc/Zeugma_h/steps.h
+ Inc/Zeugma_h/old_value_hall.h Inc/Zeugma_h/steps.h \
+ Inc/Zeugma_h/debug_monitor.h
 Inc/Zeugma_h/gpio_interrupt.h:
 Inc/main.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
@@ -66,3 +67,4 @@ Inc/Zeugma_h/rpm.h:
 Inc/Zeugma_h/old_value_hall.h:
 Inc/Zeugma_h/old_value_hall.h:
 Inc/Zeugma_h/steps.h:
+Inc/Zeugma_h/debug_monitor.h:

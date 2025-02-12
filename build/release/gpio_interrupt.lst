@@ -1,0 +1,203 @@
+ARM GAS  /tmp/ccnVDoWG.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gpio_interrupt.c"
+  14              		.text
+  15              		.section	.text.HAL_GPIO_EXTI_Callback,"ax",%progbits
+  16              		.align	1
+  17              		.global	HAL_GPIO_EXTI_Callback
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	HAL_GPIO_EXTI_Callback:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 10B5     		push	{r4, lr}
+  26 0002 414C     		ldr	r4, .L10
+  27 0004 0121     		movs	r1, #1
+  28 0006 2046     		mov	r0, r4
+  29 0008 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+  30 000c 0038     		subs	r0, r0, #0
+  31 000e 18BF     		it	ne
+  32 0010 0120     		movne	r0, #1
+  33 0012 3E4B     		ldr	r3, .L10+4
+  34 0014 1870     		strb	r0, [r3]
+  35 0016 0221     		movs	r1, #2
+  36 0018 2046     		mov	r0, r4
+  37 001a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+  38 001e 0038     		subs	r0, r0, #0
+  39 0020 18BF     		it	ne
+  40 0022 0120     		movne	r0, #1
+  41 0024 3A4B     		ldr	r3, .L10+8
+  42 0026 1870     		strb	r0, [r3]
+  43 0028 0421     		movs	r1, #4
+  44 002a 2046     		mov	r0, r4
+  45 002c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+  46 0030 0038     		subs	r0, r0, #0
+  47 0032 18BF     		it	ne
+  48 0034 0120     		movne	r0, #1
+  49 0036 374B     		ldr	r3, .L10+12
+  50 0038 1870     		strb	r0, [r3]
+  51 003a 374B     		ldr	r3, .L10+16
+  52 003c 0122     		movs	r2, #1
+  53 003e 1A70     		strb	r2, [r3]
+  54 0040 364B     		ldr	r3, .L10+20
+  55 0042 1B68     		ldr	r3, [r3]
+  56 0044 5A6A     		ldr	r2, [r3, #36]
+  57 0046 364B     		ldr	r3, .L10+24
+  58 0048 1A60     		str	r2, [r3]
+ARM GAS  /tmp/ccnVDoWG.s 			page 2
+
+
+  59 004a 1868     		ldr	r0, [r3]
+  60 004c FFF7FEFF 		bl	get_rpm
+  61 0050 344B     		ldr	r3, .L10+28
+  62 0052 1860     		str	r0, [r3]
+  63 0054 0023     		movs	r3, #0
+  64 0056 00E0     		b	.L2
+  65              	.L3:
+  66 0058 0133     		adds	r3, r3, #1
+  67              	.L2:
+  68 005a 1D2B     		cmp	r3, #29
+  69 005c 13DC     		bgt	.L4
+  70 005e 6422     		movs	r2, #100
+  71 0060 03FB02F2 		mul	r2, r3, r2
+  72 0064 2F49     		ldr	r1, .L10+28
+  73 0066 0968     		ldr	r1, [r1]
+  74 0068 8A42     		cmp	r2, r1
+  75 006a F5D2     		bcs	.L3
+  76 006c 6422     		movs	r2, #100
+  77 006e 03FB0222 		mla	r2, r3, r2, r2
+  78 0072 2C49     		ldr	r1, .L10+28
+  79 0074 0968     		ldr	r1, [r1]
+  80 0076 8A42     		cmp	r2, r1
+  81 0078 EED3     		bcc	.L3
+  82 007a 2B4A     		ldr	r2, .L10+32
+  83 007c 1268     		ldr	r2, [r2]
+  84 007e 92B2     		uxth	r2, r2
+  85 0080 2A49     		ldr	r1, .L10+36
+  86 0082 21F81320 		strh	r2, [r1, r3, lsl #1]	@ movhi
+  87              	.L4:
+  88 0086 254B     		ldr	r3, .L10+20
+  89 0088 1B68     		ldr	r3, [r3]
+  90 008a 0022     		movs	r2, #0
+  91 008c 5A62     		str	r2, [r3, #36]
+  92 008e 284B     		ldr	r3, .L10+40
+  93 0090 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  94 0092 A3B1     		cbz	r3, .L6
+  95 0094 1D4B     		ldr	r3, .L10+4
+  96 0096 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  97 0098 D2B2     		uxtb	r2, r2
+  98 009a 1E4B     		ldr	r3, .L10+12
+  99 009c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 100 009e DBB2     		uxtb	r3, r3
+ 101 00a0 9A42     		cmp	r2, r3
+ 102 00a2 14D0     		beq	.L9
+ 103              	.L7:
+ 104 00a4 194B     		ldr	r3, .L10+4
+ 105 00a6 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 106 00a8 D2B2     		uxtb	r2, r2
+ 107 00aa 224B     		ldr	r3, .L10+44
+ 108 00ac 1A70     		strb	r2, [r3]
+ 109 00ae 184A     		ldr	r2, .L10+8
+ 110 00b0 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 111 00b2 D2B2     		uxtb	r2, r2
+ 112 00b4 5A70     		strb	r2, [r3, #1]
+ 113 00b6 174A     		ldr	r2, .L10+12
+ 114 00b8 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 115 00ba D2B2     		uxtb	r2, r2
+ARM GAS  /tmp/ccnVDoWG.s 			page 3
+
+
+ 116 00bc 9A70     		strb	r2, [r3, #2]
+ 117              	.L6:
+ 118 00be FFF7FEFF 		bl	set_old_value
+ 119 00c2 1D4B     		ldr	r3, .L10+48
+ 120 00c4 1868     		ldr	r0, [r3]
+ 121 00c6 C0B2     		uxtb	r0, r0
+ 122 00c8 FFF7FEFF 		bl	execute_step
+ 123 00cc 10BD     		pop	{r4, pc}
+ 124              	.L9:
+ 125 00ce 0F4B     		ldr	r3, .L10+4
+ 126 00d0 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 127 00d2 D2B2     		uxtb	r2, r2
+ 128 00d4 0E4B     		ldr	r3, .L10+8
+ 129 00d6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 130 00d8 DBB2     		uxtb	r3, r3
+ 131 00da 9A42     		cmp	r2, r3
+ 132 00dc E2D1     		bne	.L7
+ 133 00de 154B     		ldr	r3, .L10+44
+ 134 00e0 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 135 00e2 003A     		subs	r2, r2, #0
+ 136 00e4 18BF     		it	ne
+ 137 00e6 0122     		movne	r2, #1
+ 138 00e8 0849     		ldr	r1, .L10+4
+ 139 00ea 0A70     		strb	r2, [r1]
+ 140 00ec 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+ 141 00ee 003A     		subs	r2, r2, #0
+ 142 00f0 18BF     		it	ne
+ 143 00f2 0122     		movne	r2, #1
+ 144 00f4 0649     		ldr	r1, .L10+8
+ 145 00f6 0A70     		strb	r2, [r1]
+ 146 00f8 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 147 00fa 003B     		subs	r3, r3, #0
+ 148 00fc 18BF     		it	ne
+ 149 00fe 0123     		movne	r3, #1
+ 150 0100 044A     		ldr	r2, .L10+12
+ 151 0102 1370     		strb	r3, [r2]
+ 152 0104 DBE7     		b	.L6
+ 153              	.L11:
+ 154 0106 00BF     		.align	2
+ 155              	.L10:
+ 156 0108 00080140 		.word	1073809408
+ 157 010c 00000000 		.word	hall_A
+ 158 0110 00000000 		.word	hall_B
+ 159 0114 00000000 		.word	hall_C
+ 160 0118 00000000 		.word	first_step_flag
+ 161 011c 00000000 		.word	htim2
+ 162 0120 00000000 		.word	difference_two_coummutation_time
+ 163 0124 00000000 		.word	rpm
+ 164 0128 00000000 		.word	pwm_value
+ 165 012c 00000000 		.word	saved_pwm_rpm
+ 166 0130 00000000 		.word	run_status
+ 167 0134 00000000 		.word	oncekiDegerler
+ 168 0138 00000000 		.word	step
+ 170              		.ident	"GCC: (15:13.3.rel1-1) 13.3.1 20240614"
+ARM GAS  /tmp/ccnVDoWG.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gpio_interrupt.c
+     /tmp/ccnVDoWG.s:16     .text.HAL_GPIO_EXTI_Callback:00000000 $t
+     /tmp/ccnVDoWG.s:22     .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
+     /tmp/ccnVDoWG.s:156    .text.HAL_GPIO_EXTI_Callback:00000108 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_ReadPin
+get_rpm
+set_old_value
+execute_step
+hall_A
+hall_B
+hall_C
+first_step_flag
+htim2
+difference_two_coummutation_time
+rpm
+pwm_value
+saved_pwm_rpm
+run_status
+oncekiDegerler
+step

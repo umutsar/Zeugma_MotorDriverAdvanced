@@ -1,0 +1,337 @@
+ARM GAS  /tmp/ccSbuXlA.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f1xx_hal_rcc_ex.c"
+  14              		.text
+  15              		.section	.text.HAL_RCCEx_PeriphCLKConfig,"ax",%progbits
+  16              		.align	1
+  17              		.global	HAL_RCCEx_PeriphCLKConfig
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	HAL_RCCEx_PeriphCLKConfig:
+  23              		@ args = 0, pretend = 0, frame = 8
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 70B5     		push	{r4, r5, r6, lr}
+  26 0002 82B0     		sub	sp, sp, #8
+  27 0004 0446     		mov	r4, r0
+  28 0006 0368     		ldr	r3, [r0]
+  29 0008 13F0010F 		tst	r3, #1
+  30 000c 36D0     		beq	.L2
+  31 000e 3F4B     		ldr	r3, .L20
+  32 0010 DB69     		ldr	r3, [r3, #28]
+  33 0012 13F0805F 		tst	r3, #268435456
+  34 0016 49D1     		bne	.L12
+  35 0018 3C4B     		ldr	r3, .L20
+  36 001a DA69     		ldr	r2, [r3, #28]
+  37 001c 42F08052 		orr	r2, r2, #268435456
+  38 0020 DA61     		str	r2, [r3, #28]
+  39 0022 DB69     		ldr	r3, [r3, #28]
+  40 0024 03F08053 		and	r3, r3, #268435456
+  41 0028 0193     		str	r3, [sp, #4]
+  42 002a 019B     		ldr	r3, [sp, #4]
+  43 002c 0125     		movs	r5, #1
+  44              	.L3:
+  45 002e 384B     		ldr	r3, .L20+4
+  46 0030 1B68     		ldr	r3, [r3]
+  47 0032 13F4807F 		tst	r3, #256
+  48 0036 3BD0     		beq	.L17
+  49              	.L4:
+  50 0038 344B     		ldr	r3, .L20
+  51 003a 1B6A     		ldr	r3, [r3, #32]
+  52 003c 13F44073 		ands	r3, r3, #768
+  53 0040 13D0     		beq	.L8
+  54 0042 6268     		ldr	r2, [r4, #4]
+  55 0044 02F44072 		and	r2, r2, #768
+  56 0048 9A42     		cmp	r2, r3
+  57 004a 0ED0     		beq	.L8
+  58 004c 2F4A     		ldr	r2, .L20
+ARM GAS  /tmp/ccSbuXlA.s 			page 2
+
+
+  59 004e 136A     		ldr	r3, [r2, #32]
+  60 0050 23F44070 		bic	r0, r3, #768
+  61 0054 2F49     		ldr	r1, .L20+8
+  62 0056 0126     		movs	r6, #1
+  63 0058 C1F84064 		str	r6, [r1, #1088]
+  64 005c 0026     		movs	r6, #0
+  65 005e C1F84064 		str	r6, [r1, #1088]
+  66 0062 1062     		str	r0, [r2, #32]
+  67 0064 13F0010F 		tst	r3, #1
+  68 0068 36D1     		bne	.L18
+  69              	.L8:
+  70 006a 284A     		ldr	r2, .L20
+  71 006c 136A     		ldr	r3, [r2, #32]
+  72 006e 23F44073 		bic	r3, r3, #768
+  73 0072 6168     		ldr	r1, [r4, #4]
+  74 0074 0B43     		orrs	r3, r3, r1
+  75 0076 1362     		str	r3, [r2, #32]
+  76 0078 002D     		cmp	r5, #0
+  77 007a 3ED1     		bne	.L19
+  78              	.L2:
+  79 007c 2368     		ldr	r3, [r4]
+  80 007e 13F0020F 		tst	r3, #2
+  81 0082 06D0     		beq	.L11
+  82 0084 214A     		ldr	r2, .L20
+  83 0086 5368     		ldr	r3, [r2, #4]
+  84 0088 23F44043 		bic	r3, r3, #49152
+  85 008c A168     		ldr	r1, [r4, #8]
+  86 008e 0B43     		orrs	r3, r3, r1
+  87 0090 5360     		str	r3, [r2, #4]
+  88              	.L11:
+  89 0092 2368     		ldr	r3, [r4]
+  90 0094 13F0100F 		tst	r3, #16
+  91 0098 34D0     		beq	.L15
+  92 009a 1C4A     		ldr	r2, .L20
+  93 009c 5368     		ldr	r3, [r2, #4]
+  94 009e 23F48003 		bic	r3, r3, #4194304
+  95 00a2 E168     		ldr	r1, [r4, #12]
+  96 00a4 0B43     		orrs	r3, r3, r1
+  97 00a6 5360     		str	r3, [r2, #4]
+  98 00a8 0020     		movs	r0, #0
+  99 00aa 2CE0     		b	.L6
+ 100              	.L12:
+ 101 00ac 0025     		movs	r5, #0
+ 102 00ae BEE7     		b	.L3
+ 103              	.L17:
+ 104 00b0 174A     		ldr	r2, .L20+4
+ 105 00b2 1368     		ldr	r3, [r2]
+ 106 00b4 43F48073 		orr	r3, r3, #256
+ 107 00b8 1360     		str	r3, [r2]
+ 108 00ba FFF7FEFF 		bl	HAL_GetTick
+ 109 00be 0646     		mov	r6, r0
+ 110              	.L5:
+ 111 00c0 134B     		ldr	r3, .L20+4
+ 112 00c2 1B68     		ldr	r3, [r3]
+ 113 00c4 13F4807F 		tst	r3, #256
+ 114 00c8 B6D1     		bne	.L4
+ 115 00ca FFF7FEFF 		bl	HAL_GetTick
+ARM GAS  /tmp/ccSbuXlA.s 			page 3
+
+
+ 116 00ce 801B     		subs	r0, r0, r6
+ 117 00d0 6428     		cmp	r0, #100
+ 118 00d2 F5D9     		bls	.L5
+ 119 00d4 0320     		movs	r0, #3
+ 120 00d6 16E0     		b	.L6
+ 121              	.L18:
+ 122 00d8 FFF7FEFF 		bl	HAL_GetTick
+ 123 00dc 0646     		mov	r6, r0
+ 124              	.L9:
+ 125 00de 0B4B     		ldr	r3, .L20
+ 126 00e0 1B6A     		ldr	r3, [r3, #32]
+ 127 00e2 13F0020F 		tst	r3, #2
+ 128 00e6 C0D1     		bne	.L8
+ 129 00e8 FFF7FEFF 		bl	HAL_GetTick
+ 130 00ec 801B     		subs	r0, r0, r6
+ 131 00ee 41F28833 		movw	r3, #5000
+ 132 00f2 9842     		cmp	r0, r3
+ 133 00f4 F3D9     		bls	.L9
+ 134 00f6 0320     		movs	r0, #3
+ 135 00f8 05E0     		b	.L6
+ 136              	.L19:
+ 137 00fa D369     		ldr	r3, [r2, #28]
+ 138 00fc 23F08053 		bic	r3, r3, #268435456
+ 139 0100 D361     		str	r3, [r2, #28]
+ 140 0102 BBE7     		b	.L2
+ 141              	.L15:
+ 142 0104 0020     		movs	r0, #0
+ 143              	.L6:
+ 144 0106 02B0     		add	sp, sp, #8
+ 145              		@ sp needed
+ 146 0108 70BD     		pop	{r4, r5, r6, pc}
+ 147              	.L21:
+ 148 010a 00BF     		.align	2
+ 149              	.L20:
+ 150 010c 00100240 		.word	1073876992
+ 151 0110 00700040 		.word	1073770496
+ 152 0114 00004242 		.word	1111621632
+ 154              		.section	.text.HAL_RCCEx_GetPeriphCLKConfig,"ax",%progbits
+ 155              		.align	1
+ 156              		.global	HAL_RCCEx_GetPeriphCLKConfig
+ 157              		.syntax unified
+ 158              		.thumb
+ 159              		.thumb_func
+ 161              	HAL_RCCEx_GetPeriphCLKConfig:
+ 162              		@ args = 0, pretend = 0, frame = 0
+ 163              		@ frame_needed = 0, uses_anonymous_args = 0
+ 164              		@ link register save eliminated.
+ 165 0000 0123     		movs	r3, #1
+ 166 0002 0360     		str	r3, [r0]
+ 167 0004 084B     		ldr	r3, .L23
+ 168 0006 1A6A     		ldr	r2, [r3, #32]
+ 169 0008 02F44072 		and	r2, r2, #768
+ 170 000c 4260     		str	r2, [r0, #4]
+ 171 000e 0322     		movs	r2, #3
+ 172 0010 0260     		str	r2, [r0]
+ 173 0012 5A68     		ldr	r2, [r3, #4]
+ 174 0014 02F44042 		and	r2, r2, #49152
+ARM GAS  /tmp/ccSbuXlA.s 			page 4
+
+
+ 175 0018 8260     		str	r2, [r0, #8]
+ 176 001a 1322     		movs	r2, #19
+ 177 001c 0260     		str	r2, [r0]
+ 178 001e 5B68     		ldr	r3, [r3, #4]
+ 179 0020 03F48003 		and	r3, r3, #4194304
+ 180 0024 C360     		str	r3, [r0, #12]
+ 181 0026 7047     		bx	lr
+ 182              	.L24:
+ 183              		.align	2
+ 184              	.L23:
+ 185 0028 00100240 		.word	1073876992
+ 187              		.section	.text.HAL_RCCEx_GetPeriphCLKFreq,"ax",%progbits
+ 188              		.align	1
+ 189              		.global	HAL_RCCEx_GetPeriphCLKFreq
+ 190              		.syntax unified
+ 191              		.thumb
+ 192              		.thumb_func
+ 194              	HAL_RCCEx_GetPeriphCLKFreq:
+ 195              		@ args = 0, pretend = 0, frame = 0
+ 196              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197 0000 08B5     		push	{r3, lr}
+ 198 0002 0228     		cmp	r0, #2
+ 199 0004 4ED0     		beq	.L26
+ 200 0006 1028     		cmp	r0, #16
+ 201 0008 03D0     		beq	.L27
+ 202 000a 0128     		cmp	r0, #1
+ 203 000c 28D0     		beq	.L28
+ 204 000e 0020     		movs	r0, #0
+ 205 0010 52E0     		b	.L25
+ 206              	.L27:
+ 207 0012 2B4B     		ldr	r3, .L40
+ 208 0014 5A68     		ldr	r2, [r3, #4]
+ 209 0016 1868     		ldr	r0, [r3]
+ 210 0018 10F08070 		ands	r0, r0, #16777216
+ 211 001c 4CD0     		beq	.L25
+ 212 001e C2F38343 		ubfx	r3, r2, #18, #4
+ 213 0022 2849     		ldr	r1, .L40+4
+ 214 0024 C85C     		ldrb	r0, [r1, r3]	@ zero_extendqisi2
+ 215 0026 12F4803F 		tst	r2, #65536
+ 216 002a 15D0     		beq	.L30
+ 217 002c 244B     		ldr	r3, .L40
+ 218 002e 5B68     		ldr	r3, [r3, #4]
+ 219 0030 C3F34043 		ubfx	r3, r3, #17, #1
+ 220 0034 244A     		ldr	r2, .L40+8
+ 221 0036 D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+ 222 0038 244B     		ldr	r3, .L40+12
+ 223 003a B3FBF2F3 		udiv	r3, r3, r2
+ 224 003e 03FB00F0 		mul	r0, r3, r0
+ 225              	.L31:
+ 226 0042 1F4B     		ldr	r3, .L40
+ 227 0044 5B68     		ldr	r3, [r3, #4]
+ 228 0046 13F4800F 		tst	r3, #4194304
+ 229 004a 35D1     		bne	.L25
+ 230 004c 4000     		lsls	r0, r0, #1
+ 231 004e 204B     		ldr	r3, .L40+16
+ 232 0050 A3FB0030 		umull	r3, r0, r3, r0
+ 233 0054 4008     		lsrs	r0, r0, #1
+ARM GAS  /tmp/ccSbuXlA.s 			page 5
+
+
+ 234 0056 2FE0     		b	.L25
+ 235              	.L30:
+ 236 0058 1E4B     		ldr	r3, .L40+20
+ 237 005a 03FB00F0 		mul	r0, r3, r0
+ 238 005e F0E7     		b	.L31
+ 239              	.L28:
+ 240 0060 174B     		ldr	r3, .L40
+ 241 0062 1B6A     		ldr	r3, [r3, #32]
+ 242 0064 40F20232 		movw	r2, #770
+ 243 0068 1A40     		ands	r2, r2, r3
+ 244 006a B2F5817F 		cmp	r2, #258
+ 245 006e 24D0     		beq	.L33
+ 246 0070 03F44073 		and	r3, r3, #768
+ 247 0074 B3F5007F 		cmp	r3, #512
+ 248 0078 04D0     		beq	.L38
+ 249              	.L32:
+ 250 007a B3F5407F 		cmp	r3, #768
+ 251 007e 09D0     		beq	.L39
+ 252 0080 0020     		movs	r0, #0
+ 253 0082 19E0     		b	.L25
+ 254              	.L38:
+ 255 0084 0E4A     		ldr	r2, .L40
+ 256 0086 526A     		ldr	r2, [r2, #36]
+ 257 0088 12F0020F 		tst	r2, #2
+ 258 008c F5D0     		beq	.L32
+ 259 008e 49F64040 		movw	r0, #40000
+ 260 0092 11E0     		b	.L25
+ 261              	.L39:
+ 262 0094 0A4B     		ldr	r3, .L40
+ 263 0096 1868     		ldr	r0, [r3]
+ 264 0098 10F40030 		ands	r0, r0, #131072
+ 265 009c 0CD0     		beq	.L25
+ 266 009e 4FF22440 		movw	r0, #62500
+ 267 00a2 09E0     		b	.L25
+ 268              	.L26:
+ 269 00a4 FFF7FEFF 		bl	HAL_RCC_GetPCLK2Freq
+ 270 00a8 054B     		ldr	r3, .L40
+ 271 00aa 5B68     		ldr	r3, [r3, #4]
+ 272 00ac C3F38133 		ubfx	r3, r3, #14, #2
+ 273 00b0 0133     		adds	r3, r3, #1
+ 274 00b2 5B00     		lsls	r3, r3, #1
+ 275 00b4 B0FBF3F0 		udiv	r0, r0, r3
+ 276              	.L25:
+ 277 00b8 08BD     		pop	{r3, pc}
+ 278              	.L33:
+ 279 00ba 4FF40040 		mov	r0, #32768
+ 280 00be FBE7     		b	.L25
+ 281              	.L41:
+ 282              		.align	2
+ 283              	.L40:
+ 284 00c0 00100240 		.word	1073876992
+ 285 00c4 00000000 		.word	aPLLMULFactorTable.1
+ 286 00c8 00000000 		.word	aPredivFactorTable.0
+ 287 00cc 00127A00 		.word	8000000
+ 288 00d0 ABAAAAAA 		.word	-1431655765
+ 289 00d4 00093D00 		.word	4000000
+ 291              		.section	.rodata.aPredivFactorTable.0,"a"
+ARM GAS  /tmp/ccSbuXlA.s 			page 6
+
+
+ 292              		.align	2
+ 295              	aPredivFactorTable.0:
+ 296 0000 0102     		.ascii	"\001\002"
+ 297              		.section	.rodata.aPLLMULFactorTable.1,"a"
+ 298              		.align	2
+ 301              	aPLLMULFactorTable.1:
+ 302 0000 02030405 		.ascii	"\002\003\004\005\006\007\010\011\012\013\014\015\016"
+ 302      06070809 
+ 302      0A0B0C0D 
+ 302      0E
+ 303 000d 0F1010   		.ascii	"\017\020\020"
+ 304              		.ident	"GCC: (15:13.3.rel1-1) 13.3.1 20240614"
+ARM GAS  /tmp/ccSbuXlA.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f1xx_hal_rcc_ex.c
+     /tmp/ccSbuXlA.s:16     .text.HAL_RCCEx_PeriphCLKConfig:00000000 $t
+     /tmp/ccSbuXlA.s:22     .text.HAL_RCCEx_PeriphCLKConfig:00000000 HAL_RCCEx_PeriphCLKConfig
+     /tmp/ccSbuXlA.s:150    .text.HAL_RCCEx_PeriphCLKConfig:0000010c $d
+     /tmp/ccSbuXlA.s:155    .text.HAL_RCCEx_GetPeriphCLKConfig:00000000 $t
+     /tmp/ccSbuXlA.s:161    .text.HAL_RCCEx_GetPeriphCLKConfig:00000000 HAL_RCCEx_GetPeriphCLKConfig
+     /tmp/ccSbuXlA.s:185    .text.HAL_RCCEx_GetPeriphCLKConfig:00000028 $d
+     /tmp/ccSbuXlA.s:188    .text.HAL_RCCEx_GetPeriphCLKFreq:00000000 $t
+     /tmp/ccSbuXlA.s:194    .text.HAL_RCCEx_GetPeriphCLKFreq:00000000 HAL_RCCEx_GetPeriphCLKFreq
+     /tmp/ccSbuXlA.s:284    .text.HAL_RCCEx_GetPeriphCLKFreq:000000c0 $d
+     /tmp/ccSbuXlA.s:301    .rodata.aPLLMULFactorTable.1:00000000 aPLLMULFactorTable.1
+     /tmp/ccSbuXlA.s:295    .rodata.aPredivFactorTable.0:00000000 aPredivFactorTable.0
+     /tmp/ccSbuXlA.s:292    .rodata.aPredivFactorTable.0:00000000 $d
+     /tmp/ccSbuXlA.s:298    .rodata.aPLLMULFactorTable.1:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GetTick
+HAL_RCC_GetPCLK2Freq

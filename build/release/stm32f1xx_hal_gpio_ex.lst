@@ -1,0 +1,96 @@
+ARM GAS  /tmp/ccSq76XL.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f1xx_hal_gpio_ex.c"
+  14              		.text
+  15              		.section	.text.HAL_GPIOEx_ConfigEventout,"ax",%progbits
+  16              		.align	1
+  17              		.global	HAL_GPIOEx_ConfigEventout
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	HAL_GPIOEx_ConfigEventout:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 034A     		ldr	r2, .L2
+  27 0002 1368     		ldr	r3, [r2]
+  28 0004 23F07F03 		bic	r3, r3, #127
+  29 0008 0843     		orrs	r0, r0, r1
+  30 000a 0343     		orrs	r3, r3, r0
+  31 000c 1360     		str	r3, [r2]
+  32 000e 7047     		bx	lr
+  33              	.L3:
+  34              		.align	2
+  35              	.L2:
+  36 0010 00000140 		.word	1073807360
+  38              		.section	.text.HAL_GPIOEx_EnableEventout,"ax",%progbits
+  39              		.align	1
+  40              		.global	HAL_GPIOEx_EnableEventout
+  41              		.syntax unified
+  42              		.thumb
+  43              		.thumb_func
+  45              	HAL_GPIOEx_EnableEventout:
+  46              		@ args = 0, pretend = 0, frame = 0
+  47              		@ frame_needed = 0, uses_anonymous_args = 0
+  48              		@ link register save eliminated.
+  49 0000 024A     		ldr	r2, .L5
+  50 0002 1368     		ldr	r3, [r2]
+  51 0004 43F08003 		orr	r3, r3, #128
+  52 0008 1360     		str	r3, [r2]
+  53 000a 7047     		bx	lr
+  54              	.L6:
+  55              		.align	2
+  56              	.L5:
+  57 000c 00000140 		.word	1073807360
+  59              		.section	.text.HAL_GPIOEx_DisableEventout,"ax",%progbits
+  60              		.align	1
+  61              		.global	HAL_GPIOEx_DisableEventout
+ARM GAS  /tmp/ccSq76XL.s 			page 2
+
+
+  62              		.syntax unified
+  63              		.thumb
+  64              		.thumb_func
+  66              	HAL_GPIOEx_DisableEventout:
+  67              		@ args = 0, pretend = 0, frame = 0
+  68              		@ frame_needed = 0, uses_anonymous_args = 0
+  69              		@ link register save eliminated.
+  70 0000 024A     		ldr	r2, .L8
+  71 0002 1368     		ldr	r3, [r2]
+  72 0004 23F08003 		bic	r3, r3, #128
+  73 0008 1360     		str	r3, [r2]
+  74 000a 7047     		bx	lr
+  75              	.L9:
+  76              		.align	2
+  77              	.L8:
+  78 000c 00000140 		.word	1073807360
+  80              		.ident	"GCC: (15:13.3.rel1-1) 13.3.1 20240614"
+ARM GAS  /tmp/ccSq76XL.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f1xx_hal_gpio_ex.c
+     /tmp/ccSq76XL.s:16     .text.HAL_GPIOEx_ConfigEventout:00000000 $t
+     /tmp/ccSq76XL.s:22     .text.HAL_GPIOEx_ConfigEventout:00000000 HAL_GPIOEx_ConfigEventout
+     /tmp/ccSq76XL.s:36     .text.HAL_GPIOEx_ConfigEventout:00000010 $d
+     /tmp/ccSq76XL.s:39     .text.HAL_GPIOEx_EnableEventout:00000000 $t
+     /tmp/ccSq76XL.s:45     .text.HAL_GPIOEx_EnableEventout:00000000 HAL_GPIOEx_EnableEventout
+     /tmp/ccSq76XL.s:57     .text.HAL_GPIOEx_EnableEventout:0000000c $d
+     /tmp/ccSq76XL.s:60     .text.HAL_GPIOEx_DisableEventout:00000000 $t
+     /tmp/ccSq76XL.s:66     .text.HAL_GPIOEx_DisableEventout:00000000 HAL_GPIOEx_DisableEventout
+     /tmp/ccSq76XL.s:78     .text.HAL_GPIOEx_DisableEventout:0000000c $d
+
+NO UNDEFINED SYMBOLS

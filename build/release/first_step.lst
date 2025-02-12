@@ -1,0 +1,423 @@
+ARM GAS  /tmp/cceECRyl.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"first_step.c"
+  14              		.text
+  15              		.section	.text.step_counter_control,"ax",%progbits
+  16              		.align	1
+  17              		.global	step_counter_control
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	step_counter_control:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 054B     		ldr	r3, .L5
+  27 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  28 0004 062B     		cmp	r3, #6
+  29 0006 01D0     		beq	.L4
+  30 0008 0020     		movs	r0, #0
+  31 000a 7047     		bx	lr
+  32              	.L4:
+  33 000c 024B     		ldr	r3, .L5
+  34 000e 0022     		movs	r2, #0
+  35 0010 1A70     		strb	r2, [r3]
+  36 0012 0120     		movs	r0, #1
+  37 0014 7047     		bx	lr
+  38              	.L6:
+  39 0016 00BF     		.align	2
+  40              	.L5:
+  41 0018 00000000 		.word	step_counter
+  43              		.section	.text.find_commutation_step,"ax",%progbits
+  44              		.align	1
+  45              		.global	find_commutation_step
+  46              		.syntax unified
+  47              		.thumb
+  48              		.thumb_func
+  50              	find_commutation_step:
+  51              		@ args = 0, pretend = 0, frame = 0
+  52              		@ frame_needed = 0, uses_anonymous_args = 0
+  53              		@ link register save eliminated.
+  54 0000 0346     		mov	r3, r0
+  55 0002 58B1     		cbz	r0, .L8
+  56 0004 21B9     		cbnz	r1, .L9
+  57 0006 1AB1     		cbz	r2, .L9
+  58 0008 114B     		ldr	r3, .L14
+  59 000a 0422     		movs	r2, #4
+  60 000c 1A70     		strb	r2, [r3]
+ARM GAS  /tmp/cceECRyl.s 			page 2
+
+
+  61 000e 7047     		bx	lr
+  62              	.L9:
+  63 0010 21B9     		cbnz	r1, .L8
+  64 0012 1AB9     		cbnz	r2, .L8
+  65 0014 0E4B     		ldr	r3, .L14
+  66 0016 0522     		movs	r2, #5
+  67 0018 1A70     		strb	r2, [r3]
+  68 001a 7047     		bx	lr
+  69              	.L8:
+  70 001c 2BB1     		cbz	r3, .L11
+  71 001e B1B1     		cbz	r1, .L7
+  72 0020 AAB9     		cbnz	r2, .L7
+  73 0022 0B4B     		ldr	r3, .L14
+  74 0024 0622     		movs	r2, #6
+  75 0026 1A70     		strb	r2, [r3]
+  76 0028 7047     		bx	lr
+  77              	.L11:
+  78 002a 21B1     		cbz	r1, .L12
+  79 002c 1AB9     		cbnz	r2, .L12
+  80 002e 084B     		ldr	r3, .L14
+  81 0030 0122     		movs	r2, #1
+  82 0032 1A70     		strb	r2, [r3]
+  83 0034 7047     		bx	lr
+  84              	.L12:
+  85 0036 53B9     		cbnz	r3, .L7
+  86 0038 21B1     		cbz	r1, .L13
+  87 003a 1AB1     		cbz	r2, .L13
+  88 003c 044B     		ldr	r3, .L14
+  89 003e 0222     		movs	r2, #2
+  90 0040 1A70     		strb	r2, [r3]
+  91 0042 7047     		bx	lr
+  92              	.L13:
+  93 0044 19B9     		cbnz	r1, .L7
+  94 0046 12B1     		cbz	r2, .L7
+  95 0048 014B     		ldr	r3, .L14
+  96 004a 0322     		movs	r2, #3
+  97 004c 1A70     		strb	r2, [r3]
+  98              	.L7:
+  99 004e 7047     		bx	lr
+ 100              	.L15:
+ 101              		.align	2
+ 102              	.L14:
+ 103 0050 00000000 		.word	commutation_step
+ 105              		.section	.text.first_step,"ax",%progbits
+ 106              		.align	1
+ 107              		.global	first_step
+ 108              		.syntax unified
+ 109              		.thumb
+ 110              		.thumb_func
+ 112              	first_step:
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115 0000 70B5     		push	{r4, r5, r6, lr}
+ 116 0002 0446     		mov	r4, r0
+ 117 0004 0D46     		mov	r5, r1
+ 118 0006 1646     		mov	r6, r2
+ 119 0008 FFF7FEFF 		bl	HAL_GetTick
+ARM GAS  /tmp/cceECRyl.s 			page 3
+
+
+ 120 000c 784B     		ldr	r3, .L30
+ 121 000e 1860     		str	r0, [r3]
+ 122 0010 3246     		mov	r2, r6
+ 123 0012 2946     		mov	r1, r5
+ 124 0014 2046     		mov	r0, r4
+ 125 0016 FFF7FEFF 		bl	find_commutation_step
+ 126 001a 764B     		ldr	r3, .L30+4
+ 127 001c 1A88     		ldrh	r2, [r3]
+ 128 001e 764B     		ldr	r3, .L30+8
+ 129 0020 1A60     		str	r2, [r3]
+ 130 0022 A2E0     		b	.L23
+ 131              	.L26:
+ 132 0024 754B     		ldr	r3, .L30+12
+ 133 0026 1B68     		ldr	r3, [r3]
+ 134 0028 0022     		movs	r2, #0
+ 135 002a DA63     		str	r2, [r3, #60]
+ 136 002c 9A63     		str	r2, [r3, #56]
+ 137 002e 744A     		ldr	r2, .L30+16
+ 138 0030 C521     		movs	r1, #197
+ 139 0032 1162     		str	r1, [r2, #32]
+ 140 0034 6F4A     		ldr	r2, .L30+4
+ 141 0036 1288     		ldrh	r2, [r2]
+ 142 0038 5A63     		str	r2, [r3, #52]
+ 143 003a 724B     		ldr	r3, .L30+20
+ 144 003c 0222     		movs	r2, #2
+ 145 003e 1A70     		strb	r2, [r3]
+ 146 0040 714A     		ldr	r2, .L30+24
+ 147 0042 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 148 0044 0133     		adds	r3, r3, #1
+ 149 0046 1370     		strb	r3, [r2]
+ 150 0048 FFF7FEFF 		bl	step_counter_control
+ 151 004c 0028     		cmp	r0, #0
+ 152 004e 00F09480 		beq	.L17
+ 153              	.L18:
+ 154 0052 6E4B     		ldr	r3, .L30+28
+ 155 0054 1888     		ldrh	r0, [r3]
+ 156 0056 80B2     		uxth	r0, r0
+ 157 0058 FFF7FEFF 		bl	HAL_Delay
+ 158 005c 6C4B     		ldr	r3, .L30+32
+ 159 005e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 160 0060 3BB1     		cbz	r3, .L16
+ 161 0062 664B     		ldr	r3, .L30+12
+ 162 0064 1A68     		ldr	r2, [r3]
+ 163 0066 0023     		movs	r3, #0
+ 164 0068 5363     		str	r3, [r2, #52]
+ 165 006a 9363     		str	r3, [r2, #56]
+ 166 006c D363     		str	r3, [r2, #60]
+ 167 006e 644A     		ldr	r2, .L30+16
+ 168 0070 1362     		str	r3, [r2, #32]
+ 169              	.L16:
+ 170 0072 70BD     		pop	{r4, r5, r6, pc}
+ 171              	.L27:
+ 172 0074 614B     		ldr	r3, .L30+12
+ 173 0076 1B68     		ldr	r3, [r3]
+ 174 0078 0022     		movs	r2, #0
+ 175 007a DA63     		str	r2, [r3, #60]
+ 176 007c 9A63     		str	r2, [r3, #56]
+ARM GAS  /tmp/cceECRyl.s 			page 4
+
+
+ 177 007e 604A     		ldr	r2, .L30+16
+ 178 0080 40F60541 		movw	r1, #3077
+ 179 0084 1162     		str	r1, [r2, #32]
+ 180 0086 5B4A     		ldr	r2, .L30+4
+ 181 0088 1288     		ldrh	r2, [r2]
+ 182 008a 5A63     		str	r2, [r3, #52]
+ 183 008c 5D4B     		ldr	r3, .L30+20
+ 184 008e 0322     		movs	r2, #3
+ 185 0090 1A70     		strb	r2, [r3]
+ 186 0092 5D4A     		ldr	r2, .L30+24
+ 187 0094 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 188 0096 0133     		adds	r3, r3, #1
+ 189 0098 1370     		strb	r3, [r2]
+ 190 009a 5C4B     		ldr	r3, .L30+28
+ 191 009c 1888     		ldrh	r0, [r3]
+ 192 009e 80B2     		uxth	r0, r0
+ 193 00a0 FFF7FEFF 		bl	HAL_Delay
+ 194 00a4 FFF7FEFF 		bl	step_counter_control
+ 195 00a8 0028     		cmp	r0, #0
+ 196 00aa 6ED0     		beq	.L19
+ 197 00ac D1E7     		b	.L18
+ 198              	.L28:
+ 199 00ae 534B     		ldr	r3, .L30+12
+ 200 00b0 1B68     		ldr	r3, [r3]
+ 201 00b2 0022     		movs	r2, #0
+ 202 00b4 5A63     		str	r2, [r3, #52]
+ 203 00b6 DA63     		str	r2, [r3, #60]
+ 204 00b8 514A     		ldr	r2, .L30+16
+ 205 00ba 4FF44561 		mov	r1, #3152
+ 206 00be 1162     		str	r1, [r2, #32]
+ 207 00c0 4C4A     		ldr	r2, .L30+4
+ 208 00c2 1288     		ldrh	r2, [r2]
+ 209 00c4 9A63     		str	r2, [r3, #56]
+ 210 00c6 4F4B     		ldr	r3, .L30+20
+ 211 00c8 0422     		movs	r2, #4
+ 212 00ca 1A70     		strb	r2, [r3]
+ 213 00cc 4E4A     		ldr	r2, .L30+24
+ 214 00ce 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 215 00d0 0133     		adds	r3, r3, #1
+ 216 00d2 1370     		strb	r3, [r2]
+ 217 00d4 4D4B     		ldr	r3, .L30+28
+ 218 00d6 1888     		ldrh	r0, [r3]
+ 219 00d8 80B2     		uxth	r0, r0
+ 220 00da FFF7FEFF 		bl	HAL_Delay
+ 221 00de FFF7FEFF 		bl	step_counter_control
+ 222 00e2 0028     		cmp	r0, #0
+ 223 00e4 58D0     		beq	.L20
+ 224 00e6 B4E7     		b	.L18
+ 225              	.L29:
+ 226 00e8 444B     		ldr	r3, .L30+12
+ 227 00ea 1B68     		ldr	r3, [r3]
+ 228 00ec 0022     		movs	r2, #0
+ 229 00ee 5A63     		str	r2, [r3, #52]
+ 230 00f0 DA63     		str	r2, [r3, #60]
+ 231 00f2 434A     		ldr	r2, .L30+16
+ 232 00f4 5C21     		movs	r1, #92
+ 233 00f6 1162     		str	r1, [r2, #32]
+ARM GAS  /tmp/cceECRyl.s 			page 5
+
+
+ 234 00f8 3E4A     		ldr	r2, .L30+4
+ 235 00fa 1288     		ldrh	r2, [r2]
+ 236 00fc 9A63     		str	r2, [r3, #56]
+ 237 00fe 414B     		ldr	r3, .L30+20
+ 238 0100 0522     		movs	r2, #5
+ 239 0102 1A70     		strb	r2, [r3]
+ 240 0104 404A     		ldr	r2, .L30+24
+ 241 0106 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 242 0108 0133     		adds	r3, r3, #1
+ 243 010a 1370     		strb	r3, [r2]
+ 244 010c 3F4B     		ldr	r3, .L30+28
+ 245 010e 1888     		ldrh	r0, [r3]
+ 246 0110 80B2     		uxth	r0, r0
+ 247 0112 FFF7FEFF 		bl	HAL_Delay
+ 248 0116 FFF7FEFF 		bl	step_counter_control
+ 249 011a 0028     		cmp	r0, #0
+ 250 011c 43D0     		beq	.L21
+ 251 011e 98E7     		b	.L18
+ 252              	.L22:
+ 253 0120 3B4B     		ldr	r3, .L30+32
+ 254 0122 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 255 0124 002B     		cmp	r3, #0
+ 256 0126 94D0     		beq	.L18
+ 257 0128 364B     		ldr	r3, .L30+20
+ 258 012a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 259 012c 062B     		cmp	r3, #6
+ 260 012e 90D1     		bne	.L18
+ 261 0130 324B     		ldr	r3, .L30+12
+ 262 0132 1B68     		ldr	r3, [r3]
+ 263 0134 0022     		movs	r2, #0
+ 264 0136 5A63     		str	r2, [r3, #52]
+ 265 0138 9A63     		str	r2, [r3, #56]
+ 266 013a 314A     		ldr	r2, .L30+16
+ 267 013c 4FF4B861 		mov	r1, #1472
+ 268 0140 1162     		str	r1, [r2, #32]
+ 269 0142 2C4A     		ldr	r2, .L30+4
+ 270 0144 1288     		ldrh	r2, [r2]
+ 271 0146 DA63     		str	r2, [r3, #60]
+ 272 0148 2E4B     		ldr	r3, .L30+20
+ 273 014a 0122     		movs	r2, #1
+ 274 014c 1A70     		strb	r2, [r3]
+ 275 014e 2E4A     		ldr	r2, .L30+24
+ 276 0150 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 277 0152 0133     		adds	r3, r3, #1
+ 278 0154 1370     		strb	r3, [r2]
+ 279 0156 2D4B     		ldr	r3, .L30+28
+ 280 0158 1888     		ldrh	r0, [r3]
+ 281 015a 80B2     		uxth	r0, r0
+ 282 015c FFF7FEFF 		bl	HAL_Delay
+ 283 0160 FFF7FEFF 		bl	step_counter_control
+ 284 0164 0028     		cmp	r0, #0
+ 285 0166 7FF474AF 		bne	.L18
+ 286              	.L23:
+ 287 016a 294B     		ldr	r3, .L30+32
+ 288 016c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 289 016e 23B1     		cbz	r3, .L17
+ 290 0170 244B     		ldr	r3, .L30+20
+ARM GAS  /tmp/cceECRyl.s 			page 6
+
+
+ 291 0172 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 292 0174 012B     		cmp	r3, #1
+ 293 0176 3FF455AF 		beq	.L26
+ 294              	.L17:
+ 295 017a 254B     		ldr	r3, .L30+32
+ 296 017c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 297 017e 23B1     		cbz	r3, .L19
+ 298 0180 204B     		ldr	r3, .L30+20
+ 299 0182 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 300 0184 022B     		cmp	r3, #2
+ 301 0186 3FF475AF 		beq	.L27
+ 302              	.L19:
+ 303 018a 214B     		ldr	r3, .L30+32
+ 304 018c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 305 018e 1BB1     		cbz	r3, .L20
+ 306 0190 1C4B     		ldr	r3, .L30+20
+ 307 0192 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 308 0194 032B     		cmp	r3, #3
+ 309 0196 8AD0     		beq	.L28
+ 310              	.L20:
+ 311 0198 1D4B     		ldr	r3, .L30+32
+ 312 019a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 313 019c 1BB1     		cbz	r3, .L21
+ 314 019e 194B     		ldr	r3, .L30+20
+ 315 01a0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 316 01a2 042B     		cmp	r3, #4
+ 317 01a4 A0D0     		beq	.L29
+ 318              	.L21:
+ 319 01a6 1A4B     		ldr	r3, .L30+32
+ 320 01a8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 321 01aa 002B     		cmp	r3, #0
+ 322 01ac B8D0     		beq	.L22
+ 323 01ae 154B     		ldr	r3, .L30+20
+ 324 01b0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 325 01b2 052B     		cmp	r3, #5
+ 326 01b4 B4D1     		bne	.L22
+ 327 01b6 114B     		ldr	r3, .L30+12
+ 328 01b8 1B68     		ldr	r3, [r3]
+ 329 01ba 0022     		movs	r2, #0
+ 330 01bc 5A63     		str	r2, [r3, #52]
+ 331 01be 9A63     		str	r2, [r3, #56]
+ 332 01c0 0F4A     		ldr	r2, .L30+16
+ 333 01c2 40F20C51 		movw	r1, #1292
+ 334 01c6 1162     		str	r1, [r2, #32]
+ 335 01c8 0A4A     		ldr	r2, .L30+4
+ 336 01ca 1288     		ldrh	r2, [r2]
+ 337 01cc DA63     		str	r2, [r3, #60]
+ 338 01ce 0D4B     		ldr	r3, .L30+20
+ 339 01d0 0622     		movs	r2, #6
+ 340 01d2 1A70     		strb	r2, [r3]
+ 341 01d4 0C4A     		ldr	r2, .L30+24
+ 342 01d6 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 343 01d8 0133     		adds	r3, r3, #1
+ 344 01da 1370     		strb	r3, [r2]
+ 345 01dc 0B4B     		ldr	r3, .L30+28
+ 346 01de 1888     		ldrh	r0, [r3]
+ 347 01e0 80B2     		uxth	r0, r0
+ARM GAS  /tmp/cceECRyl.s 			page 7
+
+
+ 348 01e2 FFF7FEFF 		bl	HAL_Delay
+ 349 01e6 FFF7FEFF 		bl	step_counter_control
+ 350 01ea 0028     		cmp	r0, #0
+ 351 01ec 98D0     		beq	.L22
+ 352 01ee 30E7     		b	.L18
+ 353              	.L31:
+ 354              		.align	2
+ 355              	.L30:
+ 356 01f0 00000000 		.word	previousTime2
+ 357 01f4 00000000 		.word	min_pwm_limit
+ 358 01f8 00000000 		.word	pwm_value
+ 359 01fc 00000000 		.word	htim1
+ 360 0200 002C0140 		.word	1073818624
+ 361 0204 00000000 		.word	commutation_step
+ 362 0208 00000000 		.word	step_counter
+ 363 020c 00000000 		.word	firstStepDelay
+ 364 0210 00000000 		.word	first_step_flag
+ 366              		.global	newflag
+ 367              		.section	.bss.newflag,"aw",%nobits
+ 370              	newflag:
+ 371 0000 00       		.space	1
+ 372              		.global	step_counter
+ 373              		.section	.bss.step_counter,"aw",%nobits
+ 376              	step_counter:
+ 377 0000 00       		.space	1
+ 378              		.global	commutation_step
+ 379              		.section	.bss.commutation_step,"aw",%nobits
+ 382              	commutation_step:
+ 383 0000 00       		.space	1
+ 384              		.ident	"GCC: (15:13.3.rel1-1) 13.3.1 20240614"
+ARM GAS  /tmp/cceECRyl.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 first_step.c
+     /tmp/cceECRyl.s:16     .text.step_counter_control:00000000 $t
+     /tmp/cceECRyl.s:22     .text.step_counter_control:00000000 step_counter_control
+     /tmp/cceECRyl.s:41     .text.step_counter_control:00000018 $d
+     /tmp/cceECRyl.s:376    .bss.step_counter:00000000 step_counter
+     /tmp/cceECRyl.s:44     .text.find_commutation_step:00000000 $t
+     /tmp/cceECRyl.s:50     .text.find_commutation_step:00000000 find_commutation_step
+     /tmp/cceECRyl.s:103    .text.find_commutation_step:00000050 $d
+     /tmp/cceECRyl.s:382    .bss.commutation_step:00000000 commutation_step
+     /tmp/cceECRyl.s:106    .text.first_step:00000000 $t
+     /tmp/cceECRyl.s:112    .text.first_step:00000000 first_step
+     /tmp/cceECRyl.s:356    .text.first_step:000001f0 $d
+     /tmp/cceECRyl.s:370    .bss.newflag:00000000 newflag
+     /tmp/cceECRyl.s:371    .bss.newflag:00000000 $d
+     /tmp/cceECRyl.s:377    .bss.step_counter:00000000 $d
+     /tmp/cceECRyl.s:383    .bss.commutation_step:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GetTick
+HAL_Delay
+previousTime2
+min_pwm_limit
+pwm_value
+htim1
+firstStepDelay
+first_step_flag

@@ -1,0 +1,3154 @@
+ARM GAS  /tmp/ccdarhtS.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f1xx_hal_tim_ex.c"
+  14              		.text
+  15              		.section	.text.TIM_CCxNChannelCmd,"ax",%progbits
+  16              		.align	1
+  17              		.syntax unified
+  18              		.thumb
+  19              		.thumb_func
+  21              	TIM_CCxNChannelCmd:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24              		@ link register save eliminated.
+  25 0000 01F00F01 		and	r1, r1, #15
+  26 0004 4FF0040C 		mov	ip, #4
+  27 0008 0CFA01FC 		lsl	ip, ip, r1
+  28 000c 036A     		ldr	r3, [r0, #32]
+  29 000e 23EA0C03 		bic	r3, r3, ip
+  30 0012 0362     		str	r3, [r0, #32]
+  31 0014 036A     		ldr	r3, [r0, #32]
+  32 0016 8A40     		lsls	r2, r2, r1
+  33 0018 1343     		orrs	r3, r3, r2
+  34 001a 0362     		str	r3, [r0, #32]
+  35 001c 7047     		bx	lr
+  37              		.section	.text.TIM_DMAErrorCCxN,"ax",%progbits
+  38              		.align	1
+  39              		.syntax unified
+  40              		.thumb
+  41              		.thumb_func
+  43              	TIM_DMAErrorCCxN:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46 0000 10B5     		push	{r4, lr}
+  47 0002 446A     		ldr	r4, [r0, #36]
+  48 0004 636A     		ldr	r3, [r4, #36]
+  49 0006 8342     		cmp	r3, r0
+  50 0008 0BD0     		beq	.L7
+  51 000a A36A     		ldr	r3, [r4, #40]
+  52 000c 8342     		cmp	r3, r0
+  53 000e 0DD0     		beq	.L8
+  54 0010 E36A     		ldr	r3, [r4, #44]
+  55 0012 8342     		cmp	r3, r0
+  56 0014 10D0     		beq	.L9
+  57              	.L4:
+  58 0016 2046     		mov	r0, r4
+  59 0018 FFF7FEFF 		bl	HAL_TIM_ErrorCallback
+  60 001c 0023     		movs	r3, #0
+ARM GAS  /tmp/ccdarhtS.s 			page 2
+
+
+  61 001e 2377     		strb	r3, [r4, #28]
+  62 0020 10BD     		pop	{r4, pc}
+  63              	.L7:
+  64 0022 0123     		movs	r3, #1
+  65 0024 2377     		strb	r3, [r4, #28]
+  66 0026 84F84230 		strb	r3, [r4, #66]
+  67 002a F4E7     		b	.L4
+  68              	.L8:
+  69 002c 0223     		movs	r3, #2
+  70 002e 2377     		strb	r3, [r4, #28]
+  71 0030 0123     		movs	r3, #1
+  72 0032 84F84330 		strb	r3, [r4, #67]
+  73 0036 EEE7     		b	.L4
+  74              	.L9:
+  75 0038 0423     		movs	r3, #4
+  76 003a 2377     		strb	r3, [r4, #28]
+  77 003c 0123     		movs	r3, #1
+  78 003e 84F84430 		strb	r3, [r4, #68]
+  79 0042 E8E7     		b	.L4
+  81              		.section	.text.TIM_DMADelayPulseNCplt,"ax",%progbits
+  82              		.align	1
+  83              		.syntax unified
+  84              		.thumb
+  85              		.thumb_func
+  87              	TIM_DMADelayPulseNCplt:
+  88              		@ args = 0, pretend = 0, frame = 0
+  89              		@ frame_needed = 0, uses_anonymous_args = 0
+  90 0000 10B5     		push	{r4, lr}
+  91 0002 446A     		ldr	r4, [r0, #36]
+  92 0004 636A     		ldr	r3, [r4, #36]
+  93 0006 8342     		cmp	r3, r0
+  94 0008 0BD0     		beq	.L15
+  95 000a A36A     		ldr	r3, [r4, #40]
+  96 000c 8342     		cmp	r3, r0
+  97 000e 11D0     		beq	.L16
+  98 0010 E36A     		ldr	r3, [r4, #44]
+  99 0012 8342     		cmp	r3, r0
+ 100 0014 17D0     		beq	.L17
+ 101              	.L12:
+ 102 0016 2046     		mov	r0, r4
+ 103 0018 FFF7FEFF 		bl	HAL_TIM_PWM_PulseFinishedCallback
+ 104 001c 0023     		movs	r3, #0
+ 105 001e 2377     		strb	r3, [r4, #28]
+ 106 0020 10BD     		pop	{r4, pc}
+ 107              	.L15:
+ 108 0022 0123     		movs	r3, #1
+ 109 0024 2377     		strb	r3, [r4, #28]
+ 110 0026 8369     		ldr	r3, [r0, #24]
+ 111 0028 002B     		cmp	r3, #0
+ 112 002a F4D1     		bne	.L12
+ 113 002c 0123     		movs	r3, #1
+ 114 002e 84F84230 		strb	r3, [r4, #66]
+ 115 0032 F0E7     		b	.L12
+ 116              	.L16:
+ 117 0034 0223     		movs	r3, #2
+ 118 0036 2377     		strb	r3, [r4, #28]
+ 119 0038 8369     		ldr	r3, [r0, #24]
+ARM GAS  /tmp/ccdarhtS.s 			page 3
+
+
+ 120 003a 002B     		cmp	r3, #0
+ 121 003c EBD1     		bne	.L12
+ 122 003e 0123     		movs	r3, #1
+ 123 0040 84F84330 		strb	r3, [r4, #67]
+ 124 0044 E7E7     		b	.L12
+ 125              	.L17:
+ 126 0046 0423     		movs	r3, #4
+ 127 0048 2377     		strb	r3, [r4, #28]
+ 128 004a 8369     		ldr	r3, [r0, #24]
+ 129 004c 002B     		cmp	r3, #0
+ 130 004e E2D1     		bne	.L12
+ 131 0050 0123     		movs	r3, #1
+ 132 0052 84F84430 		strb	r3, [r4, #68]
+ 133 0056 DEE7     		b	.L12
+ 135              		.section	.text.HAL_TIMEx_HallSensor_MspInit,"ax",%progbits
+ 136              		.align	1
+ 137              		.weak	HAL_TIMEx_HallSensor_MspInit
+ 138              		.syntax unified
+ 139              		.thumb
+ 140              		.thumb_func
+ 142              	HAL_TIMEx_HallSensor_MspInit:
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145              		@ link register save eliminated.
+ 146 0000 7047     		bx	lr
+ 148              		.section	.text.HAL_TIMEx_HallSensor_Init,"ax",%progbits
+ 149              		.align	1
+ 150              		.global	HAL_TIMEx_HallSensor_Init
+ 151              		.syntax unified
+ 152              		.thumb
+ 153              		.thumb_func
+ 155              	HAL_TIMEx_HallSensor_Init:
+ 156              		@ args = 0, pretend = 0, frame = 32
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158 0000 0028     		cmp	r0, #0
+ 159 0002 65D0     		beq	.L22
+ 160 0004 70B5     		push	{r4, r5, r6, lr}
+ 161 0006 88B0     		sub	sp, sp, #32
+ 162 0008 0E46     		mov	r6, r1
+ 163 000a 0446     		mov	r4, r0
+ 164 000c 90F83D30 		ldrb	r3, [r0, #61]	@ zero_extendqisi2
+ 165 0010 002B     		cmp	r3, #0
+ 166 0012 58D0     		beq	.L27
+ 167              	.L21:
+ 168 0014 0223     		movs	r3, #2
+ 169 0016 84F83D30 		strb	r3, [r4, #61]
+ 170 001a 2146     		mov	r1, r4
+ 171 001c 51F8040B 		ldr	r0, [r1], #4
+ 172 0020 FFF7FEFF 		bl	TIM_Base_SetConfig
+ 173 0024 B368     		ldr	r3, [r6, #8]
+ 174 0026 0322     		movs	r2, #3
+ 175 0028 3168     		ldr	r1, [r6]
+ 176 002a 2068     		ldr	r0, [r4]
+ 177 002c FFF7FEFF 		bl	TIM_TI1_SetConfig
+ 178 0030 2268     		ldr	r2, [r4]
+ 179 0032 9369     		ldr	r3, [r2, #24]
+ 180 0034 23F00C03 		bic	r3, r3, #12
+ARM GAS  /tmp/ccdarhtS.s 			page 4
+
+
+ 181 0038 9361     		str	r3, [r2, #24]
+ 182 003a 2268     		ldr	r2, [r4]
+ 183 003c 9369     		ldr	r3, [r2, #24]
+ 184 003e 7168     		ldr	r1, [r6, #4]
+ 185 0040 0B43     		orrs	r3, r3, r1
+ 186 0042 9361     		str	r3, [r2, #24]
+ 187 0044 2268     		ldr	r2, [r4]
+ 188 0046 5368     		ldr	r3, [r2, #4]
+ 189 0048 43F08003 		orr	r3, r3, #128
+ 190 004c 5360     		str	r3, [r2, #4]
+ 191 004e 2268     		ldr	r2, [r4]
+ 192 0050 9368     		ldr	r3, [r2, #8]
+ 193 0052 23F07003 		bic	r3, r3, #112
+ 194 0056 9360     		str	r3, [r2, #8]
+ 195 0058 2268     		ldr	r2, [r4]
+ 196 005a 9368     		ldr	r3, [r2, #8]
+ 197 005c 43F04003 		orr	r3, r3, #64
+ 198 0060 9360     		str	r3, [r2, #8]
+ 199 0062 2268     		ldr	r2, [r4]
+ 200 0064 9368     		ldr	r3, [r2, #8]
+ 201 0066 23F00703 		bic	r3, r3, #7
+ 202 006a 9360     		str	r3, [r2, #8]
+ 203 006c 2268     		ldr	r2, [r4]
+ 204 006e 9368     		ldr	r3, [r2, #8]
+ 205 0070 43F00403 		orr	r3, r3, #4
+ 206 0074 9360     		str	r3, [r2, #8]
+ 207 0076 0025     		movs	r5, #0
+ 208 0078 0595     		str	r5, [sp, #20]
+ 209 007a 0695     		str	r5, [sp, #24]
+ 210 007c 7023     		movs	r3, #112
+ 211 007e 0193     		str	r3, [sp, #4]
+ 212 0080 0795     		str	r5, [sp, #28]
+ 213 0082 0495     		str	r5, [sp, #16]
+ 214 0084 0395     		str	r5, [sp, #12]
+ 215 0086 F368     		ldr	r3, [r6, #12]
+ 216 0088 0293     		str	r3, [sp, #8]
+ 217 008a 01A9     		add	r1, sp, #4
+ 218 008c 2068     		ldr	r0, [r4]
+ 219 008e FFF7FEFF 		bl	TIM_OC2_SetConfig
+ 220 0092 2268     		ldr	r2, [r4]
+ 221 0094 5368     		ldr	r3, [r2, #4]
+ 222 0096 23F07003 		bic	r3, r3, #112
+ 223 009a 5360     		str	r3, [r2, #4]
+ 224 009c 2268     		ldr	r2, [r4]
+ 225 009e 5368     		ldr	r3, [r2, #4]
+ 226 00a0 43F05003 		orr	r3, r3, #80
+ 227 00a4 5360     		str	r3, [r2, #4]
+ 228 00a6 0123     		movs	r3, #1
+ 229 00a8 84F84630 		strb	r3, [r4, #70]
+ 230 00ac 84F83E30 		strb	r3, [r4, #62]
+ 231 00b0 84F83F30 		strb	r3, [r4, #63]
+ 232 00b4 84F84230 		strb	r3, [r4, #66]
+ 233 00b8 84F84330 		strb	r3, [r4, #67]
+ 234 00bc 84F83D30 		strb	r3, [r4, #61]
+ 235 00c0 2846     		mov	r0, r5
+ 236 00c2 08B0     		add	sp, sp, #32
+ 237              		@ sp needed
+ARM GAS  /tmp/ccdarhtS.s 			page 5
+
+
+ 238 00c4 70BD     		pop	{r4, r5, r6, pc}
+ 239              	.L27:
+ 240 00c6 80F83C30 		strb	r3, [r0, #60]
+ 241 00ca FFF7FEFF 		bl	HAL_TIMEx_HallSensor_MspInit
+ 242 00ce A1E7     		b	.L21
+ 243              	.L22:
+ 244 00d0 0120     		movs	r0, #1
+ 245 00d2 7047     		bx	lr
+ 247              		.section	.text.HAL_TIMEx_HallSensor_MspDeInit,"ax",%progbits
+ 248              		.align	1
+ 249              		.weak	HAL_TIMEx_HallSensor_MspDeInit
+ 250              		.syntax unified
+ 251              		.thumb
+ 252              		.thumb_func
+ 254              	HAL_TIMEx_HallSensor_MspDeInit:
+ 255              		@ args = 0, pretend = 0, frame = 0
+ 256              		@ frame_needed = 0, uses_anonymous_args = 0
+ 257              		@ link register save eliminated.
+ 258 0000 7047     		bx	lr
+ 260              		.section	.text.HAL_TIMEx_HallSensor_DeInit,"ax",%progbits
+ 261              		.align	1
+ 262              		.global	HAL_TIMEx_HallSensor_DeInit
+ 263              		.syntax unified
+ 264              		.thumb
+ 265              		.thumb_func
+ 267              	HAL_TIMEx_HallSensor_DeInit:
+ 268              		@ args = 0, pretend = 0, frame = 0
+ 269              		@ frame_needed = 0, uses_anonymous_args = 0
+ 270 0000 10B5     		push	{r4, lr}
+ 271 0002 0446     		mov	r4, r0
+ 272 0004 0223     		movs	r3, #2
+ 273 0006 80F83D30 		strb	r3, [r0, #61]
+ 274 000a 0368     		ldr	r3, [r0]
+ 275 000c 196A     		ldr	r1, [r3, #32]
+ 276 000e 41F21112 		movw	r2, #4369
+ 277 0012 1142     		tst	r1, r2
+ 278 0014 08D1     		bne	.L30
+ 279 0016 196A     		ldr	r1, [r3, #32]
+ 280 0018 40F24442 		movw	r2, #1092
+ 281 001c 1142     		tst	r1, r2
+ 282 001e 03D1     		bne	.L30
+ 283 0020 1A68     		ldr	r2, [r3]
+ 284 0022 22F00102 		bic	r2, r2, #1
+ 285 0026 1A60     		str	r2, [r3]
+ 286              	.L30:
+ 287 0028 2046     		mov	r0, r4
+ 288 002a FFF7FEFF 		bl	HAL_TIMEx_HallSensor_MspDeInit
+ 289 002e 0020     		movs	r0, #0
+ 290 0030 84F84600 		strb	r0, [r4, #70]
+ 291 0034 84F83E00 		strb	r0, [r4, #62]
+ 292 0038 84F83F00 		strb	r0, [r4, #63]
+ 293 003c 84F84200 		strb	r0, [r4, #66]
+ 294 0040 84F84300 		strb	r0, [r4, #67]
+ 295 0044 84F83D00 		strb	r0, [r4, #61]
+ 296 0048 84F83C00 		strb	r0, [r4, #60]
+ 297 004c 10BD     		pop	{r4, pc}
+ 299              		.section	.text.HAL_TIMEx_HallSensor_Start,"ax",%progbits
+ARM GAS  /tmp/ccdarhtS.s 			page 6
+
+
+ 300              		.align	1
+ 301              		.global	HAL_TIMEx_HallSensor_Start
+ 302              		.syntax unified
+ 303              		.thumb
+ 304              		.thumb_func
+ 306              	HAL_TIMEx_HallSensor_Start:
+ 307              		@ args = 0, pretend = 0, frame = 0
+ 308              		@ frame_needed = 0, uses_anonymous_args = 0
+ 309 0000 10B5     		push	{r4, lr}
+ 310 0002 0446     		mov	r4, r0
+ 311 0004 90F83E00 		ldrb	r0, [r0, #62]	@ zero_extendqisi2
+ 312 0008 C0B2     		uxtb	r0, r0
+ 313 000a 94F83F30 		ldrb	r3, [r4, #63]	@ zero_extendqisi2
+ 314 000e 94F84220 		ldrb	r2, [r4, #66]	@ zero_extendqisi2
+ 315 0012 94F84310 		ldrb	r1, [r4, #67]	@ zero_extendqisi2
+ 316 0016 0128     		cmp	r0, #1
+ 317 0018 37D1     		bne	.L36
+ 318 001a DBB2     		uxtb	r3, r3
+ 319 001c D2B2     		uxtb	r2, r2
+ 320 001e C9B2     		uxtb	r1, r1
+ 321 0020 012B     		cmp	r3, #1
+ 322 0022 33D1     		bne	.L33
+ 323 0024 012A     		cmp	r2, #1
+ 324 0026 32D1     		bne	.L37
+ 325 0028 0129     		cmp	r1, #1
+ 326 002a 01D0     		beq	.L41
+ 327 002c 1046     		mov	r0, r2
+ 328 002e 2DE0     		b	.L33
+ 329              	.L41:
+ 330 0030 0223     		movs	r3, #2
+ 331 0032 84F83E30 		strb	r3, [r4, #62]
+ 332 0036 84F83F30 		strb	r3, [r4, #63]
+ 333 003a 84F84230 		strb	r3, [r4, #66]
+ 334 003e 84F84330 		strb	r3, [r4, #67]
+ 335 0042 0021     		movs	r1, #0
+ 336 0044 2068     		ldr	r0, [r4]
+ 337 0046 FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 338 004a 2368     		ldr	r3, [r4]
+ 339 004c 124A     		ldr	r2, .L42
+ 340 004e 9342     		cmp	r3, r2
+ 341 0050 10D0     		beq	.L34
+ 342 0052 B3F1804F 		cmp	r3, #1073741824
+ 343 0056 0DD0     		beq	.L34
+ 344 0058 A2F59432 		sub	r2, r2, #75776
+ 345 005c 9342     		cmp	r3, r2
+ 346 005e 09D0     		beq	.L34
+ 347 0060 02F58062 		add	r2, r2, #1024
+ 348 0064 9342     		cmp	r3, r2
+ 349 0066 05D0     		beq	.L34
+ 350 0068 1A68     		ldr	r2, [r3]
+ 351 006a 42F00102 		orr	r2, r2, #1
+ 352 006e 1A60     		str	r2, [r3]
+ 353 0070 0020     		movs	r0, #0
+ 354 0072 0BE0     		b	.L33
+ 355              	.L34:
+ 356 0074 9A68     		ldr	r2, [r3, #8]
+ 357 0076 02F00702 		and	r2, r2, #7
+ARM GAS  /tmp/ccdarhtS.s 			page 7
+
+
+ 358 007a 062A     		cmp	r2, #6
+ 359 007c 09D0     		beq	.L39
+ 360 007e 1A68     		ldr	r2, [r3]
+ 361 0080 42F00102 		orr	r2, r2, #1
+ 362 0084 1A60     		str	r2, [r3]
+ 363 0086 0020     		movs	r0, #0
+ 364 0088 00E0     		b	.L33
+ 365              	.L36:
+ 366 008a 0120     		movs	r0, #1
+ 367              	.L33:
+ 368 008c 10BD     		pop	{r4, pc}
+ 369              	.L37:
+ 370 008e 1846     		mov	r0, r3
+ 371 0090 FCE7     		b	.L33
+ 372              	.L39:
+ 373 0092 0020     		movs	r0, #0
+ 374 0094 FAE7     		b	.L33
+ 375              	.L43:
+ 376 0096 00BF     		.align	2
+ 377              	.L42:
+ 378 0098 002C0140 		.word	1073818624
+ 380              		.section	.text.HAL_TIMEx_HallSensor_Stop,"ax",%progbits
+ 381              		.align	1
+ 382              		.global	HAL_TIMEx_HallSensor_Stop
+ 383              		.syntax unified
+ 384              		.thumb
+ 385              		.thumb_func
+ 387              	HAL_TIMEx_HallSensor_Stop:
+ 388              		@ args = 0, pretend = 0, frame = 0
+ 389              		@ frame_needed = 0, uses_anonymous_args = 0
+ 390 0000 10B5     		push	{r4, lr}
+ 391 0002 0446     		mov	r4, r0
+ 392 0004 0022     		movs	r2, #0
+ 393 0006 1146     		mov	r1, r2
+ 394 0008 0068     		ldr	r0, [r0]
+ 395 000a FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 396 000e 2368     		ldr	r3, [r4]
+ 397 0010 196A     		ldr	r1, [r3, #32]
+ 398 0012 41F21112 		movw	r2, #4369
+ 399 0016 1142     		tst	r1, r2
+ 400 0018 08D1     		bne	.L45
+ 401 001a 196A     		ldr	r1, [r3, #32]
+ 402 001c 40F24442 		movw	r2, #1092
+ 403 0020 1142     		tst	r1, r2
+ 404 0022 03D1     		bne	.L45
+ 405 0024 1A68     		ldr	r2, [r3]
+ 406 0026 22F00102 		bic	r2, r2, #1
+ 407 002a 1A60     		str	r2, [r3]
+ 408              	.L45:
+ 409 002c 0123     		movs	r3, #1
+ 410 002e 84F83E30 		strb	r3, [r4, #62]
+ 411 0032 84F83F30 		strb	r3, [r4, #63]
+ 412 0036 84F84230 		strb	r3, [r4, #66]
+ 413 003a 84F84330 		strb	r3, [r4, #67]
+ 414 003e 0020     		movs	r0, #0
+ 415 0040 10BD     		pop	{r4, pc}
+ 417              		.section	.text.HAL_TIMEx_HallSensor_Start_IT,"ax",%progbits
+ARM GAS  /tmp/ccdarhtS.s 			page 8
+
+
+ 418              		.align	1
+ 419              		.global	HAL_TIMEx_HallSensor_Start_IT
+ 420              		.syntax unified
+ 421              		.thumb
+ 422              		.thumb_func
+ 424              	HAL_TIMEx_HallSensor_Start_IT:
+ 425              		@ args = 0, pretend = 0, frame = 0
+ 426              		@ frame_needed = 0, uses_anonymous_args = 0
+ 427 0000 10B5     		push	{r4, lr}
+ 428 0002 0446     		mov	r4, r0
+ 429 0004 90F83E00 		ldrb	r0, [r0, #62]	@ zero_extendqisi2
+ 430 0008 C0B2     		uxtb	r0, r0
+ 431 000a 94F83F30 		ldrb	r3, [r4, #63]	@ zero_extendqisi2
+ 432 000e 94F84220 		ldrb	r2, [r4, #66]	@ zero_extendqisi2
+ 433 0012 94F84310 		ldrb	r1, [r4, #67]	@ zero_extendqisi2
+ 434 0016 0128     		cmp	r0, #1
+ 435 0018 3DD1     		bne	.L51
+ 436 001a DBB2     		uxtb	r3, r3
+ 437 001c D2B2     		uxtb	r2, r2
+ 438 001e C9B2     		uxtb	r1, r1
+ 439 0020 012B     		cmp	r3, #1
+ 440 0022 39D1     		bne	.L48
+ 441 0024 012A     		cmp	r2, #1
+ 442 0026 38D1     		bne	.L52
+ 443 0028 0129     		cmp	r1, #1
+ 444 002a 01D0     		beq	.L56
+ 445 002c 1046     		mov	r0, r2
+ 446 002e 33E0     		b	.L48
+ 447              	.L56:
+ 448 0030 0223     		movs	r3, #2
+ 449 0032 84F83E30 		strb	r3, [r4, #62]
+ 450 0036 84F83F30 		strb	r3, [r4, #63]
+ 451 003a 84F84230 		strb	r3, [r4, #66]
+ 452 003e 84F84330 		strb	r3, [r4, #67]
+ 453 0042 2268     		ldr	r2, [r4]
+ 454 0044 D368     		ldr	r3, [r2, #12]
+ 455 0046 43F00203 		orr	r3, r3, #2
+ 456 004a D360     		str	r3, [r2, #12]
+ 457 004c 0122     		movs	r2, #1
+ 458 004e 0021     		movs	r1, #0
+ 459 0050 2068     		ldr	r0, [r4]
+ 460 0052 FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 461 0056 2368     		ldr	r3, [r4]
+ 462 0058 124A     		ldr	r2, .L57
+ 463 005a 9342     		cmp	r3, r2
+ 464 005c 10D0     		beq	.L49
+ 465 005e B3F1804F 		cmp	r3, #1073741824
+ 466 0062 0DD0     		beq	.L49
+ 467 0064 A2F59432 		sub	r2, r2, #75776
+ 468 0068 9342     		cmp	r3, r2
+ 469 006a 09D0     		beq	.L49
+ 470 006c 02F58062 		add	r2, r2, #1024
+ 471 0070 9342     		cmp	r3, r2
+ 472 0072 05D0     		beq	.L49
+ 473 0074 1A68     		ldr	r2, [r3]
+ 474 0076 42F00102 		orr	r2, r2, #1
+ 475 007a 1A60     		str	r2, [r3]
+ARM GAS  /tmp/ccdarhtS.s 			page 9
+
+
+ 476 007c 0020     		movs	r0, #0
+ 477 007e 0BE0     		b	.L48
+ 478              	.L49:
+ 479 0080 9A68     		ldr	r2, [r3, #8]
+ 480 0082 02F00702 		and	r2, r2, #7
+ 481 0086 062A     		cmp	r2, #6
+ 482 0088 09D0     		beq	.L54
+ 483 008a 1A68     		ldr	r2, [r3]
+ 484 008c 42F00102 		orr	r2, r2, #1
+ 485 0090 1A60     		str	r2, [r3]
+ 486 0092 0020     		movs	r0, #0
+ 487 0094 00E0     		b	.L48
+ 488              	.L51:
+ 489 0096 0120     		movs	r0, #1
+ 490              	.L48:
+ 491 0098 10BD     		pop	{r4, pc}
+ 492              	.L52:
+ 493 009a 1846     		mov	r0, r3
+ 494 009c FCE7     		b	.L48
+ 495              	.L54:
+ 496 009e 0020     		movs	r0, #0
+ 497 00a0 FAE7     		b	.L48
+ 498              	.L58:
+ 499 00a2 00BF     		.align	2
+ 500              	.L57:
+ 501 00a4 002C0140 		.word	1073818624
+ 503              		.section	.text.HAL_TIMEx_HallSensor_Stop_IT,"ax",%progbits
+ 504              		.align	1
+ 505              		.global	HAL_TIMEx_HallSensor_Stop_IT
+ 506              		.syntax unified
+ 507              		.thumb
+ 508              		.thumb_func
+ 510              	HAL_TIMEx_HallSensor_Stop_IT:
+ 511              		@ args = 0, pretend = 0, frame = 0
+ 512              		@ frame_needed = 0, uses_anonymous_args = 0
+ 513 0000 10B5     		push	{r4, lr}
+ 514 0002 0446     		mov	r4, r0
+ 515 0004 0022     		movs	r2, #0
+ 516 0006 1146     		mov	r1, r2
+ 517 0008 0068     		ldr	r0, [r0]
+ 518 000a FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 519 000e 2268     		ldr	r2, [r4]
+ 520 0010 D368     		ldr	r3, [r2, #12]
+ 521 0012 23F00203 		bic	r3, r3, #2
+ 522 0016 D360     		str	r3, [r2, #12]
+ 523 0018 2368     		ldr	r3, [r4]
+ 524 001a 196A     		ldr	r1, [r3, #32]
+ 525 001c 41F21112 		movw	r2, #4369
+ 526 0020 1142     		tst	r1, r2
+ 527 0022 08D1     		bne	.L60
+ 528 0024 196A     		ldr	r1, [r3, #32]
+ 529 0026 40F24442 		movw	r2, #1092
+ 530 002a 1142     		tst	r1, r2
+ 531 002c 03D1     		bne	.L60
+ 532 002e 1A68     		ldr	r2, [r3]
+ 533 0030 22F00102 		bic	r2, r2, #1
+ 534 0034 1A60     		str	r2, [r3]
+ARM GAS  /tmp/ccdarhtS.s 			page 10
+
+
+ 535              	.L60:
+ 536 0036 0123     		movs	r3, #1
+ 537 0038 84F83E30 		strb	r3, [r4, #62]
+ 538 003c 84F83F30 		strb	r3, [r4, #63]
+ 539 0040 84F84230 		strb	r3, [r4, #66]
+ 540 0044 84F84330 		strb	r3, [r4, #67]
+ 541 0048 0020     		movs	r0, #0
+ 542 004a 10BD     		pop	{r4, pc}
+ 544              		.section	.text.HAL_TIMEx_HallSensor_Start_DMA,"ax",%progbits
+ 545              		.align	1
+ 546              		.global	HAL_TIMEx_HallSensor_Start_DMA
+ 547              		.syntax unified
+ 548              		.thumb
+ 549              		.thumb_func
+ 551              	HAL_TIMEx_HallSensor_Start_DMA:
+ 552              		@ args = 0, pretend = 0, frame = 0
+ 553              		@ frame_needed = 0, uses_anonymous_args = 0
+ 554 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 555 0002 0446     		mov	r4, r0
+ 556 0004 90F83EC0 		ldrb	ip, [r0, #62]	@ zero_extendqisi2
+ 557 0008 5FFA8CF0 		uxtb	r0, ip
+ 558 000c 94F842C0 		ldrb	ip, [r4, #66]	@ zero_extendqisi2
+ 559 0010 0228     		cmp	r0, #2
+ 560 0012 4FD0     		beq	.L63
+ 561 0014 0F46     		mov	r7, r1
+ 562 0016 1646     		mov	r6, r2
+ 563 0018 5FFA8CF5 		uxtb	r5, ip
+ 564 001c 022D     		cmp	r5, #2
+ 565 001e 46D0     		beq	.L66
+ 566 0020 0128     		cmp	r0, #1
+ 567 0022 46D1     		bne	.L67
+ 568 0024 012D     		cmp	r5, #1
+ 569 0026 45D1     		bne	.L63
+ 570 0028 0029     		cmp	r1, #0
+ 571 002a 44D0     		beq	.L68
+ 572 002c 0AB9     		cbnz	r2, .L72
+ 573 002e 2846     		mov	r0, r5
+ 574 0030 40E0     		b	.L63
+ 575              	.L72:
+ 576 0032 0223     		movs	r3, #2
+ 577 0034 84F83E30 		strb	r3, [r4, #62]
+ 578 0038 84F84230 		strb	r3, [r4, #66]
+ 579 003c 0122     		movs	r2, #1
+ 580 003e 0021     		movs	r1, #0
+ 581 0040 2068     		ldr	r0, [r4]
+ 582 0042 FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 583 0046 636A     		ldr	r3, [r4, #36]
+ 584 0048 1D4A     		ldr	r2, .L73
+ 585 004a 9A62     		str	r2, [r3, #40]
+ 586 004c 636A     		ldr	r3, [r4, #36]
+ 587 004e 1D4A     		ldr	r2, .L73+4
+ 588 0050 DA62     		str	r2, [r3, #44]
+ 589 0052 636A     		ldr	r3, [r4, #36]
+ 590 0054 1C4A     		ldr	r2, .L73+8
+ 591 0056 1A63     		str	r2, [r3, #48]
+ 592 0058 2168     		ldr	r1, [r4]
+ 593 005a 3346     		mov	r3, r6
+ARM GAS  /tmp/ccdarhtS.s 			page 11
+
+
+ 594 005c 3A46     		mov	r2, r7
+ 595 005e 3431     		adds	r1, r1, #52
+ 596 0060 606A     		ldr	r0, [r4, #36]
+ 597 0062 FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 598 0066 40BB     		cbnz	r0, .L70
+ 599 0068 2268     		ldr	r2, [r4]
+ 600 006a D368     		ldr	r3, [r2, #12]
+ 601 006c 43F40073 		orr	r3, r3, #512
+ 602 0070 D360     		str	r3, [r2, #12]
+ 603 0072 2368     		ldr	r3, [r4]
+ 604 0074 154A     		ldr	r2, .L73+12
+ 605 0076 9342     		cmp	r3, r2
+ 606 0078 0FD0     		beq	.L64
+ 607 007a B3F1804F 		cmp	r3, #1073741824
+ 608 007e 0CD0     		beq	.L64
+ 609 0080 A2F59432 		sub	r2, r2, #75776
+ 610 0084 9342     		cmp	r3, r2
+ 611 0086 08D0     		beq	.L64
+ 612 0088 02F58062 		add	r2, r2, #1024
+ 613 008c 9342     		cmp	r3, r2
+ 614 008e 04D0     		beq	.L64
+ 615 0090 1A68     		ldr	r2, [r3]
+ 616 0092 42F00102 		orr	r2, r2, #1
+ 617 0096 1A60     		str	r2, [r3]
+ 618 0098 0CE0     		b	.L63
+ 619              	.L64:
+ 620 009a 9A68     		ldr	r2, [r3, #8]
+ 621 009c 02F00702 		and	r2, r2, #7
+ 622 00a0 062A     		cmp	r2, #6
+ 623 00a2 07D0     		beq	.L63
+ 624 00a4 1A68     		ldr	r2, [r3]
+ 625 00a6 42F00102 		orr	r2, r2, #1
+ 626 00aa 1A60     		str	r2, [r3]
+ 627 00ac 02E0     		b	.L63
+ 628              	.L66:
+ 629 00ae 2846     		mov	r0, r5
+ 630 00b0 00E0     		b	.L63
+ 631              	.L67:
+ 632 00b2 0120     		movs	r0, #1
+ 633              	.L63:
+ 634 00b4 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 635              	.L68:
+ 636 00b6 2846     		mov	r0, r5
+ 637 00b8 FCE7     		b	.L63
+ 638              	.L70:
+ 639 00ba 2846     		mov	r0, r5
+ 640 00bc FAE7     		b	.L63
+ 641              	.L74:
+ 642 00be 00BF     		.align	2
+ 643              	.L73:
+ 644 00c0 00000000 		.word	TIM_DMACaptureCplt
+ 645 00c4 00000000 		.word	TIM_DMACaptureHalfCplt
+ 646 00c8 00000000 		.word	TIM_DMAError
+ 647 00cc 002C0140 		.word	1073818624
+ 649              		.section	.text.HAL_TIMEx_HallSensor_Stop_DMA,"ax",%progbits
+ 650              		.align	1
+ 651              		.global	HAL_TIMEx_HallSensor_Stop_DMA
+ARM GAS  /tmp/ccdarhtS.s 			page 12
+
+
+ 652              		.syntax unified
+ 653              		.thumb
+ 654              		.thumb_func
+ 656              	HAL_TIMEx_HallSensor_Stop_DMA:
+ 657              		@ args = 0, pretend = 0, frame = 0
+ 658              		@ frame_needed = 0, uses_anonymous_args = 0
+ 659 0000 10B5     		push	{r4, lr}
+ 660 0002 0446     		mov	r4, r0
+ 661 0004 0022     		movs	r2, #0
+ 662 0006 1146     		mov	r1, r2
+ 663 0008 0068     		ldr	r0, [r0]
+ 664 000a FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 665 000e 2268     		ldr	r2, [r4]
+ 666 0010 D368     		ldr	r3, [r2, #12]
+ 667 0012 23F40073 		bic	r3, r3, #512
+ 668 0016 D360     		str	r3, [r2, #12]
+ 669 0018 606A     		ldr	r0, [r4, #36]
+ 670 001a FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 671 001e 2368     		ldr	r3, [r4]
+ 672 0020 196A     		ldr	r1, [r3, #32]
+ 673 0022 41F21112 		movw	r2, #4369
+ 674 0026 1142     		tst	r1, r2
+ 675 0028 08D1     		bne	.L76
+ 676 002a 196A     		ldr	r1, [r3, #32]
+ 677 002c 40F24442 		movw	r2, #1092
+ 678 0030 1142     		tst	r1, r2
+ 679 0032 03D1     		bne	.L76
+ 680 0034 1A68     		ldr	r2, [r3]
+ 681 0036 22F00102 		bic	r2, r2, #1
+ 682 003a 1A60     		str	r2, [r3]
+ 683              	.L76:
+ 684 003c 0123     		movs	r3, #1
+ 685 003e 84F83E30 		strb	r3, [r4, #62]
+ 686 0042 84F84230 		strb	r3, [r4, #66]
+ 687 0046 0020     		movs	r0, #0
+ 688 0048 10BD     		pop	{r4, pc}
+ 690              		.section	.text.HAL_TIMEx_OCN_Start,"ax",%progbits
+ 691              		.align	1
+ 692              		.global	HAL_TIMEx_OCN_Start
+ 693              		.syntax unified
+ 694              		.thumb
+ 695              		.thumb_func
+ 697              	HAL_TIMEx_OCN_Start:
+ 698              		@ args = 0, pretend = 0, frame = 0
+ 699              		@ frame_needed = 0, uses_anonymous_args = 0
+ 700 0000 10B5     		push	{r4, lr}
+ 701 0002 0446     		mov	r4, r0
+ 702 0004 0846     		mov	r0, r1
+ 703 0006 59BB     		cbnz	r1, .L79
+ 704 0008 94F84230 		ldrb	r3, [r4, #66]	@ zero_extendqisi2
+ 705 000c DBB2     		uxtb	r3, r3
+ 706 000e 013B     		subs	r3, r3, #1
+ 707 0010 18BF     		it	ne
+ 708 0012 0123     		movne	r3, #1
+ 709              	.L80:
+ 710 0014 002B     		cmp	r3, #0
+ 711 0016 57D1     		bne	.L90
+ARM GAS  /tmp/ccdarhtS.s 			page 13
+
+
+ 712 0018 0028     		cmp	r0, #0
+ 713 001a 3AD1     		bne	.L84
+ 714 001c 0223     		movs	r3, #2
+ 715 001e 84F84230 		strb	r3, [r4, #66]
+ 716              	.L85:
+ 717 0022 0422     		movs	r2, #4
+ 718 0024 0146     		mov	r1, r0
+ 719 0026 2068     		ldr	r0, [r4]
+ 720 0028 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 721 002c 2268     		ldr	r2, [r4]
+ 722 002e 536C     		ldr	r3, [r2, #68]
+ 723 0030 43F40043 		orr	r3, r3, #32768
+ 724 0034 5364     		str	r3, [r2, #68]
+ 725 0036 2368     		ldr	r3, [r4]
+ 726 0038 254A     		ldr	r2, .L97
+ 727 003a 9342     		cmp	r3, r2
+ 728 003c 39D0     		beq	.L88
+ 729 003e B3F1804F 		cmp	r3, #1073741824
+ 730 0042 36D0     		beq	.L88
+ 731 0044 A2F59432 		sub	r2, r2, #75776
+ 732 0048 9342     		cmp	r3, r2
+ 733 004a 32D0     		beq	.L88
+ 734 004c 02F58062 		add	r2, r2, #1024
+ 735 0050 9342     		cmp	r3, r2
+ 736 0052 2ED0     		beq	.L88
+ 737 0054 1A68     		ldr	r2, [r3]
+ 738 0056 42F00102 		orr	r2, r2, #1
+ 739 005a 1A60     		str	r2, [r3]
+ 740 005c 0020     		movs	r0, #0
+ 741 005e 34E0     		b	.L83
+ 742              	.L79:
+ 743 0060 0429     		cmp	r1, #4
+ 744 0062 08D0     		beq	.L93
+ 745 0064 0829     		cmp	r1, #8
+ 746 0066 0DD0     		beq	.L94
+ 747 0068 94F84530 		ldrb	r3, [r4, #69]	@ zero_extendqisi2
+ 748 006c DBB2     		uxtb	r3, r3
+ 749 006e 013B     		subs	r3, r3, #1
+ 750 0070 18BF     		it	ne
+ 751 0072 0123     		movne	r3, #1
+ 752 0074 CEE7     		b	.L80
+ 753              	.L93:
+ 754 0076 94F84330 		ldrb	r3, [r4, #67]	@ zero_extendqisi2
+ 755 007a DBB2     		uxtb	r3, r3
+ 756 007c 013B     		subs	r3, r3, #1
+ 757 007e 18BF     		it	ne
+ 758 0080 0123     		movne	r3, #1
+ 759 0082 C7E7     		b	.L80
+ 760              	.L94:
+ 761 0084 94F84430 		ldrb	r3, [r4, #68]	@ zero_extendqisi2
+ 762 0088 DBB2     		uxtb	r3, r3
+ 763 008a 013B     		subs	r3, r3, #1
+ 764 008c 18BF     		it	ne
+ 765 008e 0123     		movne	r3, #1
+ 766 0090 C0E7     		b	.L80
+ 767              	.L84:
+ 768 0092 0428     		cmp	r0, #4
+ARM GAS  /tmp/ccdarhtS.s 			page 14
+
+
+ 769 0094 05D0     		beq	.L95
+ 770 0096 0828     		cmp	r0, #8
+ 771 0098 07D0     		beq	.L96
+ 772 009a 0223     		movs	r3, #2
+ 773 009c 84F84530 		strb	r3, [r4, #69]
+ 774 00a0 BFE7     		b	.L85
+ 775              	.L95:
+ 776 00a2 0223     		movs	r3, #2
+ 777 00a4 84F84330 		strb	r3, [r4, #67]
+ 778 00a8 BBE7     		b	.L85
+ 779              	.L96:
+ 780 00aa 0223     		movs	r3, #2
+ 781 00ac 84F84430 		strb	r3, [r4, #68]
+ 782 00b0 B7E7     		b	.L85
+ 783              	.L88:
+ 784 00b2 9A68     		ldr	r2, [r3, #8]
+ 785 00b4 02F00702 		and	r2, r2, #7
+ 786 00b8 062A     		cmp	r2, #6
+ 787 00ba 07D0     		beq	.L91
+ 788 00bc 1A68     		ldr	r2, [r3]
+ 789 00be 42F00102 		orr	r2, r2, #1
+ 790 00c2 1A60     		str	r2, [r3]
+ 791 00c4 0020     		movs	r0, #0
+ 792 00c6 00E0     		b	.L83
+ 793              	.L90:
+ 794 00c8 0120     		movs	r0, #1
+ 795              	.L83:
+ 796 00ca 10BD     		pop	{r4, pc}
+ 797              	.L91:
+ 798 00cc 0020     		movs	r0, #0
+ 799 00ce FCE7     		b	.L83
+ 800              	.L98:
+ 801              		.align	2
+ 802              	.L97:
+ 803 00d0 002C0140 		.word	1073818624
+ 805              		.section	.text.HAL_TIMEx_OCN_Stop,"ax",%progbits
+ 806              		.align	1
+ 807              		.global	HAL_TIMEx_OCN_Stop
+ 808              		.syntax unified
+ 809              		.thumb
+ 810              		.thumb_func
+ 812              	HAL_TIMEx_OCN_Stop:
+ 813              		@ args = 0, pretend = 0, frame = 0
+ 814              		@ frame_needed = 0, uses_anonymous_args = 0
+ 815 0000 38B5     		push	{r3, r4, r5, lr}
+ 816 0002 0446     		mov	r4, r0
+ 817 0004 0D46     		mov	r5, r1
+ 818 0006 0022     		movs	r2, #0
+ 819 0008 0068     		ldr	r0, [r0]
+ 820 000a FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 821 000e 2368     		ldr	r3, [r4]
+ 822 0010 196A     		ldr	r1, [r3, #32]
+ 823 0012 41F21112 		movw	r2, #4369
+ 824 0016 1142     		tst	r1, r2
+ 825 0018 08D1     		bne	.L100
+ 826 001a 196A     		ldr	r1, [r3, #32]
+ 827 001c 40F24442 		movw	r2, #1092
+ARM GAS  /tmp/ccdarhtS.s 			page 15
+
+
+ 828 0020 1142     		tst	r1, r2
+ 829 0022 03D1     		bne	.L100
+ 830 0024 5A6C     		ldr	r2, [r3, #68]
+ 831 0026 22F40042 		bic	r2, r2, #32768
+ 832 002a 5A64     		str	r2, [r3, #68]
+ 833              	.L100:
+ 834 002c 2368     		ldr	r3, [r4]
+ 835 002e 196A     		ldr	r1, [r3, #32]
+ 836 0030 41F21112 		movw	r2, #4369
+ 837 0034 1142     		tst	r1, r2
+ 838 0036 08D1     		bne	.L101
+ 839 0038 196A     		ldr	r1, [r3, #32]
+ 840 003a 40F24442 		movw	r2, #1092
+ 841 003e 1142     		tst	r1, r2
+ 842 0040 03D1     		bne	.L101
+ 843 0042 1A68     		ldr	r2, [r3]
+ 844 0044 22F00102 		bic	r2, r2, #1
+ 845 0048 1A60     		str	r2, [r3]
+ 846              	.L101:
+ 847 004a 25B9     		cbnz	r5, .L102
+ 848 004c 0123     		movs	r3, #1
+ 849 004e 84F84230 		strb	r3, [r4, #66]
+ 850              	.L103:
+ 851 0052 0020     		movs	r0, #0
+ 852 0054 38BD     		pop	{r3, r4, r5, pc}
+ 853              	.L102:
+ 854 0056 042D     		cmp	r5, #4
+ 855 0058 05D0     		beq	.L107
+ 856 005a 082D     		cmp	r5, #8
+ 857 005c 07D0     		beq	.L108
+ 858 005e 0123     		movs	r3, #1
+ 859 0060 84F84530 		strb	r3, [r4, #69]
+ 860 0064 F5E7     		b	.L103
+ 861              	.L107:
+ 862 0066 0123     		movs	r3, #1
+ 863 0068 84F84330 		strb	r3, [r4, #67]
+ 864 006c F1E7     		b	.L103
+ 865              	.L108:
+ 866 006e 0123     		movs	r3, #1
+ 867 0070 84F84430 		strb	r3, [r4, #68]
+ 868 0074 EDE7     		b	.L103
+ 870              		.section	.text.HAL_TIMEx_OCN_Start_IT,"ax",%progbits
+ 871              		.align	1
+ 872              		.global	HAL_TIMEx_OCN_Start_IT
+ 873              		.syntax unified
+ 874              		.thumb
+ 875              		.thumb_func
+ 877              	HAL_TIMEx_OCN_Start_IT:
+ 878              		@ args = 0, pretend = 0, frame = 0
+ 879              		@ frame_needed = 0, uses_anonymous_args = 0
+ 880 0000 10B5     		push	{r4, lr}
+ 881 0002 0446     		mov	r4, r0
+ 882 0004 0846     		mov	r0, r1
+ 883 0006 0029     		cmp	r1, #0
+ 884 0008 35D1     		bne	.L110
+ 885 000a 94F84230 		ldrb	r3, [r4, #66]	@ zero_extendqisi2
+ 886 000e DBB2     		uxtb	r3, r3
+ARM GAS  /tmp/ccdarhtS.s 			page 16
+
+
+ 887 0010 013B     		subs	r3, r3, #1
+ 888 0012 18BF     		it	ne
+ 889 0014 0123     		movne	r3, #1
+ 890              	.L111:
+ 891 0016 002B     		cmp	r3, #0
+ 892 0018 72D1     		bne	.L124
+ 893 001a 0028     		cmp	r0, #0
+ 894 001c 44D1     		bne	.L115
+ 895 001e 0223     		movs	r3, #2
+ 896 0020 84F84230 		strb	r3, [r4, #66]
+ 897              	.L116:
+ 898 0024 2268     		ldr	r2, [r4]
+ 899 0026 D368     		ldr	r3, [r2, #12]
+ 900 0028 43F00203 		orr	r3, r3, #2
+ 901 002c D360     		str	r3, [r2, #12]
+ 902              	.L121:
+ 903 002e 2268     		ldr	r2, [r4]
+ 904 0030 D368     		ldr	r3, [r2, #12]
+ 905 0032 43F08003 		orr	r3, r3, #128
+ 906 0036 D360     		str	r3, [r2, #12]
+ 907 0038 0422     		movs	r2, #4
+ 908 003a 0146     		mov	r1, r0
+ 909 003c 2068     		ldr	r0, [r4]
+ 910 003e FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 911 0042 2268     		ldr	r2, [r4]
+ 912 0044 536C     		ldr	r3, [r2, #68]
+ 913 0046 43F40043 		orr	r3, r3, #32768
+ 914 004a 5364     		str	r3, [r2, #68]
+ 915 004c 2368     		ldr	r3, [r4]
+ 916 004e 2E4A     		ldr	r2, .L132
+ 917 0050 9342     		cmp	r3, r2
+ 918 0052 4AD0     		beq	.L122
+ 919 0054 B3F1804F 		cmp	r3, #1073741824
+ 920 0058 47D0     		beq	.L122
+ 921 005a A2F59432 		sub	r2, r2, #75776
+ 922 005e 9342     		cmp	r3, r2
+ 923 0060 43D0     		beq	.L122
+ 924 0062 02F58062 		add	r2, r2, #1024
+ 925 0066 9342     		cmp	r3, r2
+ 926 0068 3FD0     		beq	.L122
+ 927 006a 1A68     		ldr	r2, [r3]
+ 928 006c 42F00102 		orr	r2, r2, #1
+ 929 0070 1A60     		str	r2, [r3]
+ 930 0072 0020     		movs	r0, #0
+ 931 0074 45E0     		b	.L114
+ 932              	.L110:
+ 933 0076 0429     		cmp	r1, #4
+ 934 0078 08D0     		beq	.L128
+ 935 007a 0829     		cmp	r1, #8
+ 936 007c 0DD0     		beq	.L129
+ 937 007e 94F84530 		ldrb	r3, [r4, #69]	@ zero_extendqisi2
+ 938 0082 DBB2     		uxtb	r3, r3
+ 939 0084 013B     		subs	r3, r3, #1
+ 940 0086 18BF     		it	ne
+ 941 0088 0123     		movne	r3, #1
+ 942 008a C4E7     		b	.L111
+ 943              	.L128:
+ARM GAS  /tmp/ccdarhtS.s 			page 17
+
+
+ 944 008c 94F84330 		ldrb	r3, [r4, #67]	@ zero_extendqisi2
+ 945 0090 DBB2     		uxtb	r3, r3
+ 946 0092 013B     		subs	r3, r3, #1
+ 947 0094 18BF     		it	ne
+ 948 0096 0123     		movne	r3, #1
+ 949 0098 BDE7     		b	.L111
+ 950              	.L129:
+ 951 009a 94F84430 		ldrb	r3, [r4, #68]	@ zero_extendqisi2
+ 952 009e DBB2     		uxtb	r3, r3
+ 953 00a0 013B     		subs	r3, r3, #1
+ 954 00a2 18BF     		it	ne
+ 955 00a4 0123     		movne	r3, #1
+ 956 00a6 B6E7     		b	.L111
+ 957              	.L115:
+ 958 00a8 0428     		cmp	r0, #4
+ 959 00aa 0CD0     		beq	.L130
+ 960 00ac 0828     		cmp	r0, #8
+ 961 00ae 13D0     		beq	.L131
+ 962 00b0 0223     		movs	r3, #2
+ 963 00b2 84F84530 		strb	r3, [r4, #69]
+ 964 00b6 0428     		cmp	r0, #4
+ 965 00b8 08D0     		beq	.L118
+ 966 00ba 0828     		cmp	r0, #8
+ 967 00bc 0FD0     		beq	.L120
+ 968 00be 0028     		cmp	r0, #0
+ 969 00c0 B0D0     		beq	.L116
+ 970 00c2 0120     		movs	r0, #1
+ 971 00c4 1DE0     		b	.L114
+ 972              	.L130:
+ 973 00c6 0223     		movs	r3, #2
+ 974 00c8 84F84330 		strb	r3, [r4, #67]
+ 975              	.L118:
+ 976 00cc 2268     		ldr	r2, [r4]
+ 977 00ce D368     		ldr	r3, [r2, #12]
+ 978 00d0 43F00403 		orr	r3, r3, #4
+ 979 00d4 D360     		str	r3, [r2, #12]
+ 980 00d6 AAE7     		b	.L121
+ 981              	.L131:
+ 982 00d8 0223     		movs	r3, #2
+ 983 00da 84F84430 		strb	r3, [r4, #68]
+ 984              	.L120:
+ 985 00de 2268     		ldr	r2, [r4]
+ 986 00e0 D368     		ldr	r3, [r2, #12]
+ 987 00e2 43F00803 		orr	r3, r3, #8
+ 988 00e6 D360     		str	r3, [r2, #12]
+ 989 00e8 A1E7     		b	.L121
+ 990              	.L122:
+ 991 00ea 9A68     		ldr	r2, [r3, #8]
+ 992 00ec 02F00702 		and	r2, r2, #7
+ 993 00f0 062A     		cmp	r2, #6
+ 994 00f2 07D0     		beq	.L126
+ 995 00f4 1A68     		ldr	r2, [r3]
+ 996 00f6 42F00102 		orr	r2, r2, #1
+ 997 00fa 1A60     		str	r2, [r3]
+ 998 00fc 0020     		movs	r0, #0
+ 999 00fe 00E0     		b	.L114
+ 1000              	.L124:
+ARM GAS  /tmp/ccdarhtS.s 			page 18
+
+
+ 1001 0100 0120     		movs	r0, #1
+ 1002              	.L114:
+ 1003 0102 10BD     		pop	{r4, pc}
+ 1004              	.L126:
+ 1005 0104 0020     		movs	r0, #0
+ 1006 0106 FCE7     		b	.L114
+ 1007              	.L133:
+ 1008              		.align	2
+ 1009              	.L132:
+ 1010 0108 002C0140 		.word	1073818624
+ 1012              		.section	.text.HAL_TIMEx_OCN_Stop_IT,"ax",%progbits
+ 1013              		.align	1
+ 1014              		.global	HAL_TIMEx_OCN_Stop_IT
+ 1015              		.syntax unified
+ 1016              		.thumb
+ 1017              		.thumb_func
+ 1019              	HAL_TIMEx_OCN_Stop_IT:
+ 1020              		@ args = 0, pretend = 0, frame = 0
+ 1021              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1022 0000 38B5     		push	{r3, r4, r5, lr}
+ 1023 0002 0446     		mov	r4, r0
+ 1024 0004 0D46     		mov	r5, r1
+ 1025 0006 0429     		cmp	r1, #4
+ 1026 0008 3BD0     		beq	.L135
+ 1027 000a 0829     		cmp	r1, #8
+ 1028 000c 3FD0     		beq	.L136
+ 1029 000e 0029     		cmp	r1, #0
+ 1030 0010 56D1     		bne	.L145
+ 1031 0012 0268     		ldr	r2, [r0]
+ 1032 0014 D368     		ldr	r3, [r2, #12]
+ 1033 0016 23F00203 		bic	r3, r3, #2
+ 1034 001a D360     		str	r3, [r2, #12]
+ 1035              	.L138:
+ 1036 001c 0022     		movs	r2, #0
+ 1037 001e 2946     		mov	r1, r5
+ 1038 0020 2068     		ldr	r0, [r4]
+ 1039 0022 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1040 0026 2368     		ldr	r3, [r4]
+ 1041 0028 196A     		ldr	r1, [r3, #32]
+ 1042 002a 40F24442 		movw	r2, #1092
+ 1043 002e 1142     		tst	r1, r2
+ 1044 0030 03D1     		bne	.L139
+ 1045 0032 DA68     		ldr	r2, [r3, #12]
+ 1046 0034 22F08002 		bic	r2, r2, #128
+ 1047 0038 DA60     		str	r2, [r3, #12]
+ 1048              	.L139:
+ 1049 003a 2368     		ldr	r3, [r4]
+ 1050 003c 196A     		ldr	r1, [r3, #32]
+ 1051 003e 41F21112 		movw	r2, #4369
+ 1052 0042 1142     		tst	r1, r2
+ 1053 0044 08D1     		bne	.L140
+ 1054 0046 196A     		ldr	r1, [r3, #32]
+ 1055 0048 40F24442 		movw	r2, #1092
+ 1056 004c 1142     		tst	r1, r2
+ 1057 004e 03D1     		bne	.L140
+ 1058 0050 5A6C     		ldr	r2, [r3, #68]
+ 1059 0052 22F40042 		bic	r2, r2, #32768
+ARM GAS  /tmp/ccdarhtS.s 			page 19
+
+
+ 1060 0056 5A64     		str	r2, [r3, #68]
+ 1061              	.L140:
+ 1062 0058 2368     		ldr	r3, [r4]
+ 1063 005a 196A     		ldr	r1, [r3, #32]
+ 1064 005c 41F21112 		movw	r2, #4369
+ 1065 0060 1142     		tst	r1, r2
+ 1066 0062 08D1     		bne	.L141
+ 1067 0064 196A     		ldr	r1, [r3, #32]
+ 1068 0066 40F24442 		movw	r2, #1092
+ 1069 006a 1142     		tst	r1, r2
+ 1070 006c 03D1     		bne	.L141
+ 1071 006e 1A68     		ldr	r2, [r3]
+ 1072 0070 22F00102 		bic	r2, r2, #1
+ 1073 0074 1A60     		str	r2, [r3]
+ 1074              	.L141:
+ 1075 0076 85B9     		cbnz	r5, .L142
+ 1076 0078 0123     		movs	r3, #1
+ 1077 007a 84F84230 		strb	r3, [r4, #66]
+ 1078 007e 0020     		movs	r0, #0
+ 1079              	.L137:
+ 1080 0080 38BD     		pop	{r3, r4, r5, pc}
+ 1081              	.L135:
+ 1082 0082 0268     		ldr	r2, [r0]
+ 1083 0084 D368     		ldr	r3, [r2, #12]
+ 1084 0086 23F00403 		bic	r3, r3, #4
+ 1085 008a D360     		str	r3, [r2, #12]
+ 1086 008c C6E7     		b	.L138
+ 1087              	.L136:
+ 1088 008e 0268     		ldr	r2, [r0]
+ 1089 0090 D368     		ldr	r3, [r2, #12]
+ 1090 0092 23F00803 		bic	r3, r3, #8
+ 1091 0096 D360     		str	r3, [r2, #12]
+ 1092 0098 C0E7     		b	.L138
+ 1093              	.L142:
+ 1094 009a 042D     		cmp	r5, #4
+ 1095 009c 06D0     		beq	.L147
+ 1096 009e 082D     		cmp	r5, #8
+ 1097 00a0 09D0     		beq	.L148
+ 1098 00a2 0123     		movs	r3, #1
+ 1099 00a4 84F84530 		strb	r3, [r4, #69]
+ 1100 00a8 0020     		movs	r0, #0
+ 1101 00aa E9E7     		b	.L137
+ 1102              	.L147:
+ 1103 00ac 0123     		movs	r3, #1
+ 1104 00ae 84F84330 		strb	r3, [r4, #67]
+ 1105 00b2 0020     		movs	r0, #0
+ 1106 00b4 E4E7     		b	.L137
+ 1107              	.L148:
+ 1108 00b6 0123     		movs	r3, #1
+ 1109 00b8 84F84430 		strb	r3, [r4, #68]
+ 1110 00bc 0020     		movs	r0, #0
+ 1111 00be DFE7     		b	.L137
+ 1112              	.L145:
+ 1113 00c0 0120     		movs	r0, #1
+ 1114 00c2 DDE7     		b	.L137
+ 1116              		.section	.text.HAL_TIMEx_OCN_Start_DMA,"ax",%progbits
+ 1117              		.align	1
+ARM GAS  /tmp/ccdarhtS.s 			page 20
+
+
+ 1118              		.global	HAL_TIMEx_OCN_Start_DMA
+ 1119              		.syntax unified
+ 1120              		.thumb
+ 1121              		.thumb_func
+ 1123              	HAL_TIMEx_OCN_Start_DMA:
+ 1124              		@ args = 0, pretend = 0, frame = 0
+ 1125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1126 0000 70B5     		push	{r4, r5, r6, lr}
+ 1127 0002 0446     		mov	r4, r0
+ 1128 0004 1646     		mov	r6, r2
+ 1129 0006 0D46     		mov	r5, r1
+ 1130 0008 0029     		cmp	r1, #0
+ 1131 000a 59D1     		bne	.L150
+ 1132 000c 90F84200 		ldrb	r0, [r0, #66]	@ zero_extendqisi2
+ 1133 0010 C0B2     		uxtb	r0, r0
+ 1134 0012 0228     		cmp	r0, #2
+ 1135 0014 14BF     		ite	ne
+ 1136 0016 0020     		movne	r0, #0
+ 1137 0018 0120     		moveq	r0, #1
+ 1138              	.L151:
+ 1139 001a 0028     		cmp	r0, #0
+ 1140 001c 40F0D580 		bne	.L168
+ 1141 0020 002D     		cmp	r5, #0
+ 1142 0022 69D1     		bne	.L155
+ 1143 0024 94F84220 		ldrb	r2, [r4, #66]	@ zero_extendqisi2
+ 1144 0028 D2B2     		uxtb	r2, r2
+ 1145 002a 012A     		cmp	r2, #1
+ 1146 002c 14BF     		ite	ne
+ 1147 002e 0022     		movne	r2, #0
+ 1148 0030 0122     		moveq	r2, #1
+ 1149              	.L156:
+ 1150 0032 002A     		cmp	r2, #0
+ 1151 0034 00F0CB80 		beq	.L169
+ 1152 0038 002E     		cmp	r6, #0
+ 1153 003a 00F0CA80 		beq	.L170
+ 1154 003e 002B     		cmp	r3, #0
+ 1155 0040 00F0C980 		beq	.L171
+ 1156 0044 002D     		cmp	r5, #0
+ 1157 0046 73D1     		bne	.L159
+ 1158 0048 0222     		movs	r2, #2
+ 1159 004a 84F84220 		strb	r2, [r4, #66]
+ 1160              	.L160:
+ 1161 004e 626A     		ldr	r2, [r4, #36]
+ 1162 0050 6649     		ldr	r1, .L184
+ 1163 0052 9162     		str	r1, [r2, #40]
+ 1164 0054 626A     		ldr	r2, [r4, #36]
+ 1165 0056 6649     		ldr	r1, .L184+4
+ 1166 0058 D162     		str	r1, [r2, #44]
+ 1167 005a 626A     		ldr	r2, [r4, #36]
+ 1168 005c 6549     		ldr	r1, .L184+8
+ 1169 005e 1163     		str	r1, [r2, #48]
+ 1170 0060 2268     		ldr	r2, [r4]
+ 1171 0062 3432     		adds	r2, r2, #52
+ 1172 0064 3146     		mov	r1, r6
+ 1173 0066 606A     		ldr	r0, [r4, #36]
+ 1174 0068 FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 1175 006c 0028     		cmp	r0, #0
+ARM GAS  /tmp/ccdarhtS.s 			page 21
+
+
+ 1176 006e 40F0B480 		bne	.L173
+ 1177 0072 2268     		ldr	r2, [r4]
+ 1178 0074 D368     		ldr	r3, [r2, #12]
+ 1179 0076 43F40073 		orr	r3, r3, #512
+ 1180 007a D360     		str	r3, [r2, #12]
+ 1181              	.L165:
+ 1182 007c 0422     		movs	r2, #4
+ 1183 007e 2946     		mov	r1, r5
+ 1184 0080 2068     		ldr	r0, [r4]
+ 1185 0082 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1186 0086 2268     		ldr	r2, [r4]
+ 1187 0088 536C     		ldr	r3, [r2, #68]
+ 1188 008a 43F40043 		orr	r3, r3, #32768
+ 1189 008e 5364     		str	r3, [r2, #68]
+ 1190 0090 2368     		ldr	r3, [r4]
+ 1191 0092 594A     		ldr	r2, .L184+12
+ 1192 0094 9342     		cmp	r3, r2
+ 1193 0096 00F08D80 		beq	.L166
+ 1194 009a B3F1804F 		cmp	r3, #1073741824
+ 1195 009e 00F08980 		beq	.L166
+ 1196 00a2 A2F59432 		sub	r2, r2, #75776
+ 1197 00a6 9342     		cmp	r3, r2
+ 1198 00a8 00F08480 		beq	.L166
+ 1199 00ac 02F58062 		add	r2, r2, #1024
+ 1200 00b0 9342     		cmp	r3, r2
+ 1201 00b2 7FD0     		beq	.L166
+ 1202 00b4 1A68     		ldr	r2, [r3]
+ 1203 00b6 42F00102 		orr	r2, r2, #1
+ 1204 00ba 1A60     		str	r2, [r3]
+ 1205 00bc 0020     		movs	r0, #0
+ 1206 00be 87E0     		b	.L154
+ 1207              	.L150:
+ 1208 00c0 0429     		cmp	r1, #4
+ 1209 00c2 09D0     		beq	.L178
+ 1210 00c4 0829     		cmp	r1, #8
+ 1211 00c6 0FD0     		beq	.L179
+ 1212 00c8 90F84500 		ldrb	r0, [r0, #69]	@ zero_extendqisi2
+ 1213 00cc C0B2     		uxtb	r0, r0
+ 1214 00ce 0228     		cmp	r0, #2
+ 1215 00d0 14BF     		ite	ne
+ 1216 00d2 0020     		movne	r0, #0
+ 1217 00d4 0120     		moveq	r0, #1
+ 1218 00d6 A0E7     		b	.L151
+ 1219              	.L178:
+ 1220 00d8 90F84300 		ldrb	r0, [r0, #67]	@ zero_extendqisi2
+ 1221 00dc C0B2     		uxtb	r0, r0
+ 1222 00de 0228     		cmp	r0, #2
+ 1223 00e0 14BF     		ite	ne
+ 1224 00e2 0020     		movne	r0, #0
+ 1225 00e4 0120     		moveq	r0, #1
+ 1226 00e6 98E7     		b	.L151
+ 1227              	.L179:
+ 1228 00e8 90F84400 		ldrb	r0, [r0, #68]	@ zero_extendqisi2
+ 1229 00ec C0B2     		uxtb	r0, r0
+ 1230 00ee 0228     		cmp	r0, #2
+ 1231 00f0 14BF     		ite	ne
+ 1232 00f2 0020     		movne	r0, #0
+ARM GAS  /tmp/ccdarhtS.s 			page 22
+
+
+ 1233 00f4 0120     		moveq	r0, #1
+ 1234 00f6 90E7     		b	.L151
+ 1235              	.L155:
+ 1236 00f8 042D     		cmp	r5, #4
+ 1237 00fa 09D0     		beq	.L180
+ 1238 00fc 082D     		cmp	r5, #8
+ 1239 00fe 0FD0     		beq	.L181
+ 1240 0100 94F84520 		ldrb	r2, [r4, #69]	@ zero_extendqisi2
+ 1241 0104 D2B2     		uxtb	r2, r2
+ 1242 0106 012A     		cmp	r2, #1
+ 1243 0108 14BF     		ite	ne
+ 1244 010a 0022     		movne	r2, #0
+ 1245 010c 0122     		moveq	r2, #1
+ 1246 010e 90E7     		b	.L156
+ 1247              	.L180:
+ 1248 0110 94F84320 		ldrb	r2, [r4, #67]	@ zero_extendqisi2
+ 1249 0114 D2B2     		uxtb	r2, r2
+ 1250 0116 012A     		cmp	r2, #1
+ 1251 0118 14BF     		ite	ne
+ 1252 011a 0022     		movne	r2, #0
+ 1253 011c 0122     		moveq	r2, #1
+ 1254 011e 88E7     		b	.L156
+ 1255              	.L181:
+ 1256 0120 94F84420 		ldrb	r2, [r4, #68]	@ zero_extendqisi2
+ 1257 0124 D2B2     		uxtb	r2, r2
+ 1258 0126 012A     		cmp	r2, #1
+ 1259 0128 14BF     		ite	ne
+ 1260 012a 0022     		movne	r2, #0
+ 1261 012c 0122     		moveq	r2, #1
+ 1262 012e 80E7     		b	.L156
+ 1263              	.L159:
+ 1264 0130 042D     		cmp	r5, #4
+ 1265 0132 0CD0     		beq	.L182
+ 1266 0134 082D     		cmp	r5, #8
+ 1267 0136 24D0     		beq	.L183
+ 1268 0138 0222     		movs	r2, #2
+ 1269 013a 84F84520 		strb	r2, [r4, #69]
+ 1270 013e 042D     		cmp	r5, #4
+ 1271 0140 08D0     		beq	.L162
+ 1272 0142 082D     		cmp	r5, #8
+ 1273 0144 20D0     		beq	.L164
+ 1274 0146 002D     		cmp	r5, #0
+ 1275 0148 81D0     		beq	.L160
+ 1276 014a 0120     		movs	r0, #1
+ 1277 014c 40E0     		b	.L154
+ 1278              	.L182:
+ 1279 014e 0222     		movs	r2, #2
+ 1280 0150 84F84320 		strb	r2, [r4, #67]
+ 1281              	.L162:
+ 1282 0154 A26A     		ldr	r2, [r4, #40]
+ 1283 0156 2549     		ldr	r1, .L184
+ 1284 0158 9162     		str	r1, [r2, #40]
+ 1285 015a A26A     		ldr	r2, [r4, #40]
+ 1286 015c 2449     		ldr	r1, .L184+4
+ 1287 015e D162     		str	r1, [r2, #44]
+ 1288 0160 A26A     		ldr	r2, [r4, #40]
+ 1289 0162 2449     		ldr	r1, .L184+8
+ARM GAS  /tmp/ccdarhtS.s 			page 23
+
+
+ 1290 0164 1163     		str	r1, [r2, #48]
+ 1291 0166 2268     		ldr	r2, [r4]
+ 1292 0168 3832     		adds	r2, r2, #56
+ 1293 016a 3146     		mov	r1, r6
+ 1294 016c A06A     		ldr	r0, [r4, #40]
+ 1295 016e FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 1296 0172 0028     		cmp	r0, #0
+ 1297 0174 33D1     		bne	.L174
+ 1298 0176 2268     		ldr	r2, [r4]
+ 1299 0178 D368     		ldr	r3, [r2, #12]
+ 1300 017a 43F48063 		orr	r3, r3, #1024
+ 1301 017e D360     		str	r3, [r2, #12]
+ 1302 0180 7CE7     		b	.L165
+ 1303              	.L183:
+ 1304 0182 0222     		movs	r2, #2
+ 1305 0184 84F84420 		strb	r2, [r4, #68]
+ 1306              	.L164:
+ 1307 0188 E26A     		ldr	r2, [r4, #44]
+ 1308 018a 1849     		ldr	r1, .L184
+ 1309 018c 9162     		str	r1, [r2, #40]
+ 1310 018e E26A     		ldr	r2, [r4, #44]
+ 1311 0190 1749     		ldr	r1, .L184+4
+ 1312 0192 D162     		str	r1, [r2, #44]
+ 1313 0194 E26A     		ldr	r2, [r4, #44]
+ 1314 0196 1749     		ldr	r1, .L184+8
+ 1315 0198 1163     		str	r1, [r2, #48]
+ 1316 019a 2268     		ldr	r2, [r4]
+ 1317 019c 3C32     		adds	r2, r2, #60
+ 1318 019e 3146     		mov	r1, r6
+ 1319 01a0 E06A     		ldr	r0, [r4, #44]
+ 1320 01a2 FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 1321 01a6 E0B9     		cbnz	r0, .L175
+ 1322 01a8 2268     		ldr	r2, [r4]
+ 1323 01aa D368     		ldr	r3, [r2, #12]
+ 1324 01ac 43F40063 		orr	r3, r3, #2048
+ 1325 01b0 D360     		str	r3, [r2, #12]
+ 1326 01b2 63E7     		b	.L165
+ 1327              	.L166:
+ 1328 01b4 9A68     		ldr	r2, [r3, #8]
+ 1329 01b6 02F00702 		and	r2, r2, #7
+ 1330 01ba 062A     		cmp	r2, #6
+ 1331 01bc 13D0     		beq	.L176
+ 1332 01be 1A68     		ldr	r2, [r3]
+ 1333 01c0 42F00102 		orr	r2, r2, #1
+ 1334 01c4 1A60     		str	r2, [r3]
+ 1335 01c6 0020     		movs	r0, #0
+ 1336 01c8 02E0     		b	.L154
+ 1337              	.L168:
+ 1338 01ca 0220     		movs	r0, #2
+ 1339 01cc 00E0     		b	.L154
+ 1340              	.L169:
+ 1341 01ce 0120     		movs	r0, #1
+ 1342              	.L154:
+ 1343 01d0 70BD     		pop	{r4, r5, r6, pc}
+ 1344              	.L170:
+ 1345 01d2 0120     		movs	r0, #1
+ 1346 01d4 FCE7     		b	.L154
+ARM GAS  /tmp/ccdarhtS.s 			page 24
+
+
+ 1347              	.L171:
+ 1348 01d6 0120     		movs	r0, #1
+ 1349 01d8 FAE7     		b	.L154
+ 1350              	.L173:
+ 1351 01da 0120     		movs	r0, #1
+ 1352 01dc F8E7     		b	.L154
+ 1353              	.L174:
+ 1354 01de 0120     		movs	r0, #1
+ 1355 01e0 F6E7     		b	.L154
+ 1356              	.L175:
+ 1357 01e2 0120     		movs	r0, #1
+ 1358 01e4 F4E7     		b	.L154
+ 1359              	.L176:
+ 1360 01e6 0020     		movs	r0, #0
+ 1361 01e8 F2E7     		b	.L154
+ 1362              	.L185:
+ 1363 01ea 00BF     		.align	2
+ 1364              	.L184:
+ 1365 01ec 00000000 		.word	TIM_DMADelayPulseNCplt
+ 1366 01f0 00000000 		.word	TIM_DMADelayPulseHalfCplt
+ 1367 01f4 00000000 		.word	TIM_DMAErrorCCxN
+ 1368 01f8 002C0140 		.word	1073818624
+ 1370              		.section	.text.HAL_TIMEx_OCN_Stop_DMA,"ax",%progbits
+ 1371              		.align	1
+ 1372              		.global	HAL_TIMEx_OCN_Stop_DMA
+ 1373              		.syntax unified
+ 1374              		.thumb
+ 1375              		.thumb_func
+ 1377              	HAL_TIMEx_OCN_Stop_DMA:
+ 1378              		@ args = 0, pretend = 0, frame = 0
+ 1379              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1380 0000 38B5     		push	{r3, r4, r5, lr}
+ 1381 0002 0446     		mov	r4, r0
+ 1382 0004 0D46     		mov	r5, r1
+ 1383 0006 0429     		cmp	r1, #4
+ 1384 0008 34D0     		beq	.L187
+ 1385 000a 0829     		cmp	r1, #8
+ 1386 000c 3BD0     		beq	.L188
+ 1387 000e 0029     		cmp	r1, #0
+ 1388 0010 55D1     		bne	.L196
+ 1389 0012 0268     		ldr	r2, [r0]
+ 1390 0014 D368     		ldr	r3, [r2, #12]
+ 1391 0016 23F40073 		bic	r3, r3, #512
+ 1392 001a D360     		str	r3, [r2, #12]
+ 1393 001c 406A     		ldr	r0, [r0, #36]
+ 1394 001e FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 1395              	.L190:
+ 1396 0022 0022     		movs	r2, #0
+ 1397 0024 2946     		mov	r1, r5
+ 1398 0026 2068     		ldr	r0, [r4]
+ 1399 0028 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1400 002c 2368     		ldr	r3, [r4]
+ 1401 002e 196A     		ldr	r1, [r3, #32]
+ 1402 0030 41F21112 		movw	r2, #4369
+ 1403 0034 1142     		tst	r1, r2
+ 1404 0036 08D1     		bne	.L191
+ 1405 0038 196A     		ldr	r1, [r3, #32]
+ARM GAS  /tmp/ccdarhtS.s 			page 25
+
+
+ 1406 003a 40F24442 		movw	r2, #1092
+ 1407 003e 1142     		tst	r1, r2
+ 1408 0040 03D1     		bne	.L191
+ 1409 0042 5A6C     		ldr	r2, [r3, #68]
+ 1410 0044 22F40042 		bic	r2, r2, #32768
+ 1411 0048 5A64     		str	r2, [r3, #68]
+ 1412              	.L191:
+ 1413 004a 2368     		ldr	r3, [r4]
+ 1414 004c 196A     		ldr	r1, [r3, #32]
+ 1415 004e 41F21112 		movw	r2, #4369
+ 1416 0052 1142     		tst	r1, r2
+ 1417 0054 08D1     		bne	.L192
+ 1418 0056 196A     		ldr	r1, [r3, #32]
+ 1419 0058 40F24442 		movw	r2, #1092
+ 1420 005c 1142     		tst	r1, r2
+ 1421 005e 03D1     		bne	.L192
+ 1422 0060 1A68     		ldr	r2, [r3]
+ 1423 0062 22F00102 		bic	r2, r2, #1
+ 1424 0066 1A60     		str	r2, [r3]
+ 1425              	.L192:
+ 1426 0068 B5B9     		cbnz	r5, .L193
+ 1427 006a 0123     		movs	r3, #1
+ 1428 006c 84F84230 		strb	r3, [r4, #66]
+ 1429 0070 0020     		movs	r0, #0
+ 1430              	.L189:
+ 1431 0072 38BD     		pop	{r3, r4, r5, pc}
+ 1432              	.L187:
+ 1433 0074 0268     		ldr	r2, [r0]
+ 1434 0076 D368     		ldr	r3, [r2, #12]
+ 1435 0078 23F48063 		bic	r3, r3, #1024
+ 1436 007c D360     		str	r3, [r2, #12]
+ 1437 007e 806A     		ldr	r0, [r0, #40]
+ 1438 0080 FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 1439 0084 CDE7     		b	.L190
+ 1440              	.L188:
+ 1441 0086 0268     		ldr	r2, [r0]
+ 1442 0088 D368     		ldr	r3, [r2, #12]
+ 1443 008a 23F40063 		bic	r3, r3, #2048
+ 1444 008e D360     		str	r3, [r2, #12]
+ 1445 0090 C06A     		ldr	r0, [r0, #44]
+ 1446 0092 FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 1447 0096 C4E7     		b	.L190
+ 1448              	.L193:
+ 1449 0098 042D     		cmp	r5, #4
+ 1450 009a 06D0     		beq	.L198
+ 1451 009c 082D     		cmp	r5, #8
+ 1452 009e 09D0     		beq	.L199
+ 1453 00a0 0123     		movs	r3, #1
+ 1454 00a2 84F84530 		strb	r3, [r4, #69]
+ 1455 00a6 0020     		movs	r0, #0
+ 1456 00a8 E3E7     		b	.L189
+ 1457              	.L198:
+ 1458 00aa 0123     		movs	r3, #1
+ 1459 00ac 84F84330 		strb	r3, [r4, #67]
+ 1460 00b0 0020     		movs	r0, #0
+ 1461 00b2 DEE7     		b	.L189
+ 1462              	.L199:
+ARM GAS  /tmp/ccdarhtS.s 			page 26
+
+
+ 1463 00b4 0123     		movs	r3, #1
+ 1464 00b6 84F84430 		strb	r3, [r4, #68]
+ 1465 00ba 0020     		movs	r0, #0
+ 1466 00bc D9E7     		b	.L189
+ 1467              	.L196:
+ 1468 00be 0120     		movs	r0, #1
+ 1469 00c0 D7E7     		b	.L189
+ 1471              		.section	.text.HAL_TIMEx_PWMN_Start,"ax",%progbits
+ 1472              		.align	1
+ 1473              		.global	HAL_TIMEx_PWMN_Start
+ 1474              		.syntax unified
+ 1475              		.thumb
+ 1476              		.thumb_func
+ 1478              	HAL_TIMEx_PWMN_Start:
+ 1479              		@ args = 0, pretend = 0, frame = 0
+ 1480              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1481 0000 10B5     		push	{r4, lr}
+ 1482 0002 0446     		mov	r4, r0
+ 1483 0004 0846     		mov	r0, r1
+ 1484 0006 59BB     		cbnz	r1, .L201
+ 1485 0008 94F84230 		ldrb	r3, [r4, #66]	@ zero_extendqisi2
+ 1486 000c DBB2     		uxtb	r3, r3
+ 1487 000e 013B     		subs	r3, r3, #1
+ 1488 0010 18BF     		it	ne
+ 1489 0012 0123     		movne	r3, #1
+ 1490              	.L202:
+ 1491 0014 002B     		cmp	r3, #0
+ 1492 0016 57D1     		bne	.L212
+ 1493 0018 0028     		cmp	r0, #0
+ 1494 001a 3AD1     		bne	.L206
+ 1495 001c 0223     		movs	r3, #2
+ 1496 001e 84F84230 		strb	r3, [r4, #66]
+ 1497              	.L207:
+ 1498 0022 0422     		movs	r2, #4
+ 1499 0024 0146     		mov	r1, r0
+ 1500 0026 2068     		ldr	r0, [r4]
+ 1501 0028 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1502 002c 2268     		ldr	r2, [r4]
+ 1503 002e 536C     		ldr	r3, [r2, #68]
+ 1504 0030 43F40043 		orr	r3, r3, #32768
+ 1505 0034 5364     		str	r3, [r2, #68]
+ 1506 0036 2368     		ldr	r3, [r4]
+ 1507 0038 254A     		ldr	r2, .L219
+ 1508 003a 9342     		cmp	r3, r2
+ 1509 003c 39D0     		beq	.L210
+ 1510 003e B3F1804F 		cmp	r3, #1073741824
+ 1511 0042 36D0     		beq	.L210
+ 1512 0044 A2F59432 		sub	r2, r2, #75776
+ 1513 0048 9342     		cmp	r3, r2
+ 1514 004a 32D0     		beq	.L210
+ 1515 004c 02F58062 		add	r2, r2, #1024
+ 1516 0050 9342     		cmp	r3, r2
+ 1517 0052 2ED0     		beq	.L210
+ 1518 0054 1A68     		ldr	r2, [r3]
+ 1519 0056 42F00102 		orr	r2, r2, #1
+ 1520 005a 1A60     		str	r2, [r3]
+ 1521 005c 0020     		movs	r0, #0
+ARM GAS  /tmp/ccdarhtS.s 			page 27
+
+
+ 1522 005e 34E0     		b	.L205
+ 1523              	.L201:
+ 1524 0060 0429     		cmp	r1, #4
+ 1525 0062 08D0     		beq	.L215
+ 1526 0064 0829     		cmp	r1, #8
+ 1527 0066 0DD0     		beq	.L216
+ 1528 0068 94F84530 		ldrb	r3, [r4, #69]	@ zero_extendqisi2
+ 1529 006c DBB2     		uxtb	r3, r3
+ 1530 006e 013B     		subs	r3, r3, #1
+ 1531 0070 18BF     		it	ne
+ 1532 0072 0123     		movne	r3, #1
+ 1533 0074 CEE7     		b	.L202
+ 1534              	.L215:
+ 1535 0076 94F84330 		ldrb	r3, [r4, #67]	@ zero_extendqisi2
+ 1536 007a DBB2     		uxtb	r3, r3
+ 1537 007c 013B     		subs	r3, r3, #1
+ 1538 007e 18BF     		it	ne
+ 1539 0080 0123     		movne	r3, #1
+ 1540 0082 C7E7     		b	.L202
+ 1541              	.L216:
+ 1542 0084 94F84430 		ldrb	r3, [r4, #68]	@ zero_extendqisi2
+ 1543 0088 DBB2     		uxtb	r3, r3
+ 1544 008a 013B     		subs	r3, r3, #1
+ 1545 008c 18BF     		it	ne
+ 1546 008e 0123     		movne	r3, #1
+ 1547 0090 C0E7     		b	.L202
+ 1548              	.L206:
+ 1549 0092 0428     		cmp	r0, #4
+ 1550 0094 05D0     		beq	.L217
+ 1551 0096 0828     		cmp	r0, #8
+ 1552 0098 07D0     		beq	.L218
+ 1553 009a 0223     		movs	r3, #2
+ 1554 009c 84F84530 		strb	r3, [r4, #69]
+ 1555 00a0 BFE7     		b	.L207
+ 1556              	.L217:
+ 1557 00a2 0223     		movs	r3, #2
+ 1558 00a4 84F84330 		strb	r3, [r4, #67]
+ 1559 00a8 BBE7     		b	.L207
+ 1560              	.L218:
+ 1561 00aa 0223     		movs	r3, #2
+ 1562 00ac 84F84430 		strb	r3, [r4, #68]
+ 1563 00b0 B7E7     		b	.L207
+ 1564              	.L210:
+ 1565 00b2 9A68     		ldr	r2, [r3, #8]
+ 1566 00b4 02F00702 		and	r2, r2, #7
+ 1567 00b8 062A     		cmp	r2, #6
+ 1568 00ba 07D0     		beq	.L213
+ 1569 00bc 1A68     		ldr	r2, [r3]
+ 1570 00be 42F00102 		orr	r2, r2, #1
+ 1571 00c2 1A60     		str	r2, [r3]
+ 1572 00c4 0020     		movs	r0, #0
+ 1573 00c6 00E0     		b	.L205
+ 1574              	.L212:
+ 1575 00c8 0120     		movs	r0, #1
+ 1576              	.L205:
+ 1577 00ca 10BD     		pop	{r4, pc}
+ 1578              	.L213:
+ARM GAS  /tmp/ccdarhtS.s 			page 28
+
+
+ 1579 00cc 0020     		movs	r0, #0
+ 1580 00ce FCE7     		b	.L205
+ 1581              	.L220:
+ 1582              		.align	2
+ 1583              	.L219:
+ 1584 00d0 002C0140 		.word	1073818624
+ 1586              		.section	.text.HAL_TIMEx_PWMN_Stop,"ax",%progbits
+ 1587              		.align	1
+ 1588              		.global	HAL_TIMEx_PWMN_Stop
+ 1589              		.syntax unified
+ 1590              		.thumb
+ 1591              		.thumb_func
+ 1593              	HAL_TIMEx_PWMN_Stop:
+ 1594              		@ args = 0, pretend = 0, frame = 0
+ 1595              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1596 0000 38B5     		push	{r3, r4, r5, lr}
+ 1597 0002 0446     		mov	r4, r0
+ 1598 0004 0D46     		mov	r5, r1
+ 1599 0006 0022     		movs	r2, #0
+ 1600 0008 0068     		ldr	r0, [r0]
+ 1601 000a FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1602 000e 2368     		ldr	r3, [r4]
+ 1603 0010 196A     		ldr	r1, [r3, #32]
+ 1604 0012 41F21112 		movw	r2, #4369
+ 1605 0016 1142     		tst	r1, r2
+ 1606 0018 08D1     		bne	.L222
+ 1607 001a 196A     		ldr	r1, [r3, #32]
+ 1608 001c 40F24442 		movw	r2, #1092
+ 1609 0020 1142     		tst	r1, r2
+ 1610 0022 03D1     		bne	.L222
+ 1611 0024 5A6C     		ldr	r2, [r3, #68]
+ 1612 0026 22F40042 		bic	r2, r2, #32768
+ 1613 002a 5A64     		str	r2, [r3, #68]
+ 1614              	.L222:
+ 1615 002c 2368     		ldr	r3, [r4]
+ 1616 002e 196A     		ldr	r1, [r3, #32]
+ 1617 0030 41F21112 		movw	r2, #4369
+ 1618 0034 1142     		tst	r1, r2
+ 1619 0036 08D1     		bne	.L223
+ 1620 0038 196A     		ldr	r1, [r3, #32]
+ 1621 003a 40F24442 		movw	r2, #1092
+ 1622 003e 1142     		tst	r1, r2
+ 1623 0040 03D1     		bne	.L223
+ 1624 0042 1A68     		ldr	r2, [r3]
+ 1625 0044 22F00102 		bic	r2, r2, #1
+ 1626 0048 1A60     		str	r2, [r3]
+ 1627              	.L223:
+ 1628 004a 25B9     		cbnz	r5, .L224
+ 1629 004c 0123     		movs	r3, #1
+ 1630 004e 84F84230 		strb	r3, [r4, #66]
+ 1631              	.L225:
+ 1632 0052 0020     		movs	r0, #0
+ 1633 0054 38BD     		pop	{r3, r4, r5, pc}
+ 1634              	.L224:
+ 1635 0056 042D     		cmp	r5, #4
+ 1636 0058 05D0     		beq	.L229
+ 1637 005a 082D     		cmp	r5, #8
+ARM GAS  /tmp/ccdarhtS.s 			page 29
+
+
+ 1638 005c 07D0     		beq	.L230
+ 1639 005e 0123     		movs	r3, #1
+ 1640 0060 84F84530 		strb	r3, [r4, #69]
+ 1641 0064 F5E7     		b	.L225
+ 1642              	.L229:
+ 1643 0066 0123     		movs	r3, #1
+ 1644 0068 84F84330 		strb	r3, [r4, #67]
+ 1645 006c F1E7     		b	.L225
+ 1646              	.L230:
+ 1647 006e 0123     		movs	r3, #1
+ 1648 0070 84F84430 		strb	r3, [r4, #68]
+ 1649 0074 EDE7     		b	.L225
+ 1651              		.section	.text.HAL_TIMEx_PWMN_Start_IT,"ax",%progbits
+ 1652              		.align	1
+ 1653              		.global	HAL_TIMEx_PWMN_Start_IT
+ 1654              		.syntax unified
+ 1655              		.thumb
+ 1656              		.thumb_func
+ 1658              	HAL_TIMEx_PWMN_Start_IT:
+ 1659              		@ args = 0, pretend = 0, frame = 0
+ 1660              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1661 0000 10B5     		push	{r4, lr}
+ 1662 0002 0446     		mov	r4, r0
+ 1663 0004 0846     		mov	r0, r1
+ 1664 0006 0029     		cmp	r1, #0
+ 1665 0008 35D1     		bne	.L232
+ 1666 000a 94F84230 		ldrb	r3, [r4, #66]	@ zero_extendqisi2
+ 1667 000e DBB2     		uxtb	r3, r3
+ 1668 0010 013B     		subs	r3, r3, #1
+ 1669 0012 18BF     		it	ne
+ 1670 0014 0123     		movne	r3, #1
+ 1671              	.L233:
+ 1672 0016 002B     		cmp	r3, #0
+ 1673 0018 72D1     		bne	.L246
+ 1674 001a 0028     		cmp	r0, #0
+ 1675 001c 44D1     		bne	.L237
+ 1676 001e 0223     		movs	r3, #2
+ 1677 0020 84F84230 		strb	r3, [r4, #66]
+ 1678              	.L238:
+ 1679 0024 2268     		ldr	r2, [r4]
+ 1680 0026 D368     		ldr	r3, [r2, #12]
+ 1681 0028 43F00203 		orr	r3, r3, #2
+ 1682 002c D360     		str	r3, [r2, #12]
+ 1683              	.L243:
+ 1684 002e 2268     		ldr	r2, [r4]
+ 1685 0030 D368     		ldr	r3, [r2, #12]
+ 1686 0032 43F08003 		orr	r3, r3, #128
+ 1687 0036 D360     		str	r3, [r2, #12]
+ 1688 0038 0422     		movs	r2, #4
+ 1689 003a 0146     		mov	r1, r0
+ 1690 003c 2068     		ldr	r0, [r4]
+ 1691 003e FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1692 0042 2268     		ldr	r2, [r4]
+ 1693 0044 536C     		ldr	r3, [r2, #68]
+ 1694 0046 43F40043 		orr	r3, r3, #32768
+ 1695 004a 5364     		str	r3, [r2, #68]
+ 1696 004c 2368     		ldr	r3, [r4]
+ARM GAS  /tmp/ccdarhtS.s 			page 30
+
+
+ 1697 004e 2E4A     		ldr	r2, .L254
+ 1698 0050 9342     		cmp	r3, r2
+ 1699 0052 4AD0     		beq	.L244
+ 1700 0054 B3F1804F 		cmp	r3, #1073741824
+ 1701 0058 47D0     		beq	.L244
+ 1702 005a A2F59432 		sub	r2, r2, #75776
+ 1703 005e 9342     		cmp	r3, r2
+ 1704 0060 43D0     		beq	.L244
+ 1705 0062 02F58062 		add	r2, r2, #1024
+ 1706 0066 9342     		cmp	r3, r2
+ 1707 0068 3FD0     		beq	.L244
+ 1708 006a 1A68     		ldr	r2, [r3]
+ 1709 006c 42F00102 		orr	r2, r2, #1
+ 1710 0070 1A60     		str	r2, [r3]
+ 1711 0072 0020     		movs	r0, #0
+ 1712 0074 45E0     		b	.L236
+ 1713              	.L232:
+ 1714 0076 0429     		cmp	r1, #4
+ 1715 0078 08D0     		beq	.L250
+ 1716 007a 0829     		cmp	r1, #8
+ 1717 007c 0DD0     		beq	.L251
+ 1718 007e 94F84530 		ldrb	r3, [r4, #69]	@ zero_extendqisi2
+ 1719 0082 DBB2     		uxtb	r3, r3
+ 1720 0084 013B     		subs	r3, r3, #1
+ 1721 0086 18BF     		it	ne
+ 1722 0088 0123     		movne	r3, #1
+ 1723 008a C4E7     		b	.L233
+ 1724              	.L250:
+ 1725 008c 94F84330 		ldrb	r3, [r4, #67]	@ zero_extendqisi2
+ 1726 0090 DBB2     		uxtb	r3, r3
+ 1727 0092 013B     		subs	r3, r3, #1
+ 1728 0094 18BF     		it	ne
+ 1729 0096 0123     		movne	r3, #1
+ 1730 0098 BDE7     		b	.L233
+ 1731              	.L251:
+ 1732 009a 94F84430 		ldrb	r3, [r4, #68]	@ zero_extendqisi2
+ 1733 009e DBB2     		uxtb	r3, r3
+ 1734 00a0 013B     		subs	r3, r3, #1
+ 1735 00a2 18BF     		it	ne
+ 1736 00a4 0123     		movne	r3, #1
+ 1737 00a6 B6E7     		b	.L233
+ 1738              	.L237:
+ 1739 00a8 0428     		cmp	r0, #4
+ 1740 00aa 0CD0     		beq	.L252
+ 1741 00ac 0828     		cmp	r0, #8
+ 1742 00ae 13D0     		beq	.L253
+ 1743 00b0 0223     		movs	r3, #2
+ 1744 00b2 84F84530 		strb	r3, [r4, #69]
+ 1745 00b6 0428     		cmp	r0, #4
+ 1746 00b8 08D0     		beq	.L240
+ 1747 00ba 0828     		cmp	r0, #8
+ 1748 00bc 0FD0     		beq	.L242
+ 1749 00be 0028     		cmp	r0, #0
+ 1750 00c0 B0D0     		beq	.L238
+ 1751 00c2 0120     		movs	r0, #1
+ 1752 00c4 1DE0     		b	.L236
+ 1753              	.L252:
+ARM GAS  /tmp/ccdarhtS.s 			page 31
+
+
+ 1754 00c6 0223     		movs	r3, #2
+ 1755 00c8 84F84330 		strb	r3, [r4, #67]
+ 1756              	.L240:
+ 1757 00cc 2268     		ldr	r2, [r4]
+ 1758 00ce D368     		ldr	r3, [r2, #12]
+ 1759 00d0 43F00403 		orr	r3, r3, #4
+ 1760 00d4 D360     		str	r3, [r2, #12]
+ 1761 00d6 AAE7     		b	.L243
+ 1762              	.L253:
+ 1763 00d8 0223     		movs	r3, #2
+ 1764 00da 84F84430 		strb	r3, [r4, #68]
+ 1765              	.L242:
+ 1766 00de 2268     		ldr	r2, [r4]
+ 1767 00e0 D368     		ldr	r3, [r2, #12]
+ 1768 00e2 43F00803 		orr	r3, r3, #8
+ 1769 00e6 D360     		str	r3, [r2, #12]
+ 1770 00e8 A1E7     		b	.L243
+ 1771              	.L244:
+ 1772 00ea 9A68     		ldr	r2, [r3, #8]
+ 1773 00ec 02F00702 		and	r2, r2, #7
+ 1774 00f0 062A     		cmp	r2, #6
+ 1775 00f2 07D0     		beq	.L248
+ 1776 00f4 1A68     		ldr	r2, [r3]
+ 1777 00f6 42F00102 		orr	r2, r2, #1
+ 1778 00fa 1A60     		str	r2, [r3]
+ 1779 00fc 0020     		movs	r0, #0
+ 1780 00fe 00E0     		b	.L236
+ 1781              	.L246:
+ 1782 0100 0120     		movs	r0, #1
+ 1783              	.L236:
+ 1784 0102 10BD     		pop	{r4, pc}
+ 1785              	.L248:
+ 1786 0104 0020     		movs	r0, #0
+ 1787 0106 FCE7     		b	.L236
+ 1788              	.L255:
+ 1789              		.align	2
+ 1790              	.L254:
+ 1791 0108 002C0140 		.word	1073818624
+ 1793              		.section	.text.HAL_TIMEx_PWMN_Stop_IT,"ax",%progbits
+ 1794              		.align	1
+ 1795              		.global	HAL_TIMEx_PWMN_Stop_IT
+ 1796              		.syntax unified
+ 1797              		.thumb
+ 1798              		.thumb_func
+ 1800              	HAL_TIMEx_PWMN_Stop_IT:
+ 1801              		@ args = 0, pretend = 0, frame = 0
+ 1802              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1803 0000 38B5     		push	{r3, r4, r5, lr}
+ 1804 0002 0446     		mov	r4, r0
+ 1805 0004 0D46     		mov	r5, r1
+ 1806 0006 0429     		cmp	r1, #4
+ 1807 0008 3BD0     		beq	.L257
+ 1808 000a 0829     		cmp	r1, #8
+ 1809 000c 3FD0     		beq	.L258
+ 1810 000e 0029     		cmp	r1, #0
+ 1811 0010 56D1     		bne	.L267
+ 1812 0012 0268     		ldr	r2, [r0]
+ARM GAS  /tmp/ccdarhtS.s 			page 32
+
+
+ 1813 0014 D368     		ldr	r3, [r2, #12]
+ 1814 0016 23F00203 		bic	r3, r3, #2
+ 1815 001a D360     		str	r3, [r2, #12]
+ 1816              	.L260:
+ 1817 001c 0022     		movs	r2, #0
+ 1818 001e 2946     		mov	r1, r5
+ 1819 0020 2068     		ldr	r0, [r4]
+ 1820 0022 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1821 0026 2368     		ldr	r3, [r4]
+ 1822 0028 196A     		ldr	r1, [r3, #32]
+ 1823 002a 40F24442 		movw	r2, #1092
+ 1824 002e 1142     		tst	r1, r2
+ 1825 0030 03D1     		bne	.L261
+ 1826 0032 DA68     		ldr	r2, [r3, #12]
+ 1827 0034 22F08002 		bic	r2, r2, #128
+ 1828 0038 DA60     		str	r2, [r3, #12]
+ 1829              	.L261:
+ 1830 003a 2368     		ldr	r3, [r4]
+ 1831 003c 196A     		ldr	r1, [r3, #32]
+ 1832 003e 41F21112 		movw	r2, #4369
+ 1833 0042 1142     		tst	r1, r2
+ 1834 0044 08D1     		bne	.L262
+ 1835 0046 196A     		ldr	r1, [r3, #32]
+ 1836 0048 40F24442 		movw	r2, #1092
+ 1837 004c 1142     		tst	r1, r2
+ 1838 004e 03D1     		bne	.L262
+ 1839 0050 5A6C     		ldr	r2, [r3, #68]
+ 1840 0052 22F40042 		bic	r2, r2, #32768
+ 1841 0056 5A64     		str	r2, [r3, #68]
+ 1842              	.L262:
+ 1843 0058 2368     		ldr	r3, [r4]
+ 1844 005a 196A     		ldr	r1, [r3, #32]
+ 1845 005c 41F21112 		movw	r2, #4369
+ 1846 0060 1142     		tst	r1, r2
+ 1847 0062 08D1     		bne	.L263
+ 1848 0064 196A     		ldr	r1, [r3, #32]
+ 1849 0066 40F24442 		movw	r2, #1092
+ 1850 006a 1142     		tst	r1, r2
+ 1851 006c 03D1     		bne	.L263
+ 1852 006e 1A68     		ldr	r2, [r3]
+ 1853 0070 22F00102 		bic	r2, r2, #1
+ 1854 0074 1A60     		str	r2, [r3]
+ 1855              	.L263:
+ 1856 0076 85B9     		cbnz	r5, .L264
+ 1857 0078 0123     		movs	r3, #1
+ 1858 007a 84F84230 		strb	r3, [r4, #66]
+ 1859 007e 0020     		movs	r0, #0
+ 1860              	.L259:
+ 1861 0080 38BD     		pop	{r3, r4, r5, pc}
+ 1862              	.L257:
+ 1863 0082 0268     		ldr	r2, [r0]
+ 1864 0084 D368     		ldr	r3, [r2, #12]
+ 1865 0086 23F00403 		bic	r3, r3, #4
+ 1866 008a D360     		str	r3, [r2, #12]
+ 1867 008c C6E7     		b	.L260
+ 1868              	.L258:
+ 1869 008e 0268     		ldr	r2, [r0]
+ARM GAS  /tmp/ccdarhtS.s 			page 33
+
+
+ 1870 0090 D368     		ldr	r3, [r2, #12]
+ 1871 0092 23F00803 		bic	r3, r3, #8
+ 1872 0096 D360     		str	r3, [r2, #12]
+ 1873 0098 C0E7     		b	.L260
+ 1874              	.L264:
+ 1875 009a 042D     		cmp	r5, #4
+ 1876 009c 06D0     		beq	.L269
+ 1877 009e 082D     		cmp	r5, #8
+ 1878 00a0 09D0     		beq	.L270
+ 1879 00a2 0123     		movs	r3, #1
+ 1880 00a4 84F84530 		strb	r3, [r4, #69]
+ 1881 00a8 0020     		movs	r0, #0
+ 1882 00aa E9E7     		b	.L259
+ 1883              	.L269:
+ 1884 00ac 0123     		movs	r3, #1
+ 1885 00ae 84F84330 		strb	r3, [r4, #67]
+ 1886 00b2 0020     		movs	r0, #0
+ 1887 00b4 E4E7     		b	.L259
+ 1888              	.L270:
+ 1889 00b6 0123     		movs	r3, #1
+ 1890 00b8 84F84430 		strb	r3, [r4, #68]
+ 1891 00bc 0020     		movs	r0, #0
+ 1892 00be DFE7     		b	.L259
+ 1893              	.L267:
+ 1894 00c0 0120     		movs	r0, #1
+ 1895 00c2 DDE7     		b	.L259
+ 1897              		.section	.text.HAL_TIMEx_PWMN_Start_DMA,"ax",%progbits
+ 1898              		.align	1
+ 1899              		.global	HAL_TIMEx_PWMN_Start_DMA
+ 1900              		.syntax unified
+ 1901              		.thumb
+ 1902              		.thumb_func
+ 1904              	HAL_TIMEx_PWMN_Start_DMA:
+ 1905              		@ args = 0, pretend = 0, frame = 0
+ 1906              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1907 0000 70B5     		push	{r4, r5, r6, lr}
+ 1908 0002 0446     		mov	r4, r0
+ 1909 0004 1646     		mov	r6, r2
+ 1910 0006 0D46     		mov	r5, r1
+ 1911 0008 0029     		cmp	r1, #0
+ 1912 000a 59D1     		bne	.L272
+ 1913 000c 90F84200 		ldrb	r0, [r0, #66]	@ zero_extendqisi2
+ 1914 0010 C0B2     		uxtb	r0, r0
+ 1915 0012 0228     		cmp	r0, #2
+ 1916 0014 14BF     		ite	ne
+ 1917 0016 0020     		movne	r0, #0
+ 1918 0018 0120     		moveq	r0, #1
+ 1919              	.L273:
+ 1920 001a 0028     		cmp	r0, #0
+ 1921 001c 40F0D580 		bne	.L290
+ 1922 0020 002D     		cmp	r5, #0
+ 1923 0022 69D1     		bne	.L277
+ 1924 0024 94F84220 		ldrb	r2, [r4, #66]	@ zero_extendqisi2
+ 1925 0028 D2B2     		uxtb	r2, r2
+ 1926 002a 012A     		cmp	r2, #1
+ 1927 002c 14BF     		ite	ne
+ 1928 002e 0022     		movne	r2, #0
+ARM GAS  /tmp/ccdarhtS.s 			page 34
+
+
+ 1929 0030 0122     		moveq	r2, #1
+ 1930              	.L278:
+ 1931 0032 002A     		cmp	r2, #0
+ 1932 0034 00F0CB80 		beq	.L291
+ 1933 0038 002E     		cmp	r6, #0
+ 1934 003a 00F0CA80 		beq	.L292
+ 1935 003e 002B     		cmp	r3, #0
+ 1936 0040 00F0C980 		beq	.L293
+ 1937 0044 002D     		cmp	r5, #0
+ 1938 0046 73D1     		bne	.L281
+ 1939 0048 0222     		movs	r2, #2
+ 1940 004a 84F84220 		strb	r2, [r4, #66]
+ 1941              	.L282:
+ 1942 004e 626A     		ldr	r2, [r4, #36]
+ 1943 0050 6649     		ldr	r1, .L306
+ 1944 0052 9162     		str	r1, [r2, #40]
+ 1945 0054 626A     		ldr	r2, [r4, #36]
+ 1946 0056 6649     		ldr	r1, .L306+4
+ 1947 0058 D162     		str	r1, [r2, #44]
+ 1948 005a 626A     		ldr	r2, [r4, #36]
+ 1949 005c 6549     		ldr	r1, .L306+8
+ 1950 005e 1163     		str	r1, [r2, #48]
+ 1951 0060 2268     		ldr	r2, [r4]
+ 1952 0062 3432     		adds	r2, r2, #52
+ 1953 0064 3146     		mov	r1, r6
+ 1954 0066 606A     		ldr	r0, [r4, #36]
+ 1955 0068 FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 1956 006c 0028     		cmp	r0, #0
+ 1957 006e 40F0B480 		bne	.L295
+ 1958 0072 2268     		ldr	r2, [r4]
+ 1959 0074 D368     		ldr	r3, [r2, #12]
+ 1960 0076 43F40073 		orr	r3, r3, #512
+ 1961 007a D360     		str	r3, [r2, #12]
+ 1962              	.L287:
+ 1963 007c 0422     		movs	r2, #4
+ 1964 007e 2946     		mov	r1, r5
+ 1965 0080 2068     		ldr	r0, [r4]
+ 1966 0082 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1967 0086 2268     		ldr	r2, [r4]
+ 1968 0088 536C     		ldr	r3, [r2, #68]
+ 1969 008a 43F40043 		orr	r3, r3, #32768
+ 1970 008e 5364     		str	r3, [r2, #68]
+ 1971 0090 2368     		ldr	r3, [r4]
+ 1972 0092 594A     		ldr	r2, .L306+12
+ 1973 0094 9342     		cmp	r3, r2
+ 1974 0096 00F08D80 		beq	.L288
+ 1975 009a B3F1804F 		cmp	r3, #1073741824
+ 1976 009e 00F08980 		beq	.L288
+ 1977 00a2 A2F59432 		sub	r2, r2, #75776
+ 1978 00a6 9342     		cmp	r3, r2
+ 1979 00a8 00F08480 		beq	.L288
+ 1980 00ac 02F58062 		add	r2, r2, #1024
+ 1981 00b0 9342     		cmp	r3, r2
+ 1982 00b2 7FD0     		beq	.L288
+ 1983 00b4 1A68     		ldr	r2, [r3]
+ 1984 00b6 42F00102 		orr	r2, r2, #1
+ 1985 00ba 1A60     		str	r2, [r3]
+ARM GAS  /tmp/ccdarhtS.s 			page 35
+
+
+ 1986 00bc 0020     		movs	r0, #0
+ 1987 00be 87E0     		b	.L276
+ 1988              	.L272:
+ 1989 00c0 0429     		cmp	r1, #4
+ 1990 00c2 09D0     		beq	.L300
+ 1991 00c4 0829     		cmp	r1, #8
+ 1992 00c6 0FD0     		beq	.L301
+ 1993 00c8 90F84500 		ldrb	r0, [r0, #69]	@ zero_extendqisi2
+ 1994 00cc C0B2     		uxtb	r0, r0
+ 1995 00ce 0228     		cmp	r0, #2
+ 1996 00d0 14BF     		ite	ne
+ 1997 00d2 0020     		movne	r0, #0
+ 1998 00d4 0120     		moveq	r0, #1
+ 1999 00d6 A0E7     		b	.L273
+ 2000              	.L300:
+ 2001 00d8 90F84300 		ldrb	r0, [r0, #67]	@ zero_extendqisi2
+ 2002 00dc C0B2     		uxtb	r0, r0
+ 2003 00de 0228     		cmp	r0, #2
+ 2004 00e0 14BF     		ite	ne
+ 2005 00e2 0020     		movne	r0, #0
+ 2006 00e4 0120     		moveq	r0, #1
+ 2007 00e6 98E7     		b	.L273
+ 2008              	.L301:
+ 2009 00e8 90F84400 		ldrb	r0, [r0, #68]	@ zero_extendqisi2
+ 2010 00ec C0B2     		uxtb	r0, r0
+ 2011 00ee 0228     		cmp	r0, #2
+ 2012 00f0 14BF     		ite	ne
+ 2013 00f2 0020     		movne	r0, #0
+ 2014 00f4 0120     		moveq	r0, #1
+ 2015 00f6 90E7     		b	.L273
+ 2016              	.L277:
+ 2017 00f8 042D     		cmp	r5, #4
+ 2018 00fa 09D0     		beq	.L302
+ 2019 00fc 082D     		cmp	r5, #8
+ 2020 00fe 0FD0     		beq	.L303
+ 2021 0100 94F84520 		ldrb	r2, [r4, #69]	@ zero_extendqisi2
+ 2022 0104 D2B2     		uxtb	r2, r2
+ 2023 0106 012A     		cmp	r2, #1
+ 2024 0108 14BF     		ite	ne
+ 2025 010a 0022     		movne	r2, #0
+ 2026 010c 0122     		moveq	r2, #1
+ 2027 010e 90E7     		b	.L278
+ 2028              	.L302:
+ 2029 0110 94F84320 		ldrb	r2, [r4, #67]	@ zero_extendqisi2
+ 2030 0114 D2B2     		uxtb	r2, r2
+ 2031 0116 012A     		cmp	r2, #1
+ 2032 0118 14BF     		ite	ne
+ 2033 011a 0022     		movne	r2, #0
+ 2034 011c 0122     		moveq	r2, #1
+ 2035 011e 88E7     		b	.L278
+ 2036              	.L303:
+ 2037 0120 94F84420 		ldrb	r2, [r4, #68]	@ zero_extendqisi2
+ 2038 0124 D2B2     		uxtb	r2, r2
+ 2039 0126 012A     		cmp	r2, #1
+ 2040 0128 14BF     		ite	ne
+ 2041 012a 0022     		movne	r2, #0
+ 2042 012c 0122     		moveq	r2, #1
+ARM GAS  /tmp/ccdarhtS.s 			page 36
+
+
+ 2043 012e 80E7     		b	.L278
+ 2044              	.L281:
+ 2045 0130 042D     		cmp	r5, #4
+ 2046 0132 0CD0     		beq	.L304
+ 2047 0134 082D     		cmp	r5, #8
+ 2048 0136 24D0     		beq	.L305
+ 2049 0138 0222     		movs	r2, #2
+ 2050 013a 84F84520 		strb	r2, [r4, #69]
+ 2051 013e 042D     		cmp	r5, #4
+ 2052 0140 08D0     		beq	.L284
+ 2053 0142 082D     		cmp	r5, #8
+ 2054 0144 20D0     		beq	.L286
+ 2055 0146 002D     		cmp	r5, #0
+ 2056 0148 81D0     		beq	.L282
+ 2057 014a 0120     		movs	r0, #1
+ 2058 014c 40E0     		b	.L276
+ 2059              	.L304:
+ 2060 014e 0222     		movs	r2, #2
+ 2061 0150 84F84320 		strb	r2, [r4, #67]
+ 2062              	.L284:
+ 2063 0154 A26A     		ldr	r2, [r4, #40]
+ 2064 0156 2549     		ldr	r1, .L306
+ 2065 0158 9162     		str	r1, [r2, #40]
+ 2066 015a A26A     		ldr	r2, [r4, #40]
+ 2067 015c 2449     		ldr	r1, .L306+4
+ 2068 015e D162     		str	r1, [r2, #44]
+ 2069 0160 A26A     		ldr	r2, [r4, #40]
+ 2070 0162 2449     		ldr	r1, .L306+8
+ 2071 0164 1163     		str	r1, [r2, #48]
+ 2072 0166 2268     		ldr	r2, [r4]
+ 2073 0168 3832     		adds	r2, r2, #56
+ 2074 016a 3146     		mov	r1, r6
+ 2075 016c A06A     		ldr	r0, [r4, #40]
+ 2076 016e FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 2077 0172 0028     		cmp	r0, #0
+ 2078 0174 33D1     		bne	.L296
+ 2079 0176 2268     		ldr	r2, [r4]
+ 2080 0178 D368     		ldr	r3, [r2, #12]
+ 2081 017a 43F48063 		orr	r3, r3, #1024
+ 2082 017e D360     		str	r3, [r2, #12]
+ 2083 0180 7CE7     		b	.L287
+ 2084              	.L305:
+ 2085 0182 0222     		movs	r2, #2
+ 2086 0184 84F84420 		strb	r2, [r4, #68]
+ 2087              	.L286:
+ 2088 0188 E26A     		ldr	r2, [r4, #44]
+ 2089 018a 1849     		ldr	r1, .L306
+ 2090 018c 9162     		str	r1, [r2, #40]
+ 2091 018e E26A     		ldr	r2, [r4, #44]
+ 2092 0190 1749     		ldr	r1, .L306+4
+ 2093 0192 D162     		str	r1, [r2, #44]
+ 2094 0194 E26A     		ldr	r2, [r4, #44]
+ 2095 0196 1749     		ldr	r1, .L306+8
+ 2096 0198 1163     		str	r1, [r2, #48]
+ 2097 019a 2268     		ldr	r2, [r4]
+ 2098 019c 3C32     		adds	r2, r2, #60
+ 2099 019e 3146     		mov	r1, r6
+ARM GAS  /tmp/ccdarhtS.s 			page 37
+
+
+ 2100 01a0 E06A     		ldr	r0, [r4, #44]
+ 2101 01a2 FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 2102 01a6 E0B9     		cbnz	r0, .L297
+ 2103 01a8 2268     		ldr	r2, [r4]
+ 2104 01aa D368     		ldr	r3, [r2, #12]
+ 2105 01ac 43F40063 		orr	r3, r3, #2048
+ 2106 01b0 D360     		str	r3, [r2, #12]
+ 2107 01b2 63E7     		b	.L287
+ 2108              	.L288:
+ 2109 01b4 9A68     		ldr	r2, [r3, #8]
+ 2110 01b6 02F00702 		and	r2, r2, #7
+ 2111 01ba 062A     		cmp	r2, #6
+ 2112 01bc 13D0     		beq	.L298
+ 2113 01be 1A68     		ldr	r2, [r3]
+ 2114 01c0 42F00102 		orr	r2, r2, #1
+ 2115 01c4 1A60     		str	r2, [r3]
+ 2116 01c6 0020     		movs	r0, #0
+ 2117 01c8 02E0     		b	.L276
+ 2118              	.L290:
+ 2119 01ca 0220     		movs	r0, #2
+ 2120 01cc 00E0     		b	.L276
+ 2121              	.L291:
+ 2122 01ce 0120     		movs	r0, #1
+ 2123              	.L276:
+ 2124 01d0 70BD     		pop	{r4, r5, r6, pc}
+ 2125              	.L292:
+ 2126 01d2 0120     		movs	r0, #1
+ 2127 01d4 FCE7     		b	.L276
+ 2128              	.L293:
+ 2129 01d6 0120     		movs	r0, #1
+ 2130 01d8 FAE7     		b	.L276
+ 2131              	.L295:
+ 2132 01da 0120     		movs	r0, #1
+ 2133 01dc F8E7     		b	.L276
+ 2134              	.L296:
+ 2135 01de 0120     		movs	r0, #1
+ 2136 01e0 F6E7     		b	.L276
+ 2137              	.L297:
+ 2138 01e2 0120     		movs	r0, #1
+ 2139 01e4 F4E7     		b	.L276
+ 2140              	.L298:
+ 2141 01e6 0020     		movs	r0, #0
+ 2142 01e8 F2E7     		b	.L276
+ 2143              	.L307:
+ 2144 01ea 00BF     		.align	2
+ 2145              	.L306:
+ 2146 01ec 00000000 		.word	TIM_DMADelayPulseNCplt
+ 2147 01f0 00000000 		.word	TIM_DMADelayPulseHalfCplt
+ 2148 01f4 00000000 		.word	TIM_DMAErrorCCxN
+ 2149 01f8 002C0140 		.word	1073818624
+ 2151              		.section	.text.HAL_TIMEx_PWMN_Stop_DMA,"ax",%progbits
+ 2152              		.align	1
+ 2153              		.global	HAL_TIMEx_PWMN_Stop_DMA
+ 2154              		.syntax unified
+ 2155              		.thumb
+ 2156              		.thumb_func
+ 2158              	HAL_TIMEx_PWMN_Stop_DMA:
+ARM GAS  /tmp/ccdarhtS.s 			page 38
+
+
+ 2159              		@ args = 0, pretend = 0, frame = 0
+ 2160              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2161 0000 38B5     		push	{r3, r4, r5, lr}
+ 2162 0002 0446     		mov	r4, r0
+ 2163 0004 0D46     		mov	r5, r1
+ 2164 0006 0429     		cmp	r1, #4
+ 2165 0008 34D0     		beq	.L309
+ 2166 000a 0829     		cmp	r1, #8
+ 2167 000c 3BD0     		beq	.L310
+ 2168 000e 0029     		cmp	r1, #0
+ 2169 0010 55D1     		bne	.L318
+ 2170 0012 0268     		ldr	r2, [r0]
+ 2171 0014 D368     		ldr	r3, [r2, #12]
+ 2172 0016 23F40073 		bic	r3, r3, #512
+ 2173 001a D360     		str	r3, [r2, #12]
+ 2174 001c 406A     		ldr	r0, [r0, #36]
+ 2175 001e FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 2176              	.L312:
+ 2177 0022 0022     		movs	r2, #0
+ 2178 0024 2946     		mov	r1, r5
+ 2179 0026 2068     		ldr	r0, [r4]
+ 2180 0028 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 2181 002c 2368     		ldr	r3, [r4]
+ 2182 002e 196A     		ldr	r1, [r3, #32]
+ 2183 0030 41F21112 		movw	r2, #4369
+ 2184 0034 1142     		tst	r1, r2
+ 2185 0036 08D1     		bne	.L313
+ 2186 0038 196A     		ldr	r1, [r3, #32]
+ 2187 003a 40F24442 		movw	r2, #1092
+ 2188 003e 1142     		tst	r1, r2
+ 2189 0040 03D1     		bne	.L313
+ 2190 0042 5A6C     		ldr	r2, [r3, #68]
+ 2191 0044 22F40042 		bic	r2, r2, #32768
+ 2192 0048 5A64     		str	r2, [r3, #68]
+ 2193              	.L313:
+ 2194 004a 2368     		ldr	r3, [r4]
+ 2195 004c 196A     		ldr	r1, [r3, #32]
+ 2196 004e 41F21112 		movw	r2, #4369
+ 2197 0052 1142     		tst	r1, r2
+ 2198 0054 08D1     		bne	.L314
+ 2199 0056 196A     		ldr	r1, [r3, #32]
+ 2200 0058 40F24442 		movw	r2, #1092
+ 2201 005c 1142     		tst	r1, r2
+ 2202 005e 03D1     		bne	.L314
+ 2203 0060 1A68     		ldr	r2, [r3]
+ 2204 0062 22F00102 		bic	r2, r2, #1
+ 2205 0066 1A60     		str	r2, [r3]
+ 2206              	.L314:
+ 2207 0068 B5B9     		cbnz	r5, .L315
+ 2208 006a 0123     		movs	r3, #1
+ 2209 006c 84F84230 		strb	r3, [r4, #66]
+ 2210 0070 0020     		movs	r0, #0
+ 2211              	.L311:
+ 2212 0072 38BD     		pop	{r3, r4, r5, pc}
+ 2213              	.L309:
+ 2214 0074 0268     		ldr	r2, [r0]
+ 2215 0076 D368     		ldr	r3, [r2, #12]
+ARM GAS  /tmp/ccdarhtS.s 			page 39
+
+
+ 2216 0078 23F48063 		bic	r3, r3, #1024
+ 2217 007c D360     		str	r3, [r2, #12]
+ 2218 007e 806A     		ldr	r0, [r0, #40]
+ 2219 0080 FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 2220 0084 CDE7     		b	.L312
+ 2221              	.L310:
+ 2222 0086 0268     		ldr	r2, [r0]
+ 2223 0088 D368     		ldr	r3, [r2, #12]
+ 2224 008a 23F40063 		bic	r3, r3, #2048
+ 2225 008e D360     		str	r3, [r2, #12]
+ 2226 0090 C06A     		ldr	r0, [r0, #44]
+ 2227 0092 FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 2228 0096 C4E7     		b	.L312
+ 2229              	.L315:
+ 2230 0098 042D     		cmp	r5, #4
+ 2231 009a 06D0     		beq	.L320
+ 2232 009c 082D     		cmp	r5, #8
+ 2233 009e 09D0     		beq	.L321
+ 2234 00a0 0123     		movs	r3, #1
+ 2235 00a2 84F84530 		strb	r3, [r4, #69]
+ 2236 00a6 0020     		movs	r0, #0
+ 2237 00a8 E3E7     		b	.L311
+ 2238              	.L320:
+ 2239 00aa 0123     		movs	r3, #1
+ 2240 00ac 84F84330 		strb	r3, [r4, #67]
+ 2241 00b0 0020     		movs	r0, #0
+ 2242 00b2 DEE7     		b	.L311
+ 2243              	.L321:
+ 2244 00b4 0123     		movs	r3, #1
+ 2245 00b6 84F84430 		strb	r3, [r4, #68]
+ 2246 00ba 0020     		movs	r0, #0
+ 2247 00bc D9E7     		b	.L311
+ 2248              	.L318:
+ 2249 00be 0120     		movs	r0, #1
+ 2250 00c0 D7E7     		b	.L311
+ 2252              		.section	.text.HAL_TIMEx_OnePulseN_Start,"ax",%progbits
+ 2253              		.align	1
+ 2254              		.global	HAL_TIMEx_OnePulseN_Start
+ 2255              		.syntax unified
+ 2256              		.thumb
+ 2257              		.thumb_func
+ 2259              	HAL_TIMEx_OnePulseN_Start:
+ 2260              		@ args = 0, pretend = 0, frame = 0
+ 2261              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2262 0000 38B5     		push	{r3, r4, r5, lr}
+ 2263 0002 0446     		mov	r4, r0
+ 2264 0004 8E46     		mov	lr, r1
+ 2265 0006 C1B9     		cbnz	r1, .L325
+ 2266 0008 0425     		movs	r5, #4
+ 2267              	.L323:
+ 2268 000a 94F83E00 		ldrb	r0, [r4, #62]	@ zero_extendqisi2
+ 2269 000e C0B2     		uxtb	r0, r0
+ 2270 0010 94F83F30 		ldrb	r3, [r4, #63]	@ zero_extendqisi2
+ 2271 0014 DBB2     		uxtb	r3, r3
+ 2272 0016 94F84220 		ldrb	r2, [r4, #66]	@ zero_extendqisi2
+ 2273 001a D2B2     		uxtb	r2, r2
+ 2274 001c 94F843C0 		ldrb	ip, [r4, #67]	@ zero_extendqisi2
+ARM GAS  /tmp/ccdarhtS.s 			page 40
+
+
+ 2275 0020 5FFA8CFC 		uxtb	ip, ip
+ 2276 0024 0128     		cmp	r0, #1
+ 2277 0026 24D1     		bne	.L326
+ 2278 0028 012B     		cmp	r3, #1
+ 2279 002a 23D1     		bne	.L324
+ 2280 002c 012A     		cmp	r2, #1
+ 2281 002e 22D1     		bne	.L327
+ 2282 0030 BCF1010F 		cmp	ip, #1
+ 2283 0034 03D0     		beq	.L330
+ 2284 0036 1046     		mov	r0, r2
+ 2285 0038 1CE0     		b	.L324
+ 2286              	.L325:
+ 2287 003a 0025     		movs	r5, #0
+ 2288 003c E5E7     		b	.L323
+ 2289              	.L330:
+ 2290 003e 0223     		movs	r3, #2
+ 2291 0040 84F83E30 		strb	r3, [r4, #62]
+ 2292 0044 84F83F30 		strb	r3, [r4, #63]
+ 2293 0048 84F84230 		strb	r3, [r4, #66]
+ 2294 004c 84F84330 		strb	r3, [r4, #67]
+ 2295 0050 0422     		movs	r2, #4
+ 2296 0052 7146     		mov	r1, lr
+ 2297 0054 2068     		ldr	r0, [r4]
+ 2298 0056 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 2299 005a 0122     		movs	r2, #1
+ 2300 005c 2946     		mov	r1, r5
+ 2301 005e 2068     		ldr	r0, [r4]
+ 2302 0060 FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 2303 0064 2268     		ldr	r2, [r4]
+ 2304 0066 536C     		ldr	r3, [r2, #68]
+ 2305 0068 43F40043 		orr	r3, r3, #32768
+ 2306 006c 5364     		str	r3, [r2, #68]
+ 2307 006e 0020     		movs	r0, #0
+ 2308 0070 00E0     		b	.L324
+ 2309              	.L326:
+ 2310 0072 0120     		movs	r0, #1
+ 2311              	.L324:
+ 2312 0074 38BD     		pop	{r3, r4, r5, pc}
+ 2313              	.L327:
+ 2314 0076 1846     		mov	r0, r3
+ 2315 0078 FCE7     		b	.L324
+ 2317              		.section	.text.HAL_TIMEx_OnePulseN_Stop,"ax",%progbits
+ 2318              		.align	1
+ 2319              		.global	HAL_TIMEx_OnePulseN_Stop
+ 2320              		.syntax unified
+ 2321              		.thumb
+ 2322              		.thumb_func
+ 2324              	HAL_TIMEx_OnePulseN_Stop:
+ 2325              		@ args = 0, pretend = 0, frame = 0
+ 2326              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2327 0000 38B5     		push	{r3, r4, r5, lr}
+ 2328 0002 0446     		mov	r4, r0
+ 2329 0004 0029     		cmp	r1, #0
+ 2330 0006 32D1     		bne	.L335
+ 2331 0008 0425     		movs	r5, #4
+ 2332              	.L332:
+ 2333 000a 0022     		movs	r2, #0
+ARM GAS  /tmp/ccdarhtS.s 			page 41
+
+
+ 2334 000c 2068     		ldr	r0, [r4]
+ 2335 000e FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 2336 0012 0022     		movs	r2, #0
+ 2337 0014 2946     		mov	r1, r5
+ 2338 0016 2068     		ldr	r0, [r4]
+ 2339 0018 FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 2340 001c 2368     		ldr	r3, [r4]
+ 2341 001e 196A     		ldr	r1, [r3, #32]
+ 2342 0020 41F21112 		movw	r2, #4369
+ 2343 0024 1142     		tst	r1, r2
+ 2344 0026 08D1     		bne	.L333
+ 2345 0028 196A     		ldr	r1, [r3, #32]
+ 2346 002a 40F24442 		movw	r2, #1092
+ 2347 002e 1142     		tst	r1, r2
+ 2348 0030 03D1     		bne	.L333
+ 2349 0032 5A6C     		ldr	r2, [r3, #68]
+ 2350 0034 22F40042 		bic	r2, r2, #32768
+ 2351 0038 5A64     		str	r2, [r3, #68]
+ 2352              	.L333:
+ 2353 003a 2368     		ldr	r3, [r4]
+ 2354 003c 196A     		ldr	r1, [r3, #32]
+ 2355 003e 41F21112 		movw	r2, #4369
+ 2356 0042 1142     		tst	r1, r2
+ 2357 0044 08D1     		bne	.L334
+ 2358 0046 196A     		ldr	r1, [r3, #32]
+ 2359 0048 40F24442 		movw	r2, #1092
+ 2360 004c 1142     		tst	r1, r2
+ 2361 004e 03D1     		bne	.L334
+ 2362 0050 1A68     		ldr	r2, [r3]
+ 2363 0052 22F00102 		bic	r2, r2, #1
+ 2364 0056 1A60     		str	r2, [r3]
+ 2365              	.L334:
+ 2366 0058 0123     		movs	r3, #1
+ 2367 005a 84F83E30 		strb	r3, [r4, #62]
+ 2368 005e 84F83F30 		strb	r3, [r4, #63]
+ 2369 0062 84F84230 		strb	r3, [r4, #66]
+ 2370 0066 84F84330 		strb	r3, [r4, #67]
+ 2371 006a 0020     		movs	r0, #0
+ 2372 006c 38BD     		pop	{r3, r4, r5, pc}
+ 2373              	.L335:
+ 2374 006e 0025     		movs	r5, #0
+ 2375 0070 CBE7     		b	.L332
+ 2377              		.section	.text.HAL_TIMEx_OnePulseN_Start_IT,"ax",%progbits
+ 2378              		.align	1
+ 2379              		.global	HAL_TIMEx_OnePulseN_Start_IT
+ 2380              		.syntax unified
+ 2381              		.thumb
+ 2382              		.thumb_func
+ 2384              	HAL_TIMEx_OnePulseN_Start_IT:
+ 2385              		@ args = 0, pretend = 0, frame = 0
+ 2386              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2387 0000 38B5     		push	{r3, r4, r5, lr}
+ 2388 0002 0446     		mov	r4, r0
+ 2389 0004 8E46     		mov	lr, r1
+ 2390 0006 C1B9     		cbnz	r1, .L340
+ 2391 0008 0425     		movs	r5, #4
+ 2392              	.L338:
+ARM GAS  /tmp/ccdarhtS.s 			page 42
+
+
+ 2393 000a 94F83E00 		ldrb	r0, [r4, #62]	@ zero_extendqisi2
+ 2394 000e C0B2     		uxtb	r0, r0
+ 2395 0010 94F83F30 		ldrb	r3, [r4, #63]	@ zero_extendqisi2
+ 2396 0014 DBB2     		uxtb	r3, r3
+ 2397 0016 94F84220 		ldrb	r2, [r4, #66]	@ zero_extendqisi2
+ 2398 001a D2B2     		uxtb	r2, r2
+ 2399 001c 94F843C0 		ldrb	ip, [r4, #67]	@ zero_extendqisi2
+ 2400 0020 5FFA8CFC 		uxtb	ip, ip
+ 2401 0024 0128     		cmp	r0, #1
+ 2402 0026 2ED1     		bne	.L341
+ 2403 0028 012B     		cmp	r3, #1
+ 2404 002a 2DD1     		bne	.L339
+ 2405 002c 012A     		cmp	r2, #1
+ 2406 002e 2CD1     		bne	.L342
+ 2407 0030 BCF1010F 		cmp	ip, #1
+ 2408 0034 03D0     		beq	.L345
+ 2409 0036 1046     		mov	r0, r2
+ 2410 0038 26E0     		b	.L339
+ 2411              	.L340:
+ 2412 003a 0025     		movs	r5, #0
+ 2413 003c E5E7     		b	.L338
+ 2414              	.L345:
+ 2415 003e 0223     		movs	r3, #2
+ 2416 0040 84F83E30 		strb	r3, [r4, #62]
+ 2417 0044 84F83F30 		strb	r3, [r4, #63]
+ 2418 0048 84F84230 		strb	r3, [r4, #66]
+ 2419 004c 84F84330 		strb	r3, [r4, #67]
+ 2420 0050 2268     		ldr	r2, [r4]
+ 2421 0052 D368     		ldr	r3, [r2, #12]
+ 2422 0054 43F00203 		orr	r3, r3, #2
+ 2423 0058 D360     		str	r3, [r2, #12]
+ 2424 005a 2268     		ldr	r2, [r4]
+ 2425 005c D368     		ldr	r3, [r2, #12]
+ 2426 005e 43F00403 		orr	r3, r3, #4
+ 2427 0062 D360     		str	r3, [r2, #12]
+ 2428 0064 0422     		movs	r2, #4
+ 2429 0066 7146     		mov	r1, lr
+ 2430 0068 2068     		ldr	r0, [r4]
+ 2431 006a FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 2432 006e 0122     		movs	r2, #1
+ 2433 0070 2946     		mov	r1, r5
+ 2434 0072 2068     		ldr	r0, [r4]
+ 2435 0074 FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 2436 0078 2268     		ldr	r2, [r4]
+ 2437 007a 536C     		ldr	r3, [r2, #68]
+ 2438 007c 43F40043 		orr	r3, r3, #32768
+ 2439 0080 5364     		str	r3, [r2, #68]
+ 2440 0082 0020     		movs	r0, #0
+ 2441 0084 00E0     		b	.L339
+ 2442              	.L341:
+ 2443 0086 0120     		movs	r0, #1
+ 2444              	.L339:
+ 2445 0088 38BD     		pop	{r3, r4, r5, pc}
+ 2446              	.L342:
+ 2447 008a 1846     		mov	r0, r3
+ 2448 008c FCE7     		b	.L339
+ 2450              		.section	.text.HAL_TIMEx_OnePulseN_Stop_IT,"ax",%progbits
+ARM GAS  /tmp/ccdarhtS.s 			page 43
+
+
+ 2451              		.align	1
+ 2452              		.global	HAL_TIMEx_OnePulseN_Stop_IT
+ 2453              		.syntax unified
+ 2454              		.thumb
+ 2455              		.thumb_func
+ 2457              	HAL_TIMEx_OnePulseN_Stop_IT:
+ 2458              		@ args = 0, pretend = 0, frame = 0
+ 2459              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2460 0000 38B5     		push	{r3, r4, r5, lr}
+ 2461 0002 0446     		mov	r4, r0
+ 2462 0004 0029     		cmp	r1, #0
+ 2463 0006 3CD1     		bne	.L350
+ 2464 0008 0425     		movs	r5, #4
+ 2465              	.L347:
+ 2466 000a 2268     		ldr	r2, [r4]
+ 2467 000c D368     		ldr	r3, [r2, #12]
+ 2468 000e 23F00203 		bic	r3, r3, #2
+ 2469 0012 D360     		str	r3, [r2, #12]
+ 2470 0014 2268     		ldr	r2, [r4]
+ 2471 0016 D368     		ldr	r3, [r2, #12]
+ 2472 0018 23F00403 		bic	r3, r3, #4
+ 2473 001c D360     		str	r3, [r2, #12]
+ 2474 001e 0022     		movs	r2, #0
+ 2475 0020 2068     		ldr	r0, [r4]
+ 2476 0022 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 2477 0026 0022     		movs	r2, #0
+ 2478 0028 2946     		mov	r1, r5
+ 2479 002a 2068     		ldr	r0, [r4]
+ 2480 002c FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 2481 0030 2368     		ldr	r3, [r4]
+ 2482 0032 196A     		ldr	r1, [r3, #32]
+ 2483 0034 41F21112 		movw	r2, #4369
+ 2484 0038 1142     		tst	r1, r2
+ 2485 003a 08D1     		bne	.L348
+ 2486 003c 196A     		ldr	r1, [r3, #32]
+ 2487 003e 40F24442 		movw	r2, #1092
+ 2488 0042 1142     		tst	r1, r2
+ 2489 0044 03D1     		bne	.L348
+ 2490 0046 5A6C     		ldr	r2, [r3, #68]
+ 2491 0048 22F40042 		bic	r2, r2, #32768
+ 2492 004c 5A64     		str	r2, [r3, #68]
+ 2493              	.L348:
+ 2494 004e 2368     		ldr	r3, [r4]
+ 2495 0050 196A     		ldr	r1, [r3, #32]
+ 2496 0052 41F21112 		movw	r2, #4369
+ 2497 0056 1142     		tst	r1, r2
+ 2498 0058 08D1     		bne	.L349
+ 2499 005a 196A     		ldr	r1, [r3, #32]
+ 2500 005c 40F24442 		movw	r2, #1092
+ 2501 0060 1142     		tst	r1, r2
+ 2502 0062 03D1     		bne	.L349
+ 2503 0064 1A68     		ldr	r2, [r3]
+ 2504 0066 22F00102 		bic	r2, r2, #1
+ 2505 006a 1A60     		str	r2, [r3]
+ 2506              	.L349:
+ 2507 006c 0123     		movs	r3, #1
+ 2508 006e 84F83E30 		strb	r3, [r4, #62]
+ARM GAS  /tmp/ccdarhtS.s 			page 44
+
+
+ 2509 0072 84F83F30 		strb	r3, [r4, #63]
+ 2510 0076 84F84230 		strb	r3, [r4, #66]
+ 2511 007a 84F84330 		strb	r3, [r4, #67]
+ 2512 007e 0020     		movs	r0, #0
+ 2513 0080 38BD     		pop	{r3, r4, r5, pc}
+ 2514              	.L350:
+ 2515 0082 0025     		movs	r5, #0
+ 2516 0084 C1E7     		b	.L347
+ 2518              		.section	.text.HAL_TIMEx_ConfigCommutEvent,"ax",%progbits
+ 2519              		.align	1
+ 2520              		.global	HAL_TIMEx_ConfigCommutEvent
+ 2521              		.syntax unified
+ 2522              		.thumb
+ 2523              		.thumb_func
+ 2525              	HAL_TIMEx_ConfigCommutEvent:
+ 2526              		@ args = 0, pretend = 0, frame = 0
+ 2527              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2528              		@ link register save eliminated.
+ 2529 0000 0346     		mov	r3, r0
+ 2530 0002 90F83C00 		ldrb	r0, [r0, #60]	@ zero_extendqisi2
+ 2531 0006 0128     		cmp	r0, #1
+ 2532 0008 32D0     		beq	.L357
+ 2533 000a 10B4     		push	{r4}
+ 2534 000c 0120     		movs	r0, #1
+ 2535 000e 83F83C00 		strb	r0, [r3, #60]
+ 2536 0012 2029     		cmp	r1, #32
+ 2537 0014 03D0     		beq	.L354
+ 2538 0016 28D8     		bhi	.L355
+ 2539 0018 09B1     		cbz	r1, .L354
+ 2540 001a 1029     		cmp	r1, #16
+ 2541 001c 08D1     		bne	.L356
+ 2542              	.L354:
+ 2543 001e 1C68     		ldr	r4, [r3]
+ 2544 0020 A068     		ldr	r0, [r4, #8]
+ 2545 0022 20F07000 		bic	r0, r0, #112
+ 2546 0026 A060     		str	r0, [r4, #8]
+ 2547 0028 1C68     		ldr	r4, [r3]
+ 2548 002a A068     		ldr	r0, [r4, #8]
+ 2549 002c 0143     		orrs	r1, r1, r0
+ 2550 002e A160     		str	r1, [r4, #8]
+ 2551              	.L356:
+ 2552 0030 1868     		ldr	r0, [r3]
+ 2553 0032 4168     		ldr	r1, [r0, #4]
+ 2554 0034 41F00101 		orr	r1, r1, #1
+ 2555 0038 4160     		str	r1, [r0, #4]
+ 2556 003a 1868     		ldr	r0, [r3]
+ 2557 003c 4168     		ldr	r1, [r0, #4]
+ 2558 003e 21F00401 		bic	r1, r1, #4
+ 2559 0042 4160     		str	r1, [r0, #4]
+ 2560 0044 1868     		ldr	r0, [r3]
+ 2561 0046 4168     		ldr	r1, [r0, #4]
+ 2562 0048 0A43     		orrs	r2, r2, r1
+ 2563 004a 4260     		str	r2, [r0, #4]
+ 2564 004c 1968     		ldr	r1, [r3]
+ 2565 004e CA68     		ldr	r2, [r1, #12]
+ 2566 0050 22F02002 		bic	r2, r2, #32
+ 2567 0054 CA60     		str	r2, [r1, #12]
+ARM GAS  /tmp/ccdarhtS.s 			page 45
+
+
+ 2568 0056 1968     		ldr	r1, [r3]
+ 2569 0058 CA68     		ldr	r2, [r1, #12]
+ 2570 005a 22F40052 		bic	r2, r2, #8192
+ 2571 005e CA60     		str	r2, [r1, #12]
+ 2572 0060 0020     		movs	r0, #0
+ 2573 0062 83F83C00 		strb	r0, [r3, #60]
+ 2574 0066 10BC     		pop	{r4}
+ 2575 0068 7047     		bx	lr
+ 2576              	.L355:
+ 2577 006a 3029     		cmp	r1, #48
+ 2578 006c E0D1     		bne	.L356
+ 2579 006e D6E7     		b	.L354
+ 2580              	.L357:
+ 2581 0070 0220     		movs	r0, #2
+ 2582 0072 7047     		bx	lr
+ 2584              		.section	.text.HAL_TIMEx_ConfigCommutEvent_IT,"ax",%progbits
+ 2585              		.align	1
+ 2586              		.global	HAL_TIMEx_ConfigCommutEvent_IT
+ 2587              		.syntax unified
+ 2588              		.thumb
+ 2589              		.thumb_func
+ 2591              	HAL_TIMEx_ConfigCommutEvent_IT:
+ 2592              		@ args = 0, pretend = 0, frame = 0
+ 2593              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2594              		@ link register save eliminated.
+ 2595 0000 0346     		mov	r3, r0
+ 2596 0002 90F83C00 		ldrb	r0, [r0, #60]	@ zero_extendqisi2
+ 2597 0006 0128     		cmp	r0, #1
+ 2598 0008 32D0     		beq	.L367
+ 2599 000a 10B4     		push	{r4}
+ 2600 000c 0120     		movs	r0, #1
+ 2601 000e 83F83C00 		strb	r0, [r3, #60]
+ 2602 0012 2029     		cmp	r1, #32
+ 2603 0014 03D0     		beq	.L364
+ 2604 0016 28D8     		bhi	.L365
+ 2605 0018 09B1     		cbz	r1, .L364
+ 2606 001a 1029     		cmp	r1, #16
+ 2607 001c 08D1     		bne	.L366
+ 2608              	.L364:
+ 2609 001e 1C68     		ldr	r4, [r3]
+ 2610 0020 A068     		ldr	r0, [r4, #8]
+ 2611 0022 20F07000 		bic	r0, r0, #112
+ 2612 0026 A060     		str	r0, [r4, #8]
+ 2613 0028 1C68     		ldr	r4, [r3]
+ 2614 002a A068     		ldr	r0, [r4, #8]
+ 2615 002c 0143     		orrs	r1, r1, r0
+ 2616 002e A160     		str	r1, [r4, #8]
+ 2617              	.L366:
+ 2618 0030 1868     		ldr	r0, [r3]
+ 2619 0032 4168     		ldr	r1, [r0, #4]
+ 2620 0034 41F00101 		orr	r1, r1, #1
+ 2621 0038 4160     		str	r1, [r0, #4]
+ 2622 003a 1868     		ldr	r0, [r3]
+ 2623 003c 4168     		ldr	r1, [r0, #4]
+ 2624 003e 21F00401 		bic	r1, r1, #4
+ 2625 0042 4160     		str	r1, [r0, #4]
+ 2626 0044 1868     		ldr	r0, [r3]
+ARM GAS  /tmp/ccdarhtS.s 			page 46
+
+
+ 2627 0046 4168     		ldr	r1, [r0, #4]
+ 2628 0048 0A43     		orrs	r2, r2, r1
+ 2629 004a 4260     		str	r2, [r0, #4]
+ 2630 004c 1968     		ldr	r1, [r3]
+ 2631 004e CA68     		ldr	r2, [r1, #12]
+ 2632 0050 22F40052 		bic	r2, r2, #8192
+ 2633 0054 CA60     		str	r2, [r1, #12]
+ 2634 0056 1968     		ldr	r1, [r3]
+ 2635 0058 CA68     		ldr	r2, [r1, #12]
+ 2636 005a 42F02002 		orr	r2, r2, #32
+ 2637 005e CA60     		str	r2, [r1, #12]
+ 2638 0060 0020     		movs	r0, #0
+ 2639 0062 83F83C00 		strb	r0, [r3, #60]
+ 2640 0066 10BC     		pop	{r4}
+ 2641 0068 7047     		bx	lr
+ 2642              	.L365:
+ 2643 006a 3029     		cmp	r1, #48
+ 2644 006c E0D1     		bne	.L366
+ 2645 006e D6E7     		b	.L364
+ 2646              	.L367:
+ 2647 0070 0220     		movs	r0, #2
+ 2648 0072 7047     		bx	lr
+ 2650              		.section	.text.HAL_TIMEx_ConfigCommutEvent_DMA,"ax",%progbits
+ 2651              		.align	1
+ 2652              		.global	HAL_TIMEx_ConfigCommutEvent_DMA
+ 2653              		.syntax unified
+ 2654              		.thumb
+ 2655              		.thumb_func
+ 2657              	HAL_TIMEx_ConfigCommutEvent_DMA:
+ 2658              		@ args = 0, pretend = 0, frame = 0
+ 2659              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2660              		@ link register save eliminated.
+ 2661 0000 0346     		mov	r3, r0
+ 2662 0002 90F83C00 		ldrb	r0, [r0, #60]	@ zero_extendqisi2
+ 2663 0006 0128     		cmp	r0, #1
+ 2664 0008 3BD0     		beq	.L377
+ 2665 000a 10B4     		push	{r4}
+ 2666 000c 0120     		movs	r0, #1
+ 2667 000e 83F83C00 		strb	r0, [r3, #60]
+ 2668 0012 2029     		cmp	r1, #32
+ 2669 0014 03D0     		beq	.L374
+ 2670 0016 31D8     		bhi	.L375
+ 2671 0018 09B1     		cbz	r1, .L374
+ 2672 001a 1029     		cmp	r1, #16
+ 2673 001c 08D1     		bne	.L376
+ 2674              	.L374:
+ 2675 001e 1C68     		ldr	r4, [r3]
+ 2676 0020 A068     		ldr	r0, [r4, #8]
+ 2677 0022 20F07000 		bic	r0, r0, #112
+ 2678 0026 A060     		str	r0, [r4, #8]
+ 2679 0028 1C68     		ldr	r4, [r3]
+ 2680 002a A068     		ldr	r0, [r4, #8]
+ 2681 002c 0143     		orrs	r1, r1, r0
+ 2682 002e A160     		str	r1, [r4, #8]
+ 2683              	.L376:
+ 2684 0030 1868     		ldr	r0, [r3]
+ 2685 0032 4168     		ldr	r1, [r0, #4]
+ARM GAS  /tmp/ccdarhtS.s 			page 47
+
+
+ 2686 0034 41F00101 		orr	r1, r1, #1
+ 2687 0038 4160     		str	r1, [r0, #4]
+ 2688 003a 1868     		ldr	r0, [r3]
+ 2689 003c 4168     		ldr	r1, [r0, #4]
+ 2690 003e 21F00401 		bic	r1, r1, #4
+ 2691 0042 4160     		str	r1, [r0, #4]
+ 2692 0044 1868     		ldr	r0, [r3]
+ 2693 0046 4168     		ldr	r1, [r0, #4]
+ 2694 0048 0A43     		orrs	r2, r2, r1
+ 2695 004a 4260     		str	r2, [r0, #4]
+ 2696 004c 5A6B     		ldr	r2, [r3, #52]
+ 2697 004e 0E49     		ldr	r1, .L382
+ 2698 0050 9162     		str	r1, [r2, #40]
+ 2699 0052 5A6B     		ldr	r2, [r3, #52]
+ 2700 0054 0D49     		ldr	r1, .L382+4
+ 2701 0056 D162     		str	r1, [r2, #44]
+ 2702 0058 5A6B     		ldr	r2, [r3, #52]
+ 2703 005a 0D49     		ldr	r1, .L382+8
+ 2704 005c 1163     		str	r1, [r2, #48]
+ 2705 005e 1968     		ldr	r1, [r3]
+ 2706 0060 CA68     		ldr	r2, [r1, #12]
+ 2707 0062 22F02002 		bic	r2, r2, #32
+ 2708 0066 CA60     		str	r2, [r1, #12]
+ 2709 0068 1968     		ldr	r1, [r3]
+ 2710 006a CA68     		ldr	r2, [r1, #12]
+ 2711 006c 42F40052 		orr	r2, r2, #8192
+ 2712 0070 CA60     		str	r2, [r1, #12]
+ 2713 0072 0020     		movs	r0, #0
+ 2714 0074 83F83C00 		strb	r0, [r3, #60]
+ 2715 0078 10BC     		pop	{r4}
+ 2716 007a 7047     		bx	lr
+ 2717              	.L375:
+ 2718 007c 3029     		cmp	r1, #48
+ 2719 007e D7D1     		bne	.L376
+ 2720 0080 CDE7     		b	.L374
+ 2721              	.L377:
+ 2722 0082 0220     		movs	r0, #2
+ 2723 0084 7047     		bx	lr
+ 2724              	.L383:
+ 2725 0086 00BF     		.align	2
+ 2726              	.L382:
+ 2727 0088 00000000 		.word	TIMEx_DMACommutationCplt
+ 2728 008c 00000000 		.word	TIMEx_DMACommutationHalfCplt
+ 2729 0090 00000000 		.word	TIM_DMAError
+ 2731              		.section	.text.HAL_TIMEx_MasterConfigSynchronization,"ax",%progbits
+ 2732              		.align	1
+ 2733              		.global	HAL_TIMEx_MasterConfigSynchronization
+ 2734              		.syntax unified
+ 2735              		.thumb
+ 2736              		.thumb_func
+ 2738              	HAL_TIMEx_MasterConfigSynchronization:
+ 2739              		@ args = 0, pretend = 0, frame = 0
+ 2740              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2741              		@ link register save eliminated.
+ 2742 0000 90F83C20 		ldrb	r2, [r0, #60]	@ zero_extendqisi2
+ 2743 0004 012A     		cmp	r2, #1
+ 2744 0006 2CD0     		beq	.L388
+ARM GAS  /tmp/ccdarhtS.s 			page 48
+
+
+ 2745 0008 10B4     		push	{r4}
+ 2746 000a 0346     		mov	r3, r0
+ 2747 000c 0122     		movs	r2, #1
+ 2748 000e 80F83C20 		strb	r2, [r0, #60]
+ 2749 0012 0222     		movs	r2, #2
+ 2750 0014 80F83D20 		strb	r2, [r0, #61]
+ 2751 0018 0268     		ldr	r2, [r0]
+ 2752 001a 5068     		ldr	r0, [r2, #4]
+ 2753 001c 9468     		ldr	r4, [r2, #8]
+ 2754 001e 20F0700C 		bic	ip, r0, #112
+ 2755 0022 0868     		ldr	r0, [r1]
+ 2756 0024 40EA0C00 		orr	r0, r0, ip
+ 2757 0028 5060     		str	r0, [r2, #4]
+ 2758 002a 1A68     		ldr	r2, [r3]
+ 2759 002c 0E48     		ldr	r0, .L393
+ 2760 002e 8242     		cmp	r2, r0
+ 2761 0030 0AD0     		beq	.L386
+ 2762 0032 B2F1804F 		cmp	r2, #1073741824
+ 2763 0036 07D0     		beq	.L386
+ 2764 0038 A0F59430 		sub	r0, r0, #75776
+ 2765 003c 8242     		cmp	r2, r0
+ 2766 003e 03D0     		beq	.L386
+ 2767 0040 00F58060 		add	r0, r0, #1024
+ 2768 0044 8242     		cmp	r2, r0
+ 2769 0046 04D1     		bne	.L387
+ 2770              	.L386:
+ 2771 0048 24F08004 		bic	r4, r4, #128
+ 2772 004c 4968     		ldr	r1, [r1, #4]
+ 2773 004e 2143     		orrs	r1, r1, r4
+ 2774 0050 9160     		str	r1, [r2, #8]
+ 2775              	.L387:
+ 2776 0052 0122     		movs	r2, #1
+ 2777 0054 83F83D20 		strb	r2, [r3, #61]
+ 2778 0058 0020     		movs	r0, #0
+ 2779 005a 83F83C00 		strb	r0, [r3, #60]
+ 2780 005e 10BC     		pop	{r4}
+ 2781 0060 7047     		bx	lr
+ 2782              	.L388:
+ 2783 0062 0220     		movs	r0, #2
+ 2784 0064 7047     		bx	lr
+ 2785              	.L394:
+ 2786 0066 00BF     		.align	2
+ 2787              	.L393:
+ 2788 0068 002C0140 		.word	1073818624
+ 2790              		.section	.text.HAL_TIMEx_ConfigBreakDeadTime,"ax",%progbits
+ 2791              		.align	1
+ 2792              		.global	HAL_TIMEx_ConfigBreakDeadTime
+ 2793              		.syntax unified
+ 2794              		.thumb
+ 2795              		.thumb_func
+ 2797              	HAL_TIMEx_ConfigBreakDeadTime:
+ 2798              		@ args = 0, pretend = 0, frame = 0
+ 2799              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2800              		@ link register save eliminated.
+ 2801 0000 0246     		mov	r2, r0
+ 2802 0002 90F83C30 		ldrb	r3, [r0, #60]	@ zero_extendqisi2
+ 2803 0006 012B     		cmp	r3, #1
+ARM GAS  /tmp/ccdarhtS.s 			page 49
+
+
+ 2804 0008 21D0     		beq	.L397
+ 2805 000a 0123     		movs	r3, #1
+ 2806 000c 80F83C30 		strb	r3, [r0, #60]
+ 2807 0010 CB68     		ldr	r3, [r1, #12]
+ 2808 0012 23F44073 		bic	r3, r3, #768
+ 2809 0016 8868     		ldr	r0, [r1, #8]
+ 2810 0018 0343     		orrs	r3, r3, r0
+ 2811 001a 23F48063 		bic	r3, r3, #1024
+ 2812 001e 4868     		ldr	r0, [r1, #4]
+ 2813 0020 0343     		orrs	r3, r3, r0
+ 2814 0022 23F40063 		bic	r3, r3, #2048
+ 2815 0026 0868     		ldr	r0, [r1]
+ 2816 0028 0343     		orrs	r3, r3, r0
+ 2817 002a 23F48053 		bic	r3, r3, #4096
+ 2818 002e 0869     		ldr	r0, [r1, #16]
+ 2819 0030 0343     		orrs	r3, r3, r0
+ 2820 0032 23F40053 		bic	r3, r3, #8192
+ 2821 0036 4869     		ldr	r0, [r1, #20]
+ 2822 0038 0343     		orrs	r3, r3, r0
+ 2823 003a 23F48043 		bic	r3, r3, #16384
+ 2824 003e C969     		ldr	r1, [r1, #28]
+ 2825 0040 0B43     		orrs	r3, r3, r1
+ 2826 0042 1168     		ldr	r1, [r2]
+ 2827 0044 4B64     		str	r3, [r1, #68]
+ 2828 0046 0020     		movs	r0, #0
+ 2829 0048 82F83C00 		strb	r0, [r2, #60]
+ 2830 004c 7047     		bx	lr
+ 2831              	.L397:
+ 2832 004e 0220     		movs	r0, #2
+ 2833 0050 7047     		bx	lr
+ 2835              		.section	.text.HAL_TIMEx_RemapConfig,"ax",%progbits
+ 2836              		.align	1
+ 2837              		.global	HAL_TIMEx_RemapConfig
+ 2838              		.syntax unified
+ 2839              		.thumb
+ 2840              		.thumb_func
+ 2842              	HAL_TIMEx_RemapConfig:
+ 2843              		@ args = 0, pretend = 0, frame = 0
+ 2844              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2845              		@ link register save eliminated.
+ 2846 0000 0020     		movs	r0, #0
+ 2847 0002 7047     		bx	lr
+ 2849              		.section	.text.HAL_TIMEx_CommutCallback,"ax",%progbits
+ 2850              		.align	1
+ 2851              		.weak	HAL_TIMEx_CommutCallback
+ 2852              		.syntax unified
+ 2853              		.thumb
+ 2854              		.thumb_func
+ 2856              	HAL_TIMEx_CommutCallback:
+ 2857              		@ args = 0, pretend = 0, frame = 0
+ 2858              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2859              		@ link register save eliminated.
+ 2860 0000 7047     		bx	lr
+ 2862              		.section	.text.TIMEx_DMACommutationCplt,"ax",%progbits
+ 2863              		.align	1
+ 2864              		.global	TIMEx_DMACommutationCplt
+ 2865              		.syntax unified
+ARM GAS  /tmp/ccdarhtS.s 			page 50
+
+
+ 2866              		.thumb
+ 2867              		.thumb_func
+ 2869              	TIMEx_DMACommutationCplt:
+ 2870              		@ args = 0, pretend = 0, frame = 0
+ 2871              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2872 0000 08B5     		push	{r3, lr}
+ 2873 0002 406A     		ldr	r0, [r0, #36]
+ 2874 0004 0123     		movs	r3, #1
+ 2875 0006 80F83D30 		strb	r3, [r0, #61]
+ 2876 000a FFF7FEFF 		bl	HAL_TIMEx_CommutCallback
+ 2877 000e 08BD     		pop	{r3, pc}
+ 2879              		.section	.text.HAL_TIMEx_CommutHalfCpltCallback,"ax",%progbits
+ 2880              		.align	1
+ 2881              		.weak	HAL_TIMEx_CommutHalfCpltCallback
+ 2882              		.syntax unified
+ 2883              		.thumb
+ 2884              		.thumb_func
+ 2886              	HAL_TIMEx_CommutHalfCpltCallback:
+ 2887              		@ args = 0, pretend = 0, frame = 0
+ 2888              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2889              		@ link register save eliminated.
+ 2890 0000 7047     		bx	lr
+ 2892              		.section	.text.TIMEx_DMACommutationHalfCplt,"ax",%progbits
+ 2893              		.align	1
+ 2894              		.global	TIMEx_DMACommutationHalfCplt
+ 2895              		.syntax unified
+ 2896              		.thumb
+ 2897              		.thumb_func
+ 2899              	TIMEx_DMACommutationHalfCplt:
+ 2900              		@ args = 0, pretend = 0, frame = 0
+ 2901              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2902 0000 08B5     		push	{r3, lr}
+ 2903 0002 406A     		ldr	r0, [r0, #36]
+ 2904 0004 0123     		movs	r3, #1
+ 2905 0006 80F83D30 		strb	r3, [r0, #61]
+ 2906 000a FFF7FEFF 		bl	HAL_TIMEx_CommutHalfCpltCallback
+ 2907 000e 08BD     		pop	{r3, pc}
+ 2909              		.section	.text.HAL_TIMEx_BreakCallback,"ax",%progbits
+ 2910              		.align	1
+ 2911              		.weak	HAL_TIMEx_BreakCallback
+ 2912              		.syntax unified
+ 2913              		.thumb
+ 2914              		.thumb_func
+ 2916              	HAL_TIMEx_BreakCallback:
+ 2917              		@ args = 0, pretend = 0, frame = 0
+ 2918              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2919              		@ link register save eliminated.
+ 2920 0000 7047     		bx	lr
+ 2922              		.section	.text.HAL_TIMEx_HallSensor_GetState,"ax",%progbits
+ 2923              		.align	1
+ 2924              		.global	HAL_TIMEx_HallSensor_GetState
+ 2925              		.syntax unified
+ 2926              		.thumb
+ 2927              		.thumb_func
+ 2929              	HAL_TIMEx_HallSensor_GetState:
+ 2930              		@ args = 0, pretend = 0, frame = 0
+ 2931              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccdarhtS.s 			page 51
+
+
+ 2932              		@ link register save eliminated.
+ 2933 0000 90F83D00 		ldrb	r0, [r0, #61]	@ zero_extendqisi2
+ 2934 0004 7047     		bx	lr
+ 2936              		.section	.text.HAL_TIMEx_GetChannelNState,"ax",%progbits
+ 2937              		.align	1
+ 2938              		.global	HAL_TIMEx_GetChannelNState
+ 2939              		.syntax unified
+ 2940              		.thumb
+ 2941              		.thumb_func
+ 2943              	HAL_TIMEx_GetChannelNState:
+ 2944              		@ args = 0, pretend = 0, frame = 0
+ 2945              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2946              		@ link register save eliminated.
+ 2947 0000 19B9     		cbnz	r1, .L408
+ 2948 0002 90F84200 		ldrb	r0, [r0, #66]	@ zero_extendqisi2
+ 2949 0006 C0B2     		uxtb	r0, r0
+ 2950 0008 7047     		bx	lr
+ 2951              	.L408:
+ 2952 000a 0429     		cmp	r1, #4
+ 2953 000c 05D0     		beq	.L412
+ 2954 000e 0829     		cmp	r1, #8
+ 2955 0010 07D0     		beq	.L413
+ 2956 0012 90F84500 		ldrb	r0, [r0, #69]	@ zero_extendqisi2
+ 2957 0016 C0B2     		uxtb	r0, r0
+ 2958 0018 7047     		bx	lr
+ 2959              	.L412:
+ 2960 001a 90F84300 		ldrb	r0, [r0, #67]	@ zero_extendqisi2
+ 2961 001e C0B2     		uxtb	r0, r0
+ 2962 0020 7047     		bx	lr
+ 2963              	.L413:
+ 2964 0022 90F84400 		ldrb	r0, [r0, #68]	@ zero_extendqisi2
+ 2965 0026 C0B2     		uxtb	r0, r0
+ 2966 0028 7047     		bx	lr
+ 2968              		.ident	"GCC: (15:13.3.rel1-1) 13.3.1 20240614"
+ARM GAS  /tmp/ccdarhtS.s 			page 52
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f1xx_hal_tim_ex.c
+     /tmp/ccdarhtS.s:16     .text.TIM_CCxNChannelCmd:00000000 $t
+     /tmp/ccdarhtS.s:21     .text.TIM_CCxNChannelCmd:00000000 TIM_CCxNChannelCmd
+     /tmp/ccdarhtS.s:38     .text.TIM_DMAErrorCCxN:00000000 $t
+     /tmp/ccdarhtS.s:43     .text.TIM_DMAErrorCCxN:00000000 TIM_DMAErrorCCxN
+     /tmp/ccdarhtS.s:82     .text.TIM_DMADelayPulseNCplt:00000000 $t
+     /tmp/ccdarhtS.s:87     .text.TIM_DMADelayPulseNCplt:00000000 TIM_DMADelayPulseNCplt
+     /tmp/ccdarhtS.s:136    .text.HAL_TIMEx_HallSensor_MspInit:00000000 $t
+     /tmp/ccdarhtS.s:142    .text.HAL_TIMEx_HallSensor_MspInit:00000000 HAL_TIMEx_HallSensor_MspInit
+     /tmp/ccdarhtS.s:149    .text.HAL_TIMEx_HallSensor_Init:00000000 $t
+     /tmp/ccdarhtS.s:155    .text.HAL_TIMEx_HallSensor_Init:00000000 HAL_TIMEx_HallSensor_Init
+     /tmp/ccdarhtS.s:248    .text.HAL_TIMEx_HallSensor_MspDeInit:00000000 $t
+     /tmp/ccdarhtS.s:254    .text.HAL_TIMEx_HallSensor_MspDeInit:00000000 HAL_TIMEx_HallSensor_MspDeInit
+     /tmp/ccdarhtS.s:261    .text.HAL_TIMEx_HallSensor_DeInit:00000000 $t
+     /tmp/ccdarhtS.s:267    .text.HAL_TIMEx_HallSensor_DeInit:00000000 HAL_TIMEx_HallSensor_DeInit
+     /tmp/ccdarhtS.s:300    .text.HAL_TIMEx_HallSensor_Start:00000000 $t
+     /tmp/ccdarhtS.s:306    .text.HAL_TIMEx_HallSensor_Start:00000000 HAL_TIMEx_HallSensor_Start
+     /tmp/ccdarhtS.s:378    .text.HAL_TIMEx_HallSensor_Start:00000098 $d
+     /tmp/ccdarhtS.s:381    .text.HAL_TIMEx_HallSensor_Stop:00000000 $t
+     /tmp/ccdarhtS.s:387    .text.HAL_TIMEx_HallSensor_Stop:00000000 HAL_TIMEx_HallSensor_Stop
+     /tmp/ccdarhtS.s:418    .text.HAL_TIMEx_HallSensor_Start_IT:00000000 $t
+     /tmp/ccdarhtS.s:424    .text.HAL_TIMEx_HallSensor_Start_IT:00000000 HAL_TIMEx_HallSensor_Start_IT
+     /tmp/ccdarhtS.s:501    .text.HAL_TIMEx_HallSensor_Start_IT:000000a4 $d
+     /tmp/ccdarhtS.s:504    .text.HAL_TIMEx_HallSensor_Stop_IT:00000000 $t
+     /tmp/ccdarhtS.s:510    .text.HAL_TIMEx_HallSensor_Stop_IT:00000000 HAL_TIMEx_HallSensor_Stop_IT
+     /tmp/ccdarhtS.s:545    .text.HAL_TIMEx_HallSensor_Start_DMA:00000000 $t
+     /tmp/ccdarhtS.s:551    .text.HAL_TIMEx_HallSensor_Start_DMA:00000000 HAL_TIMEx_HallSensor_Start_DMA
+     /tmp/ccdarhtS.s:644    .text.HAL_TIMEx_HallSensor_Start_DMA:000000c0 $d
+     /tmp/ccdarhtS.s:650    .text.HAL_TIMEx_HallSensor_Stop_DMA:00000000 $t
+     /tmp/ccdarhtS.s:656    .text.HAL_TIMEx_HallSensor_Stop_DMA:00000000 HAL_TIMEx_HallSensor_Stop_DMA
+     /tmp/ccdarhtS.s:691    .text.HAL_TIMEx_OCN_Start:00000000 $t
+     /tmp/ccdarhtS.s:697    .text.HAL_TIMEx_OCN_Start:00000000 HAL_TIMEx_OCN_Start
+     /tmp/ccdarhtS.s:803    .text.HAL_TIMEx_OCN_Start:000000d0 $d
+     /tmp/ccdarhtS.s:806    .text.HAL_TIMEx_OCN_Stop:00000000 $t
+     /tmp/ccdarhtS.s:812    .text.HAL_TIMEx_OCN_Stop:00000000 HAL_TIMEx_OCN_Stop
+     /tmp/ccdarhtS.s:871    .text.HAL_TIMEx_OCN_Start_IT:00000000 $t
+     /tmp/ccdarhtS.s:877    .text.HAL_TIMEx_OCN_Start_IT:00000000 HAL_TIMEx_OCN_Start_IT
+     /tmp/ccdarhtS.s:1010   .text.HAL_TIMEx_OCN_Start_IT:00000108 $d
+     /tmp/ccdarhtS.s:1013   .text.HAL_TIMEx_OCN_Stop_IT:00000000 $t
+     /tmp/ccdarhtS.s:1019   .text.HAL_TIMEx_OCN_Stop_IT:00000000 HAL_TIMEx_OCN_Stop_IT
+     /tmp/ccdarhtS.s:1117   .text.HAL_TIMEx_OCN_Start_DMA:00000000 $t
+     /tmp/ccdarhtS.s:1123   .text.HAL_TIMEx_OCN_Start_DMA:00000000 HAL_TIMEx_OCN_Start_DMA
+     /tmp/ccdarhtS.s:1365   .text.HAL_TIMEx_OCN_Start_DMA:000001ec $d
+     /tmp/ccdarhtS.s:1371   .text.HAL_TIMEx_OCN_Stop_DMA:00000000 $t
+     /tmp/ccdarhtS.s:1377   .text.HAL_TIMEx_OCN_Stop_DMA:00000000 HAL_TIMEx_OCN_Stop_DMA
+     /tmp/ccdarhtS.s:1472   .text.HAL_TIMEx_PWMN_Start:00000000 $t
+     /tmp/ccdarhtS.s:1478   .text.HAL_TIMEx_PWMN_Start:00000000 HAL_TIMEx_PWMN_Start
+     /tmp/ccdarhtS.s:1584   .text.HAL_TIMEx_PWMN_Start:000000d0 $d
+     /tmp/ccdarhtS.s:1587   .text.HAL_TIMEx_PWMN_Stop:00000000 $t
+     /tmp/ccdarhtS.s:1593   .text.HAL_TIMEx_PWMN_Stop:00000000 HAL_TIMEx_PWMN_Stop
+     /tmp/ccdarhtS.s:1652   .text.HAL_TIMEx_PWMN_Start_IT:00000000 $t
+     /tmp/ccdarhtS.s:1658   .text.HAL_TIMEx_PWMN_Start_IT:00000000 HAL_TIMEx_PWMN_Start_IT
+     /tmp/ccdarhtS.s:1791   .text.HAL_TIMEx_PWMN_Start_IT:00000108 $d
+     /tmp/ccdarhtS.s:1794   .text.HAL_TIMEx_PWMN_Stop_IT:00000000 $t
+     /tmp/ccdarhtS.s:1800   .text.HAL_TIMEx_PWMN_Stop_IT:00000000 HAL_TIMEx_PWMN_Stop_IT
+     /tmp/ccdarhtS.s:1898   .text.HAL_TIMEx_PWMN_Start_DMA:00000000 $t
+ARM GAS  /tmp/ccdarhtS.s 			page 53
+
+
+     /tmp/ccdarhtS.s:1904   .text.HAL_TIMEx_PWMN_Start_DMA:00000000 HAL_TIMEx_PWMN_Start_DMA
+     /tmp/ccdarhtS.s:2146   .text.HAL_TIMEx_PWMN_Start_DMA:000001ec $d
+     /tmp/ccdarhtS.s:2152   .text.HAL_TIMEx_PWMN_Stop_DMA:00000000 $t
+     /tmp/ccdarhtS.s:2158   .text.HAL_TIMEx_PWMN_Stop_DMA:00000000 HAL_TIMEx_PWMN_Stop_DMA
+     /tmp/ccdarhtS.s:2253   .text.HAL_TIMEx_OnePulseN_Start:00000000 $t
+     /tmp/ccdarhtS.s:2259   .text.HAL_TIMEx_OnePulseN_Start:00000000 HAL_TIMEx_OnePulseN_Start
+     /tmp/ccdarhtS.s:2318   .text.HAL_TIMEx_OnePulseN_Stop:00000000 $t
+     /tmp/ccdarhtS.s:2324   .text.HAL_TIMEx_OnePulseN_Stop:00000000 HAL_TIMEx_OnePulseN_Stop
+     /tmp/ccdarhtS.s:2378   .text.HAL_TIMEx_OnePulseN_Start_IT:00000000 $t
+     /tmp/ccdarhtS.s:2384   .text.HAL_TIMEx_OnePulseN_Start_IT:00000000 HAL_TIMEx_OnePulseN_Start_IT
+     /tmp/ccdarhtS.s:2451   .text.HAL_TIMEx_OnePulseN_Stop_IT:00000000 $t
+     /tmp/ccdarhtS.s:2457   .text.HAL_TIMEx_OnePulseN_Stop_IT:00000000 HAL_TIMEx_OnePulseN_Stop_IT
+     /tmp/ccdarhtS.s:2519   .text.HAL_TIMEx_ConfigCommutEvent:00000000 $t
+     /tmp/ccdarhtS.s:2525   .text.HAL_TIMEx_ConfigCommutEvent:00000000 HAL_TIMEx_ConfigCommutEvent
+     /tmp/ccdarhtS.s:2585   .text.HAL_TIMEx_ConfigCommutEvent_IT:00000000 $t
+     /tmp/ccdarhtS.s:2591   .text.HAL_TIMEx_ConfigCommutEvent_IT:00000000 HAL_TIMEx_ConfigCommutEvent_IT
+     /tmp/ccdarhtS.s:2651   .text.HAL_TIMEx_ConfigCommutEvent_DMA:00000000 $t
+     /tmp/ccdarhtS.s:2657   .text.HAL_TIMEx_ConfigCommutEvent_DMA:00000000 HAL_TIMEx_ConfigCommutEvent_DMA
+     /tmp/ccdarhtS.s:2727   .text.HAL_TIMEx_ConfigCommutEvent_DMA:00000088 $d
+     /tmp/ccdarhtS.s:2869   .text.TIMEx_DMACommutationCplt:00000000 TIMEx_DMACommutationCplt
+     /tmp/ccdarhtS.s:2899   .text.TIMEx_DMACommutationHalfCplt:00000000 TIMEx_DMACommutationHalfCplt
+     /tmp/ccdarhtS.s:2732   .text.HAL_TIMEx_MasterConfigSynchronization:00000000 $t
+     /tmp/ccdarhtS.s:2738   .text.HAL_TIMEx_MasterConfigSynchronization:00000000 HAL_TIMEx_MasterConfigSynchronization
+     /tmp/ccdarhtS.s:2788   .text.HAL_TIMEx_MasterConfigSynchronization:00000068 $d
+     /tmp/ccdarhtS.s:2791   .text.HAL_TIMEx_ConfigBreakDeadTime:00000000 $t
+     /tmp/ccdarhtS.s:2797   .text.HAL_TIMEx_ConfigBreakDeadTime:00000000 HAL_TIMEx_ConfigBreakDeadTime
+     /tmp/ccdarhtS.s:2836   .text.HAL_TIMEx_RemapConfig:00000000 $t
+     /tmp/ccdarhtS.s:2842   .text.HAL_TIMEx_RemapConfig:00000000 HAL_TIMEx_RemapConfig
+     /tmp/ccdarhtS.s:2850   .text.HAL_TIMEx_CommutCallback:00000000 $t
+     /tmp/ccdarhtS.s:2856   .text.HAL_TIMEx_CommutCallback:00000000 HAL_TIMEx_CommutCallback
+     /tmp/ccdarhtS.s:2863   .text.TIMEx_DMACommutationCplt:00000000 $t
+     /tmp/ccdarhtS.s:2880   .text.HAL_TIMEx_CommutHalfCpltCallback:00000000 $t
+     /tmp/ccdarhtS.s:2886   .text.HAL_TIMEx_CommutHalfCpltCallback:00000000 HAL_TIMEx_CommutHalfCpltCallback
+     /tmp/ccdarhtS.s:2893   .text.TIMEx_DMACommutationHalfCplt:00000000 $t
+     /tmp/ccdarhtS.s:2910   .text.HAL_TIMEx_BreakCallback:00000000 $t
+     /tmp/ccdarhtS.s:2916   .text.HAL_TIMEx_BreakCallback:00000000 HAL_TIMEx_BreakCallback
+     /tmp/ccdarhtS.s:2923   .text.HAL_TIMEx_HallSensor_GetState:00000000 $t
+     /tmp/ccdarhtS.s:2929   .text.HAL_TIMEx_HallSensor_GetState:00000000 HAL_TIMEx_HallSensor_GetState
+     /tmp/ccdarhtS.s:2937   .text.HAL_TIMEx_GetChannelNState:00000000 $t
+     /tmp/ccdarhtS.s:2943   .text.HAL_TIMEx_GetChannelNState:00000000 HAL_TIMEx_GetChannelNState
+
+UNDEFINED SYMBOLS
+HAL_TIM_ErrorCallback
+HAL_TIM_PWM_PulseFinishedCallback
+TIM_Base_SetConfig
+TIM_TI1_SetConfig
+TIM_OC2_SetConfig
+TIM_CCxChannelCmd
+HAL_DMA_Start_IT
+TIM_DMACaptureCplt
+TIM_DMACaptureHalfCplt
+TIM_DMAError
+HAL_DMA_Abort_IT
+TIM_DMADelayPulseHalfCplt

@@ -28,7 +28,7 @@ except serial.SerialException as e:
 plt.ion()
 fig = plt.figure(figsize=(12, 6))
 ax = fig.add_subplot(111)
-plt.ylim([0, 800])
+plt.ylim([0, 1500])
 plt.xlim([0, 50])
 
 ax.legend();

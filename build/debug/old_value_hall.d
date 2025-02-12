@@ -27,7 +27,16 @@ build/debug/old_value_hall.o: Src/Zeugma_c/old_value_hall.c \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h \
- Inc/Zeugma_h/old_value_hall.h
+ Inc/Zeugma_h/old_value_hall.h Inc/usbd_cdc_if.h \
+ Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
+ Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
+ Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
+ Inc/usbd_conf.h Inc/main.h \
+ Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
+ Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
+ Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
+ Inc/usb_device.h \
+ Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
 Inc/Zeugma_h/old_value_hall.h:
 Inc/main.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
@@ -60,3 +69,14 @@ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h:
 Inc/Zeugma_h/old_value_hall.h:
+Inc/usbd_cdc_if.h:
+Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h:
+Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
+Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
+Inc/usbd_conf.h:
+Inc/main.h:
+Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
+Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
+Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
+Inc/usb_device.h:
+Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:

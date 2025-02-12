@@ -1,0 +1,248 @@
+ARM GAS  /tmp/ccTgg3cF.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"rpm.c"
+  14              		.text
+  15              		.section	.text.get_rpm,"ax",%progbits
+  16              		.align	1
+  17              		.global	get_rpm
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	get_rpm:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 B0F1FF3F 		cmp	r0, #-1
+  27 0004 53D0     		beq	.L10
+  28 0006 2B49     		ldr	r1, .L12
+  29 0008 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+  30 000a 531C     		adds	r3, r2, #1
+  31 000c DBB2     		uxtb	r3, r3
+  32 000e 0B70     		strb	r3, [r1]
+  33 0010 2949     		ldr	r1, .L12+4
+  34 0012 41F82200 		str	r0, [r1, r2, lsl #2]
+  35 0016 062B     		cmp	r3, #6
+  36 0018 01D0     		beq	.L11
+  37              	.L3:
+  38 001a 0023     		movs	r3, #0
+  39 001c 05E0     		b	.L4
+  40              	.L11:
+  41 001e 254B     		ldr	r3, .L12
+  42 0020 0022     		movs	r2, #0
+  43 0022 1A70     		strb	r2, [r3]
+  44 0024 F9E7     		b	.L3
+  45              	.L5:
+  46 0026 0133     		adds	r3, r3, #1
+  47 0028 DBB2     		uxtb	r3, r3
+  48              	.L4:
+  49 002a 244A     		ldr	r2, .L12+8
+  50 002c 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+  51 002e 9A42     		cmp	r2, r3
+  52 0030 F9D8     		bhi	.L5
+  53 0032 052A     		cmp	r2, #5
+  54 0034 28D8     		bhi	.L6
+  55 0036 511C     		adds	r1, r2, #1
+  56 0038 204B     		ldr	r3, .L12+8
+  57 003a 1970     		strb	r1, [r3]
+  58 003c 1E4B     		ldr	r3, .L12+4
+ARM GAS  /tmp/ccTgg3cF.s 			page 2
+
+
+  59 003e 53F82220 		ldr	r2, [r3, r2, lsl #2]
+  60 0042 1F4B     		ldr	r3, .L12+12
+  61 0044 1A80     		strh	r2, [r3]	@ movhi
+  62              	.L7:
+  63 0046 1E4B     		ldr	r3, .L12+12
+  64 0048 1888     		ldrh	r0, [r3]
+  65 004a 0028     		cmp	r0, #0
+  66 004c 30D0     		beq	.L2
+  67 004e 00EB4000 		add	r0, r0, r0, lsl #1
+  68 0052 C000     		lsls	r0, r0, #3
+  69 0054 1B4B     		ldr	r3, .L12+16
+  70 0056 93FBF0F3 		sdiv	r3, r3, r0
+  71 005a 98B2     		uxth	r0, r3
+  72 005c 184B     		ldr	r3, .L12+12
+  73 005e 1880     		strh	r0, [r3]	@ movhi
+  74 0060 40F2AA53 		movw	r3, #1450
+  75 0064 9842     		cmp	r0, r3
+  76 0066 02D9     		bls	.L8
+  77 0068 174B     		ldr	r3, .L12+20
+  78 006a 0022     		movs	r2, #0
+  79 006c 1A80     		strh	r2, [r3]	@ movhi
+  80              	.L8:
+  81 006e B0F5FA7F 		cmp	r0, #500
+  82 0072 02D9     		bls	.L9
+  83 0074 154B     		ldr	r3, .L12+24
+  84 0076 0022     		movs	r2, #0
+  85 0078 1A70     		strb	r2, [r3]
+  86              	.L9:
+  87 007a B0F5E17F 		cmp	r0, #450
+  88 007e 17D2     		bcs	.L2
+  89 0080 124B     		ldr	r3, .L12+24
+  90 0082 0022     		movs	r2, #0
+  91 0084 1A70     		strb	r2, [r3]
+  92 0086 7047     		bx	lr
+  93              	.L6:
+  94 0088 0B4A     		ldr	r2, .L12+4
+  95 008a 1368     		ldr	r3, [r2]
+  96 008c 5168     		ldr	r1, [r2, #4]
+  97 008e 0B44     		add	r3, r3, r1
+  98 0090 9168     		ldr	r1, [r2, #8]
+  99 0092 0B44     		add	r3, r3, r1
+ 100 0094 D168     		ldr	r1, [r2, #12]
+ 101 0096 0B44     		add	r3, r3, r1
+ 102 0098 1169     		ldr	r1, [r2, #16]
+ 103 009a 0B44     		add	r3, r3, r1
+ 104 009c 5269     		ldr	r2, [r2, #20]
+ 105 009e 1344     		add	r3, r3, r2
+ 106 00a0 0B4A     		ldr	r2, .L12+28
+ 107 00a2 A2FB0323 		umull	r2, r3, r2, r3
+ 108 00a6 9B08     		lsrs	r3, r3, #2
+ 109 00a8 054A     		ldr	r2, .L12+12
+ 110 00aa 1380     		strh	r3, [r2]	@ movhi
+ 111 00ac CBE7     		b	.L7
+ 112              	.L10:
+ 113 00ae 0020     		movs	r0, #0
+ 114              	.L2:
+ 115 00b0 7047     		bx	lr
+ARM GAS  /tmp/ccTgg3cF.s 			page 3
+
+
+ 116              	.L13:
+ 117 00b2 00BF     		.align	2
+ 118              	.L12:
+ 119 00b4 00000000 		.word	array_index
+ 120 00b8 00000000 		.word	rpm_sampling_array
+ 121 00bc 00000000 		.word	first_filterless_count
+ 122 00c0 00000000 		.word	filtered_rpm
+ 123 00c4 808D5B00 		.word	6000000
+ 124 00c8 00000000 		.word	rpm_max_limit_flag
+ 125 00cc 00000000 		.word	backEMF_mode
+ 126 00d0 ABAAAAAA 		.word	-1431655765
+ 128              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
+ 129              		.align	1
+ 130              		.global	HAL_TIM_PeriodElapsedCallback
+ 131              		.syntax unified
+ 132              		.thumb
+ 133              		.thumb_func
+ 135              	HAL_TIM_PeriodElapsedCallback:
+ 136              		@ args = 0, pretend = 0, frame = 0
+ 137              		@ frame_needed = 0, uses_anonymous_args = 0
+ 138 0000 10B5     		push	{r4, lr}
+ 139 0002 0446     		mov	r4, r0
+ 140 0004 0268     		ldr	r2, [r0]
+ 141 0006 0E4B     		ldr	r3, .L22
+ 142 0008 9A42     		cmp	r2, r3
+ 143 000a 08D0     		beq	.L19
+ 144              	.L15:
+ 145 000c 2268     		ldr	r2, [r4]
+ 146 000e 0D4B     		ldr	r3, .L22+4
+ 147 0010 9A42     		cmp	r2, r3
+ 148 0012 08D0     		beq	.L20
+ 149              	.L16:
+ 150 0014 2268     		ldr	r2, [r4]
+ 151 0016 0A4B     		ldr	r3, .L22
+ 152 0018 9A42     		cmp	r2, r3
+ 153 001a 0CD0     		beq	.L21
+ 154              	.L14:
+ 155 001c 10BD     		pop	{r4, pc}
+ 156              	.L19:
+ 157 001e 0A4B     		ldr	r3, .L22+8
+ 158 0020 0022     		movs	r2, #0
+ 159 0022 1A60     		str	r2, [r3]
+ 160 0024 F2E7     		b	.L15
+ 161              	.L20:
+ 162 0026 094B     		ldr	r3, .L22+12
+ 163 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 164 002a 002B     		cmp	r3, #0
+ 165 002c F2D0     		beq	.L16
+ 166 002e 0848     		ldr	r0, .L22+16
+ 167 0030 FFF7FEFF 		bl	HAL_TIM_Base_Stop_IT
+ 168 0034 EEE7     		b	.L16
+ 169              	.L21:
+ 170 0036 074A     		ldr	r2, .L22+20
+ 171 0038 1368     		ldr	r3, [r2]
+ 172 003a 0133     		adds	r3, r3, #1
+ 173 003c 1360     		str	r3, [r2]
+ 174 003e EDE7     		b	.L14
+ARM GAS  /tmp/ccTgg3cF.s 			page 4
+
+
+ 175              	.L23:
+ 176              		.align	2
+ 177              	.L22:
+ 178 0040 00080040 		.word	1073743872
+ 179 0044 00040040 		.word	1073742848
+ 180 0048 00000000 		.word	rpm
+ 181 004c 00000000 		.word	backEMF_mode
+ 182 0050 00000000 		.word	htim3
+ 183 0054 00000000 		.word	tim4Counter
+ 185              		.global	tim4Counter
+ 186              		.section	.bss.tim4Counter,"aw",%nobits
+ 187              		.align	2
+ 190              	tim4Counter:
+ 191 0000 00000000 		.space	4
+ 192              		.global	filtered_rpm
+ 193              		.section	.bss.filtered_rpm,"aw",%nobits
+ 194              		.align	1
+ 197              	filtered_rpm:
+ 198 0000 0000     		.space	2
+ 199              		.global	first_filterless_count
+ 200              		.section	.bss.first_filterless_count,"aw",%nobits
+ 203              	first_filterless_count:
+ 204 0000 00       		.space	1
+ 205              		.global	array_index
+ 206              		.section	.bss.array_index,"aw",%nobits
+ 209              	array_index:
+ 210 0000 00       		.space	1
+ 211              		.global	rpm_sampling_array
+ 212              		.section	.bss.rpm_sampling_array,"aw",%nobits
+ 213              		.align	2
+ 216              	rpm_sampling_array:
+ 217 0000 00000000 		.space	24
+ 217      00000000 
+ 217      00000000 
+ 217      00000000 
+ 217      00000000 
+ 218              		.ident	"GCC: (15:13.3.rel1-1) 13.3.1 20240614"
+ARM GAS  /tmp/ccTgg3cF.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 rpm.c
+     /tmp/ccTgg3cF.s:16     .text.get_rpm:00000000 $t
+     /tmp/ccTgg3cF.s:22     .text.get_rpm:00000000 get_rpm
+     /tmp/ccTgg3cF.s:119    .text.get_rpm:000000b4 $d
+     /tmp/ccTgg3cF.s:209    .bss.array_index:00000000 array_index
+     /tmp/ccTgg3cF.s:216    .bss.rpm_sampling_array:00000000 rpm_sampling_array
+     /tmp/ccTgg3cF.s:203    .bss.first_filterless_count:00000000 first_filterless_count
+     /tmp/ccTgg3cF.s:197    .bss.filtered_rpm:00000000 filtered_rpm
+     /tmp/ccTgg3cF.s:129    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+     /tmp/ccTgg3cF.s:135    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+     /tmp/ccTgg3cF.s:178    .text.HAL_TIM_PeriodElapsedCallback:00000040 $d
+     /tmp/ccTgg3cF.s:190    .bss.tim4Counter:00000000 tim4Counter
+     /tmp/ccTgg3cF.s:187    .bss.tim4Counter:00000000 $d
+     /tmp/ccTgg3cF.s:194    .bss.filtered_rpm:00000000 $d
+     /tmp/ccTgg3cF.s:204    .bss.first_filterless_count:00000000 $d
+     /tmp/ccTgg3cF.s:210    .bss.array_index:00000000 $d
+     /tmp/ccTgg3cF.s:213    .bss.rpm_sampling_array:00000000 $d
+
+UNDEFINED SYMBOLS
+rpm_max_limit_flag
+backEMF_mode
+HAL_TIM_Base_Stop_IT
+rpm
+htim3

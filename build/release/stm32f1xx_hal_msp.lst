@@ -1,0 +1,67 @@
+ARM GAS  /tmp/ccqDMGZd.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f1xx_hal_msp.c"
+  14              		.text
+  15              		.section	.text.HAL_MspInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	HAL_MspInit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	HAL_MspInit:
+  23              		@ args = 0, pretend = 0, frame = 8
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 82B0     		sub	sp, sp, #8
+  27 0002 0E4B     		ldr	r3, .L3
+  28 0004 9A69     		ldr	r2, [r3, #24]
+  29 0006 42F00102 		orr	r2, r2, #1
+  30 000a 9A61     		str	r2, [r3, #24]
+  31 000c 9A69     		ldr	r2, [r3, #24]
+  32 000e 02F00102 		and	r2, r2, #1
+  33 0012 0092     		str	r2, [sp]
+  34 0014 009A     		ldr	r2, [sp]
+  35 0016 DA69     		ldr	r2, [r3, #28]
+  36 0018 42F08052 		orr	r2, r2, #268435456
+  37 001c DA61     		str	r2, [r3, #28]
+  38 001e DB69     		ldr	r3, [r3, #28]
+  39 0020 03F08053 		and	r3, r3, #268435456
+  40 0024 0193     		str	r3, [sp, #4]
+  41 0026 019B     		ldr	r3, [sp, #4]
+  42 0028 054A     		ldr	r2, .L3+4
+  43 002a 5368     		ldr	r3, [r2, #4]
+  44 002c 23F0E063 		bic	r3, r3, #117440512
+  45 0030 43F00073 		orr	r3, r3, #33554432
+  46 0034 5360     		str	r3, [r2, #4]
+  47 0036 02B0     		add	sp, sp, #8
+  48              		@ sp needed
+  49 0038 7047     		bx	lr
+  50              	.L4:
+  51 003a 00BF     		.align	2
+  52              	.L3:
+  53 003c 00100240 		.word	1073876992
+  54 0040 00000140 		.word	1073807360
+  56              		.ident	"GCC: (15:13.3.rel1-1) 13.3.1 20240614"
+ARM GAS  /tmp/ccqDMGZd.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f1xx_hal_msp.c
+     /tmp/ccqDMGZd.s:16     .text.HAL_MspInit:00000000 $t
+     /tmp/ccqDMGZd.s:22     .text.HAL_MspInit:00000000 HAL_MspInit
+     /tmp/ccqDMGZd.s:53     .text.HAL_MspInit:0000003c $d
+
+NO UNDEFINED SYMBOLS

@@ -30,7 +30,8 @@ build/debug/main.o: Src/main.c Inc/main.h \
  Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  Inc/usbd_conf.h Inc/gpio.h Inc/Zeugma_h/debug_monitor.h \
  Inc/Zeugma_h/first_step.h Inc/Zeugma_h/rpm.h Inc/Zeugma_h/steps.h \
- Inc/Zeugma_h/old_value_hall.h Inc/Zeugma_h/old_value_hall.h
+ Inc/Zeugma_h/old_value_hall.h Inc/Zeugma_h/old_value_hall.h \
+ Inc/Zeugma_h/bemf.h
 Inc/main.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 Inc/stm32f1xx_hal_conf.h:
@@ -75,3 +76,4 @@ Inc/Zeugma_h/rpm.h:
 Inc/Zeugma_h/steps.h:
 Inc/Zeugma_h/old_value_hall.h:
 Inc/Zeugma_h/old_value_hall.h:
+Inc/Zeugma_h/bemf.h:

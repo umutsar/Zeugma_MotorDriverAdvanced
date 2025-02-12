@@ -97,6 +97,7 @@ Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c \
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c \
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c \
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c \
+Src/Zeugma_c/bemf.c \
 Src/Zeugma_c/debug_monitor.c \
 Src/Zeugma_c/first_step.c \
 Src/Zeugma_c/gpio_interrupt.c \

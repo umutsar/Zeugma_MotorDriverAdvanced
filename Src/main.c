@@ -32,6 +32,8 @@
 #include "rpm.h"
 #include "steps.h"
 #include "old_value_hall.h"
+#include "bemf.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,7 +46,7 @@
 #define voltageConversion_value 0.0396593777777778
 #define currentConversionValue 0.00083008
 
-#define ALPHA_SHIFT 8            // α = 1 / 2^ALPHA_SHIFT (örn: 3 → α = 1/8)
+#define ALPHA_SHIFT 4            // α = 1 / 2^ALPHA_SHIFT (örn: 3 → α = 1/8)
 #define ALPHA (1 << ALPHA_SHIFT) // 2^ALPHA_SHIFT
 /* USER CODE END PD */
 
@@ -72,7 +74,7 @@ volatile bool oldValue[3] = {0, 0, 0};
 bool mode = 1;
 volatile bool first_step_flag = 1;
 volatile bool flagg = 1;
-uint32_t adcbuffer[6] = {0};
+uint32_t adcbuffer[7] = {0};
 volatile uint16_t speedInAdc = 0;
 volatile uint16_t currentValue = 0;
 volatile uint16_t filtered_current = 0;
@@ -96,7 +98,6 @@ volatile uint32_t rpm;
 volatile uint32_t difference_two_coummutation_time = 1;
 uint32_t previousTime3 = 0;
 
-// Temporary variables
 uint16_t minCurrent = 5000;
 uint16_t maxCurrent = 0;
 uint16_t temporary_current_value = 0;
@@ -113,16 +114,40 @@ volatile uint32_t phase_B;
 volatile uint32_t phase_C;
 
 uint16_t target_rpm = 0;
-uint16_t max_rpm_limit = 1500;
+uint16_t max_rpm_limit = 3200;
 uint16_t max_current_limit = 2100;
 
 uint8_t flag12 = 0;
 uint16_t battery_voltage = 0;
 volatile uint16_t motor_voltage = 0;
 
-uint32_t previousTime4 = 0;   
+uint32_t previousTime4 = 0;
 
+uint16_t analyze_data_1[480] = {0};
+uint16_t array_counter;
 
+uint16_t rpm_analysis[1024] = {0};
+
+uint16_t interval_of_steps[1024] = {0};
+
+uint8_t step_atlandi = 0;
+uint16_t rpm_max_limit_flag = 1;
+uint8_t backEMF_mode = 0;
+
+uint8_t polarity_A = 0;
+uint8_t polarity_B = 0;
+uint8_t polarity_C = 0;
+
+uint8_t polarity_A_old = 0;
+uint8_t polarity_B_old = 0;
+uint8_t polarity_C_old = 0;
+
+uint32_t intersection_interval = 0;
+
+uint16_t notr = 0;
+uint8_t bemf_execute_flag = 0;
+
+// VARIABLE END
 
 long map(long x, long in_min, long in_max, long out_min, long out_max)
 {
@@ -136,41 +161,73 @@ long map(long x, long in_min, long in_max, long out_min, long out_max)
 // }
 
 // GPIO INTERRUPT HAS BEEN REMOVED FROM HERE
-uint16_t dizi[120] = {0}; // Ortalama hesaplama için dizi
-uint16_t dizi_index = 0;  // Diziye ekleme için indeks
 
-uint16_t ema_filter(uint16_t new_value)
+uint16_t ema_filter0(uint16_t new_value)
 {
-  static uint16_t filtered_value = 0;
+  static uint16_t filtered_value0 = 0;
 
-  if (filtered_value == 0) // İlk değer ataması
-    filtered_value = new_value;
+  if (filtered_value0 == 0)
+    filtered_value0 = new_value;
 
-  // EMA Hesabı: filt = filt + (yeni - filt) / 2^n
-  filtered_value = filtered_value + ((new_value - filtered_value) >> ALPHA_SHIFT);
+  filtered_value0 = filtered_value0 + ((new_value - filtered_value0) >> ALPHA_SHIFT);
 
-  return filtered_value;
+  return filtered_value0;
 }
 
+uint16_t ema_filter1(uint16_t new_value)
+{
+  static uint16_t filtered_value1 = 0;
+
+  if (filtered_value1 == 0)
+    filtered_value1 = new_value;
+
+  filtered_value1 = filtered_value1 + ((new_value - filtered_value1) >> ALPHA_SHIFT);
+
+  return filtered_value1;
+}
+
+uint16_t ema_filter2(uint16_t new_value)
+{
+  static uint16_t filtered_value2 = 0;
+
+  if (filtered_value2 == 0)
+    filtered_value2 = new_value;
+
+  filtered_value2 = filtered_value2 + ((new_value - filtered_value2) >> ALPHA_SHIFT);
+
+  return filtered_value2;
+}
+
+uint16_t ema_filter3(uint16_t new_value)
+{
+  static uint16_t filtered_value3 = 0;
+
+  if (filtered_value3 == 0)
+    filtered_value3 = new_value;
+
+  filtered_value3 = filtered_value3 + ((new_value - filtered_value3) >> ALPHA_SHIFT);
+
+  return filtered_value3;
+}
+
+uint16_t dizi[120] = {0};
+uint16_t dizi_index = 0;
+// Gecici olarak devre dışı
 uint16_t filtreye_koy(uint16_t num)
 {
-  uint16_t toplam = 0;  // Toplamı tutmak için değişken
-  uint16_t average = 0; // Ortalama değeri tutmak için
+  uint16_t toplam = 0;
+  uint16_t average = 0;
 
-  // Yeni numarayı diziye ekle
   dizi[dizi_index++] = num;
 
-  // Dizi indexi sınır kontrolü
   if (dizi_index == 120)
     dizi_index = 0;
 
-  // Dizi elemanlarının toplamını hesapla
   for (uint8_t i = 0; i < 120; i++)
   {
     toplam += dizi[i];
   }
 
-  // Ortalama hesapla
   if (toplam > 120)
     average = toplam / 120;
   else
@@ -183,29 +240,70 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 { // ADC DMA LEMLERİ
   if (hadc->Instance == ADC1)
   {
+
     battery_voltage = adcbuffer[5] * 0.03843902;
     if ((GPIOA->IDR & GPIO_PIN_8) + (GPIOA->IDR & GPIO_PIN_9) + (GPIOA->IDR & GPIO_PIN_10) == 0)
     {
-      if ((GPIOB->IDR & GPIO_PIN_13) == 0)
-      {
-        phase_A = adcbuffer[2];
-        motor_voltage = phase_A * 3.2239155;
-      }
-      if ((GPIOB->IDR & GPIO_PIN_14) == 0)
-      {
-        phase_B = adcbuffer[3];
-        motor_voltage = phase_B * 3.2239155;
-      }
-      if ((GPIOB->IDR & GPIO_PIN_15) == 0)
-      {
-        phase_C = adcbuffer[4];
-        motor_voltage = phase_C * 3.2239155;
-      }
-      uint16_t average_phase = (uint16_t)((phase_A + phase_B + phase_C) / 3);
-      // motor_voltage = filtreye_koy(average_phase);
-      motor_voltage = ema_filter(average_phase);
-      motor_voltage = motor_voltage * 10;
+      // if ((GPIOB->IDR & GPIO_PIN_13) == 0 && (step == 3 || step == 6))
+      // {
+      //   phase_A = adcbuffer[3];
+      //   notr = adcbuffer[6];
+      //   if (phase_A > notr)
+      //     polarity_A = 1;
+
+      //   else
+      //     polarity_A = 0;
+      // }
+      // if ((GPIOB->IDR & GPIO_PIN_14) == 0 && (step == 2 || step == 5))
+      // {
+      //   phase_B = adcbuffer[4];
+      //   notr = adcbuffer[6];
+      //   if (phase_B > notr)
+      //     polarity_B = 1;
+
+      //   else
+      //     polarity_B = 0;
+      // }
+      // if ((GPIOB->IDR & GPIO_PIN_15) == 0 && (step == 1 || step == 4))
+      // {
+      //   phase_C = adcbuffer[2];
+      //   notr = adcbuffer[6];
+      //   if (phase_C > notr)
+      //     polarity_C = 1;
+
+      //   else
+      //     polarity_C = 0;
+      // }
     }
+
+    // A
+    phase_A = ema_filter1(adcbuffer[3]);
+    notr = ema_filter0(adcbuffer[6]);
+    if (phase_A > notr)
+      polarity_A = 1;
+    else
+      polarity_A = 0;
+
+    // B
+    phase_B = ema_filter2(adcbuffer[4]);
+    notr = ema_filter0(adcbuffer[6]);
+    if (phase_B > notr)
+      polarity_B = 1;
+    else
+      polarity_B = 0;
+
+    // C
+    phase_C = ema_filter3(adcbuffer[2]);
+    notr = ema_filter0(adcbuffer[6]);
+    if (phase_C > notr)
+      polarity_C = 1;
+    else
+      polarity_C = 0;
+
+    uint16_t average_phase = (uint16_t)((phase_A + phase_B + phase_C) / 3);
+    // motor_voltage = filtreye_koy(average_phase);
+    // motor_voltage = ema_filter(average_phase);
+    motor_voltage = average_phase * 10;
 
     currentValue = adcbuffer[1];
     filtered_current = 4500 - currentValue;
@@ -226,12 +324,14 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
     if ((currentValue <= 1500) && (pwm_value > 100))
     {
       pwm_value = pwm_value - 1;
+      LOG_VAR(pwm_value);
     }
 
     if (minCurrent > filtered_current)
       minCurrent = filtered_current;
     if (maxCurrent < filtered_current)
       maxCurrent = filtered_current;
+    phaseControlBemf();
   }
 }
 
@@ -271,8 +371,10 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-  HAL_ADC_Start_DMA(&hadc1, adcbuffer, 6);
+  HAL_ADC_Start_DMA(&hadc1, adcbuffer, 7);
+
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
   HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
@@ -288,6 +390,8 @@ int main(void)
   previousTime3 = HAL_GetTick();
   HAL_TIM_Base_Start_IT(&htim3);
   __HAL_TIM_SET_COUNTER(&htim3, 0);
+  HAL_TIM_Base_Start_IT(&htim4);
+  __HAL_TIM_SET_COUNTER(&htim4, 0);
 
   /* USER CODE END 2 */
 
@@ -301,7 +405,6 @@ int main(void)
     hall_C = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2);
     if (!run_status)
     {
-
       pwm_value = 10.50 * motor_voltage / battery_voltage;
     }
 
@@ -311,30 +414,20 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    if (HAL_GetTick() - previousTime3 > 100)
+    if (HAL_GetTick() - previousTime3 > 50) // && rpm_max_limit_flag)
     {
-      // LOG_VAR(rpm);
-      // filtreli_akim = map(filtreli_akim, 1200, 1600, 20, 800);
-      // LOG_VAR(rpm);
-      // LOG_VAR(pedal_value_mapped);
-      // LOG_VAR(temporary_current_value);
-      LOG_VAR(pwm_value);
-      // LOG_VAR(temporary_current_value);
-      // LOG_VAR(new_ARR);
-      // LOG_VAR(motor_voltage);
-
-      // LOG_VAR(adcbuffer[0]);
-      // LOG_VAR(adcbuffer[1]);
-      // LOG_VAR(adcbuffer[2]);
-      // LOG_VAR(adcbuffer[3]);
-      // LOG_VAR(adcbuffer[4]);
-
-      LOG_VAR(motor_voltage / 10);
 
       // LOG_VAR(phase_A);
-      // LOG_VAR(battery_voltage);
-      // LOG_VAR(__HAL_TIM_GET_COUNTER(&htim2));
+      // LOG_VAR(phase_B);
+      // LOG_VAR(phase_C);
+      LOG_VAR(rpm);
       LOG_POST();
+      // LOG_VAR(adcbuffer[6]);
+
+      // // LOG_VAR(step);
+
+      // LOG_POST();
+      step_atlandi = 0;
       previousTime3 = HAL_GetTick();
     }
 
@@ -408,7 +501,7 @@ int main(void)
         {
           pwm_value = min_pwm_limit;
         }
-        else if (pwm_value < 500)
+        else if (pwm_value < 1167)
         {
           pwm_value += 1;
         }
@@ -417,7 +510,7 @@ int main(void)
       if (!run_status)
       {
         run_status = true;
-        geri_vites = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
+        // geri_vites = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
         hall_A = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
         hall_B = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
         hall_C = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2);
