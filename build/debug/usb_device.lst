@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc1jojxU.s 			page 1
+ARM GAS  /tmp/ccLOXol2.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc1jojxU.s 			page 1
   30:Src/usb_device.c **** 
   31:Src/usb_device.c **** /* USER CODE END Includes */
   32:Src/usb_device.c **** 
-ARM GAS  /tmp/cc1jojxU.s 			page 2
+ARM GAS  /tmp/ccLOXol2.s 			page 2
 
 
   33:Src/usb_device.c **** /* USER CODE BEGIN PV */
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc1jojxU.s 			page 1
   42              		.loc 1 71 6 discriminator 1 view .LVU3
   43 000c 70B9     		cbnz	r0, .L7
   44              	.L2:
-ARM GAS  /tmp/cc1jojxU.s 			page 3
+ARM GAS  /tmp/ccLOXol2.s 			page 3
 
 
   72:Src/usb_device.c ****   {
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc1jojxU.s 			page 1
   78              	.L8:
   77:Src/usb_device.c ****   }
   79              		.loc 1 77 5 view .LVU15
-ARM GAS  /tmp/cc1jojxU.s 			page 4
+ARM GAS  /tmp/ccLOXol2.s 			page 4
 
 
   80 0032 FFF7FEFF 		bl	Error_Handler
@@ -224,16 +224,16 @@ ARM GAS  /tmp/cc1jojxU.s 			page 1
  117              		.file 6 "Inc/usbd_cdc_if.h"
  118              		.file 7 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h"
  119              		.file 8 "Inc/main.h"
-ARM GAS  /tmp/cc1jojxU.s 			page 5
+ARM GAS  /tmp/ccLOXol2.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 usb_device.c
-     /tmp/cc1jojxU.s:19     .text.MX_USB_DEVICE_Init:00000000 $t
-     /tmp/cc1jojxU.s:25     .text.MX_USB_DEVICE_Init:00000000 MX_USB_DEVICE_Init
-     /tmp/cc1jojxU.s:97     .text.MX_USB_DEVICE_Init:00000044 $d
-     /tmp/cc1jojxU.s:109    .bss.hUsbDeviceFS:00000000 hUsbDeviceFS
-     /tmp/cc1jojxU.s:106    .bss.hUsbDeviceFS:00000000 $d
+     /tmp/ccLOXol2.s:19     .text.MX_USB_DEVICE_Init:00000000 $t
+     /tmp/ccLOXol2.s:25     .text.MX_USB_DEVICE_Init:00000000 MX_USB_DEVICE_Init
+     /tmp/ccLOXol2.s:97     .text.MX_USB_DEVICE_Init:00000044 $d
+     /tmp/ccLOXol2.s:109    .bss.hUsbDeviceFS:00000000 hUsbDeviceFS
+     /tmp/ccLOXol2.s:106    .bss.hUsbDeviceFS:00000000 $d
 
 UNDEFINED SYMBOLS
 USBD_Init

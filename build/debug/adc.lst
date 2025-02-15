@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccut7nSI.s 			page 1
+ARM GAS  /tmp/ccquCTrO.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
   30:Src/adc.c     **** /* ADC1 init function */
   31:Src/adc.c     **** void MX_ADC1_Init(void)
   32:Src/adc.c     **** {
-ARM GAS  /tmp/ccut7nSI.s 			page 2
+ARM GAS  /tmp/ccquCTrO.s 			page 2
 
 
   27              		.loc 1 32 1 view -0
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
   62              		.loc 1 51 3 is_stmt 1 view .LVU13
   63              		.loc 1 51 24 is_stmt 0 view .LVU14
   64 0024 4360     		str	r3, [r0, #4]
-ARM GAS  /tmp/ccut7nSI.s 			page 3
+ARM GAS  /tmp/ccquCTrO.s 			page 3
 
 
   52:Src/adc.c     ****   hadc1.Init.NbrOfConversion = 7;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
  100 0048 0823     		movs	r3, #8
  101 004a 0193     		str	r3, [sp, #4]
   71:Src/adc.c     ****   sConfig.Rank = ADC_REGULAR_RANK_2;
-ARM GAS  /tmp/ccut7nSI.s 			page 4
+ARM GAS  /tmp/ccquCTrO.s 			page 4
 
 
  102              		.loc 1 71 3 is_stmt 1 view .LVU31
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
  138              		.loc 1 89 3 is_stmt 1 view .LVU45
  139              		.loc 1 89 16 is_stmt 0 view .LVU46
  140 0074 0423     		movs	r3, #4
-ARM GAS  /tmp/ccut7nSI.s 			page 5
+ARM GAS  /tmp/ccquCTrO.s 			page 5
 
 
  141 0076 0293     		str	r3, [sp, #8]
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
  176              		.loc 1 108 3 is_stmt 1 view .LVU61
  177              		.loc 1 108 7 is_stmt 0 view .LVU62
  178 009e 01A9     		add	r1, sp, #4
-ARM GAS  /tmp/ccut7nSI.s 			page 6
+ARM GAS  /tmp/ccquCTrO.s 			page 6
 
 
  179 00a0 1348     		ldr	r0, .L19
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
   65:Src/adc.c     ****   }
  215              		.loc 1 65 5 view .LVU73
  216 00c6 FFF7FEFF 		bl	Error_Handler
-ARM GAS  /tmp/ccut7nSI.s 			page 7
+ARM GAS  /tmp/ccquCTrO.s 			page 7
 
 
  217              	.LVL9:
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
  267              	.LFB66:
  126:Src/adc.c     **** 
  127:Src/adc.c     **** void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
-ARM GAS  /tmp/ccut7nSI.s 			page 8
+ARM GAS  /tmp/ccquCTrO.s 			page 8
 
 
  128:Src/adc.c     **** {
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
  154:Src/adc.c     **** 
  155:Src/adc.c     ****     GPIO_InitStruct.Pin = Current_Pin|GPIO_PIN_1;
  156:Src/adc.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-ARM GAS  /tmp/ccut7nSI.s 			page 9
+ARM GAS  /tmp/ccquCTrO.s 			page 9
 
 
  157:Src/adc.c     ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
  321              	.LBE2:
  137:Src/adc.c     **** 
  322              		.loc 1 137 5 view .LVU95
-ARM GAS  /tmp/ccut7nSI.s 			page 10
+ARM GAS  /tmp/ccquCTrO.s 			page 10
 
 
  139:Src/adc.c     ****     __HAL_RCC_GPIOB_CLK_ENABLE();
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
  153:Src/adc.c     **** 
  361              		.loc 1 153 5 is_stmt 1 view .LVU112
  362 005e 04A9     		add	r1, sp, #16
-ARM GAS  /tmp/ccut7nSI.s 			page 11
+ARM GAS  /tmp/ccquCTrO.s 			page 11
 
 
  363 0060 1248     		ldr	r0, .L27+4
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
  166:Src/adc.c     ****     hdma_adc1.Init.Mode = DMA_CIRCULAR;
  400              		.loc 1 166 37 is_stmt 0 view .LVU130
  401 0088 4FF40062 		mov	r2, #2048
-ARM GAS  /tmp/ccut7nSI.s 			page 12
+ARM GAS  /tmp/ccquCTrO.s 			page 12
 
 
  402 008c 4261     		str	r2, [r0, #20]
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
  445              		.syntax unified
  446              		.thumb
  447              		.thumb_func
-ARM GAS  /tmp/ccut7nSI.s 			page 13
+ARM GAS  /tmp/ccquCTrO.s 			page 13
 
 
  449              	HAL_ADC_MspDeInit:
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
  480              		.loc 1 202 5 is_stmt 0 view .LVU151
  481 001c FFF7FEFF 		bl	HAL_GPIO_DeInit
  482              	.LVL26:
-ARM GAS  /tmp/ccut7nSI.s 			page 14
+ARM GAS  /tmp/ccquCTrO.s 			page 14
 
 
  203:Src/adc.c     ****                           |GPIO_PIN_7);
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
  523              		.file 3 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
  524              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
  525              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
-ARM GAS  /tmp/ccut7nSI.s 			page 15
+ARM GAS  /tmp/ccquCTrO.s 			page 15
 
 
  526              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
@@ -846,24 +846,24 @@ ARM GAS  /tmp/ccut7nSI.s 			page 1
  528              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h"
  529              		.file 9 "Inc/adc.h"
  530              		.file 10 "Inc/main.h"
-ARM GAS  /tmp/ccut7nSI.s 			page 16
+ARM GAS  /tmp/ccquCTrO.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 adc.c
-     /tmp/ccut7nSI.s:19     .text.MX_ADC1_Init:00000000 $t
-     /tmp/ccut7nSI.s:25     .text.MX_ADC1_Init:00000000 MX_ADC1_Init
-     /tmp/ccut7nSI.s:253    .text.MX_ADC1_Init:000000f0 $d
-     /tmp/ccut7nSI.s:518    .bss.hadc1:00000000 hadc1
-     /tmp/ccut7nSI.s:259    .text.HAL_ADC_MspInit:00000000 $t
-     /tmp/ccut7nSI.s:265    .text.HAL_ADC_MspInit:00000000 HAL_ADC_MspInit
-     /tmp/ccut7nSI.s:434    .text.HAL_ADC_MspInit:000000a8 $d
-     /tmp/ccut7nSI.s:511    .bss.hdma_adc1:00000000 hdma_adc1
-     /tmp/ccut7nSI.s:443    .text.HAL_ADC_MspDeInit:00000000 $t
-     /tmp/ccut7nSI.s:449    .text.HAL_ADC_MspDeInit:00000000 HAL_ADC_MspDeInit
-     /tmp/ccut7nSI.s:499    .text.HAL_ADC_MspDeInit:00000030 $d
-     /tmp/ccut7nSI.s:508    .bss.hdma_adc1:00000000 $d
-     /tmp/ccut7nSI.s:515    .bss.hadc1:00000000 $d
+     /tmp/ccquCTrO.s:19     .text.MX_ADC1_Init:00000000 $t
+     /tmp/ccquCTrO.s:25     .text.MX_ADC1_Init:00000000 MX_ADC1_Init
+     /tmp/ccquCTrO.s:253    .text.MX_ADC1_Init:000000f0 $d
+     /tmp/ccquCTrO.s:518    .bss.hadc1:00000000 hadc1
+     /tmp/ccquCTrO.s:259    .text.HAL_ADC_MspInit:00000000 $t
+     /tmp/ccquCTrO.s:265    .text.HAL_ADC_MspInit:00000000 HAL_ADC_MspInit
+     /tmp/ccquCTrO.s:434    .text.HAL_ADC_MspInit:000000a8 $d
+     /tmp/ccquCTrO.s:511    .bss.hdma_adc1:00000000 hdma_adc1
+     /tmp/ccquCTrO.s:443    .text.HAL_ADC_MspDeInit:00000000 $t
+     /tmp/ccquCTrO.s:449    .text.HAL_ADC_MspDeInit:00000000 HAL_ADC_MspDeInit
+     /tmp/ccquCTrO.s:499    .text.HAL_ADC_MspDeInit:00000030 $d
+     /tmp/ccquCTrO.s:508    .bss.hdma_adc1:00000000 $d
+     /tmp/ccquCTrO.s:515    .bss.hadc1:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_ADC_Init

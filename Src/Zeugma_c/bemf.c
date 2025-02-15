@@ -10,56 +10,56 @@ uint16_t a, b, c, d, e, f = 0;
 void decide_step(uint8_t _a, uint8_t _b, uint8_t _c)
 {
 
-    if (_a && !_b && _c && (oldValue[0] && !oldValue[1] && !oldValue[2]))
+    if (_a && !_b && _c && (!oldValue[0] && !oldValue[1] && oldValue[2]))
     // 101'den 100'e geçiş
     {
         oldValue[0] = 1;
         oldValue[1] = 0;
         oldValue[2] = 1;
-        step = 4;
-        bemf_execute_flag = 1;
-    }
-    else if (_a && !_b && !_c && (oldValue[0] && oldValue[1] && !oldValue[2])) // 100'den 110'a geçiş
-    {
-        oldValue[0] = 1;
-        oldValue[1] = 0;
-        oldValue[2] = 0;
-        step = 5;
-        bemf_execute_flag = 1;
-    }
-
-    else if (_a && _b && !_c && (!oldValue[0] && oldValue[1] && !oldValue[2])) // 100'den 110'a geçiş
-    {
-        oldValue[0] = 1;
-        oldValue[1] = 1;
-        oldValue[2] = 0;
-        step = 6;
-        bemf_execute_flag = 1;
-    }
-
-    else if (!_a && _b && !_c && (!oldValue[0] && oldValue[1] && oldValue[2])) // 100'den 110'a geçiş
-    {
-        oldValue[0] = 0;
-        oldValue[1] = 1;
-        oldValue[2] = 0;
         step = 1;
         bemf_execute_flag = 1;
     }
+    else if (_a && !_b && !_c && (oldValue[0] && !oldValue[1] && oldValue[2])) // 100'den 110'a geçiş
+    {
+        oldValue[0] = 1;
+        oldValue[1] = 0;
+        oldValue[2] = 0;
+        step = 2;
+        bemf_execute_flag = 1;
+    }
 
-    else if (!_a && _b && _c && (!oldValue[0] && !oldValue[1] && oldValue[2])) // 100'den 110'a geçiş
+    else if (_a && _b && !_c && (oldValue[0] && !oldValue[1] && !oldValue[2])) // 100'den 110'a geçiş
+    {
+        oldValue[0] = 1;
+        oldValue[1] = 1;
+        oldValue[2] = 0;
+        step = 3;
+        bemf_execute_flag = 1;
+    }
+
+    else if (!_a && _b && !_c && (oldValue[0] && oldValue[1] && !oldValue[2])) // 100'den 110'a geçiş
+    {
+        oldValue[0] = 0;
+        oldValue[1] = 1;
+        oldValue[2] = 0;
+        step = 4;
+        bemf_execute_flag = 1;
+    }
+
+    else if (!_a && _b && _c && (!oldValue[0] && oldValue[1] && !oldValue[2])) // 100'den 110'a geçiş
     {
         oldValue[0] = 0;
         oldValue[1] = 1;
         oldValue[2] = 1;
-        step = 2;
+        step = 5;
         bemf_execute_flag = 1;
     }
-    else if (!_a && !_b && _c && (oldValue[0] && !oldValue[1] && oldValue[2])) // 100'den 110'a geçiş
+    else if (!_a && !_b && _c && (!oldValue[0] && oldValue[1] && oldValue[2])) // 100'den 110'a geçiş
     {
         oldValue[0] = 0;
         oldValue[1] = 0;
         oldValue[2] = 1;
-        step = 3;
+        step = 6;
         bemf_execute_flag = 1;
     }
     else
@@ -69,8 +69,9 @@ void decide_step(uint8_t _a, uint8_t _b, uint8_t _c)
 }
 void abc()
 {
-    if (rpm > 1000)
+    if (backEMF_mode)
     {
+        // LOG_VAR(flagg);
         decide_step(polarity_A, polarity_B, polarity_C);
         execute_step(step);
     }
@@ -85,8 +86,8 @@ void phaseControlBemf()
         HAL_TIM_Base_Start_IT(&htim3);
         __HAL_TIM_SET_COUNTER(&htim4, 0);
         polarity_A_old = polarity_A;
-        log_var_analysis();
-        set_step();
+        // log_var_analysis();
+        abc();
     }
     else if (polarity_B + polarity_B_old == 1)
     {
@@ -95,8 +96,8 @@ void phaseControlBemf()
         HAL_TIM_Base_Start_IT(&htim3);
         __HAL_TIM_SET_COUNTER(&htim4, 0);
         polarity_B_old = polarity_B;
-        log_var_analysis();
-        set_step();
+        // log_var_analysis();
+        abc();
     }
     else if (polarity_C + polarity_C_old == 1)
     {
@@ -105,8 +106,8 @@ void phaseControlBemf()
         HAL_TIM_Base_Start_IT(&htim3);
         __HAL_TIM_SET_COUNTER(&htim4, 0);
         polarity_C_old = polarity_C;
-        log_var_analysis();
-        set_step();
+        // log_var_analysis();
+        abc();
     }
     else
     {
@@ -116,7 +117,7 @@ void phaseControlBemf()
 
 void log_var_analysis()
 {
-    if (rpm > 900 && 0)
+    if (rpm > 800 && 0)
     {
         a = polarity_A_old;
         b = polarity_B_old;
@@ -153,22 +154,3 @@ void log_var_analysis()
 }
 
 // a:1,b:1,c:1,d:2,e:2,f:1
-
-void set_step()
-{
-    if (0)
-    {
-        if (polarity_A && !polarity_B && !polarity_C)
-            step = 2;
-        if (polarity_A && polarity_B && !polarity_C)
-            step = 3;
-        if (!polarity_A && polarity_B && !polarity_C)
-            step = 4;
-        if (!polarity_A && polarity_B && polarity_C)
-            step = 5;
-        if (!polarity_A && !polarity_B && polarity_C)
-            step = 6;
-        if (polarity_A && !polarity_B && polarity_C)
-            step = 1;
-    }
-}

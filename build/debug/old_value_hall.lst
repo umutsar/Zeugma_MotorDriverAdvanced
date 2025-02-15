@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc4ooOxA.s 			page 1
+ARM GAS  /tmp/ccMtXEEL.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -31,1091 +31,1486 @@ ARM GAS  /tmp/cc4ooOxA.s 			page 1
    3:Src/Zeugma_c/old_value_hall.c **** #include "main.h"
    4:Src/Zeugma_c/old_value_hall.c **** #include "usbd_cdc_if.h"
    5:Src/Zeugma_c/old_value_hall.c **** #include "usb_device.h"
-   6:Src/Zeugma_c/old_value_hall.c **** 
-   7:Src/Zeugma_c/old_value_hall.c **** uint8_t counter = 0;
-   8:Src/Zeugma_c/old_value_hall.c **** uint8_t sender_flag = 0;
-   9:Src/Zeugma_c/old_value_hall.c **** 
-  10:Src/Zeugma_c/old_value_hall.c **** void set_old_value()
-  11:Src/Zeugma_c/old_value_hall.c **** {
-  27              		.loc 1 11 1 view -0
+   6:Src/Zeugma_c/old_value_hall.c **** #include "bemf.h"
+   7:Src/Zeugma_c/old_value_hall.c **** 
+   8:Src/Zeugma_c/old_value_hall.c **** uint8_t counter = 0;
+   9:Src/Zeugma_c/old_value_hall.c **** uint8_t sender_flag = 0;
+  10:Src/Zeugma_c/old_value_hall.c **** 
+  11:Src/Zeugma_c/old_value_hall.c **** void set_old_value()
+  12:Src/Zeugma_c/old_value_hall.c **** {
+  27              		.loc 1 12 1 view -0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 0, uses_anonymous_args = 0
-  31              		@ link register save eliminated.
-  12:Src/Zeugma_c/old_value_hall.c **** 
-  13:Src/Zeugma_c/old_value_hall.c ****     if (!geri_vites)
-  32              		.loc 1 13 5 view .LVU1
-  33              		.loc 1 13 9 is_stmt 0 view .LVU2
-  34 0000 684B     		ldr	r3, .L38
-  35 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  36              		.loc 1 13 8 view .LVU3
-  37 0004 002B     		cmp	r3, #0
-  38 0006 40F0DB80 		bne	.L2
-  14:Src/Zeugma_c/old_value_hall.c ****     { // İLERİ YÖN ADIMLARI
-  15:Src/Zeugma_c/old_value_hall.c **** 
-  16:Src/Zeugma_c/old_value_hall.c ****         if ((hall_A && !hall_B && hall_C) &&
-  39              		.loc 1 16 9 is_stmt 1 view .LVU4
-  40              		.loc 1 16 14 is_stmt 0 view .LVU5
-  41 000a 674B     		ldr	r3, .L38+4
-  42 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  /tmp/cc4ooOxA.s 			page 2
+  31 0000 08B5     		push	{r3, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+  13:Src/Zeugma_c/old_value_hall.c **** 
+  14:Src/Zeugma_c/old_value_hall.c ****     if (!geri_vites)
+  35              		.loc 1 14 5 view .LVU1
+  36              		.loc 1 14 9 is_stmt 0 view .LVU2
+  37 0002 694B     		ldr	r3, .L45
+  38 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  39              		.loc 1 14 8 view .LVU3
+  40 0006 002B     		cmp	r3, #0
+  41 0008 40F0DC80 		bne	.L2
+  15:Src/Zeugma_c/old_value_hall.c ****     { // İLERİ YÖN ADIMLARI
+  16:Src/Zeugma_c/old_value_hall.c **** 
+  17:Src/Zeugma_c/old_value_hall.c ****         if ((hall_A && !hall_B && hall_C) &&
+ARM GAS  /tmp/ccMtXEEL.s 			page 2
 
 
-  43              		.loc 1 16 12 view .LVU6
-  44 000e EBB1     		cbz	r3, .L3
-  45              		.loc 1 16 24 discriminator 1 view .LVU7
-  46 0010 664B     		ldr	r3, .L38+8
-  47 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  48              		.loc 1 16 21 discriminator 1 view .LVU8
-  49 0014 D3B9     		cbnz	r3, .L3
-  50              		.loc 1 16 32 discriminator 2 view .LVU9
-  51 0016 664B     		ldr	r3, .L38+12
-  52 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  53 001a BBB1     		cbz	r3, .L3
+  42              		.loc 1 17 9 is_stmt 1 view .LVU4
+  43              		.loc 1 17 14 is_stmt 0 view .LVU5
+  44 000c 674B     		ldr	r3, .L45+4
+  45 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  46              		.loc 1 17 12 view .LVU6
+  47 0010 EBB1     		cbz	r3, .L3
+  48              		.loc 1 17 24 discriminator 1 view .LVU7
+  49 0012 674B     		ldr	r3, .L45+8
+  50 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  51              		.loc 1 17 21 discriminator 1 view .LVU8
+  52 0016 D3B9     		cbnz	r3, .L3
+  53              		.loc 1 17 32 discriminator 2 view .LVU9
+  54 0018 664B     		ldr	r3, .L45+12
+  55 001a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  56 001c BBB1     		cbz	r3, .L3
+  18:Src/Zeugma_c/old_value_hall.c ****             ((oldValue[0] && !oldValue[1] && !oldValue[2]) || flagg))
+  57              		.loc 1 18 23 view .LVU10
+  58 001e 664B     		ldr	r3, .L45+16
+  59 0020 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
   17:Src/Zeugma_c/old_value_hall.c ****             ((oldValue[0] && !oldValue[1] && !oldValue[2]) || flagg))
-  54              		.loc 1 17 23 view .LVU10
-  55 001c 654B     		ldr	r3, .L38+16
-  56 001e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  16:Src/Zeugma_c/old_value_hall.c ****             ((oldValue[0] && !oldValue[1] && !oldValue[2]) || flagg))
-  57              		.loc 1 16 43 discriminator 3 view .LVU11
-  58 0020 2BB1     		cbz	r3, .L4
-  59              		.loc 1 17 39 view .LVU12
-  60 0022 644B     		ldr	r3, .L38+16
-  61 0024 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
-  62              		.loc 1 17 27 view .LVU13
-  63 0026 13B9     		cbnz	r3, .L4
-  64              		.loc 1 17 55 discriminator 1 view .LVU14
-  65 0028 624B     		ldr	r3, .L38+16
-  66 002a 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
-  67              		.loc 1 17 43 discriminator 1 view .LVU15
-  68 002c 13B1     		cbz	r3, .L5
-  69              	.L4:
-  70              		.loc 1 17 60 discriminator 3 view .LVU16
-  71 002e 624B     		ldr	r3, .L38+20
-  72 0030 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  73 0032 5BB1     		cbz	r3, .L3
-  74              	.L5:
-  18:Src/Zeugma_c/old_value_hall.c ****         // 101'den 100'e geçiş
-  19:Src/Zeugma_c/old_value_hall.c ****         {
-  20:Src/Zeugma_c/old_value_hall.c ****             step = 4;
-  75              		.loc 1 20 13 is_stmt 1 view .LVU17
-  76              		.loc 1 20 18 is_stmt 0 view .LVU18
-  77 0034 614B     		ldr	r3, .L38+24
-  78 0036 0422     		movs	r2, #4
-  79 0038 1A60     		str	r2, [r3]
-  21:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 1;
-  80              		.loc 1 21 13 is_stmt 1 view .LVU19
-  81              		.loc 1 21 25 is_stmt 0 view .LVU20
-  82 003a 5E4A     		ldr	r2, .L38+16
-  83 003c 0123     		movs	r3, #1
-  84 003e 1370     		strb	r3, [r2]
-  22:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 0;
-  85              		.loc 1 22 13 is_stmt 1 view .LVU21
-  86              		.loc 1 22 25 is_stmt 0 view .LVU22
-  87 0040 0021     		movs	r1, #0
-  88 0042 5170     		strb	r1, [r2, #1]
-  23:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
-  89              		.loc 1 23 13 is_stmt 1 view .LVU23
-  90              		.loc 1 23 25 is_stmt 0 view .LVU24
-  91 0044 9370     		strb	r3, [r2, #2]
-ARM GAS  /tmp/cc4ooOxA.s 			page 3
+  60              		.loc 1 17 43 discriminator 3 view .LVU11
+  61 0022 2BB1     		cbz	r3, .L4
+  62              		.loc 1 18 39 view .LVU12
+  63 0024 644B     		ldr	r3, .L45+16
+  64 0026 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  65              		.loc 1 18 27 view .LVU13
+  66 0028 13B9     		cbnz	r3, .L4
+  67              		.loc 1 18 55 discriminator 1 view .LVU14
+  68 002a 634B     		ldr	r3, .L45+16
+  69 002c 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+  70              		.loc 1 18 43 discriminator 1 view .LVU15
+  71 002e 13B1     		cbz	r3, .L5
+  72              	.L4:
+  73              		.loc 1 18 60 discriminator 3 view .LVU16
+  74 0030 624B     		ldr	r3, .L45+20
+  75 0032 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  76 0034 5BB1     		cbz	r3, .L3
+  77              	.L5:
+  19:Src/Zeugma_c/old_value_hall.c ****         // 101'den 100'e geçiş
+  20:Src/Zeugma_c/old_value_hall.c ****         {
+  21:Src/Zeugma_c/old_value_hall.c ****             step = 4;
+  78              		.loc 1 21 13 is_stmt 1 view .LVU17
+  79              		.loc 1 21 18 is_stmt 0 view .LVU18
+  80 0036 624B     		ldr	r3, .L45+24
+  81 0038 0422     		movs	r2, #4
+  82 003a 1A60     		str	r2, [r3]
+  22:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 1;
+  83              		.loc 1 22 13 is_stmt 1 view .LVU19
+  84              		.loc 1 22 25 is_stmt 0 view .LVU20
+  85 003c 5E4A     		ldr	r2, .L45+16
+  86 003e 0123     		movs	r3, #1
+  87 0040 1370     		strb	r3, [r2]
+  23:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 0;
+  88              		.loc 1 23 13 is_stmt 1 view .LVU21
+  89              		.loc 1 23 25 is_stmt 0 view .LVU22
+  90 0042 0021     		movs	r1, #0
+  91 0044 5170     		strb	r1, [r2, #1]
+ARM GAS  /tmp/ccMtXEEL.s 			page 3
 
 
-  24:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
-  92              		.loc 1 24 13 is_stmt 1 view .LVU25
-  93              		.loc 1 24 19 is_stmt 0 view .LVU26
-  94 0046 5C4A     		ldr	r2, .L38+20
-  95 0048 1370     		strb	r3, [r2]
-  96 004a 7047     		bx	lr
-  97              	.L3:
-  25:Src/Zeugma_c/old_value_hall.c ****         }
-  26:Src/Zeugma_c/old_value_hall.c ****         else if ((hall_A && !hall_B && !hall_C) &&
-  98              		.loc 1 26 14 is_stmt 1 view .LVU27
-  99              		.loc 1 26 19 is_stmt 0 view .LVU28
- 100 004c 564B     		ldr	r3, .L38+4
- 101 004e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 102              		.loc 1 26 17 view .LVU29
- 103 0050 EBB1     		cbz	r3, .L7
- 104              		.loc 1 26 29 discriminator 1 view .LVU30
- 105 0052 564B     		ldr	r3, .L38+8
- 106 0054 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 107              		.loc 1 26 26 discriminator 1 view .LVU31
- 108 0056 D3B9     		cbnz	r3, .L7
- 109              		.loc 1 26 40 discriminator 2 view .LVU32
- 110 0058 554B     		ldr	r3, .L38+12
- 111 005a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 112              		.loc 1 26 37 discriminator 2 view .LVU33
- 113 005c BBB9     		cbnz	r3, .L7
-  27:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 100'den 110'a geçiş
- 114              		.loc 1 27 28 view .LVU34
- 115 005e 554B     		ldr	r3, .L38+16
- 116 0060 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  26:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 100'den 110'a geçiş
- 117              		.loc 1 26 49 discriminator 3 view .LVU35
- 118 0062 2BB1     		cbz	r3, .L8
- 119              		.loc 1 27 43 view .LVU36
- 120 0064 534B     		ldr	r3, .L38+16
- 121 0066 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 122              		.loc 1 27 32 view .LVU37
- 123 0068 13B1     		cbz	r3, .L8
- 124              		.loc 1 27 59 discriminator 1 view .LVU38
- 125 006a 524B     		ldr	r3, .L38+16
- 126 006c 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 127              		.loc 1 27 47 discriminator 1 view .LVU39
- 128 006e 13B1     		cbz	r3, .L9
- 129              	.L8:
- 130              		.loc 1 27 64 discriminator 3 view .LVU40
- 131 0070 514B     		ldr	r3, .L38+20
- 132 0072 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 133 0074 5BB1     		cbz	r3, .L7
- 134              	.L9:
-  28:Src/Zeugma_c/old_value_hall.c ****         {
-  29:Src/Zeugma_c/old_value_hall.c ****             step = 5;
- 135              		.loc 1 29 13 is_stmt 1 view .LVU41
- 136              		.loc 1 29 18 is_stmt 0 view .LVU42
- 137 0076 514B     		ldr	r3, .L38+24
- 138 0078 0522     		movs	r2, #5
- 139 007a 1A60     		str	r2, [r3]
-  30:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 1;
- 140              		.loc 1 30 13 is_stmt 1 view .LVU43
-ARM GAS  /tmp/cc4ooOxA.s 			page 4
+  24:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
+  92              		.loc 1 24 13 is_stmt 1 view .LVU23
+  93              		.loc 1 24 25 is_stmt 0 view .LVU24
+  94 0046 9370     		strb	r3, [r2, #2]
+  25:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+  95              		.loc 1 25 13 is_stmt 1 view .LVU25
+  96              		.loc 1 25 19 is_stmt 0 view .LVU26
+  97 0048 5C4A     		ldr	r2, .L45+20
+  98 004a 1370     		strb	r3, [r2]
+  99              	.L1:
+  26:Src/Zeugma_c/old_value_hall.c ****         }
+  27:Src/Zeugma_c/old_value_hall.c ****         else if ((hall_A && !hall_B && !hall_C) &&
+  28:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 100'den 110'a geçiş
+  29:Src/Zeugma_c/old_value_hall.c ****         {
+  30:Src/Zeugma_c/old_value_hall.c ****             step = 5;
+  31:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 1;
+  32:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 0;
+  33:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
+  34:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+  35:Src/Zeugma_c/old_value_hall.c ****         }
+  36:Src/Zeugma_c/old_value_hall.c ****         else if ((hall_A && hall_B && !hall_C) &&
+  37:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 110'dan 010'a geçiş
+  38:Src/Zeugma_c/old_value_hall.c ****         {
+  39:Src/Zeugma_c/old_value_hall.c ****             step = 6;
+  40:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 1;
+  41:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
+  42:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
+  43:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+  44:Src/Zeugma_c/old_value_hall.c ****         }
+  45:Src/Zeugma_c/old_value_hall.c ****         else if ((!hall_A && hall_B && !hall_C) &&
+  46:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && oldValue[2]) || flagg)) // 010'dan 011'e geçiş
+  47:Src/Zeugma_c/old_value_hall.c ****         {
+  48:Src/Zeugma_c/old_value_hall.c ****             step = 1;
+  49:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
+  50:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
+  51:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
+  52:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+  53:Src/Zeugma_c/old_value_hall.c ****         }
+  54:Src/Zeugma_c/old_value_hall.c ****         else if ((!hall_A && hall_B && hall_C) &&
+  55:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 011'den 001'e geçiş
+  56:Src/Zeugma_c/old_value_hall.c ****         {
+  57:Src/Zeugma_c/old_value_hall.c ****             step = 2;
+  58:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
+  59:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
+  60:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
+  61:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+  62:Src/Zeugma_c/old_value_hall.c ****         }
+  63:Src/Zeugma_c/old_value_hall.c ****         else if ((!hall_A && !hall_B && hall_C) &&
+  64:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 001'den 101'e geçiş
+  65:Src/Zeugma_c/old_value_hall.c ****         {
+  66:Src/Zeugma_c/old_value_hall.c ****             step = 3;
+  67:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
+  68:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 0;
+  69:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
+  70:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+  71:Src/Zeugma_c/old_value_hall.c ****         }
+  72:Src/Zeugma_c/old_value_hall.c ****     }
+ARM GAS  /tmp/ccMtXEEL.s 			page 4
 
 
- 141              		.loc 1 30 25 is_stmt 0 view .LVU44
- 142 007c 4D4B     		ldr	r3, .L38+16
- 143 007e 0122     		movs	r2, #1
- 144 0080 1A70     		strb	r2, [r3]
-  31:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 0;
- 145              		.loc 1 31 13 is_stmt 1 view .LVU45
- 146              		.loc 1 31 25 is_stmt 0 view .LVU46
- 147 0082 0021     		movs	r1, #0
- 148 0084 5970     		strb	r1, [r3, #1]
-  32:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
- 149              		.loc 1 32 13 is_stmt 1 view .LVU47
- 150              		.loc 1 32 25 is_stmt 0 view .LVU48
- 151 0086 9970     		strb	r1, [r3, #2]
-  33:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
- 152              		.loc 1 33 13 is_stmt 1 view .LVU49
- 153              		.loc 1 33 19 is_stmt 0 view .LVU50
- 154 0088 4B4B     		ldr	r3, .L38+20
- 155 008a 1A70     		strb	r2, [r3]
- 156 008c 7047     		bx	lr
- 157              	.L7:
-  34:Src/Zeugma_c/old_value_hall.c ****         }
-  35:Src/Zeugma_c/old_value_hall.c ****         else if ((hall_A && hall_B && !hall_C) &&
- 158              		.loc 1 35 14 is_stmt 1 view .LVU51
- 159              		.loc 1 35 19 is_stmt 0 view .LVU52
- 160 008e 464B     		ldr	r3, .L38+4
- 161 0090 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 162              		.loc 1 35 17 view .LVU53
- 163 0092 EBB1     		cbz	r3, .L10
- 164              		.loc 1 35 26 discriminator 1 view .LVU54
- 165 0094 454B     		ldr	r3, .L38+8
- 166 0096 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 167 0098 D3B1     		cbz	r3, .L10
- 168              		.loc 1 35 39 discriminator 2 view .LVU55
- 169 009a 454B     		ldr	r3, .L38+12
- 170 009c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 171              		.loc 1 35 36 discriminator 2 view .LVU56
- 172 009e BBB9     		cbnz	r3, .L10
-  36:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 110'dan 010'a geçiş
- 173              		.loc 1 36 29 view .LVU57
- 174 00a0 444B     		ldr	r3, .L38+16
- 175 00a2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  35:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 110'dan 010'a geçiş
- 176              		.loc 1 35 48 discriminator 3 view .LVU58
- 177 00a4 2BB9     		cbnz	r3, .L11
- 178              		.loc 1 36 44 view .LVU59
- 179 00a6 434B     		ldr	r3, .L38+16
- 180 00a8 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 181              		.loc 1 36 33 view .LVU60
- 182 00aa 13B1     		cbz	r3, .L11
- 183              		.loc 1 36 60 discriminator 1 view .LVU61
- 184 00ac 414B     		ldr	r3, .L38+16
- 185 00ae 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 186              		.loc 1 36 48 discriminator 1 view .LVU62
- 187 00b0 13B1     		cbz	r3, .L12
- 188              	.L11:
- 189              		.loc 1 36 65 discriminator 3 view .LVU63
- 190 00b2 414B     		ldr	r3, .L38+20
-ARM GAS  /tmp/cc4ooOxA.s 			page 5
-
-
- 191 00b4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 192 00b6 5BB1     		cbz	r3, .L10
- 193              	.L12:
-  37:Src/Zeugma_c/old_value_hall.c ****         {
-  38:Src/Zeugma_c/old_value_hall.c ****             step = 6;
- 194              		.loc 1 38 13 is_stmt 1 view .LVU64
- 195              		.loc 1 38 18 is_stmt 0 view .LVU65
- 196 00b8 404B     		ldr	r3, .L38+24
- 197 00ba 0622     		movs	r2, #6
- 198 00bc 1A60     		str	r2, [r3]
-  39:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 1;
- 199              		.loc 1 39 13 is_stmt 1 view .LVU66
- 200              		.loc 1 39 25 is_stmt 0 view .LVU67
- 201 00be 3D4A     		ldr	r2, .L38+16
- 202 00c0 0123     		movs	r3, #1
- 203 00c2 1370     		strb	r3, [r2]
-  40:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
- 204              		.loc 1 40 13 is_stmt 1 view .LVU68
- 205              		.loc 1 40 25 is_stmt 0 view .LVU69
- 206 00c4 5370     		strb	r3, [r2, #1]
-  41:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
- 207              		.loc 1 41 13 is_stmt 1 view .LVU70
- 208              		.loc 1 41 25 is_stmt 0 view .LVU71
- 209 00c6 0021     		movs	r1, #0
- 210 00c8 9170     		strb	r1, [r2, #2]
-  42:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
- 211              		.loc 1 42 13 is_stmt 1 view .LVU72
- 212              		.loc 1 42 19 is_stmt 0 view .LVU73
- 213 00ca 3B4A     		ldr	r2, .L38+20
- 214 00cc 1370     		strb	r3, [r2]
- 215 00ce 7047     		bx	lr
- 216              	.L10:
-  43:Src/Zeugma_c/old_value_hall.c ****         }
-  44:Src/Zeugma_c/old_value_hall.c ****         else if ((!hall_A && hall_B && !hall_C) &&
- 217              		.loc 1 44 14 is_stmt 1 view .LVU74
- 218              		.loc 1 44 19 is_stmt 0 view .LVU75
- 219 00d0 354B     		ldr	r3, .L38+4
- 220 00d2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 221              		.loc 1 44 17 view .LVU76
- 222 00d4 E3B9     		cbnz	r3, .L13
- 223              		.loc 1 44 27 discriminator 1 view .LVU77
- 224 00d6 354B     		ldr	r3, .L38+8
- 225 00d8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 226 00da CBB1     		cbz	r3, .L13
- 227              		.loc 1 44 40 discriminator 2 view .LVU78
- 228 00dc 344B     		ldr	r3, .L38+12
- 229 00de 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 230              		.loc 1 44 37 discriminator 2 view .LVU79
- 231 00e0 B3B9     		cbnz	r3, .L13
-  45:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && oldValue[2]) || flagg)) // 010'dan 011'e geçiş
- 232              		.loc 1 45 29 view .LVU80
- 233 00e2 344B     		ldr	r3, .L38+16
- 234 00e4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  44:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && oldValue[2]) || flagg)) // 010'dan 011'e geçiş
- 235              		.loc 1 44 49 discriminator 3 view .LVU81
- 236 00e6 2BB9     		cbnz	r3, .L14
- 237              		.loc 1 45 44 view .LVU82
-ARM GAS  /tmp/cc4ooOxA.s 			page 6
-
-
- 238 00e8 324B     		ldr	r3, .L38+16
- 239 00ea 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 240              		.loc 1 45 33 view .LVU83
- 241 00ec 13B1     		cbz	r3, .L14
- 242              		.loc 1 45 59 discriminator 1 view .LVU84
- 243 00ee 314B     		ldr	r3, .L38+16
- 244 00f0 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 245              		.loc 1 45 48 discriminator 1 view .LVU85
- 246 00f2 13B9     		cbnz	r3, .L15
- 247              	.L14:
- 248              		.loc 1 45 64 discriminator 3 view .LVU86
- 249 00f4 304B     		ldr	r3, .L38+20
- 250 00f6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 251 00f8 53B1     		cbz	r3, .L13
- 252              	.L15:
-  46:Src/Zeugma_c/old_value_hall.c ****         {
-  47:Src/Zeugma_c/old_value_hall.c ****             step = 1;
- 253              		.loc 1 47 13 is_stmt 1 view .LVU87
- 254              		.loc 1 47 18 is_stmt 0 view .LVU88
- 255 00fa 0123     		movs	r3, #1
- 256 00fc 2F4A     		ldr	r2, .L38+24
- 257 00fe 1360     		str	r3, [r2]
-  48:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
- 258              		.loc 1 48 13 is_stmt 1 view .LVU89
- 259              		.loc 1 48 25 is_stmt 0 view .LVU90
- 260 0100 2C4A     		ldr	r2, .L38+16
- 261 0102 0021     		movs	r1, #0
- 262 0104 1170     		strb	r1, [r2]
-  49:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
- 263              		.loc 1 49 13 is_stmt 1 view .LVU91
- 264              		.loc 1 49 25 is_stmt 0 view .LVU92
- 265 0106 5370     		strb	r3, [r2, #1]
-  50:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
- 266              		.loc 1 50 13 is_stmt 1 view .LVU93
- 267              		.loc 1 50 25 is_stmt 0 view .LVU94
- 268 0108 9170     		strb	r1, [r2, #2]
-  51:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
- 269              		.loc 1 51 13 is_stmt 1 view .LVU95
- 270              		.loc 1 51 19 is_stmt 0 view .LVU96
- 271 010a 2B4A     		ldr	r2, .L38+20
- 272 010c 1370     		strb	r3, [r2]
- 273 010e 7047     		bx	lr
- 274              	.L13:
-  52:Src/Zeugma_c/old_value_hall.c ****         }
-  53:Src/Zeugma_c/old_value_hall.c ****         else if ((!hall_A && hall_B && hall_C) &&
- 275              		.loc 1 53 14 is_stmt 1 view .LVU97
- 276              		.loc 1 53 19 is_stmt 0 view .LVU98
- 277 0110 254B     		ldr	r3, .L38+4
- 278 0112 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 279              		.loc 1 53 17 view .LVU99
- 280 0114 EBB9     		cbnz	r3, .L16
- 281              		.loc 1 53 27 discriminator 1 view .LVU100
- 282 0116 254B     		ldr	r3, .L38+8
- 283 0118 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 284 011a D3B1     		cbz	r3, .L16
- 285              		.loc 1 53 37 discriminator 2 view .LVU101
- 286 011c 244B     		ldr	r3, .L38+12
-ARM GAS  /tmp/cc4ooOxA.s 			page 7
-
-
- 287 011e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 288 0120 BBB1     		cbz	r3, .L16
-  54:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 011'den 001'e geçiş
- 289              		.loc 1 54 29 view .LVU102
- 290 0122 244B     		ldr	r3, .L38+16
- 291 0124 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  53:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 011'den 001'e geçiş
- 292              		.loc 1 53 48 discriminator 3 view .LVU103
- 293 0126 2BB9     		cbnz	r3, .L17
- 294              		.loc 1 54 45 view .LVU104
- 295 0128 224B     		ldr	r3, .L38+16
- 296 012a 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 297              		.loc 1 54 33 view .LVU105
- 298 012c 13B9     		cbnz	r3, .L17
- 299              		.loc 1 54 60 discriminator 1 view .LVU106
- 300 012e 214B     		ldr	r3, .L38+16
- 301 0130 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 302              		.loc 1 54 49 discriminator 1 view .LVU107
- 303 0132 13B9     		cbnz	r3, .L18
- 304              	.L17:
- 305              		.loc 1 54 65 discriminator 3 view .LVU108
- 306 0134 204B     		ldr	r3, .L38+20
- 307 0136 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 308 0138 5BB1     		cbz	r3, .L16
- 309              	.L18:
-  55:Src/Zeugma_c/old_value_hall.c ****         {
-  56:Src/Zeugma_c/old_value_hall.c ****             step = 2;
- 310              		.loc 1 56 13 is_stmt 1 view .LVU109
- 311              		.loc 1 56 18 is_stmt 0 view .LVU110
- 312 013a 204B     		ldr	r3, .L38+24
- 313 013c 0222     		movs	r2, #2
- 314 013e 1A60     		str	r2, [r3]
-  57:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
- 315              		.loc 1 57 13 is_stmt 1 view .LVU111
- 316              		.loc 1 57 25 is_stmt 0 view .LVU112
- 317 0140 1C4A     		ldr	r2, .L38+16
- 318 0142 0023     		movs	r3, #0
- 319 0144 1370     		strb	r3, [r2]
-  58:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
- 320              		.loc 1 58 13 is_stmt 1 view .LVU113
- 321              		.loc 1 58 25 is_stmt 0 view .LVU114
- 322 0146 0123     		movs	r3, #1
- 323 0148 5370     		strb	r3, [r2, #1]
-  59:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
- 324              		.loc 1 59 13 is_stmt 1 view .LVU115
- 325              		.loc 1 59 25 is_stmt 0 view .LVU116
- 326 014a 9370     		strb	r3, [r2, #2]
-  60:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
- 327              		.loc 1 60 13 is_stmt 1 view .LVU117
- 328              		.loc 1 60 19 is_stmt 0 view .LVU118
- 329 014c 1A4A     		ldr	r2, .L38+20
- 330 014e 1370     		strb	r3, [r2]
- 331 0150 7047     		bx	lr
- 332              	.L16:
-  61:Src/Zeugma_c/old_value_hall.c ****         }
-  62:Src/Zeugma_c/old_value_hall.c ****         else if ((!hall_A && !hall_B && hall_C) &&
- 333              		.loc 1 62 14 is_stmt 1 view .LVU119
-ARM GAS  /tmp/cc4ooOxA.s 			page 8
-
-
- 334              		.loc 1 62 19 is_stmt 0 view .LVU120
- 335 0152 154B     		ldr	r3, .L38+4
- 336 0154 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 337              		.loc 1 62 17 view .LVU121
- 338 0156 002B     		cmp	r3, #0
- 339 0158 40F0F180 		bne	.L1
- 340              		.loc 1 62 30 discriminator 1 view .LVU122
- 341 015c 134B     		ldr	r3, .L38+8
- 342 015e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 343              		.loc 1 62 27 discriminator 1 view .LVU123
- 344 0160 002B     		cmp	r3, #0
- 345 0162 40F0EC80 		bne	.L1
- 346              		.loc 1 62 38 discriminator 2 view .LVU124
- 347 0166 124B     		ldr	r3, .L38+12
- 348 0168 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 349 016a 002B     		cmp	r3, #0
- 350 016c 00F0E780 		beq	.L1
-  63:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 001'den 101'e geçiş
- 351              		.loc 1 63 28 view .LVU125
- 352 0170 104B     		ldr	r3, .L38+16
- 353 0172 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  62:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 001'den 101'e geçiş
- 354              		.loc 1 62 49 discriminator 3 view .LVU126
- 355 0174 2BB1     		cbz	r3, .L19
- 356              		.loc 1 63 44 view .LVU127
- 357 0176 0F4B     		ldr	r3, .L38+16
- 358 0178 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 359              		.loc 1 63 32 view .LVU128
- 360 017a 13B9     		cbnz	r3, .L19
- 361              		.loc 1 63 59 discriminator 1 view .LVU129
- 362 017c 0D4B     		ldr	r3, .L38+16
- 363 017e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 364              		.loc 1 63 48 discriminator 1 view .LVU130
- 365 0180 23B9     		cbnz	r3, .L20
- 366              	.L19:
- 367              		.loc 1 63 64 discriminator 3 view .LVU131
- 368 0182 0D4B     		ldr	r3, .L38+20
- 369 0184 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 370 0186 002B     		cmp	r3, #0
- 371 0188 00F0D980 		beq	.L1
- 372              	.L20:
-  64:Src/Zeugma_c/old_value_hall.c ****         {
-  65:Src/Zeugma_c/old_value_hall.c ****             step = 3;
- 373              		.loc 1 65 13 is_stmt 1 view .LVU132
- 374              		.loc 1 65 18 is_stmt 0 view .LVU133
- 375 018c 0B4B     		ldr	r3, .L38+24
- 376 018e 0322     		movs	r2, #3
- 377 0190 1A60     		str	r2, [r3]
-  66:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
- 378              		.loc 1 66 13 is_stmt 1 view .LVU134
- 379              		.loc 1 66 25 is_stmt 0 view .LVU135
- 380 0192 084B     		ldr	r3, .L38+16
- 381 0194 0022     		movs	r2, #0
- 382 0196 1A70     		strb	r2, [r3]
-  67:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 0;
- 383              		.loc 1 67 13 is_stmt 1 view .LVU136
- 384              		.loc 1 67 25 is_stmt 0 view .LVU137
-ARM GAS  /tmp/cc4ooOxA.s 			page 9
-
-
- 385 0198 5A70     		strb	r2, [r3, #1]
-  68:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
- 386              		.loc 1 68 13 is_stmt 1 view .LVU138
- 387              		.loc 1 68 25 is_stmt 0 view .LVU139
- 388 019a 0122     		movs	r2, #1
- 389 019c 9A70     		strb	r2, [r3, #2]
-  69:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
- 390              		.loc 1 69 13 is_stmt 1 view .LVU140
- 391              		.loc 1 69 19 is_stmt 0 view .LVU141
- 392 019e 064B     		ldr	r3, .L38+20
- 393 01a0 1A70     		strb	r2, [r3]
- 394 01a2 7047     		bx	lr
- 395              	.L39:
- 396              		.align	2
- 397              	.L38:
- 398 01a4 00000000 		.word	geri_vites
- 399 01a8 00000000 		.word	hall_A
- 400 01ac 00000000 		.word	hall_B
- 401 01b0 00000000 		.word	hall_C
- 402 01b4 00000000 		.word	oldValue
- 403 01b8 00000000 		.word	flagg
- 404 01bc 00000000 		.word	step
- 405              	.L2:
-  70:Src/Zeugma_c/old_value_hall.c ****         }
-  71:Src/Zeugma_c/old_value_hall.c ****     }
-  72:Src/Zeugma_c/old_value_hall.c **** 
-  73:Src/Zeugma_c/old_value_hall.c ****     else // Geri yon
-  74:Src/Zeugma_c/old_value_hall.c ****     {
-  75:Src/Zeugma_c/old_value_hall.c ****         if ((hall_A && !hall_B && hall_C) && ((!oldValue[0] && !oldValue[1] && oldValue[2]) || flag
- 406              		.loc 1 75 9 is_stmt 1 view .LVU142
- 407              		.loc 1 75 14 is_stmt 0 view .LVU143
- 408 01c0 5F4B     		ldr	r3, .L40
- 409 01c2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 410              		.loc 1 75 12 view .LVU144
- 411 01c4 DBB1     		cbz	r3, .L21
- 412              		.loc 1 75 24 discriminator 1 view .LVU145
- 413 01c6 5F4B     		ldr	r3, .L40+4
- 414 01c8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 415              		.loc 1 75 21 discriminator 1 view .LVU146
- 416 01ca C3B9     		cbnz	r3, .L21
- 417              		.loc 1 75 32 discriminator 2 view .LVU147
- 418 01cc 5E4B     		ldr	r3, .L40+8
- 419 01ce 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 420 01d0 ABB1     		cbz	r3, .L21
- 421              		.loc 1 75 57 discriminator 3 view .LVU148
- 422 01d2 5E4B     		ldr	r3, .L40+12
- 423 01d4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 424              		.loc 1 75 43 discriminator 3 view .LVU149
- 425 01d6 2BB9     		cbnz	r3, .L22
- 426              		.loc 1 75 73 discriminator 4 view .LVU150
- 427 01d8 5C4B     		ldr	r3, .L40+12
- 428 01da 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 429              		.loc 1 75 61 discriminator 4 view .LVU151
- 430 01dc 13B9     		cbnz	r3, .L22
- 431              		.loc 1 75 88 discriminator 6 view .LVU152
- 432 01de 5B4B     		ldr	r3, .L40+12
- 433 01e0 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
-ARM GAS  /tmp/cc4ooOxA.s 			page 10
-
-
- 434              		.loc 1 75 77 discriminator 6 view .LVU153
- 435 01e2 13B9     		cbnz	r3, .L23
- 436              	.L22:
- 437              		.loc 1 75 93 discriminator 8 view .LVU154
- 438 01e4 5A4B     		ldr	r3, .L40+16
- 439 01e6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 440 01e8 4BB1     		cbz	r3, .L21
- 441              	.L23:
-  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
-  77:Src/Zeugma_c/old_value_hall.c ****             step = 1;
- 442              		.loc 1 77 13 is_stmt 1 view .LVU155
- 443              		.loc 1 77 18 is_stmt 0 view .LVU156
- 444 01ea 0123     		movs	r3, #1
- 445 01ec 594A     		ldr	r2, .L40+20
- 446 01ee 1360     		str	r3, [r2]
-  78:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 1;
- 447              		.loc 1 78 13 is_stmt 1 view .LVU157
- 448              		.loc 1 78 25 is_stmt 0 view .LVU158
- 449 01f0 564A     		ldr	r2, .L40+12
- 450 01f2 1370     		strb	r3, [r2]
-  79:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 0;
- 451              		.loc 1 79 13 is_stmt 1 view .LVU159
- 452              		.loc 1 79 25 is_stmt 0 view .LVU160
- 453 01f4 0021     		movs	r1, #0
- 454 01f6 5170     		strb	r1, [r2, #1]
-  80:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
- 455              		.loc 1 80 13 is_stmt 1 view .LVU161
- 456              		.loc 1 80 25 is_stmt 0 view .LVU162
- 457 01f8 9370     		strb	r3, [r2, #2]
-  81:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
- 458              		.loc 1 81 13 is_stmt 1 view .LVU163
- 459              		.loc 1 81 19 is_stmt 0 view .LVU164
- 460 01fa 554A     		ldr	r2, .L40+16
- 461 01fc 1370     		strb	r3, [r2]
- 462              	.L21:
-  82:Src/Zeugma_c/old_value_hall.c ****         }
-  83:Src/Zeugma_c/old_value_hall.c ****         if ((hall_A && !hall_B && !hall_C) && ((oldValue[0] && !oldValue[1] && oldValue[2]) || flag
- 463              		.loc 1 83 9 is_stmt 1 view .LVU165
- 464              		.loc 1 83 14 is_stmt 0 view .LVU166
- 465 01fe 504B     		ldr	r3, .L40
- 466 0200 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 467              		.loc 1 83 12 view .LVU167
- 468 0202 E3B1     		cbz	r3, .L24
- 469              		.loc 1 83 24 discriminator 1 view .LVU168
- 470 0204 4F4B     		ldr	r3, .L40+4
- 471 0206 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 472              		.loc 1 83 21 discriminator 1 view .LVU169
- 473 0208 CBB9     		cbnz	r3, .L24
- 474              		.loc 1 83 35 discriminator 2 view .LVU170
- 475 020a 4F4B     		ldr	r3, .L40+8
- 476 020c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 477              		.loc 1 83 32 discriminator 2 view .LVU171
- 478 020e B3B9     		cbnz	r3, .L24
- 479              		.loc 1 83 57 discriminator 3 view .LVU172
- 480 0210 4E4B     		ldr	r3, .L40+12
- 481 0212 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 482              		.loc 1 83 44 discriminator 3 view .LVU173
-ARM GAS  /tmp/cc4ooOxA.s 			page 11
-
-
- 483 0214 2BB1     		cbz	r3, .L25
- 484              		.loc 1 83 73 discriminator 4 view .LVU174
- 485 0216 4D4B     		ldr	r3, .L40+12
- 486 0218 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 487              		.loc 1 83 61 discriminator 4 view .LVU175
- 488 021a 13B9     		cbnz	r3, .L25
- 489              		.loc 1 83 88 discriminator 6 view .LVU176
- 490 021c 4B4B     		ldr	r3, .L40+12
- 491 021e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 492              		.loc 1 83 77 discriminator 6 view .LVU177
- 493 0220 13B9     		cbnz	r3, .L26
- 494              	.L25:
- 495              		.loc 1 83 93 discriminator 8 view .LVU178
- 496 0222 4B4B     		ldr	r3, .L40+16
- 497 0224 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 498 0226 53B1     		cbz	r3, .L24
- 499              	.L26:
-  84:Src/Zeugma_c/old_value_hall.c ****         { // 011
-  85:Src/Zeugma_c/old_value_hall.c ****             step = 2;
- 500              		.loc 1 85 13 is_stmt 1 view .LVU179
- 501              		.loc 1 85 18 is_stmt 0 view .LVU180
- 502 0228 4A4B     		ldr	r3, .L40+20
- 503 022a 0222     		movs	r2, #2
- 504 022c 1A60     		str	r2, [r3]
-  86:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 1;
- 505              		.loc 1 86 13 is_stmt 1 view .LVU181
- 506              		.loc 1 86 25 is_stmt 0 view .LVU182
- 507 022e 474B     		ldr	r3, .L40+12
- 508 0230 0122     		movs	r2, #1
- 509 0232 1A70     		strb	r2, [r3]
-  87:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 0;
- 510              		.loc 1 87 13 is_stmt 1 view .LVU183
- 511              		.loc 1 87 25 is_stmt 0 view .LVU184
- 512 0234 0021     		movs	r1, #0
- 513 0236 5970     		strb	r1, [r3, #1]
-  88:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
- 514              		.loc 1 88 13 is_stmt 1 view .LVU185
- 515              		.loc 1 88 25 is_stmt 0 view .LVU186
- 516 0238 9970     		strb	r1, [r3, #2]
-  89:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
- 517              		.loc 1 89 13 is_stmt 1 view .LVU187
- 518              		.loc 1 89 19 is_stmt 0 view .LVU188
- 519 023a 454B     		ldr	r3, .L40+16
- 520 023c 1A70     		strb	r2, [r3]
- 521              	.L24:
-  90:Src/Zeugma_c/old_value_hall.c ****         }
-  91:Src/Zeugma_c/old_value_hall.c ****         if ((hall_A && hall_B && !hall_C) && ((oldValue[0] && !oldValue[1] && !oldValue[2]) || flag
- 522              		.loc 1 91 9 is_stmt 1 view .LVU189
- 523              		.loc 1 91 14 is_stmt 0 view .LVU190
- 524 023e 404B     		ldr	r3, .L40
- 525 0240 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 526              		.loc 1 91 12 view .LVU191
- 527 0242 E3B1     		cbz	r3, .L27
- 528              		.loc 1 91 21 discriminator 1 view .LVU192
- 529 0244 3F4B     		ldr	r3, .L40+4
- 530 0246 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 531 0248 CBB1     		cbz	r3, .L27
-ARM GAS  /tmp/cc4ooOxA.s 			page 12
-
-
- 532              		.loc 1 91 34 discriminator 2 view .LVU193
- 533 024a 3F4B     		ldr	r3, .L40+8
- 534 024c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 535              		.loc 1 91 31 discriminator 2 view .LVU194
- 536 024e B3B9     		cbnz	r3, .L27
- 537              		.loc 1 91 56 discriminator 3 view .LVU195
- 538 0250 3E4B     		ldr	r3, .L40+12
- 539 0252 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 540              		.loc 1 91 43 discriminator 3 view .LVU196
- 541 0254 2BB1     		cbz	r3, .L28
- 542              		.loc 1 91 72 discriminator 4 view .LVU197
- 543 0256 3D4B     		ldr	r3, .L40+12
- 544 0258 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 545              		.loc 1 91 60 discriminator 4 view .LVU198
- 546 025a 13B9     		cbnz	r3, .L28
- 547              		.loc 1 91 88 discriminator 6 view .LVU199
- 548 025c 3B4B     		ldr	r3, .L40+12
- 549 025e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 550              		.loc 1 91 76 discriminator 6 view .LVU200
- 551 0260 13B1     		cbz	r3, .L29
- 552              	.L28:
- 553              		.loc 1 91 93 discriminator 8 view .LVU201
- 554 0262 3B4B     		ldr	r3, .L40+16
- 555 0264 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 556 0266 53B1     		cbz	r3, .L27
- 557              	.L29:
-  92:Src/Zeugma_c/old_value_hall.c ****         { // 001
-  93:Src/Zeugma_c/old_value_hall.c ****             step = 3;
- 558              		.loc 1 93 13 is_stmt 1 view .LVU202
- 559              		.loc 1 93 18 is_stmt 0 view .LVU203
- 560 0268 3A4B     		ldr	r3, .L40+20
- 561 026a 0322     		movs	r2, #3
- 562 026c 1A60     		str	r2, [r3]
-  94:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 1;
- 563              		.loc 1 94 13 is_stmt 1 view .LVU204
- 564              		.loc 1 94 25 is_stmt 0 view .LVU205
- 565 026e 374A     		ldr	r2, .L40+12
- 566 0270 0123     		movs	r3, #1
- 567 0272 1370     		strb	r3, [r2]
-  95:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
- 568              		.loc 1 95 13 is_stmt 1 view .LVU206
- 569              		.loc 1 95 25 is_stmt 0 view .LVU207
- 570 0274 5370     		strb	r3, [r2, #1]
-  96:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
- 571              		.loc 1 96 13 is_stmt 1 view .LVU208
- 572              		.loc 1 96 25 is_stmt 0 view .LVU209
- 573 0276 0021     		movs	r1, #0
- 574 0278 9170     		strb	r1, [r2, #2]
-  97:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
- 575              		.loc 1 97 13 is_stmt 1 view .LVU210
- 576              		.loc 1 97 19 is_stmt 0 view .LVU211
- 577 027a 354A     		ldr	r2, .L40+16
- 578 027c 1370     		strb	r3, [r2]
- 579              	.L27:
-  98:Src/Zeugma_c/old_value_hall.c ****         }
-  99:Src/Zeugma_c/old_value_hall.c ****         if ((!hall_A && hall_B && !hall_C) && ((oldValue[0] && oldValue[1] && !oldValue[2]) || flag
- 580              		.loc 1 99 9 is_stmt 1 view .LVU212
-ARM GAS  /tmp/cc4ooOxA.s 			page 13
-
-
- 581              		.loc 1 99 14 is_stmt 0 view .LVU213
- 582 027e 304B     		ldr	r3, .L40
- 583 0280 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 584              		.loc 1 99 12 view .LVU214
- 585 0282 E3B9     		cbnz	r3, .L30
- 586              		.loc 1 99 22 discriminator 1 view .LVU215
- 587 0284 2F4B     		ldr	r3, .L40+4
- 588 0286 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 589 0288 CBB1     		cbz	r3, .L30
- 590              		.loc 1 99 35 discriminator 2 view .LVU216
- 591 028a 2F4B     		ldr	r3, .L40+8
- 592 028c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 593              		.loc 1 99 32 discriminator 2 view .LVU217
- 594 028e B3B9     		cbnz	r3, .L30
- 595              		.loc 1 99 57 discriminator 3 view .LVU218
- 596 0290 2E4B     		ldr	r3, .L40+12
- 597 0292 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 598              		.loc 1 99 44 discriminator 3 view .LVU219
- 599 0294 2BB1     		cbz	r3, .L31
- 600              		.loc 1 99 72 discriminator 4 view .LVU220
- 601 0296 2D4B     		ldr	r3, .L40+12
- 602 0298 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 603              		.loc 1 99 61 discriminator 4 view .LVU221
- 604 029a 13B1     		cbz	r3, .L31
- 605              		.loc 1 99 88 discriminator 6 view .LVU222
- 606 029c 2B4B     		ldr	r3, .L40+12
- 607 029e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 608              		.loc 1 99 76 discriminator 6 view .LVU223
- 609 02a0 13B1     		cbz	r3, .L32
- 610              	.L31:
- 611              		.loc 1 99 93 discriminator 8 view .LVU224
- 612 02a2 2B4B     		ldr	r3, .L40+16
- 613 02a4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 614 02a6 53B1     		cbz	r3, .L30
- 615              	.L32:
- 100:Src/Zeugma_c/old_value_hall.c ****         { // 101
- 101:Src/Zeugma_c/old_value_hall.c ****             step = 4;
- 616              		.loc 1 101 13 is_stmt 1 view .LVU225
- 617              		.loc 1 101 18 is_stmt 0 view .LVU226
- 618 02a8 2A4B     		ldr	r3, .L40+20
- 619 02aa 0422     		movs	r2, #4
- 620 02ac 1A60     		str	r2, [r3]
- 102:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
- 621              		.loc 1 102 13 is_stmt 1 view .LVU227
- 622              		.loc 1 102 25 is_stmt 0 view .LVU228
- 623 02ae 274B     		ldr	r3, .L40+12
- 624 02b0 0021     		movs	r1, #0
- 625 02b2 1970     		strb	r1, [r3]
- 103:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
- 626              		.loc 1 103 13 is_stmt 1 view .LVU229
- 627              		.loc 1 103 25 is_stmt 0 view .LVU230
- 628 02b4 0122     		movs	r2, #1
- 629 02b6 5A70     		strb	r2, [r3, #1]
- 104:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
- 630              		.loc 1 104 13 is_stmt 1 view .LVU231
- 631              		.loc 1 104 25 is_stmt 0 view .LVU232
- 632 02b8 9970     		strb	r1, [r3, #2]
-ARM GAS  /tmp/cc4ooOxA.s 			page 14
-
-
- 105:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
- 633              		.loc 1 105 13 is_stmt 1 view .LVU233
- 634              		.loc 1 105 19 is_stmt 0 view .LVU234
- 635 02ba 254B     		ldr	r3, .L40+16
- 636 02bc 1A70     		strb	r2, [r3]
- 637              	.L30:
- 106:Src/Zeugma_c/old_value_hall.c ****         }
- 107:Src/Zeugma_c/old_value_hall.c ****         if ((!hall_A && hall_B && hall_C) && ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flag
- 638              		.loc 1 107 9 is_stmt 1 view .LVU235
- 639              		.loc 1 107 14 is_stmt 0 view .LVU236
- 640 02be 204B     		ldr	r3, .L40
- 641 02c0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 642              		.loc 1 107 12 view .LVU237
- 643 02c2 E3B9     		cbnz	r3, .L33
- 644              		.loc 1 107 22 discriminator 1 view .LVU238
- 645 02c4 1F4B     		ldr	r3, .L40+4
- 646 02c6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 647 02c8 CBB1     		cbz	r3, .L33
- 648              		.loc 1 107 32 discriminator 2 view .LVU239
- 649 02ca 1F4B     		ldr	r3, .L40+8
- 650 02cc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 651 02ce B3B1     		cbz	r3, .L33
- 652              		.loc 1 107 57 discriminator 3 view .LVU240
- 653 02d0 1E4B     		ldr	r3, .L40+12
- 654 02d2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 655              		.loc 1 107 43 discriminator 3 view .LVU241
- 656 02d4 2BB9     		cbnz	r3, .L34
- 657              		.loc 1 107 72 discriminator 4 view .LVU242
- 658 02d6 1D4B     		ldr	r3, .L40+12
- 659 02d8 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 660              		.loc 1 107 61 discriminator 4 view .LVU243
- 661 02da 13B1     		cbz	r3, .L34
- 662              		.loc 1 107 88 discriminator 6 view .LVU244
- 663 02dc 1B4B     		ldr	r3, .L40+12
- 664 02de 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 665              		.loc 1 107 76 discriminator 6 view .LVU245
- 666 02e0 13B1     		cbz	r3, .L35
- 667              	.L34:
- 668              		.loc 1 107 93 discriminator 8 view .LVU246
- 669 02e2 1B4B     		ldr	r3, .L40+16
- 670 02e4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 671 02e6 53B1     		cbz	r3, .L33
- 672              	.L35:
- 108:Src/Zeugma_c/old_value_hall.c ****         { // 100
- 109:Src/Zeugma_c/old_value_hall.c ****             step = 5;
- 673              		.loc 1 109 13 is_stmt 1 view .LVU247
- 674              		.loc 1 109 18 is_stmt 0 view .LVU248
- 675 02e8 1A4B     		ldr	r3, .L40+20
- 676 02ea 0522     		movs	r2, #5
- 677 02ec 1A60     		str	r2, [r3]
- 110:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
- 678              		.loc 1 110 13 is_stmt 1 view .LVU249
- 679              		.loc 1 110 25 is_stmt 0 view .LVU250
- 680 02ee 174A     		ldr	r2, .L40+12
- 681 02f0 0023     		movs	r3, #0
- 682 02f2 1370     		strb	r3, [r2]
- 111:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
-ARM GAS  /tmp/cc4ooOxA.s 			page 15
-
-
- 683              		.loc 1 111 13 is_stmt 1 view .LVU251
- 684              		.loc 1 111 25 is_stmt 0 view .LVU252
- 685 02f4 0123     		movs	r3, #1
- 686 02f6 5370     		strb	r3, [r2, #1]
- 112:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
- 687              		.loc 1 112 13 is_stmt 1 view .LVU253
- 688              		.loc 1 112 25 is_stmt 0 view .LVU254
- 689 02f8 9370     		strb	r3, [r2, #2]
- 113:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
- 690              		.loc 1 113 13 is_stmt 1 view .LVU255
- 691              		.loc 1 113 19 is_stmt 0 view .LVU256
- 692 02fa 154A     		ldr	r2, .L40+16
- 693 02fc 1370     		strb	r3, [r2]
- 694              	.L33:
+  73:Src/Zeugma_c/old_value_hall.c **** 
+  74:Src/Zeugma_c/old_value_hall.c ****     else // Geri yon
+  75:Src/Zeugma_c/old_value_hall.c ****     {
+  76:Src/Zeugma_c/old_value_hall.c ****         if ((hall_A && !hall_B && hall_C) && ((!oldValue[0] && !oldValue[1] && oldValue[2]) || flag
+  77:Src/Zeugma_c/old_value_hall.c ****         { // 010
+  78:Src/Zeugma_c/old_value_hall.c ****             step = 1;
+  79:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+  80:Src/Zeugma_c/old_value_hall.c ****             {
+  81:Src/Zeugma_c/old_value_hall.c **** 
+  82:Src/Zeugma_c/old_value_hall.c ****                 oldValue[0] = 1;
+  83:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 0;
+  84:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 1;
+  85:Src/Zeugma_c/old_value_hall.c ****             }
+  86:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+  87:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+  88:Src/Zeugma_c/old_value_hall.c ****         }
+  89:Src/Zeugma_c/old_value_hall.c ****         if ((hall_A && !hall_B && !hall_C) && ((oldValue[0] && !oldValue[1] && oldValue[2]) || flag
+  90:Src/Zeugma_c/old_value_hall.c ****         { // 011
+  91:Src/Zeugma_c/old_value_hall.c ****             step = 2;
+  92:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+  93:Src/Zeugma_c/old_value_hall.c ****             {
+  94:Src/Zeugma_c/old_value_hall.c **** 
+  95:Src/Zeugma_c/old_value_hall.c ****                 oldValue[0] = 1;
+  96:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 0;
+  97:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 0;
+  98:Src/Zeugma_c/old_value_hall.c ****             }
+  99:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 100:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 101:Src/Zeugma_c/old_value_hall.c ****         }
+ 102:Src/Zeugma_c/old_value_hall.c ****         if ((hall_A && hall_B && !hall_C) && ((oldValue[0] && !oldValue[1] && !oldValue[2]) || flag
+ 103:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 104:Src/Zeugma_c/old_value_hall.c ****             step = 3;
+ 105:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 106:Src/Zeugma_c/old_value_hall.c ****             {
+ 107:Src/Zeugma_c/old_value_hall.c **** 
+ 108:Src/Zeugma_c/old_value_hall.c ****                 oldValue[0] = 1;
+ 109:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 1;
+ 110:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 0;
+ 111:Src/Zeugma_c/old_value_hall.c ****             }
+ 112:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 113:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
  114:Src/Zeugma_c/old_value_hall.c ****         }
- 115:Src/Zeugma_c/old_value_hall.c ****         if ((!hall_A && !hall_B && hall_C) && ((!oldValue[0] && oldValue[1] && oldValue[2]) || flag
- 695              		.loc 1 115 9 is_stmt 1 view .LVU257
- 696              		.loc 1 115 14 is_stmt 0 view .LVU258
- 697 02fe 104B     		ldr	r3, .L40
- 698 0300 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 699              		.loc 1 115 12 view .LVU259
- 700 0302 E3B9     		cbnz	r3, .L1
- 701              		.loc 1 115 25 discriminator 1 view .LVU260
- 702 0304 0F4B     		ldr	r3, .L40+4
- 703 0306 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 704              		.loc 1 115 22 discriminator 1 view .LVU261
- 705 0308 CBB9     		cbnz	r3, .L1
- 706              		.loc 1 115 33 discriminator 2 view .LVU262
- 707 030a 0F4B     		ldr	r3, .L40+8
- 708 030c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 709 030e B3B1     		cbz	r3, .L1
- 710              		.loc 1 115 58 discriminator 3 view .LVU263
- 711 0310 0E4B     		ldr	r3, .L40+12
- 712 0312 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 713              		.loc 1 115 44 discriminator 3 view .LVU264
- 714 0314 2BB9     		cbnz	r3, .L36
- 715              		.loc 1 115 73 discriminator 4 view .LVU265
- 716 0316 0D4B     		ldr	r3, .L40+12
- 717 0318 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 718              		.loc 1 115 62 discriminator 4 view .LVU266
- 719 031a 13B1     		cbz	r3, .L36
- 720              		.loc 1 115 88 discriminator 6 view .LVU267
- 721 031c 0B4B     		ldr	r3, .L40+12
- 722 031e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 723              		.loc 1 115 77 discriminator 6 view .LVU268
- 724 0320 13B9     		cbnz	r3, .L37
- 725              	.L36:
- 726              		.loc 1 115 93 discriminator 8 view .LVU269
- 727 0322 0B4B     		ldr	r3, .L40+16
- 728 0324 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 729 0326 53B1     		cbz	r3, .L1
- 730              	.L37:
- 116:Src/Zeugma_c/old_value_hall.c ****         { // 110
- 117:Src/Zeugma_c/old_value_hall.c ****             step = 6;
- 731              		.loc 1 117 13 is_stmt 1 view .LVU270
- 732              		.loc 1 117 18 is_stmt 0 view .LVU271
- 733 0328 0A4B     		ldr	r3, .L40+20
-ARM GAS  /tmp/cc4ooOxA.s 			page 16
+ 115:Src/Zeugma_c/old_value_hall.c ****         if ((!hall_A && hall_B && !hall_C) && ((oldValue[0] && oldValue[1] && !oldValue[2]) || flag
+ 116:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 117:Src/Zeugma_c/old_value_hall.c ****             step = 4;
+ 118:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 119:Src/Zeugma_c/old_value_hall.c ****             {
+ 120:Src/Zeugma_c/old_value_hall.c **** 
+ 121:Src/Zeugma_c/old_value_hall.c ****                 oldValue[0] = 0;
+ 122:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 1;
+ 123:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 0;
+ 124:Src/Zeugma_c/old_value_hall.c ****             }
+ 125:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 126:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 127:Src/Zeugma_c/old_value_hall.c ****         }
+ 128:Src/Zeugma_c/old_value_hall.c ****         if ((!hall_A && hall_B && hall_C) && ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flag
+ 129:Src/Zeugma_c/old_value_hall.c ****         { // 100
+ARM GAS  /tmp/ccMtXEEL.s 			page 5
 
 
- 734 032a 0622     		movs	r2, #6
- 735 032c 1A60     		str	r2, [r3]
- 118:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
- 736              		.loc 1 118 13 is_stmt 1 view .LVU272
- 737              		.loc 1 118 25 is_stmt 0 view .LVU273
- 738 032e 074B     		ldr	r3, .L40+12
- 739 0330 0022     		movs	r2, #0
- 740 0332 1A70     		strb	r2, [r3]
- 119:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 0;
- 741              		.loc 1 119 13 is_stmt 1 view .LVU274
- 742              		.loc 1 119 25 is_stmt 0 view .LVU275
- 743 0334 5A70     		strb	r2, [r3, #1]
- 120:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
- 744              		.loc 1 120 13 is_stmt 1 view .LVU276
- 745              		.loc 1 120 25 is_stmt 0 view .LVU277
- 746 0336 0122     		movs	r2, #1
- 747 0338 9A70     		strb	r2, [r3, #2]
- 121:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
- 748              		.loc 1 121 13 is_stmt 1 view .LVU278
- 749              		.loc 1 121 19 is_stmt 0 view .LVU279
- 750 033a 054B     		ldr	r3, .L40+16
- 751 033c 1A70     		strb	r2, [r3]
- 752              	.L1:
- 122:Src/Zeugma_c/old_value_hall.c ****         }
- 123:Src/Zeugma_c/old_value_hall.c ****     }
- 124:Src/Zeugma_c/old_value_hall.c **** 
- 125:Src/Zeugma_c/old_value_hall.c ****     // for (uint8_t i = 0; i < 160; i++)
- 126:Src/Zeugma_c/old_value_hall.c ****     // {
- 127:Src/Zeugma_c/old_value_hall.c ****     //     if (i == rpm / 10 && counter < 160 && rpm > 99)
- 128:Src/Zeugma_c/old_value_hall.c ****     //     {
- 129:Src/Zeugma_c/old_value_hall.c ****     //         analyze_data_1[i] = (uint16_t)phase_A;
- 130:Src/Zeugma_c/old_value_hall.c ****     //         analyze_data_1[i + 160] = (uint16_t)phase_B;
- 131:Src/Zeugma_c/old_value_hall.c ****     //         analyze_data_1[i + 320] = (uint16_t)phase_C;
- 132:Src/Zeugma_c/old_value_hall.c ****     //         counter++;
+ 130:Src/Zeugma_c/old_value_hall.c ****             step = 5;
+ 131:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 132:Src/Zeugma_c/old_value_hall.c ****             {
  133:Src/Zeugma_c/old_value_hall.c **** 
- 134:Src/Zeugma_c/old_value_hall.c ****     //         if (counter == 159) // Buffer tamamlandığında veri gönder
- 135:Src/Zeugma_c/old_value_hall.c ****     //         {
- 136:Src/Zeugma_c/old_value_hall.c ****     //             sender_flag = 1;
- 137:Src/Zeugma_c/old_value_hall.c ****     //         }
- 138:Src/Zeugma_c/old_value_hall.c ****     //     }
- 139:Src/Zeugma_c/old_value_hall.c ****     // }
- 140:Src/Zeugma_c/old_value_hall.c **** }
- 753              		.loc 1 140 1 view .LVU280
- 754 033e 7047     		bx	lr
- 755              	.L41:
- 756              		.align	2
- 757              	.L40:
- 758 0340 00000000 		.word	hall_A
- 759 0344 00000000 		.word	hall_B
- 760 0348 00000000 		.word	hall_C
- 761 034c 00000000 		.word	oldValue
- 762 0350 00000000 		.word	flagg
- 763 0354 00000000 		.word	step
- 764              		.cfi_endproc
- 765              	.LFE68:
- 767              		.section	.text.sample_phase_data,"ax",%progbits
- 768              		.align	1
-ARM GAS  /tmp/cc4ooOxA.s 			page 17
+ 134:Src/Zeugma_c/old_value_hall.c ****                 oldValue[0] = 0;
+ 135:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 1;
+ 136:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 1;
+ 137:Src/Zeugma_c/old_value_hall.c ****             }
+ 138:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 139:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 140:Src/Zeugma_c/old_value_hall.c ****         }
+ 141:Src/Zeugma_c/old_value_hall.c ****         if ((!hall_A && !hall_B && hall_C) && ((!oldValue[0] && oldValue[1] && oldValue[2]) || flag
+ 142:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 143:Src/Zeugma_c/old_value_hall.c ****             step = 6;
+ 144:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 145:Src/Zeugma_c/old_value_hall.c ****             {
+ 146:Src/Zeugma_c/old_value_hall.c **** 
+ 147:Src/Zeugma_c/old_value_hall.c ****                 oldValue[0] = 0;
+ 148:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 0;
+ 149:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 1;
+ 150:Src/Zeugma_c/old_value_hall.c ****             }
+ 151:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 152:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 153:Src/Zeugma_c/old_value_hall.c ****         }
+ 154:Src/Zeugma_c/old_value_hall.c ****     }
+ 155:Src/Zeugma_c/old_value_hall.c **** 
+ 156:Src/Zeugma_c/old_value_hall.c ****     // for (uint8_t i = 0; i < 160; i++)
+ 157:Src/Zeugma_c/old_value_hall.c ****     // {
+ 158:Src/Zeugma_c/old_value_hall.c ****     //     if (i == rpm / 10 && counter < 160 && rpm > 99)
+ 159:Src/Zeugma_c/old_value_hall.c ****     //     {
+ 160:Src/Zeugma_c/old_value_hall.c ****     //         analyze_data_1[i] = (uint16_t)phase_A;
+ 161:Src/Zeugma_c/old_value_hall.c ****     //         analyze_data_1[i + 160] = (uint16_t)phase_B;
+ 162:Src/Zeugma_c/old_value_hall.c ****     //         analyze_data_1[i + 320] = (uint16_t)phase_C;
+ 163:Src/Zeugma_c/old_value_hall.c ****     //         counter++;
+ 164:Src/Zeugma_c/old_value_hall.c **** 
+ 165:Src/Zeugma_c/old_value_hall.c ****     //         if (counter == 159) // Buffer tamamlandığında veri gönder
+ 166:Src/Zeugma_c/old_value_hall.c ****     //         {
+ 167:Src/Zeugma_c/old_value_hall.c ****     //             sender_flag = 1;
+ 168:Src/Zeugma_c/old_value_hall.c ****     //         }
+ 169:Src/Zeugma_c/old_value_hall.c ****     //     }
+ 170:Src/Zeugma_c/old_value_hall.c ****     // }
+ 171:Src/Zeugma_c/old_value_hall.c **** }
+ 100              		.loc 1 171 1 view .LVU27
+ 101 004c 08BD     		pop	{r3, pc}
+ 102              	.L3:
+  27:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 100'den 110'a geçiş
+ 103              		.loc 1 27 14 is_stmt 1 view .LVU28
+  27:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 100'den 110'a geçiş
+ 104              		.loc 1 27 19 is_stmt 0 view .LVU29
+ 105 004e 574B     		ldr	r3, .L45+4
+ 106 0050 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  27:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 100'den 110'a geçiş
+ 107              		.loc 1 27 17 view .LVU30
+ 108 0052 EBB1     		cbz	r3, .L7
+  27:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 100'den 110'a geçiş
+ 109              		.loc 1 27 29 discriminator 1 view .LVU31
+ 110 0054 564B     		ldr	r3, .L45+8
+ARM GAS  /tmp/ccMtXEEL.s 			page 6
 
 
- 769              		.global	sample_phase_data
- 770              		.syntax unified
- 771              		.thumb
- 772              		.thumb_func
- 774              	sample_phase_data:
- 775              	.LVL0:
- 776              	.LFB69:
- 141:Src/Zeugma_c/old_value_hall.c **** 
- 142:Src/Zeugma_c/old_value_hall.c **** 
- 143:Src/Zeugma_c/old_value_hall.c **** 
- 144:Src/Zeugma_c/old_value_hall.c **** // Deactive
- 145:Src/Zeugma_c/old_value_hall.c **** void sample_phase_data(uint16_t rpm, uint16_t phase_A, uint16_t phase_B, uint16_t phase_C)
- 146:Src/Zeugma_c/old_value_hall.c **** {
- 777              		.loc 1 146 1 is_stmt 1 view -0
- 778              		.cfi_startproc
- 779              		@ args = 0, pretend = 0, frame = 0
- 780              		@ frame_needed = 0, uses_anonymous_args = 0
- 781              		@ link register save eliminated.
- 147:Src/Zeugma_c/old_value_hall.c ****     if (rpm > 99 && counter < 160)
- 782              		.loc 1 147 5 view .LVU282
- 783              		.loc 1 147 8 is_stmt 0 view .LVU283
- 784 0000 6328     		cmp	r0, #99
- 785 0002 1BD9     		bls	.L45
- 786              		.loc 1 147 29 discriminator 1 view .LVU284
- 787 0004 0E48     		ldr	r0, .L49
- 788              	.LVL1:
- 789              		.loc 1 147 29 discriminator 1 view .LVU285
- 790 0006 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
- 791              		.loc 1 147 18 discriminator 1 view .LVU286
- 792 0008 9F28     		cmp	r0, #159
- 793 000a 17D8     		bhi	.L45
- 146:Src/Zeugma_c/old_value_hall.c ****     if (rpm > 99 && counter < 160)
- 794              		.loc 1 146 1 view .LVU287
- 795 000c 10B4     		push	{r4}
- 796              		.cfi_def_cfa_offset 4
- 797              		.cfi_offset 4, -4
- 148:Src/Zeugma_c/old_value_hall.c ****     {
- 149:Src/Zeugma_c/old_value_hall.c ****         analyze_data_1[counter] = phase_A;
- 798              		.loc 1 149 9 is_stmt 1 view .LVU288
- 799              		.loc 1 149 33 is_stmt 0 view .LVU289
- 800 000e 0D4C     		ldr	r4, .L49+4
- 801 0010 24F81010 		strh	r1, [r4, r0, lsl #1]	@ movhi
- 150:Src/Zeugma_c/old_value_hall.c ****         analyze_data_1[counter + 160] = phase_B;
- 802              		.loc 1 150 9 is_stmt 1 view .LVU290
- 803              		.loc 1 150 32 is_stmt 0 view .LVU291
- 804 0014 00F1A001 		add	r1, r0, #160
- 805              	.LVL2:
- 806              		.loc 1 150 39 view .LVU292
- 807 0018 24F81120 		strh	r2, [r4, r1, lsl #1]	@ movhi
- 151:Src/Zeugma_c/old_value_hall.c ****         analyze_data_1[counter + (160 * 2)] = phase_C;
- 808              		.loc 1 151 9 is_stmt 1 view .LVU293
- 809              		.loc 1 151 32 is_stmt 0 view .LVU294
- 810 001c 00F5A072 		add	r2, r0, #320
- 811              	.LVL3:
- 812              		.loc 1 151 45 view .LVU295
- 813 0020 24F81230 		strh	r3, [r4, r2, lsl #1]	@ movhi
- 152:Src/Zeugma_c/old_value_hall.c **** 
-ARM GAS  /tmp/cc4ooOxA.s 			page 18
+ 111 0056 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  27:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 100'den 110'a geçiş
+ 112              		.loc 1 27 26 discriminator 1 view .LVU32
+ 113 0058 D3B9     		cbnz	r3, .L7
+  27:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 100'den 110'a geçiş
+ 114              		.loc 1 27 40 discriminator 2 view .LVU33
+ 115 005a 564B     		ldr	r3, .L45+12
+ 116 005c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  27:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 100'den 110'a geçiş
+ 117              		.loc 1 27 37 discriminator 2 view .LVU34
+ 118 005e BBB9     		cbnz	r3, .L7
+  28:Src/Zeugma_c/old_value_hall.c ****         {
+ 119              		.loc 1 28 28 view .LVU35
+ 120 0060 554B     		ldr	r3, .L45+16
+ 121 0062 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  27:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 100'den 110'a geçiş
+ 122              		.loc 1 27 49 discriminator 3 view .LVU36
+ 123 0064 2BB1     		cbz	r3, .L8
+  28:Src/Zeugma_c/old_value_hall.c ****         {
+ 124              		.loc 1 28 43 view .LVU37
+ 125 0066 544B     		ldr	r3, .L45+16
+ 126 0068 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  28:Src/Zeugma_c/old_value_hall.c ****         {
+ 127              		.loc 1 28 32 view .LVU38
+ 128 006a 13B1     		cbz	r3, .L8
+  28:Src/Zeugma_c/old_value_hall.c ****         {
+ 129              		.loc 1 28 59 discriminator 1 view .LVU39
+ 130 006c 524B     		ldr	r3, .L45+16
+ 131 006e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+  28:Src/Zeugma_c/old_value_hall.c ****         {
+ 132              		.loc 1 28 47 discriminator 1 view .LVU40
+ 133 0070 13B1     		cbz	r3, .L9
+ 134              	.L8:
+  28:Src/Zeugma_c/old_value_hall.c ****         {
+ 135              		.loc 1 28 64 discriminator 3 view .LVU41
+ 136 0072 524B     		ldr	r3, .L45+20
+ 137 0074 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 138 0076 5BB1     		cbz	r3, .L7
+ 139              	.L9:
+  30:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 1;
+ 140              		.loc 1 30 13 is_stmt 1 view .LVU42
+  30:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 1;
+ 141              		.loc 1 30 18 is_stmt 0 view .LVU43
+ 142 0078 514B     		ldr	r3, .L45+24
+ 143 007a 0522     		movs	r2, #5
+ 144 007c 1A60     		str	r2, [r3]
+  31:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 0;
+ 145              		.loc 1 31 13 is_stmt 1 view .LVU44
+  31:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 0;
+ 146              		.loc 1 31 25 is_stmt 0 view .LVU45
+ 147 007e 4E4B     		ldr	r3, .L45+16
+ 148 0080 0122     		movs	r2, #1
+ 149 0082 1A70     		strb	r2, [r3]
+  32:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
+ 150              		.loc 1 32 13 is_stmt 1 view .LVU46
+  32:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
+ 151              		.loc 1 32 25 is_stmt 0 view .LVU47
+ARM GAS  /tmp/ccMtXEEL.s 			page 7
 
 
- 153:Src/Zeugma_c/old_value_hall.c ****         counter++;
- 814              		.loc 1 153 9 is_stmt 1 view .LVU296
- 815              		.loc 1 153 16 is_stmt 0 view .LVU297
- 816 0024 0130     		adds	r0, r0, #1
- 817              	.LVL4:
- 818              		.loc 1 153 16 view .LVU298
- 819 0026 C0B2     		uxtb	r0, r0
- 820              	.LVL5:
- 821              		.loc 1 153 16 view .LVU299
- 822 0028 054B     		ldr	r3, .L49
- 823              	.LVL6:
- 824              		.loc 1 153 16 view .LVU300
- 825 002a 1870     		strb	r0, [r3]
- 154:Src/Zeugma_c/old_value_hall.c **** 
- 155:Src/Zeugma_c/old_value_hall.c ****         if (counter == 160)
- 826              		.loc 1 155 9 is_stmt 1 view .LVU301
- 827              		.loc 1 155 12 is_stmt 0 view .LVU302
- 828 002c A028     		cmp	r0, #160
- 829 002e 01D0     		beq	.L48
- 830              	.LVL7:
- 831              	.L42:
- 156:Src/Zeugma_c/old_value_hall.c ****         {
- 157:Src/Zeugma_c/old_value_hall.c ****             sender_flag = 1; // 160 örnek tamamlandığında veri gönderimi işaretle
- 158:Src/Zeugma_c/old_value_hall.c ****         }
- 159:Src/Zeugma_c/old_value_hall.c ****     }
- 160:Src/Zeugma_c/old_value_hall.c **** }...
- 832              		.loc 1 160 1 view .LVU303
- 833 0030 10BC     		pop	{r4}
- 834              		.cfi_remember_state
- 835              		.cfi_restore 4
- 836              		.cfi_def_cfa_offset 0
- 837              	.LVL8:
- 838              		.loc 1 160 1 view .LVU304
- 839 0032 7047     		bx	lr
- 840              	.LVL9:
- 841              	.L48:
- 842              		.cfi_restore_state
- 157:Src/Zeugma_c/old_value_hall.c ****             sender_flag = 1; // 160 örnek tamamlandığında veri gönderimi işaretle
- 843              		.loc 1 157 13 is_stmt 1 view .LVU305
- 157:Src/Zeugma_c/old_value_hall.c ****             sender_flag = 1; // 160 örnek tamamlandığında veri gönderimi işaretle
- 844              		.loc 1 157 25 is_stmt 0 view .LVU306
- 845 0034 044B     		ldr	r3, .L49+8
- 846 0036 0122     		movs	r2, #1
- 847              	.LVL10:
- 157:Src/Zeugma_c/old_value_hall.c ****             sender_flag = 1; // 160 örnek tamamlandığında veri gönderimi işaretle
- 848              		.loc 1 157 25 view .LVU307
- 849 0038 1A70     		strb	r2, [r3]
- 850              		.loc 1 160 1 view .LVU308
- 851 003a F9E7     		b	.L42
- 852              	.LVL11:
- 853              	.L45:
- 854              		.cfi_def_cfa_offset 0
- 855              		.cfi_restore 4
- 856              		.loc 1 160 1 view .LVU309
- 857 003c 7047     		bx	lr
- 858              	.L50:
- 859 003e 00BF     		.align	2
-ARM GAS  /tmp/cc4ooOxA.s 			page 19
+ 152 0084 0021     		movs	r1, #0
+ 153 0086 5970     		strb	r1, [r3, #1]
+  33:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 154              		.loc 1 33 13 is_stmt 1 view .LVU48
+  33:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 155              		.loc 1 33 25 is_stmt 0 view .LVU49
+ 156 0088 9970     		strb	r1, [r3, #2]
+  34:Src/Zeugma_c/old_value_hall.c ****         }
+ 157              		.loc 1 34 13 is_stmt 1 view .LVU50
+  34:Src/Zeugma_c/old_value_hall.c ****         }
+ 158              		.loc 1 34 19 is_stmt 0 view .LVU51
+ 159 008a 4C4B     		ldr	r3, .L45+20
+ 160 008c 1A70     		strb	r2, [r3]
+ 161 008e DDE7     		b	.L1
+ 162              	.L7:
+  36:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 110'dan 010'a geçiş
+ 163              		.loc 1 36 14 is_stmt 1 view .LVU52
+  36:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 110'dan 010'a geçiş
+ 164              		.loc 1 36 19 is_stmt 0 view .LVU53
+ 165 0090 464B     		ldr	r3, .L45+4
+ 166 0092 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  36:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 110'dan 010'a geçiş
+ 167              		.loc 1 36 17 view .LVU54
+ 168 0094 EBB1     		cbz	r3, .L10
+  36:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 110'dan 010'a geçiş
+ 169              		.loc 1 36 26 discriminator 1 view .LVU55
+ 170 0096 464B     		ldr	r3, .L45+8
+ 171 0098 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 172 009a D3B1     		cbz	r3, .L10
+  36:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 110'dan 010'a geçiş
+ 173              		.loc 1 36 39 discriminator 2 view .LVU56
+ 174 009c 454B     		ldr	r3, .L45+12
+ 175 009e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  36:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 110'dan 010'a geçiş
+ 176              		.loc 1 36 36 discriminator 2 view .LVU57
+ 177 00a0 BBB9     		cbnz	r3, .L10
+  37:Src/Zeugma_c/old_value_hall.c ****         {
+ 178              		.loc 1 37 29 view .LVU58
+ 179 00a2 454B     		ldr	r3, .L45+16
+ 180 00a4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  36:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 110'dan 010'a geçiş
+ 181              		.loc 1 36 48 discriminator 3 view .LVU59
+ 182 00a6 2BB9     		cbnz	r3, .L11
+  37:Src/Zeugma_c/old_value_hall.c ****         {
+ 183              		.loc 1 37 44 view .LVU60
+ 184 00a8 434B     		ldr	r3, .L45+16
+ 185 00aa 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  37:Src/Zeugma_c/old_value_hall.c ****         {
+ 186              		.loc 1 37 33 view .LVU61
+ 187 00ac 13B1     		cbz	r3, .L11
+  37:Src/Zeugma_c/old_value_hall.c ****         {
+ 188              		.loc 1 37 60 discriminator 1 view .LVU62
+ 189 00ae 424B     		ldr	r3, .L45+16
+ 190 00b0 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+  37:Src/Zeugma_c/old_value_hall.c ****         {
+ 191              		.loc 1 37 48 discriminator 1 view .LVU63
+ 192 00b2 13B1     		cbz	r3, .L12
+ARM GAS  /tmp/ccMtXEEL.s 			page 8
 
 
- 860              	.L49:
- 861 0040 00000000 		.word	counter
- 862 0044 00000000 		.word	analyze_data_1
- 863 0048 00000000 		.word	sender_flag
- 864              		.cfi_endproc
- 865              	.LFE69:
- 867              		.global	sender_flag
- 868              		.section	.bss.sender_flag,"aw",%nobits
- 871              	sender_flag:
- 872 0000 00       		.space	1
- 873              		.global	counter
- 874              		.section	.bss.counter,"aw",%nobits
- 877              	counter:
- 878 0000 00       		.space	1
- 879              		.text
- 880              	.Letext0:
- 881              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h"
- 882              		.file 3 "Inc/main.h"
-ARM GAS  /tmp/cc4ooOxA.s 			page 20
+ 193              	.L11:
+  37:Src/Zeugma_c/old_value_hall.c ****         {
+ 194              		.loc 1 37 65 discriminator 3 view .LVU64
+ 195 00b4 414B     		ldr	r3, .L45+20
+ 196 00b6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 197 00b8 5BB1     		cbz	r3, .L10
+ 198              	.L12:
+  39:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 1;
+ 199              		.loc 1 39 13 is_stmt 1 view .LVU65
+  39:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 1;
+ 200              		.loc 1 39 18 is_stmt 0 view .LVU66
+ 201 00ba 414B     		ldr	r3, .L45+24
+ 202 00bc 0622     		movs	r2, #6
+ 203 00be 1A60     		str	r2, [r3]
+  40:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
+ 204              		.loc 1 40 13 is_stmt 1 view .LVU67
+  40:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
+ 205              		.loc 1 40 25 is_stmt 0 view .LVU68
+ 206 00c0 3D4A     		ldr	r2, .L45+16
+ 207 00c2 0123     		movs	r3, #1
+ 208 00c4 1370     		strb	r3, [r2]
+  41:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
+ 209              		.loc 1 41 13 is_stmt 1 view .LVU69
+  41:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
+ 210              		.loc 1 41 25 is_stmt 0 view .LVU70
+ 211 00c6 5370     		strb	r3, [r2, #1]
+  42:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 212              		.loc 1 42 13 is_stmt 1 view .LVU71
+  42:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 213              		.loc 1 42 25 is_stmt 0 view .LVU72
+ 214 00c8 0021     		movs	r1, #0
+ 215 00ca 9170     		strb	r1, [r2, #2]
+  43:Src/Zeugma_c/old_value_hall.c ****         }
+ 216              		.loc 1 43 13 is_stmt 1 view .LVU73
+  43:Src/Zeugma_c/old_value_hall.c ****         }
+ 217              		.loc 1 43 19 is_stmt 0 view .LVU74
+ 218 00cc 3B4A     		ldr	r2, .L45+20
+ 219 00ce 1370     		strb	r3, [r2]
+ 220 00d0 BCE7     		b	.L1
+ 221              	.L10:
+  45:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && oldValue[2]) || flagg)) // 010'dan 011'e geçiş
+ 222              		.loc 1 45 14 is_stmt 1 view .LVU75
+  45:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && oldValue[2]) || flagg)) // 010'dan 011'e geçiş
+ 223              		.loc 1 45 19 is_stmt 0 view .LVU76
+ 224 00d2 364B     		ldr	r3, .L45+4
+ 225 00d4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  45:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && oldValue[2]) || flagg)) // 010'dan 011'e geçiş
+ 226              		.loc 1 45 17 view .LVU77
+ 227 00d6 E3B9     		cbnz	r3, .L13
+  45:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && oldValue[2]) || flagg)) // 010'dan 011'e geçiş
+ 228              		.loc 1 45 27 discriminator 1 view .LVU78
+ 229 00d8 354B     		ldr	r3, .L45+8
+ 230 00da 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 231 00dc CBB1     		cbz	r3, .L13
+  45:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && oldValue[2]) || flagg)) // 010'dan 011'e geçiş
+ 232              		.loc 1 45 40 discriminator 2 view .LVU79
+ 233 00de 354B     		ldr	r3, .L45+12
+ARM GAS  /tmp/ccMtXEEL.s 			page 9
+
+
+ 234 00e0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  45:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && oldValue[2]) || flagg)) // 010'dan 011'e geçiş
+ 235              		.loc 1 45 37 discriminator 2 view .LVU80
+ 236 00e2 B3B9     		cbnz	r3, .L13
+  46:Src/Zeugma_c/old_value_hall.c ****         {
+ 237              		.loc 1 46 29 view .LVU81
+ 238 00e4 344B     		ldr	r3, .L45+16
+ 239 00e6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  45:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && oldValue[2]) || flagg)) // 010'dan 011'e geçiş
+ 240              		.loc 1 45 49 discriminator 3 view .LVU82
+ 241 00e8 2BB9     		cbnz	r3, .L14
+  46:Src/Zeugma_c/old_value_hall.c ****         {
+ 242              		.loc 1 46 44 view .LVU83
+ 243 00ea 334B     		ldr	r3, .L45+16
+ 244 00ec 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  46:Src/Zeugma_c/old_value_hall.c ****         {
+ 245              		.loc 1 46 33 view .LVU84
+ 246 00ee 13B1     		cbz	r3, .L14
+  46:Src/Zeugma_c/old_value_hall.c ****         {
+ 247              		.loc 1 46 59 discriminator 1 view .LVU85
+ 248 00f0 314B     		ldr	r3, .L45+16
+ 249 00f2 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+  46:Src/Zeugma_c/old_value_hall.c ****         {
+ 250              		.loc 1 46 48 discriminator 1 view .LVU86
+ 251 00f4 13B9     		cbnz	r3, .L15
+ 252              	.L14:
+  46:Src/Zeugma_c/old_value_hall.c ****         {
+ 253              		.loc 1 46 64 discriminator 3 view .LVU87
+ 254 00f6 314B     		ldr	r3, .L45+20
+ 255 00f8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 256 00fa 53B1     		cbz	r3, .L13
+ 257              	.L15:
+  48:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
+ 258              		.loc 1 48 13 is_stmt 1 view .LVU88
+  48:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
+ 259              		.loc 1 48 18 is_stmt 0 view .LVU89
+ 260 00fc 0123     		movs	r3, #1
+ 261 00fe 304A     		ldr	r2, .L45+24
+ 262 0100 1360     		str	r3, [r2]
+  49:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
+ 263              		.loc 1 49 13 is_stmt 1 view .LVU90
+  49:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
+ 264              		.loc 1 49 25 is_stmt 0 view .LVU91
+ 265 0102 2D4A     		ldr	r2, .L45+16
+ 266 0104 0021     		movs	r1, #0
+ 267 0106 1170     		strb	r1, [r2]
+  50:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
+ 268              		.loc 1 50 13 is_stmt 1 view .LVU92
+  50:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
+ 269              		.loc 1 50 25 is_stmt 0 view .LVU93
+ 270 0108 5370     		strb	r3, [r2, #1]
+  51:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 271              		.loc 1 51 13 is_stmt 1 view .LVU94
+  51:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 272              		.loc 1 51 25 is_stmt 0 view .LVU95
+ 273 010a 9170     		strb	r1, [r2, #2]
+  52:Src/Zeugma_c/old_value_hall.c ****         }
+ARM GAS  /tmp/ccMtXEEL.s 			page 10
+
+
+ 274              		.loc 1 52 13 is_stmt 1 view .LVU96
+  52:Src/Zeugma_c/old_value_hall.c ****         }
+ 275              		.loc 1 52 19 is_stmt 0 view .LVU97
+ 276 010c 2B4A     		ldr	r2, .L45+20
+ 277 010e 1370     		strb	r3, [r2]
+ 278 0110 9CE7     		b	.L1
+ 279              	.L13:
+  54:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 011'den 001'e geçiş
+ 280              		.loc 1 54 14 is_stmt 1 view .LVU98
+  54:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 011'den 001'e geçiş
+ 281              		.loc 1 54 19 is_stmt 0 view .LVU99
+ 282 0112 264B     		ldr	r3, .L45+4
+ 283 0114 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  54:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 011'den 001'e geçiş
+ 284              		.loc 1 54 17 view .LVU100
+ 285 0116 EBB9     		cbnz	r3, .L16
+  54:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 011'den 001'e geçiş
+ 286              		.loc 1 54 27 discriminator 1 view .LVU101
+ 287 0118 254B     		ldr	r3, .L45+8
+ 288 011a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 289 011c D3B1     		cbz	r3, .L16
+  54:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 011'den 001'e geçiş
+ 290              		.loc 1 54 37 discriminator 2 view .LVU102
+ 291 011e 254B     		ldr	r3, .L45+12
+ 292 0120 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 293 0122 BBB1     		cbz	r3, .L16
+  55:Src/Zeugma_c/old_value_hall.c ****         {
+ 294              		.loc 1 55 29 view .LVU103
+ 295 0124 244B     		ldr	r3, .L45+16
+ 296 0126 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  54:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 011'den 001'e geçiş
+ 297              		.loc 1 54 48 discriminator 3 view .LVU104
+ 298 0128 2BB9     		cbnz	r3, .L17
+  55:Src/Zeugma_c/old_value_hall.c ****         {
+ 299              		.loc 1 55 45 view .LVU105
+ 300 012a 234B     		ldr	r3, .L45+16
+ 301 012c 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  55:Src/Zeugma_c/old_value_hall.c ****         {
+ 302              		.loc 1 55 33 view .LVU106
+ 303 012e 13B9     		cbnz	r3, .L17
+  55:Src/Zeugma_c/old_value_hall.c ****         {
+ 304              		.loc 1 55 60 discriminator 1 view .LVU107
+ 305 0130 214B     		ldr	r3, .L45+16
+ 306 0132 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+  55:Src/Zeugma_c/old_value_hall.c ****         {
+ 307              		.loc 1 55 49 discriminator 1 view .LVU108
+ 308 0134 13B9     		cbnz	r3, .L18
+ 309              	.L17:
+  55:Src/Zeugma_c/old_value_hall.c ****         {
+ 310              		.loc 1 55 65 discriminator 3 view .LVU109
+ 311 0136 214B     		ldr	r3, .L45+20
+ 312 0138 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 313 013a 5BB1     		cbz	r3, .L16
+ 314              	.L18:
+  57:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
+ 315              		.loc 1 57 13 is_stmt 1 view .LVU110
+  57:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
+ARM GAS  /tmp/ccMtXEEL.s 			page 11
+
+
+ 316              		.loc 1 57 18 is_stmt 0 view .LVU111
+ 317 013c 204B     		ldr	r3, .L45+24
+ 318 013e 0222     		movs	r2, #2
+ 319 0140 1A60     		str	r2, [r3]
+  58:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
+ 320              		.loc 1 58 13 is_stmt 1 view .LVU112
+  58:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 1;
+ 321              		.loc 1 58 25 is_stmt 0 view .LVU113
+ 322 0142 1D4A     		ldr	r2, .L45+16
+ 323 0144 0023     		movs	r3, #0
+ 324 0146 1370     		strb	r3, [r2]
+  59:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
+ 325              		.loc 1 59 13 is_stmt 1 view .LVU114
+  59:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
+ 326              		.loc 1 59 25 is_stmt 0 view .LVU115
+ 327 0148 0123     		movs	r3, #1
+ 328 014a 5370     		strb	r3, [r2, #1]
+  60:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 329              		.loc 1 60 13 is_stmt 1 view .LVU116
+  60:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 330              		.loc 1 60 25 is_stmt 0 view .LVU117
+ 331 014c 9370     		strb	r3, [r2, #2]
+  61:Src/Zeugma_c/old_value_hall.c ****         }
+ 332              		.loc 1 61 13 is_stmt 1 view .LVU118
+  61:Src/Zeugma_c/old_value_hall.c ****         }
+ 333              		.loc 1 61 19 is_stmt 0 view .LVU119
+ 334 014e 1B4A     		ldr	r2, .L45+20
+ 335 0150 1370     		strb	r3, [r2]
+ 336 0152 7BE7     		b	.L1
+ 337              	.L16:
+  63:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 001'den 101'e geçiş
+ 338              		.loc 1 63 14 is_stmt 1 view .LVU120
+  63:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 001'den 101'e geçiş
+ 339              		.loc 1 63 19 is_stmt 0 view .LVU121
+ 340 0154 154B     		ldr	r3, .L45+4
+ 341 0156 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  63:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 001'den 101'e geçiş
+ 342              		.loc 1 63 17 view .LVU122
+ 343 0158 002B     		cmp	r3, #0
+ 344 015a 7FF477AF 		bne	.L1
+  63:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 001'den 101'e geçiş
+ 345              		.loc 1 63 30 discriminator 1 view .LVU123
+ 346 015e 144B     		ldr	r3, .L45+8
+ 347 0160 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  63:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 001'den 101'e geçiş
+ 348              		.loc 1 63 27 discriminator 1 view .LVU124
+ 349 0162 002B     		cmp	r3, #0
+ 350 0164 7FF472AF 		bne	.L1
+  63:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 001'den 101'e geçiş
+ 351              		.loc 1 63 38 discriminator 2 view .LVU125
+ 352 0168 124B     		ldr	r3, .L45+12
+ 353 016a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 354 016c 002B     		cmp	r3, #0
+ 355 016e 3FF46DAF 		beq	.L1
+  64:Src/Zeugma_c/old_value_hall.c ****         {
+ 356              		.loc 1 64 28 view .LVU126
+ 357 0172 114B     		ldr	r3, .L45+16
+ARM GAS  /tmp/ccMtXEEL.s 			page 12
+
+
+ 358 0174 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  63:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && !oldValue[1] && oldValue[2]) || flagg)) // 001'den 101'e geçiş
+ 359              		.loc 1 63 49 discriminator 3 view .LVU127
+ 360 0176 2BB1     		cbz	r3, .L19
+  64:Src/Zeugma_c/old_value_hall.c ****         {
+ 361              		.loc 1 64 44 view .LVU128
+ 362 0178 0F4B     		ldr	r3, .L45+16
+ 363 017a 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  64:Src/Zeugma_c/old_value_hall.c ****         {
+ 364              		.loc 1 64 32 view .LVU129
+ 365 017c 13B9     		cbnz	r3, .L19
+  64:Src/Zeugma_c/old_value_hall.c ****         {
+ 366              		.loc 1 64 59 discriminator 1 view .LVU130
+ 367 017e 0E4B     		ldr	r3, .L45+16
+ 368 0180 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+  64:Src/Zeugma_c/old_value_hall.c ****         {
+ 369              		.loc 1 64 48 discriminator 1 view .LVU131
+ 370 0182 23B9     		cbnz	r3, .L20
+ 371              	.L19:
+  64:Src/Zeugma_c/old_value_hall.c ****         {
+ 372              		.loc 1 64 64 discriminator 3 view .LVU132
+ 373 0184 0D4B     		ldr	r3, .L45+20
+ 374 0186 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 375 0188 002B     		cmp	r3, #0
+ 376 018a 3FF45FAF 		beq	.L1
+ 377              	.L20:
+  66:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
+ 378              		.loc 1 66 13 is_stmt 1 view .LVU133
+  66:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
+ 379              		.loc 1 66 18 is_stmt 0 view .LVU134
+ 380 018e 0C4B     		ldr	r3, .L45+24
+ 381 0190 0322     		movs	r2, #3
+ 382 0192 1A60     		str	r2, [r3]
+  67:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 0;
+ 383              		.loc 1 67 13 is_stmt 1 view .LVU135
+  67:Src/Zeugma_c/old_value_hall.c ****             oldValue[1] = 0;
+ 384              		.loc 1 67 25 is_stmt 0 view .LVU136
+ 385 0194 084B     		ldr	r3, .L45+16
+ 386 0196 0022     		movs	r2, #0
+ 387 0198 1A70     		strb	r2, [r3]
+  68:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
+ 388              		.loc 1 68 13 is_stmt 1 view .LVU137
+  68:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
+ 389              		.loc 1 68 25 is_stmt 0 view .LVU138
+ 390 019a 5A70     		strb	r2, [r3, #1]
+  69:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 391              		.loc 1 69 13 is_stmt 1 view .LVU139
+  69:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
+ 392              		.loc 1 69 25 is_stmt 0 view .LVU140
+ 393 019c 0122     		movs	r2, #1
+ 394 019e 9A70     		strb	r2, [r3, #2]
+  70:Src/Zeugma_c/old_value_hall.c ****         }
+ 395              		.loc 1 70 13 is_stmt 1 view .LVU141
+  70:Src/Zeugma_c/old_value_hall.c ****         }
+ 396              		.loc 1 70 19 is_stmt 0 view .LVU142
+ 397 01a0 064B     		ldr	r3, .L45+20
+ 398 01a2 1A70     		strb	r2, [r3]
+ARM GAS  /tmp/ccMtXEEL.s 			page 13
+
+
+ 399 01a4 52E7     		b	.L1
+ 400              	.L46:
+ 401 01a6 00BF     		.align	2
+ 402              	.L45:
+ 403 01a8 00000000 		.word	geri_vites
+ 404 01ac 00000000 		.word	hall_A
+ 405 01b0 00000000 		.word	hall_B
+ 406 01b4 00000000 		.word	hall_C
+ 407 01b8 00000000 		.word	oldValue
+ 408 01bc 00000000 		.word	flagg
+ 409 01c0 00000000 		.word	step
+ 410              	.L2:
+  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
+ 411              		.loc 1 76 9 is_stmt 1 view .LVU143
+  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
+ 412              		.loc 1 76 14 is_stmt 0 view .LVU144
+ 413 01c4 754B     		ldr	r3, .L47
+ 414 01c6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
+ 415              		.loc 1 76 12 view .LVU145
+ 416 01c8 0BB3     		cbz	r3, .L21
+  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
+ 417              		.loc 1 76 24 discriminator 1 view .LVU146
+ 418 01ca 754B     		ldr	r3, .L47+4
+ 419 01cc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
+ 420              		.loc 1 76 21 discriminator 1 view .LVU147
+ 421 01ce F3B9     		cbnz	r3, .L21
+  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
+ 422              		.loc 1 76 32 discriminator 2 view .LVU148
+ 423 01d0 744B     		ldr	r3, .L47+8
+ 424 01d2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 425 01d4 DBB1     		cbz	r3, .L21
+  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
+ 426              		.loc 1 76 57 discriminator 3 view .LVU149
+ 427 01d6 744B     		ldr	r3, .L47+12
+ 428 01d8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
+ 429              		.loc 1 76 43 discriminator 3 view .LVU150
+ 430 01da 2BB9     		cbnz	r3, .L22
+  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
+ 431              		.loc 1 76 73 discriminator 4 view .LVU151
+ 432 01dc 724B     		ldr	r3, .L47+12
+ 433 01de 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
+ 434              		.loc 1 76 61 discriminator 4 view .LVU152
+ 435 01e0 13B9     		cbnz	r3, .L22
+  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
+ 436              		.loc 1 76 88 discriminator 6 view .LVU153
+ 437 01e2 714B     		ldr	r3, .L47+12
+ 438 01e4 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
+ 439              		.loc 1 76 77 discriminator 6 view .LVU154
+ 440 01e6 13B9     		cbnz	r3, .L23
+ 441              	.L22:
+  76:Src/Zeugma_c/old_value_hall.c ****         { // 010
+ 442              		.loc 1 76 93 discriminator 8 view .LVU155
+ARM GAS  /tmp/ccMtXEEL.s 			page 14
+
+
+ 443 01e8 704B     		ldr	r3, .L47+16
+ 444 01ea 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 445 01ec 7BB1     		cbz	r3, .L21
+ 446              	.L23:
+  78:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 447              		.loc 1 78 13 is_stmt 1 view .LVU156
+  78:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 448              		.loc 1 78 18 is_stmt 0 view .LVU157
+ 449 01ee 704B     		ldr	r3, .L47+20
+ 450 01f0 0122     		movs	r2, #1
+ 451 01f2 1A60     		str	r2, [r3]
+  79:Src/Zeugma_c/old_value_hall.c ****             {
+ 452              		.loc 1 79 13 is_stmt 1 view .LVU158
+  79:Src/Zeugma_c/old_value_hall.c ****             {
+ 453              		.loc 1 79 17 is_stmt 0 view .LVU159
+ 454 01f4 6F4B     		ldr	r3, .L47+24
+ 455 01f6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  79:Src/Zeugma_c/old_value_hall.c ****             {
+ 456              		.loc 1 79 16 view .LVU160
+ 457 01f8 23B9     		cbnz	r3, .L24
+  82:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 0;
+ 458              		.loc 1 82 17 is_stmt 1 view .LVU161
+  82:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 0;
+ 459              		.loc 1 82 29 is_stmt 0 view .LVU162
+ 460 01fa 6B4B     		ldr	r3, .L47+12
+ 461 01fc 1A70     		strb	r2, [r3]
+  83:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 1;
+ 462              		.loc 1 83 17 is_stmt 1 view .LVU163
+  83:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 1;
+ 463              		.loc 1 83 29 is_stmt 0 view .LVU164
+ 464 01fe 0021     		movs	r1, #0
+ 465 0200 5970     		strb	r1, [r3, #1]
+  84:Src/Zeugma_c/old_value_hall.c ****             }
+ 466              		.loc 1 84 17 is_stmt 1 view .LVU165
+  84:Src/Zeugma_c/old_value_hall.c ****             }
+ 467              		.loc 1 84 29 is_stmt 0 view .LVU166
+ 468 0202 9A70     		strb	r2, [r3, #2]
+ 469              	.L24:
+  86:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 470              		.loc 1 86 13 is_stmt 1 view .LVU167
+  86:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 471              		.loc 1 86 19 is_stmt 0 view .LVU168
+ 472 0204 694B     		ldr	r3, .L47+16
+ 473 0206 0122     		movs	r2, #1
+ 474 0208 1A70     		strb	r2, [r3]
+  87:Src/Zeugma_c/old_value_hall.c ****         }
+ 475              		.loc 1 87 13 is_stmt 1 view .LVU169
+ 476 020a FFF7FEFF 		bl	log_var_analysis
+ 477              	.LVL0:
+ 478              	.L21:
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ 479              		.loc 1 89 9 view .LVU170
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ 480              		.loc 1 89 14 is_stmt 0 view .LVU171
+ 481 020e 634B     		ldr	r3, .L47
+ 482 0210 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ARM GAS  /tmp/ccMtXEEL.s 			page 15
+
+
+ 483              		.loc 1 89 12 view .LVU172
+ 484 0212 13B3     		cbz	r3, .L25
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ 485              		.loc 1 89 24 discriminator 1 view .LVU173
+ 486 0214 624B     		ldr	r3, .L47+4
+ 487 0216 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ 488              		.loc 1 89 21 discriminator 1 view .LVU174
+ 489 0218 FBB9     		cbnz	r3, .L25
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ 490              		.loc 1 89 35 discriminator 2 view .LVU175
+ 491 021a 624B     		ldr	r3, .L47+8
+ 492 021c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ 493              		.loc 1 89 32 discriminator 2 view .LVU176
+ 494 021e E3B9     		cbnz	r3, .L25
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ 495              		.loc 1 89 57 discriminator 3 view .LVU177
+ 496 0220 614B     		ldr	r3, .L47+12
+ 497 0222 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ 498              		.loc 1 89 44 discriminator 3 view .LVU178
+ 499 0224 2BB1     		cbz	r3, .L26
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ 500              		.loc 1 89 73 discriminator 4 view .LVU179
+ 501 0226 604B     		ldr	r3, .L47+12
+ 502 0228 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ 503              		.loc 1 89 61 discriminator 4 view .LVU180
+ 504 022a 13B9     		cbnz	r3, .L26
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ 505              		.loc 1 89 88 discriminator 6 view .LVU181
+ 506 022c 5E4B     		ldr	r3, .L47+12
+ 507 022e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ 508              		.loc 1 89 77 discriminator 6 view .LVU182
+ 509 0230 13B9     		cbnz	r3, .L27
+ 510              	.L26:
+  89:Src/Zeugma_c/old_value_hall.c ****         { // 011
+ 511              		.loc 1 89 93 discriminator 8 view .LVU183
+ 512 0232 5E4B     		ldr	r3, .L47+16
+ 513 0234 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 514 0236 83B1     		cbz	r3, .L25
+ 515              	.L27:
+  91:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 516              		.loc 1 91 13 is_stmt 1 view .LVU184
+  91:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 517              		.loc 1 91 18 is_stmt 0 view .LVU185
+ 518 0238 5D4B     		ldr	r3, .L47+20
+ 519 023a 0222     		movs	r2, #2
+ 520 023c 1A60     		str	r2, [r3]
+  92:Src/Zeugma_c/old_value_hall.c ****             {
+ 521              		.loc 1 92 13 is_stmt 1 view .LVU186
+  92:Src/Zeugma_c/old_value_hall.c ****             {
+ 522              		.loc 1 92 17 is_stmt 0 view .LVU187
+ 523 023e 5D4B     		ldr	r3, .L47+24
+ 524 0240 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  /tmp/ccMtXEEL.s 			page 16
+
+
+  92:Src/Zeugma_c/old_value_hall.c ****             {
+ 525              		.loc 1 92 16 view .LVU188
+ 526 0242 2BB9     		cbnz	r3, .L28
+  95:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 0;
+ 527              		.loc 1 95 17 is_stmt 1 view .LVU189
+  95:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 0;
+ 528              		.loc 1 95 29 is_stmt 0 view .LVU190
+ 529 0244 584B     		ldr	r3, .L47+12
+ 530 0246 0122     		movs	r2, #1
+ 531 0248 1A70     		strb	r2, [r3]
+  96:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 0;
+ 532              		.loc 1 96 17 is_stmt 1 view .LVU191
+  96:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 0;
+ 533              		.loc 1 96 29 is_stmt 0 view .LVU192
+ 534 024a 0022     		movs	r2, #0
+ 535 024c 5A70     		strb	r2, [r3, #1]
+  97:Src/Zeugma_c/old_value_hall.c ****             }
+ 536              		.loc 1 97 17 is_stmt 1 view .LVU193
+  97:Src/Zeugma_c/old_value_hall.c ****             }
+ 537              		.loc 1 97 29 is_stmt 0 view .LVU194
+ 538 024e 9A70     		strb	r2, [r3, #2]
+ 539              	.L28:
+  99:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 540              		.loc 1 99 13 is_stmt 1 view .LVU195
+  99:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 541              		.loc 1 99 19 is_stmt 0 view .LVU196
+ 542 0250 564B     		ldr	r3, .L47+16
+ 543 0252 0122     		movs	r2, #1
+ 544 0254 1A70     		strb	r2, [r3]
+ 100:Src/Zeugma_c/old_value_hall.c ****         }
+ 545              		.loc 1 100 13 is_stmt 1 view .LVU197
+ 546 0256 FFF7FEFF 		bl	log_var_analysis
+ 547              	.LVL1:
+ 548              	.L25:
+ 102:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 549              		.loc 1 102 9 view .LVU198
+ 102:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 550              		.loc 1 102 14 is_stmt 0 view .LVU199
+ 551 025a 504B     		ldr	r3, .L47
+ 552 025c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 102:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 553              		.loc 1 102 12 view .LVU200
+ 554 025e 13B3     		cbz	r3, .L29
+ 102:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 555              		.loc 1 102 21 discriminator 1 view .LVU201
+ 556 0260 4F4B     		ldr	r3, .L47+4
+ 557 0262 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 558 0264 FBB1     		cbz	r3, .L29
+ 102:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 559              		.loc 1 102 34 discriminator 2 view .LVU202
+ 560 0266 4F4B     		ldr	r3, .L47+8
+ 561 0268 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 102:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 562              		.loc 1 102 31 discriminator 2 view .LVU203
+ 563 026a E3B9     		cbnz	r3, .L29
+ 102:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 564              		.loc 1 102 56 discriminator 3 view .LVU204
+ARM GAS  /tmp/ccMtXEEL.s 			page 17
+
+
+ 565 026c 4E4B     		ldr	r3, .L47+12
+ 566 026e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 102:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 567              		.loc 1 102 43 discriminator 3 view .LVU205
+ 568 0270 2BB1     		cbz	r3, .L30
+ 102:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 569              		.loc 1 102 72 discriminator 4 view .LVU206
+ 570 0272 4D4B     		ldr	r3, .L47+12
+ 571 0274 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 102:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 572              		.loc 1 102 60 discriminator 4 view .LVU207
+ 573 0276 13B9     		cbnz	r3, .L30
+ 102:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 574              		.loc 1 102 88 discriminator 6 view .LVU208
+ 575 0278 4B4B     		ldr	r3, .L47+12
+ 576 027a 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 102:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 577              		.loc 1 102 76 discriminator 6 view .LVU209
+ 578 027c 13B1     		cbz	r3, .L31
+ 579              	.L30:
+ 102:Src/Zeugma_c/old_value_hall.c ****         { // 001
+ 580              		.loc 1 102 93 discriminator 8 view .LVU210
+ 581 027e 4B4B     		ldr	r3, .L47+16
+ 582 0280 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 583 0282 83B1     		cbz	r3, .L29
+ 584              	.L31:
+ 104:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 585              		.loc 1 104 13 is_stmt 1 view .LVU211
+ 104:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 586              		.loc 1 104 18 is_stmt 0 view .LVU212
+ 587 0284 4A4B     		ldr	r3, .L47+20
+ 588 0286 0322     		movs	r2, #3
+ 589 0288 1A60     		str	r2, [r3]
+ 105:Src/Zeugma_c/old_value_hall.c ****             {
+ 590              		.loc 1 105 13 is_stmt 1 view .LVU213
+ 105:Src/Zeugma_c/old_value_hall.c ****             {
+ 591              		.loc 1 105 17 is_stmt 0 view .LVU214
+ 592 028a 4A4B     		ldr	r3, .L47+24
+ 593 028c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 105:Src/Zeugma_c/old_value_hall.c ****             {
+ 594              		.loc 1 105 16 view .LVU215
+ 595 028e 2BB9     		cbnz	r3, .L32
+ 108:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 1;
+ 596              		.loc 1 108 17 is_stmt 1 view .LVU216
+ 108:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 1;
+ 597              		.loc 1 108 29 is_stmt 0 view .LVU217
+ 598 0290 454B     		ldr	r3, .L47+12
+ 599 0292 0122     		movs	r2, #1
+ 600 0294 1A70     		strb	r2, [r3]
+ 109:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 0;
+ 601              		.loc 1 109 17 is_stmt 1 view .LVU218
+ 109:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 0;
+ 602              		.loc 1 109 29 is_stmt 0 view .LVU219
+ 603 0296 5A70     		strb	r2, [r3, #1]
+ 110:Src/Zeugma_c/old_value_hall.c ****             }
+ 604              		.loc 1 110 17 is_stmt 1 view .LVU220
+ 110:Src/Zeugma_c/old_value_hall.c ****             }
+ARM GAS  /tmp/ccMtXEEL.s 			page 18
+
+
+ 605              		.loc 1 110 29 is_stmt 0 view .LVU221
+ 606 0298 0022     		movs	r2, #0
+ 607 029a 9A70     		strb	r2, [r3, #2]
+ 608              	.L32:
+ 112:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 609              		.loc 1 112 13 is_stmt 1 view .LVU222
+ 112:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 610              		.loc 1 112 19 is_stmt 0 view .LVU223
+ 611 029c 434B     		ldr	r3, .L47+16
+ 612 029e 0122     		movs	r2, #1
+ 613 02a0 1A70     		strb	r2, [r3]
+ 113:Src/Zeugma_c/old_value_hall.c ****         }
+ 614              		.loc 1 113 13 is_stmt 1 view .LVU224
+ 615 02a2 FFF7FEFF 		bl	log_var_analysis
+ 616              	.LVL2:
+ 617              	.L29:
+ 115:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 618              		.loc 1 115 9 view .LVU225
+ 115:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 619              		.loc 1 115 14 is_stmt 0 view .LVU226
+ 620 02a6 3D4B     		ldr	r3, .L47
+ 621 02a8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 115:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 622              		.loc 1 115 12 view .LVU227
+ 623 02aa 13BB     		cbnz	r3, .L33
+ 115:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 624              		.loc 1 115 22 discriminator 1 view .LVU228
+ 625 02ac 3C4B     		ldr	r3, .L47+4
+ 626 02ae 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 627 02b0 FBB1     		cbz	r3, .L33
+ 115:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 628              		.loc 1 115 35 discriminator 2 view .LVU229
+ 629 02b2 3C4B     		ldr	r3, .L47+8
+ 630 02b4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 115:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 631              		.loc 1 115 32 discriminator 2 view .LVU230
+ 632 02b6 E3B9     		cbnz	r3, .L33
+ 115:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 633              		.loc 1 115 57 discriminator 3 view .LVU231
+ 634 02b8 3B4B     		ldr	r3, .L47+12
+ 635 02ba 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 115:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 636              		.loc 1 115 44 discriminator 3 view .LVU232
+ 637 02bc 2BB1     		cbz	r3, .L34
+ 115:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 638              		.loc 1 115 72 discriminator 4 view .LVU233
+ 639 02be 3A4B     		ldr	r3, .L47+12
+ 640 02c0 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 115:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 641              		.loc 1 115 61 discriminator 4 view .LVU234
+ 642 02c2 13B1     		cbz	r3, .L34
+ 115:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 643              		.loc 1 115 88 discriminator 6 view .LVU235
+ 644 02c4 384B     		ldr	r3, .L47+12
+ 645 02c6 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 115:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 646              		.loc 1 115 76 discriminator 6 view .LVU236
+ARM GAS  /tmp/ccMtXEEL.s 			page 19
+
+
+ 647 02c8 13B1     		cbz	r3, .L35
+ 648              	.L34:
+ 115:Src/Zeugma_c/old_value_hall.c ****         { // 101
+ 649              		.loc 1 115 93 discriminator 8 view .LVU237
+ 650 02ca 384B     		ldr	r3, .L47+16
+ 651 02cc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 652 02ce 83B1     		cbz	r3, .L33
+ 653              	.L35:
+ 117:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 654              		.loc 1 117 13 is_stmt 1 view .LVU238
+ 117:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 655              		.loc 1 117 18 is_stmt 0 view .LVU239
+ 656 02d0 374B     		ldr	r3, .L47+20
+ 657 02d2 0422     		movs	r2, #4
+ 658 02d4 1A60     		str	r2, [r3]
+ 118:Src/Zeugma_c/old_value_hall.c ****             {
+ 659              		.loc 1 118 13 is_stmt 1 view .LVU240
+ 118:Src/Zeugma_c/old_value_hall.c ****             {
+ 660              		.loc 1 118 17 is_stmt 0 view .LVU241
+ 661 02d6 374B     		ldr	r3, .L47+24
+ 662 02d8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 118:Src/Zeugma_c/old_value_hall.c ****             {
+ 663              		.loc 1 118 16 view .LVU242
+ 664 02da 2BB9     		cbnz	r3, .L36
+ 121:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 1;
+ 665              		.loc 1 121 17 is_stmt 1 view .LVU243
+ 121:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 1;
+ 666              		.loc 1 121 29 is_stmt 0 view .LVU244
+ 667 02dc 324B     		ldr	r3, .L47+12
+ 668 02de 0022     		movs	r2, #0
+ 669 02e0 1A70     		strb	r2, [r3]
+ 122:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 0;
+ 670              		.loc 1 122 17 is_stmt 1 view .LVU245
+ 122:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 0;
+ 671              		.loc 1 122 29 is_stmt 0 view .LVU246
+ 672 02e2 0121     		movs	r1, #1
+ 673 02e4 5970     		strb	r1, [r3, #1]
+ 123:Src/Zeugma_c/old_value_hall.c ****             }
+ 674              		.loc 1 123 17 is_stmt 1 view .LVU247
+ 123:Src/Zeugma_c/old_value_hall.c ****             }
+ 675              		.loc 1 123 29 is_stmt 0 view .LVU248
+ 676 02e6 9A70     		strb	r2, [r3, #2]
+ 677              	.L36:
+ 125:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 678              		.loc 1 125 13 is_stmt 1 view .LVU249
+ 125:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 679              		.loc 1 125 19 is_stmt 0 view .LVU250
+ 680 02e8 304B     		ldr	r3, .L47+16
+ 681 02ea 0122     		movs	r2, #1
+ 682 02ec 1A70     		strb	r2, [r3]
+ 126:Src/Zeugma_c/old_value_hall.c ****         }
+ 683              		.loc 1 126 13 is_stmt 1 view .LVU251
+ 684 02ee FFF7FEFF 		bl	log_var_analysis
+ 685              	.LVL3:
+ 686              	.L33:
+ 128:Src/Zeugma_c/old_value_hall.c ****         { // 100
+ 687              		.loc 1 128 9 view .LVU252
+ARM GAS  /tmp/ccMtXEEL.s 			page 20
+
+
+ 128:Src/Zeugma_c/old_value_hall.c ****         { // 100
+ 688              		.loc 1 128 14 is_stmt 0 view .LVU253
+ 689 02f2 2A4B     		ldr	r3, .L47
+ 690 02f4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 128:Src/Zeugma_c/old_value_hall.c ****         { // 100
+ 691              		.loc 1 128 12 view .LVU254
+ 692 02f6 13BB     		cbnz	r3, .L37
+ 128:Src/Zeugma_c/old_value_hall.c ****         { // 100
+ 693              		.loc 1 128 22 discriminator 1 view .LVU255
+ 694 02f8 294B     		ldr	r3, .L47+4
+ 695 02fa 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 696 02fc FBB1     		cbz	r3, .L37
+ 128:Src/Zeugma_c/old_value_hall.c ****         { // 100
+ 697              		.loc 1 128 32 discriminator 2 view .LVU256
+ 698 02fe 294B     		ldr	r3, .L47+8
+ 699 0300 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 700 0302 E3B1     		cbz	r3, .L37
+ 128:Src/Zeugma_c/old_value_hall.c ****         { // 100
+ 701              		.loc 1 128 57 discriminator 3 view .LVU257
+ 702 0304 284B     		ldr	r3, .L47+12
+ 703 0306 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 128:Src/Zeugma_c/old_value_hall.c ****         { // 100
+ 704              		.loc 1 128 43 discriminator 3 view .LVU258
+ 705 0308 2BB9     		cbnz	r3, .L38
+ 128:Src/Zeugma_c/old_value_hall.c ****         { // 100
+ 706              		.loc 1 128 72 discriminator 4 view .LVU259
+ 707 030a 274B     		ldr	r3, .L47+12
+ 708 030c 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 128:Src/Zeugma_c/old_value_hall.c ****         { // 100
+ 709              		.loc 1 128 61 discriminator 4 view .LVU260
+ 710 030e 13B1     		cbz	r3, .L38
+ 128:Src/Zeugma_c/old_value_hall.c ****         { // 100
+ 711              		.loc 1 128 88 discriminator 6 view .LVU261
+ 712 0310 254B     		ldr	r3, .L47+12
+ 713 0312 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 128:Src/Zeugma_c/old_value_hall.c ****         { // 100
+ 714              		.loc 1 128 76 discriminator 6 view .LVU262
+ 715 0314 13B1     		cbz	r3, .L39
+ 716              	.L38:
+ 128:Src/Zeugma_c/old_value_hall.c ****         { // 100
+ 717              		.loc 1 128 93 discriminator 8 view .LVU263
+ 718 0316 254B     		ldr	r3, .L47+16
+ 719 0318 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 720 031a 83B1     		cbz	r3, .L37
+ 721              	.L39:
+ 130:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 722              		.loc 1 130 13 is_stmt 1 view .LVU264
+ 130:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 723              		.loc 1 130 18 is_stmt 0 view .LVU265
+ 724 031c 244B     		ldr	r3, .L47+20
+ 725 031e 0522     		movs	r2, #5
+ 726 0320 1A60     		str	r2, [r3]
+ 131:Src/Zeugma_c/old_value_hall.c ****             {
+ 727              		.loc 1 131 13 is_stmt 1 view .LVU266
+ 131:Src/Zeugma_c/old_value_hall.c ****             {
+ 728              		.loc 1 131 17 is_stmt 0 view .LVU267
+ 729 0322 244B     		ldr	r3, .L47+24
+ARM GAS  /tmp/ccMtXEEL.s 			page 21
+
+
+ 730 0324 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 131:Src/Zeugma_c/old_value_hall.c ****             {
+ 731              		.loc 1 131 16 view .LVU268
+ 732 0326 2BB9     		cbnz	r3, .L40
+ 134:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 1;
+ 733              		.loc 1 134 17 is_stmt 1 view .LVU269
+ 134:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 1;
+ 734              		.loc 1 134 29 is_stmt 0 view .LVU270
+ 735 0328 1F4B     		ldr	r3, .L47+12
+ 736 032a 0022     		movs	r2, #0
+ 737 032c 1A70     		strb	r2, [r3]
+ 135:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 1;
+ 738              		.loc 1 135 17 is_stmt 1 view .LVU271
+ 135:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 1;
+ 739              		.loc 1 135 29 is_stmt 0 view .LVU272
+ 740 032e 0122     		movs	r2, #1
+ 741 0330 5A70     		strb	r2, [r3, #1]
+ 136:Src/Zeugma_c/old_value_hall.c ****             }
+ 742              		.loc 1 136 17 is_stmt 1 view .LVU273
+ 136:Src/Zeugma_c/old_value_hall.c ****             }
+ 743              		.loc 1 136 29 is_stmt 0 view .LVU274
+ 744 0332 9A70     		strb	r2, [r3, #2]
+ 745              	.L40:
+ 138:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 746              		.loc 1 138 13 is_stmt 1 view .LVU275
+ 138:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 747              		.loc 1 138 19 is_stmt 0 view .LVU276
+ 748 0334 1D4B     		ldr	r3, .L47+16
+ 749 0336 0122     		movs	r2, #1
+ 750 0338 1A70     		strb	r2, [r3]
+ 139:Src/Zeugma_c/old_value_hall.c ****         }
+ 751              		.loc 1 139 13 is_stmt 1 view .LVU277
+ 752 033a FFF7FEFF 		bl	log_var_analysis
+ 753              	.LVL4:
+ 754              	.L37:
+ 141:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 755              		.loc 1 141 9 view .LVU278
+ 141:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 756              		.loc 1 141 14 is_stmt 0 view .LVU279
+ 757 033e 174B     		ldr	r3, .L47
+ 758 0340 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 141:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 759              		.loc 1 141 12 view .LVU280
+ 760 0342 002B     		cmp	r3, #0
+ 761 0344 7FF482AE 		bne	.L1
+ 141:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 762              		.loc 1 141 25 discriminator 1 view .LVU281
+ 763 0348 154B     		ldr	r3, .L47+4
+ 764 034a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 141:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 765              		.loc 1 141 22 discriminator 1 view .LVU282
+ 766 034c 002B     		cmp	r3, #0
+ 767 034e 7FF47DAE 		bne	.L1
+ 141:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 768              		.loc 1 141 33 discriminator 2 view .LVU283
+ 769 0352 144B     		ldr	r3, .L47+8
+ 770 0354 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  /tmp/ccMtXEEL.s 			page 22
+
+
+ 771 0356 002B     		cmp	r3, #0
+ 772 0358 3FF478AE 		beq	.L1
+ 141:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 773              		.loc 1 141 58 discriminator 3 view .LVU284
+ 774 035c 124B     		ldr	r3, .L47+12
+ 775 035e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 141:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 776              		.loc 1 141 44 discriminator 3 view .LVU285
+ 777 0360 2BB9     		cbnz	r3, .L41
+ 141:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 778              		.loc 1 141 73 discriminator 4 view .LVU286
+ 779 0362 114B     		ldr	r3, .L47+12
+ 780 0364 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 141:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 781              		.loc 1 141 62 discriminator 4 view .LVU287
+ 782 0366 13B1     		cbz	r3, .L41
+ 141:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 783              		.loc 1 141 88 discriminator 6 view .LVU288
+ 784 0368 0F4B     		ldr	r3, .L47+12
+ 785 036a 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 141:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 786              		.loc 1 141 77 discriminator 6 view .LVU289
+ 787 036c 23B9     		cbnz	r3, .L42
+ 788              	.L41:
+ 141:Src/Zeugma_c/old_value_hall.c ****         { // 110
+ 789              		.loc 1 141 93 discriminator 8 view .LVU290
+ 790 036e 0F4B     		ldr	r3, .L47+16
+ 791 0370 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 792 0372 002B     		cmp	r3, #0
+ 793 0374 3FF46AAE 		beq	.L1
+ 794              	.L42:
+ 143:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 795              		.loc 1 143 13 is_stmt 1 view .LVU291
+ 143:Src/Zeugma_c/old_value_hall.c ****             if (!backEMF_mode)
+ 796              		.loc 1 143 18 is_stmt 0 view .LVU292
+ 797 0378 0D4B     		ldr	r3, .L47+20
+ 798 037a 0622     		movs	r2, #6
+ 799 037c 1A60     		str	r2, [r3]
+ 144:Src/Zeugma_c/old_value_hall.c ****             {
+ 800              		.loc 1 144 13 is_stmt 1 view .LVU293
+ 144:Src/Zeugma_c/old_value_hall.c ****             {
+ 801              		.loc 1 144 17 is_stmt 0 view .LVU294
+ 802 037e 0D4B     		ldr	r3, .L47+24
+ 803 0380 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 144:Src/Zeugma_c/old_value_hall.c ****             {
+ 804              		.loc 1 144 16 view .LVU295
+ 805 0382 2BB9     		cbnz	r3, .L43
+ 147:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 0;
+ 806              		.loc 1 147 17 is_stmt 1 view .LVU296
+ 147:Src/Zeugma_c/old_value_hall.c ****                 oldValue[1] = 0;
+ 807              		.loc 1 147 29 is_stmt 0 view .LVU297
+ 808 0384 084B     		ldr	r3, .L47+12
+ 809 0386 0022     		movs	r2, #0
+ 810 0388 1A70     		strb	r2, [r3]
+ 148:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 1;
+ 811              		.loc 1 148 17 is_stmt 1 view .LVU298
+ 148:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 1;
+ARM GAS  /tmp/ccMtXEEL.s 			page 23
+
+
+ 812              		.loc 1 148 29 is_stmt 0 view .LVU299
+ 813 038a 5A70     		strb	r2, [r3, #1]
+ 149:Src/Zeugma_c/old_value_hall.c ****             }
+ 814              		.loc 1 149 17 is_stmt 1 view .LVU300
+ 149:Src/Zeugma_c/old_value_hall.c ****             }
+ 815              		.loc 1 149 29 is_stmt 0 view .LVU301
+ 816 038c 0122     		movs	r2, #1
+ 817 038e 9A70     		strb	r2, [r3, #2]
+ 818              	.L43:
+ 151:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 819              		.loc 1 151 13 is_stmt 1 view .LVU302
+ 151:Src/Zeugma_c/old_value_hall.c ****             log_var_analysis();
+ 820              		.loc 1 151 19 is_stmt 0 view .LVU303
+ 821 0390 064B     		ldr	r3, .L47+16
+ 822 0392 0122     		movs	r2, #1
+ 823 0394 1A70     		strb	r2, [r3]
+ 152:Src/Zeugma_c/old_value_hall.c ****         }
+ 824              		.loc 1 152 13 is_stmt 1 view .LVU304
+ 825 0396 FFF7FEFF 		bl	log_var_analysis
+ 826              	.LVL5:
+ 827              		.loc 1 171 1 is_stmt 0 view .LVU305
+ 828 039a 57E6     		b	.L1
+ 829              	.L48:
+ 830              		.align	2
+ 831              	.L47:
+ 832 039c 00000000 		.word	hall_A
+ 833 03a0 00000000 		.word	hall_B
+ 834 03a4 00000000 		.word	hall_C
+ 835 03a8 00000000 		.word	oldValue
+ 836 03ac 00000000 		.word	flagg
+ 837 03b0 00000000 		.word	step
+ 838 03b4 00000000 		.word	backEMF_mode
+ 839              		.cfi_endproc
+ 840              	.LFE68:
+ 842              		.section	.text.sample_phase_data,"ax",%progbits
+ 843              		.align	1
+ 844              		.global	sample_phase_data
+ 845              		.syntax unified
+ 846              		.thumb
+ 847              		.thumb_func
+ 849              	sample_phase_data:
+ 850              	.LVL6:
+ 851              	.LFB69:
+ 172:Src/Zeugma_c/old_value_hall.c **** 
+ 173:Src/Zeugma_c/old_value_hall.c **** // Deactive
+ 174:Src/Zeugma_c/old_value_hall.c **** void sample_phase_data(uint16_t rpm, uint16_t phase_A, uint16_t phase_B, uint16_t phase_C)
+ 175:Src/Zeugma_c/old_value_hall.c **** {
+ 852              		.loc 1 175 1 is_stmt 1 view -0
+ 853              		.cfi_startproc
+ 854              		@ args = 0, pretend = 0, frame = 0
+ 855              		@ frame_needed = 0, uses_anonymous_args = 0
+ 856              		@ link register save eliminated.
+ 176:Src/Zeugma_c/old_value_hall.c ****     if (rpm > 99 && counter < 160)
+ 857              		.loc 1 176 5 view .LVU307
+ 858              		.loc 1 176 8 is_stmt 0 view .LVU308
+ 859 0000 6328     		cmp	r0, #99
+ 860 0002 1BD9     		bls	.L52
+ARM GAS  /tmp/ccMtXEEL.s 			page 24
+
+
+ 861              		.loc 1 176 29 discriminator 1 view .LVU309
+ 862 0004 0E48     		ldr	r0, .L56
+ 863              	.LVL7:
+ 864              		.loc 1 176 29 discriminator 1 view .LVU310
+ 865 0006 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
+ 866              		.loc 1 176 18 discriminator 1 view .LVU311
+ 867 0008 9F28     		cmp	r0, #159
+ 868 000a 17D8     		bhi	.L52
+ 175:Src/Zeugma_c/old_value_hall.c ****     if (rpm > 99 && counter < 160)
+ 869              		.loc 1 175 1 view .LVU312
+ 870 000c 10B4     		push	{r4}
+ 871              		.cfi_def_cfa_offset 4
+ 872              		.cfi_offset 4, -4
+ 177:Src/Zeugma_c/old_value_hall.c ****     {
+ 178:Src/Zeugma_c/old_value_hall.c ****         analyze_data_1[counter] = phase_A;
+ 873              		.loc 1 178 9 is_stmt 1 view .LVU313
+ 874              		.loc 1 178 33 is_stmt 0 view .LVU314
+ 875 000e 0D4C     		ldr	r4, .L56+4
+ 876 0010 24F81010 		strh	r1, [r4, r0, lsl #1]	@ movhi
+ 179:Src/Zeugma_c/old_value_hall.c ****         analyze_data_1[counter + 160] = phase_B;
+ 877              		.loc 1 179 9 is_stmt 1 view .LVU315
+ 878              		.loc 1 179 32 is_stmt 0 view .LVU316
+ 879 0014 00F1A001 		add	r1, r0, #160
+ 880              	.LVL8:
+ 881              		.loc 1 179 39 view .LVU317
+ 882 0018 24F81120 		strh	r2, [r4, r1, lsl #1]	@ movhi
+ 180:Src/Zeugma_c/old_value_hall.c ****         analyze_data_1[counter + (160 * 2)] = phase_C;
+ 883              		.loc 1 180 9 is_stmt 1 view .LVU318
+ 884              		.loc 1 180 32 is_stmt 0 view .LVU319
+ 885 001c 00F5A072 		add	r2, r0, #320
+ 886              	.LVL9:
+ 887              		.loc 1 180 45 view .LVU320
+ 888 0020 24F81230 		strh	r3, [r4, r2, lsl #1]	@ movhi
+ 181:Src/Zeugma_c/old_value_hall.c **** 
+ 182:Src/Zeugma_c/old_value_hall.c ****         counter++;
+ 889              		.loc 1 182 9 is_stmt 1 view .LVU321
+ 890              		.loc 1 182 16 is_stmt 0 view .LVU322
+ 891 0024 0130     		adds	r0, r0, #1
+ 892              	.LVL10:
+ 893              		.loc 1 182 16 view .LVU323
+ 894 0026 C0B2     		uxtb	r0, r0
+ 895              	.LVL11:
+ 896              		.loc 1 182 16 view .LVU324
+ 897 0028 054B     		ldr	r3, .L56
+ 898              	.LVL12:
+ 899              		.loc 1 182 16 view .LVU325
+ 900 002a 1870     		strb	r0, [r3]
+ 183:Src/Zeugma_c/old_value_hall.c **** 
+ 184:Src/Zeugma_c/old_value_hall.c ****         if (counter == 160)
+ 901              		.loc 1 184 9 is_stmt 1 view .LVU326
+ 902              		.loc 1 184 12 is_stmt 0 view .LVU327
+ 903 002c A028     		cmp	r0, #160
+ 904 002e 01D0     		beq	.L55
+ 905              	.LVL13:
+ 906              	.L49:
+ 185:Src/Zeugma_c/old_value_hall.c ****         {
+ 186:Src/Zeugma_c/old_value_hall.c ****             sender_flag = 1; // 160 örnek tamamlandığında veri gönderimi işaretle
+ARM GAS  /tmp/ccMtXEEL.s 			page 25
+
+
+ 187:Src/Zeugma_c/old_value_hall.c ****         }
+ 188:Src/Zeugma_c/old_value_hall.c ****     }
+ 189:Src/Zeugma_c/old_value_hall.c **** }...
+ 907              		.loc 1 189 1 view .LVU328
+ 908 0030 10BC     		pop	{r4}
+ 909              		.cfi_remember_state
+ 910              		.cfi_restore 4
+ 911              		.cfi_def_cfa_offset 0
+ 912              	.LVL14:
+ 913              		.loc 1 189 1 view .LVU329
+ 914 0032 7047     		bx	lr
+ 915              	.LVL15:
+ 916              	.L55:
+ 917              		.cfi_restore_state
+ 186:Src/Zeugma_c/old_value_hall.c ****             sender_flag = 1; // 160 örnek tamamlandığında veri gönderimi işaretle
+ 918              		.loc 1 186 13 is_stmt 1 view .LVU330
+ 186:Src/Zeugma_c/old_value_hall.c ****             sender_flag = 1; // 160 örnek tamamlandığında veri gönderimi işaretle
+ 919              		.loc 1 186 25 is_stmt 0 view .LVU331
+ 920 0034 044B     		ldr	r3, .L56+8
+ 921 0036 0122     		movs	r2, #1
+ 922              	.LVL16:
+ 186:Src/Zeugma_c/old_value_hall.c ****             sender_flag = 1; // 160 örnek tamamlandığında veri gönderimi işaretle
+ 923              		.loc 1 186 25 view .LVU332
+ 924 0038 1A70     		strb	r2, [r3]
+ 925              		.loc 1 189 1 view .LVU333
+ 926 003a F9E7     		b	.L49
+ 927              	.LVL17:
+ 928              	.L52:
+ 929              		.cfi_def_cfa_offset 0
+ 930              		.cfi_restore 4
+ 931              		.loc 1 189 1 view .LVU334
+ 932 003c 7047     		bx	lr
+ 933              	.L57:
+ 934 003e 00BF     		.align	2
+ 935              	.L56:
+ 936 0040 00000000 		.word	counter
+ 937 0044 00000000 		.word	analyze_data_1
+ 938 0048 00000000 		.word	sender_flag
+ 939              		.cfi_endproc
+ 940              	.LFE69:
+ 942              		.global	sender_flag
+ 943              		.section	.bss.sender_flag,"aw",%nobits
+ 946              	sender_flag:
+ 947 0000 00       		.space	1
+ 948              		.global	counter
+ 949              		.section	.bss.counter,"aw",%nobits
+ 952              	counter:
+ 953 0000 00       		.space	1
+ 954              		.text
+ 955              	.Letext0:
+ 956              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h"
+ 957              		.file 3 "Inc/main.h"
+ 958              		.file 4 "Inc/Zeugma_h/bemf.h"
+ARM GAS  /tmp/ccMtXEEL.s 			page 26
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 old_value_hall.c
-     /tmp/cc4ooOxA.s:19     .text.set_old_value:00000000 $t
-     /tmp/cc4ooOxA.s:25     .text.set_old_value:00000000 set_old_value
-     /tmp/cc4ooOxA.s:398    .text.set_old_value:000001a4 $d
-     /tmp/cc4ooOxA.s:408    .text.set_old_value:000001c0 $t
-     /tmp/cc4ooOxA.s:758    .text.set_old_value:00000340 $d
-     /tmp/cc4ooOxA.s:768    .text.sample_phase_data:00000000 $t
-     /tmp/cc4ooOxA.s:774    .text.sample_phase_data:00000000 sample_phase_data
-     /tmp/cc4ooOxA.s:861    .text.sample_phase_data:00000040 $d
-     /tmp/cc4ooOxA.s:877    .bss.counter:00000000 counter
-     /tmp/cc4ooOxA.s:871    .bss.sender_flag:00000000 sender_flag
-     /tmp/cc4ooOxA.s:872    .bss.sender_flag:00000000 $d
-     /tmp/cc4ooOxA.s:878    .bss.counter:00000000 $d
+     /tmp/ccMtXEEL.s:19     .text.set_old_value:00000000 $t
+     /tmp/ccMtXEEL.s:25     .text.set_old_value:00000000 set_old_value
+     /tmp/ccMtXEEL.s:403    .text.set_old_value:000001a8 $d
+     /tmp/ccMtXEEL.s:413    .text.set_old_value:000001c4 $t
+     /tmp/ccMtXEEL.s:832    .text.set_old_value:0000039c $d
+     /tmp/ccMtXEEL.s:843    .text.sample_phase_data:00000000 $t
+     /tmp/ccMtXEEL.s:849    .text.sample_phase_data:00000000 sample_phase_data
+     /tmp/ccMtXEEL.s:936    .text.sample_phase_data:00000040 $d
+     /tmp/ccMtXEEL.s:952    .bss.counter:00000000 counter
+     /tmp/ccMtXEEL.s:946    .bss.sender_flag:00000000 sender_flag
+     /tmp/ccMtXEEL.s:947    .bss.sender_flag:00000000 $d
+     /tmp/ccMtXEEL.s:953    .bss.counter:00000000 $d
 
 UNDEFINED SYMBOLS
 geri_vites
@@ -1125,4 +1520,6 @@ hall_C
 oldValue
 flagg
 step
+log_var_analysis
+backEMF_mode
 analyze_data_1

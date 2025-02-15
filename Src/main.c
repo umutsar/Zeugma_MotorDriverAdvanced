@@ -74,7 +74,7 @@ volatile bool oldValue[3] = {0, 0, 0};
 bool mode = 1;
 volatile bool first_step_flag = 1;
 volatile bool flagg = 1;
-uint32_t adcbuffer[7] = {0};
+uint32_t adcBuffer[7] = {0};
 volatile uint16_t speedInAdc = 0;
 volatile uint16_t currentValue = 0;
 volatile uint16_t filtered_current = 0;
@@ -114,8 +114,9 @@ volatile uint32_t phase_B;
 volatile uint32_t phase_C;
 
 uint16_t target_rpm = 0;
-uint16_t max_rpm_limit = 3200;
+uint16_t max_rpm_limit = 2500;
 uint16_t max_current_limit = 2100;
+uint16_t max_pwm_limit = 900; // Max value: 1168!!!
 
 uint8_t flag12 = 0;
 uint16_t battery_voltage = 0;
@@ -130,7 +131,7 @@ uint16_t rpm_analysis[1024] = {0};
 
 uint16_t interval_of_steps[1024] = {0};
 
-uint8_t step_atlandi = 0;
+uint8_t step_atlandi = 0; // unused
 uint16_t rpm_max_limit_flag = 1;
 uint8_t backEMF_mode = 0;
 
@@ -241,13 +242,13 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
   if (hadc->Instance == ADC1)
   {
 
-    battery_voltage = adcbuffer[5] * 0.03843902;
+    battery_voltage = adcBuffer[5] * 0.03843902;
     if ((GPIOA->IDR & GPIO_PIN_8) + (GPIOA->IDR & GPIO_PIN_9) + (GPIOA->IDR & GPIO_PIN_10) == 0)
     {
       // if ((GPIOB->IDR & GPIO_PIN_13) == 0 && (step == 3 || step == 6))
       // {
-      //   phase_A = adcbuffer[3];
-      //   notr = adcbuffer[6];
+      //   phase_A = adcBuffer[3];
+      //   notr = adcBuffer[6];
       //   if (phase_A > notr)
       //     polarity_A = 1;
 
@@ -256,8 +257,8 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
       // }
       // if ((GPIOB->IDR & GPIO_PIN_14) == 0 && (step == 2 || step == 5))
       // {
-      //   phase_B = adcbuffer[4];
-      //   notr = adcbuffer[6];
+      //   phase_B = adcBuffer[4];
+      //   notr = adcBuffer[6];
       //   if (phase_B > notr)
       //     polarity_B = 1;
 
@@ -266,8 +267,8 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
       // }
       // if ((GPIOB->IDR & GPIO_PIN_15) == 0 && (step == 1 || step == 4))
       // {
-      //   phase_C = adcbuffer[2];
-      //   notr = adcbuffer[6];
+      //   phase_C = adcBuffer[2];
+      //   notr = adcBuffer[6];
       //   if (phase_C > notr)
       //     polarity_C = 1;
 
@@ -277,24 +278,24 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
     }
 
     // A
-    phase_A = ema_filter1(adcbuffer[3]);
-    notr = ema_filter0(adcbuffer[6]);
+    phase_A = ema_filter1(adcBuffer[3]);
+    notr = ema_filter0(adcBuffer[6]);
     if (phase_A > notr)
       polarity_A = 1;
     else
       polarity_A = 0;
 
     // B
-    phase_B = ema_filter2(adcbuffer[4]);
-    notr = ema_filter0(adcbuffer[6]);
+    phase_B = ema_filter2(adcBuffer[4]);
+    notr = ema_filter0(adcBuffer[6]);
     if (phase_B > notr)
       polarity_B = 1;
     else
       polarity_B = 0;
 
     // C
-    phase_C = ema_filter3(adcbuffer[2]);
-    notr = ema_filter0(adcbuffer[6]);
+    phase_C = ema_filter3(adcBuffer[2]);
+    notr = ema_filter0(adcBuffer[6]);
     if (phase_C > notr)
       polarity_C = 1;
     else
@@ -305,7 +306,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
     // motor_voltage = ema_filter(average_phase);
     motor_voltage = average_phase * 10;
 
-    currentValue = adcbuffer[1];
+    currentValue = adcBuffer[1];
     filtered_current = 4500 - currentValue;
 
     // TEMPORARY DEVELOPING LINES
@@ -317,7 +318,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
       temporary_current_value = 1300;
     // END
 
-    speedInAdc = adcbuffer[0];
+    speedInAdc = adcBuffer[0];
 
     // target_rpm
 
@@ -345,6 +346,9 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+  oldValue[0] = 1;
+  oldValue[1] = 0;
+  oldValue[2] = 1;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -373,7 +377,7 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-  HAL_ADC_Start_DMA(&hadc1, adcbuffer, 7);
+  HAL_ADC_Start_DMA(&hadc1, adcBuffer, 7);
 
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
   HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
@@ -382,16 +386,17 @@ int main(void)
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
   HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_3);
 
-  HAL_TIM_Base_Start(&htim2);
-
-  HAL_Delay(1000);
-  TIM1->CCER = 0x0000;
-  previousTime2 = HAL_GetTick();
-  previousTime3 = HAL_GetTick();
+  HAL_TIM_Base_Start_IT(&htim2);
+  __HAL_TIM_SET_COUNTER(&htim2, 0);
   HAL_TIM_Base_Start_IT(&htim3);
   __HAL_TIM_SET_COUNTER(&htim3, 0);
   HAL_TIM_Base_Start_IT(&htim4);
   __HAL_TIM_SET_COUNTER(&htim4, 0);
+
+  HAL_Delay(100);
+  TIM1->CCER = 0x0000;
+  previousTime2 = HAL_GetTick();
+  previousTime3 = HAL_GetTick();
 
   /* USER CODE END 2 */
 
@@ -420,14 +425,14 @@ int main(void)
       // LOG_VAR(phase_A);
       // LOG_VAR(phase_B);
       // LOG_VAR(phase_C);
+      // LOG_VAR(motor_voltage);
       LOG_VAR(rpm);
-      LOG_POST();
-      // LOG_VAR(adcbuffer[6]);
+      // LOG_POST();
+      // LOG_VAR(adcBuffer[6]);
 
       // // LOG_VAR(step);
 
-      // LOG_POST();
-      step_atlandi = 0;
+      LOG_POST();
       previousTime3 = HAL_GetTick();
     }
 
@@ -501,7 +506,7 @@ int main(void)
         {
           pwm_value = min_pwm_limit;
         }
-        else if (pwm_value < 1167)
+        else if (pwm_value < max_pwm_limit)
         {
           pwm_value += 1;
         }

@@ -77,7 +77,7 @@ void Error_Handler(void);
   extern bool mode;
   extern volatile bool first_step_flag;
   extern volatile bool flagg;
-  extern uint32_t adcbuffer[7];
+  extern uint32_t adcBuffer[7];
   extern volatile uint16_t speedInAdc;
   extern volatile uint16_t currentValue;
   extern volatile uint16_t filtered_current;
@@ -115,6 +115,7 @@ void Error_Handler(void);
   extern uint16_t target_rpm;
   extern uint16_t max_rpm_limit;
   extern uint16_t max_current_limit;
+  extern uint16_t max_pwm_limit;
 
   extern uint16_t battery_voltage;
 
