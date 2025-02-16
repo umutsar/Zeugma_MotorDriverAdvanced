@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccLlQX2y.s 			page 1
+ARM GAS  /tmp/ccPMclgE.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
   30:Src/syscalls.c **** #include <sys/time.h>
   31:Src/syscalls.c **** #include <sys/times.h>
   32:Src/syscalls.c **** 
-ARM GAS  /tmp/ccLlQX2y.s 			page 2
+ARM GAS  /tmp/ccPMclgE.s 			page 2
 
 
   33:Src/syscalls.c **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
   66              	.LVL0:
   67              	.LFB27:
   52:Src/syscalls.c **** 
-ARM GAS  /tmp/ccLlQX2y.s 			page 3
+ARM GAS  /tmp/ccPMclgE.s 			page 3
 
 
   53:Src/syscalls.c **** int _kill(int pid, int sig)
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
  113 0002 4FF0FF31 		mov	r1, #-1
  114 0006 FFF7FEFF 		bl	_kill
  115              	.LVL3:
-ARM GAS  /tmp/ccLlQX2y.s 			page 4
+ARM GAS  /tmp/ccPMclgE.s 			page 4
 
 
  116              	.L6:
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
  161              		.loc 1 74 9 discriminator 1 view .LVU28
  162 000e 2146     		mov	r1, r4
  163              	.LVL8:
-ARM GAS  /tmp/ccLlQX2y.s 			page 5
+ARM GAS  /tmp/ccPMclgE.s 			page 5
 
 
  164              		.loc 1 74 12 discriminator 1 view .LVU29
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
  209              		.loc 1 83 3 view .LVU39
   84:Src/syscalls.c **** 
   85:Src/syscalls.c ****   for (DataIdx = 0; DataIdx < len; DataIdx++)
-ARM GAS  /tmp/ccLlQX2y.s 			page 6
+ARM GAS  /tmp/ccPMclgE.s 			page 6
 
 
  210              		.loc 1 85 3 view .LVU40
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
  255              		.loc 1 94 3 view .LVU52
   95:Src/syscalls.c ****   return -1;
  256              		.loc 1 95 3 view .LVU53
-ARM GAS  /tmp/ccLlQX2y.s 			page 7
+ARM GAS  /tmp/ccPMclgE.s 			page 7
 
 
   96:Src/syscalls.c **** }
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
  107:Src/syscalls.c **** {
  304              		.loc 1 107 1 is_stmt 1 view -0
  305              		.cfi_startproc
-ARM GAS  /tmp/ccLlQX2y.s 			page 8
+ARM GAS  /tmp/ccPMclgE.s 			page 8
 
 
  306              		@ args = 0, pretend = 0, frame = 0
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
  353              	_open:
  354              	.LVL26:
  355              	.LFB35:
-ARM GAS  /tmp/ccLlQX2y.s 			page 9
+ARM GAS  /tmp/ccPMclgE.s 			page 9
 
 
  119:Src/syscalls.c **** 
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
  401              		.cfi_offset 14, -4
  130:Src/syscalls.c ****   (void)status;
  402              		.loc 1 130 3 is_stmt 1 view .LVU84
-ARM GAS  /tmp/ccLlQX2y.s 			page 10
+ARM GAS  /tmp/ccPMclgE.s 			page 10
 
 
  131:Src/syscalls.c ****   errno = ECHILD;
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
  450              		.align	1
  451              		.global	_times
  452              		.syntax unified
-ARM GAS  /tmp/ccLlQX2y.s 			page 11
+ARM GAS  /tmp/ccPMclgE.s 			page 11
 
 
  453              		.thumb
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
  497              	.LVL35:
  498              		.loc 1 153 1 view .LVU107
  499 0008 7047     		bx	lr
-ARM GAS  /tmp/ccLlQX2y.s 			page 12
+ARM GAS  /tmp/ccPMclgE.s 			page 12
 
 
  500              		.cfi_endproc
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
  547              		.cfi_startproc
  548              		@ args = 0, pretend = 0, frame = 0
  549              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccLlQX2y.s 			page 13
+ARM GAS  /tmp/ccPMclgE.s 			page 13
 
 
  550 0000 08B5     		push	{r3, lr}
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
  595              		.loc 1 175 3 is_stmt 1 view .LVU128
  176:Src/syscalls.c **** }
  596              		.loc 1 176 1 is_stmt 0 view .LVU129
-ARM GAS  /tmp/ccLlQX2y.s 			page 14
+ARM GAS  /tmp/ccPMclgE.s 			page 14
 
 
  597 000a 4FF0FF30 		mov	r0, #-1
@@ -807,51 +807,51 @@ ARM GAS  /tmp/ccLlQX2y.s 			page 1
  625              		.file 7 "/usr/include/newlib/sys/stat.h"
  626              		.file 8 "/usr/include/newlib/sys/times.h"
  627              		.file 9 "/usr/include/newlib/sys/errno.h"
-ARM GAS  /tmp/ccLlQX2y.s 			page 15
+ARM GAS  /tmp/ccPMclgE.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 syscalls.c
-     /tmp/ccLlQX2y.s:19     .text.initialise_monitor_handles:00000000 $t
-     /tmp/ccLlQX2y.s:25     .text.initialise_monitor_handles:00000000 initialise_monitor_handles
-     /tmp/ccLlQX2y.s:38     .text._getpid:00000000 $t
-     /tmp/ccLlQX2y.s:44     .text._getpid:00000000 _getpid
-     /tmp/ccLlQX2y.s:59     .text._kill:00000000 $t
-     /tmp/ccLlQX2y.s:65     .text._kill:00000000 _kill
-     /tmp/ccLlQX2y.s:93     .text._exit:00000000 $t
-     /tmp/ccLlQX2y.s:99     .text._exit:00000000 _exit
-     /tmp/ccLlQX2y.s:125    .text._read:00000000 $t
-     /tmp/ccLlQX2y.s:131    .text._read:00000000 _read
-     /tmp/ccLlQX2y.s:186    .text._write:00000000 $t
-     /tmp/ccLlQX2y.s:192    .text._write:00000000 _write
-     /tmp/ccLlQX2y.s:241    .text._close:00000000 $t
-     /tmp/ccLlQX2y.s:247    .text._close:00000000 _close
-     /tmp/ccLlQX2y.s:266    .text._fstat:00000000 $t
-     /tmp/ccLlQX2y.s:272    .text._fstat:00000000 _fstat
-     /tmp/ccLlQX2y.s:295    .text._isatty:00000000 $t
-     /tmp/ccLlQX2y.s:301    .text._isatty:00000000 _isatty
-     /tmp/ccLlQX2y.s:320    .text._lseek:00000000 $t
-     /tmp/ccLlQX2y.s:326    .text._lseek:00000000 _lseek
-     /tmp/ccLlQX2y.s:347    .text._open:00000000 $t
-     /tmp/ccLlQX2y.s:353    .text._open:00000000 _open
-     /tmp/ccLlQX2y.s:384    .text._wait:00000000 $t
-     /tmp/ccLlQX2y.s:390    .text._wait:00000000 _wait
-     /tmp/ccLlQX2y.s:417    .text._unlink:00000000 $t
-     /tmp/ccLlQX2y.s:423    .text._unlink:00000000 _unlink
-     /tmp/ccLlQX2y.s:450    .text._times:00000000 $t
-     /tmp/ccLlQX2y.s:456    .text._times:00000000 _times
-     /tmp/ccLlQX2y.s:475    .text._stat:00000000 $t
-     /tmp/ccLlQX2y.s:481    .text._stat:00000000 _stat
-     /tmp/ccLlQX2y.s:504    .text._link:00000000 $t
-     /tmp/ccLlQX2y.s:510    .text._link:00000000 _link
-     /tmp/ccLlQX2y.s:538    .text._fork:00000000 $t
-     /tmp/ccLlQX2y.s:544    .text._fork:00000000 _fork
-     /tmp/ccLlQX2y.s:568    .text._execve:00000000 $t
-     /tmp/ccLlQX2y.s:574    .text._execve:00000000 _execve
-     /tmp/ccLlQX2y.s:607    .data.environ:00000000 environ
-     /tmp/ccLlQX2y.s:604    .data.environ:00000000 $d
-     /tmp/ccLlQX2y.s:614    .bss.__env:00000000 __env
-     /tmp/ccLlQX2y.s:611    .bss.__env:00000000 $d
+     /tmp/ccPMclgE.s:19     .text.initialise_monitor_handles:00000000 $t
+     /tmp/ccPMclgE.s:25     .text.initialise_monitor_handles:00000000 initialise_monitor_handles
+     /tmp/ccPMclgE.s:38     .text._getpid:00000000 $t
+     /tmp/ccPMclgE.s:44     .text._getpid:00000000 _getpid
+     /tmp/ccPMclgE.s:59     .text._kill:00000000 $t
+     /tmp/ccPMclgE.s:65     .text._kill:00000000 _kill
+     /tmp/ccPMclgE.s:93     .text._exit:00000000 $t
+     /tmp/ccPMclgE.s:99     .text._exit:00000000 _exit
+     /tmp/ccPMclgE.s:125    .text._read:00000000 $t
+     /tmp/ccPMclgE.s:131    .text._read:00000000 _read
+     /tmp/ccPMclgE.s:186    .text._write:00000000 $t
+     /tmp/ccPMclgE.s:192    .text._write:00000000 _write
+     /tmp/ccPMclgE.s:241    .text._close:00000000 $t
+     /tmp/ccPMclgE.s:247    .text._close:00000000 _close
+     /tmp/ccPMclgE.s:266    .text._fstat:00000000 $t
+     /tmp/ccPMclgE.s:272    .text._fstat:00000000 _fstat
+     /tmp/ccPMclgE.s:295    .text._isatty:00000000 $t
+     /tmp/ccPMclgE.s:301    .text._isatty:00000000 _isatty
+     /tmp/ccPMclgE.s:320    .text._lseek:00000000 $t
+     /tmp/ccPMclgE.s:326    .text._lseek:00000000 _lseek
+     /tmp/ccPMclgE.s:347    .text._open:00000000 $t
+     /tmp/ccPMclgE.s:353    .text._open:00000000 _open
+     /tmp/ccPMclgE.s:384    .text._wait:00000000 $t
+     /tmp/ccPMclgE.s:390    .text._wait:00000000 _wait
+     /tmp/ccPMclgE.s:417    .text._unlink:00000000 $t
+     /tmp/ccPMclgE.s:423    .text._unlink:00000000 _unlink
+     /tmp/ccPMclgE.s:450    .text._times:00000000 $t
+     /tmp/ccPMclgE.s:456    .text._times:00000000 _times
+     /tmp/ccPMclgE.s:475    .text._stat:00000000 $t
+     /tmp/ccPMclgE.s:481    .text._stat:00000000 _stat
+     /tmp/ccPMclgE.s:504    .text._link:00000000 $t
+     /tmp/ccPMclgE.s:510    .text._link:00000000 _link
+     /tmp/ccPMclgE.s:538    .text._fork:00000000 $t
+     /tmp/ccPMclgE.s:544    .text._fork:00000000 _fork
+     /tmp/ccPMclgE.s:568    .text._execve:00000000 $t
+     /tmp/ccPMclgE.s:574    .text._execve:00000000 _execve
+     /tmp/ccPMclgE.s:607    .data.environ:00000000 environ
+     /tmp/ccPMclgE.s:604    .data.environ:00000000 $d
+     /tmp/ccPMclgE.s:614    .bss.__env:00000000 __env
+     /tmp/ccPMclgE.s:611    .bss.__env:00000000 $d
 
 UNDEFINED SYMBOLS
 __errno

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccwr3hL1.s 			page 1
+ARM GAS  /tmp/ccZFe4p4.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -34,460 +34,504 @@ ARM GAS  /tmp/ccwr3hL1.s 			page 1
    5:Src/Zeugma_c/rpm.c **** #include "bemf.h"
    6:Src/Zeugma_c/rpm.c **** #include "main.h"
    7:Src/Zeugma_c/rpm.c **** #include "debug_monitor.h"
-   8:Src/Zeugma_c/rpm.c **** 
-   9:Src/Zeugma_c/rpm.c **** uint32_t rpm_sampling_array[6] = {0};
-  10:Src/Zeugma_c/rpm.c **** uint8_t array_index = 0;
-  11:Src/Zeugma_c/rpm.c **** uint8_t first_filterless_count = 0;
-  12:Src/Zeugma_c/rpm.c **** uint16_t filtered_rpm = 0;
-  13:Src/Zeugma_c/rpm.c **** uint32_t tim4Counter = 0;
-  14:Src/Zeugma_c/rpm.c **** 
-  15:Src/Zeugma_c/rpm.c **** uint16_t get_rpm(int32_t _difference_two_coummutation_time)
-  16:Src/Zeugma_c/rpm.c **** {
-  28              		.loc 1 16 1 view -0
+   8:Src/Zeugma_c/rpm.c **** #include "steps.h"
+   9:Src/Zeugma_c/rpm.c **** 
+  10:Src/Zeugma_c/rpm.c **** uint32_t rpm_sampling_array[6] = {0};
+  11:Src/Zeugma_c/rpm.c **** uint8_t array_index = 0;
+  12:Src/Zeugma_c/rpm.c **** uint8_t first_filterless_count = 0;
+  13:Src/Zeugma_c/rpm.c **** uint16_t filtered_rpm = 0;
+  14:Src/Zeugma_c/rpm.c **** uint32_t tim4Counter = 0;
+  15:Src/Zeugma_c/rpm.c **** 
+  16:Src/Zeugma_c/rpm.c **** uint16_t get_rpm(int32_t _difference_two_coummutation_time)
+  17:Src/Zeugma_c/rpm.c **** {
+  28              		.loc 1 17 1 view -0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
-  17:Src/Zeugma_c/rpm.c ****     if (_difference_two_coummutation_time == -1)
-  33              		.loc 1 17 5 view .LVU1
-  34              		.loc 1 17 8 is_stmt 0 view .LVU2
+  18:Src/Zeugma_c/rpm.c ****     if (_difference_two_coummutation_time == -1)
+  33              		.loc 1 18 5 view .LVU1
+  34              		.loc 1 18 8 is_stmt 0 view .LVU2
   35 0000 B0F1FF3F 		cmp	r0, #-1
-  36 0004 53D0     		beq	.L10
-  18:Src/Zeugma_c/rpm.c ****     {
-  19:Src/Zeugma_c/rpm.c ****         return 0;
-  20:Src/Zeugma_c/rpm.c ****     }
-  21:Src/Zeugma_c/rpm.c ****     rpm_sampling_array[array_index++] = _difference_two_coummutation_time;
-  37              		.loc 1 21 5 is_stmt 1 view .LVU3
-ARM GAS  /tmp/ccwr3hL1.s 			page 2
+  36 0004 59D0     		beq	.L10
+  19:Src/Zeugma_c/rpm.c ****     {
+  20:Src/Zeugma_c/rpm.c ****         return 0;
+  21:Src/Zeugma_c/rpm.c ****     }
+  22:Src/Zeugma_c/rpm.c ****     rpm_sampling_array[array_index++] = _difference_two_coummutation_time;
+ARM GAS  /tmp/ccZFe4p4.s 			page 2
 
 
-  38              		.loc 1 21 35 is_stmt 0 view .LVU4
-  39 0006 2B49     		ldr	r1, .L12
+  37              		.loc 1 22 5 is_stmt 1 view .LVU3
+  38              		.loc 1 22 35 is_stmt 0 view .LVU4
+  39 0006 2E49     		ldr	r1, .L12
   40 0008 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
   41 000a 531C     		adds	r3, r2, #1
   42 000c DBB2     		uxtb	r3, r3
   43 000e 0B70     		strb	r3, [r1]
-  44              		.loc 1 21 39 view .LVU5
-  45 0010 2949     		ldr	r1, .L12+4
+  44              		.loc 1 22 39 view .LVU5
+  45 0010 2C49     		ldr	r1, .L12+4
   46 0012 41F82200 		str	r0, [r1, r2, lsl #2]
-  22:Src/Zeugma_c/rpm.c **** 
-  23:Src/Zeugma_c/rpm.c ****     if (array_index == 6)
-  47              		.loc 1 23 5 is_stmt 1 view .LVU6
-  48              		.loc 1 23 8 is_stmt 0 view .LVU7
+  23:Src/Zeugma_c/rpm.c **** 
+  24:Src/Zeugma_c/rpm.c ****     if (array_index == 6)
+  47              		.loc 1 24 5 is_stmt 1 view .LVU6
+  48              		.loc 1 24 8 is_stmt 0 view .LVU7
   49 0016 062B     		cmp	r3, #6
   50 0018 01D0     		beq	.L11
   51              	.L3:
-  24:Src/Zeugma_c/rpm.c ****     {
-  25:Src/Zeugma_c/rpm.c ****         array_index = 0;
-  26:Src/Zeugma_c/rpm.c ****     }
-  27:Src/Zeugma_c/rpm.c **** 
-  28:Src/Zeugma_c/rpm.c ****     uint32_t sum = 0;
-  52              		.loc 1 28 5 is_stmt 1 view .LVU8
+  25:Src/Zeugma_c/rpm.c ****     {
+  26:Src/Zeugma_c/rpm.c ****         array_index = 0;
+  27:Src/Zeugma_c/rpm.c ****     }
+  28:Src/Zeugma_c/rpm.c **** 
+  29:Src/Zeugma_c/rpm.c ****     uint32_t sum = 0;
+  52              		.loc 1 29 5 is_stmt 1 view .LVU8
   53              	.LVL1:
-  29:Src/Zeugma_c/rpm.c ****     for (uint8_t i = 0; i < first_filterless_count; i++)
-  54              		.loc 1 29 5 view .LVU9
+  30:Src/Zeugma_c/rpm.c ****     for (uint8_t i = 0; i < first_filterless_count; i++)
+  54              		.loc 1 30 5 view .LVU9
   55              	.LBB2:
-  56              		.loc 1 29 10 view .LVU10
-  57              		.loc 1 29 18 is_stmt 0 view .LVU11
+  56              		.loc 1 30 10 view .LVU10
+  57              		.loc 1 30 18 is_stmt 0 view .LVU11
   58 001a 0023     		movs	r3, #0
-  59              		.loc 1 29 5 view .LVU12
+  59              		.loc 1 30 5 view .LVU12
   60 001c 05E0     		b	.L4
   61              	.LVL2:
   62              	.L11:
-  63              		.loc 1 29 5 view .LVU13
+  63              		.loc 1 30 5 view .LVU13
   64              	.LBE2:
-  25:Src/Zeugma_c/rpm.c ****     }
-  65              		.loc 1 25 9 is_stmt 1 view .LVU14
-  25:Src/Zeugma_c/rpm.c ****     }
-  66              		.loc 1 25 21 is_stmt 0 view .LVU15
-  67 001e 254B     		ldr	r3, .L12
+  26:Src/Zeugma_c/rpm.c ****     }
+  65              		.loc 1 26 9 is_stmt 1 view .LVU14
+  26:Src/Zeugma_c/rpm.c ****     }
+  66              		.loc 1 26 21 is_stmt 0 view .LVU15
+  67 001e 284B     		ldr	r3, .L12
   68 0020 0022     		movs	r2, #0
   69 0022 1A70     		strb	r2, [r3]
   70 0024 F9E7     		b	.L3
   71              	.LVL3:
   72              	.L5:
   73              	.LBB3:
+  31:Src/Zeugma_c/rpm.c ****     {
+  32:Src/Zeugma_c/rpm.c ****         sum += rpm_sampling_array[i];
+  74              		.loc 1 32 9 is_stmt 1 view .LVU16
   30:Src/Zeugma_c/rpm.c ****     {
-  31:Src/Zeugma_c/rpm.c ****         sum += rpm_sampling_array[i];
-  74              		.loc 1 31 9 is_stmt 1 view .LVU16
-  29:Src/Zeugma_c/rpm.c ****     {
-  75              		.loc 1 29 54 discriminator 3 view .LVU17
+  75              		.loc 1 30 54 discriminator 3 view .LVU17
   76 0026 0133     		adds	r3, r3, #1
   77              	.LVL4:
-  29:Src/Zeugma_c/rpm.c ****     {
-  78              		.loc 1 29 54 is_stmt 0 discriminator 3 view .LVU18
+  30:Src/Zeugma_c/rpm.c ****     {
+  78              		.loc 1 30 54 is_stmt 0 discriminator 3 view .LVU18
   79 0028 DBB2     		uxtb	r3, r3
+ARM GAS  /tmp/ccZFe4p4.s 			page 3
+
+
   80              	.LVL5:
-ARM GAS  /tmp/ccwr3hL1.s 			page 3
-
-
   81              	.L4:
-  29:Src/Zeugma_c/rpm.c ****     {
-  82              		.loc 1 29 27 is_stmt 1 discriminator 1 view .LVU19
-  83 002a 244A     		ldr	r2, .L12+8
+  30:Src/Zeugma_c/rpm.c ****     {
+  82              		.loc 1 30 27 is_stmt 1 discriminator 1 view .LVU19
+  83 002a 274A     		ldr	r2, .L12+8
   84 002c 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
   85 002e 9A42     		cmp	r2, r3
   86 0030 F9D8     		bhi	.L5
   87              	.LBE3:
-  32:Src/Zeugma_c/rpm.c ****     }
-  33:Src/Zeugma_c/rpm.c **** 
-  34:Src/Zeugma_c/rpm.c ****     if (first_filterless_count < 6)
-  88              		.loc 1 34 5 view .LVU20
-  89              		.loc 1 34 8 is_stmt 0 view .LVU21
+  33:Src/Zeugma_c/rpm.c ****     }
+  34:Src/Zeugma_c/rpm.c **** 
+  35:Src/Zeugma_c/rpm.c ****     if (first_filterless_count < 6)
+  88              		.loc 1 35 5 view .LVU20
+  89              		.loc 1 35 8 is_stmt 0 view .LVU21
   90 0032 052A     		cmp	r2, #5
-  91 0034 28D8     		bhi	.L6
-  35:Src/Zeugma_c/rpm.c ****     {
-  36:Src/Zeugma_c/rpm.c ****         filtered_rpm = rpm_sampling_array[first_filterless_count++];
-  92              		.loc 1 36 9 is_stmt 1 view .LVU22
-  93              		.loc 1 36 65 is_stmt 0 view .LVU23
+  91 0034 2ED8     		bhi	.L6
+  36:Src/Zeugma_c/rpm.c ****     {
+  37:Src/Zeugma_c/rpm.c ****         filtered_rpm = rpm_sampling_array[first_filterless_count++];
+  92              		.loc 1 37 9 is_stmt 1 view .LVU22
+  93              		.loc 1 37 65 is_stmt 0 view .LVU23
   94 0036 511C     		adds	r1, r2, #1
-  95 0038 204B     		ldr	r3, .L12+8
+  95 0038 234B     		ldr	r3, .L12+8
   96              	.LVL6:
-  97              		.loc 1 36 65 view .LVU24
+  97              		.loc 1 37 65 view .LVU24
   98 003a 1970     		strb	r1, [r3]
-  99              		.loc 1 36 42 view .LVU25
- 100 003c 1E4B     		ldr	r3, .L12+4
+  99              		.loc 1 37 42 view .LVU25
+ 100 003c 214B     		ldr	r3, .L12+4
  101 003e 53F82220 		ldr	r2, [r3, r2, lsl #2]
- 102              		.loc 1 36 22 view .LVU26
- 103 0042 1F4B     		ldr	r3, .L12+12
+ 102              		.loc 1 37 22 view .LVU26
+ 103 0042 224B     		ldr	r3, .L12+12
  104 0044 1A80     		strh	r2, [r3]	@ movhi
  105              	.L7:
-  37:Src/Zeugma_c/rpm.c ****     }
-  38:Src/Zeugma_c/rpm.c ****     else
-  39:Src/Zeugma_c/rpm.c ****     {
-  40:Src/Zeugma_c/rpm.c ****         filtered_rpm = (rpm_sampling_array[0] + rpm_sampling_array[1] + rpm_sampling_array[2] +
-  41:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
-  42:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
-  43:Src/Zeugma_c/rpm.c ****     }
-  44:Src/Zeugma_c/rpm.c **** 
-  45:Src/Zeugma_c/rpm.c ****     if (filtered_rpm == 0)
- 106              		.loc 1 45 5 is_stmt 1 view .LVU27
- 107              		.loc 1 45 22 is_stmt 0 view .LVU28
- 108 0046 1E4B     		ldr	r3, .L12+12
+  38:Src/Zeugma_c/rpm.c ****     }
+  39:Src/Zeugma_c/rpm.c ****     else
+  40:Src/Zeugma_c/rpm.c ****     {
+  41:Src/Zeugma_c/rpm.c ****         filtered_rpm = (rpm_sampling_array[0] + rpm_sampling_array[1] + rpm_sampling_array[2] +
+  42:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+  43:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+  44:Src/Zeugma_c/rpm.c ****     }
+  45:Src/Zeugma_c/rpm.c **** 
+  46:Src/Zeugma_c/rpm.c ****     if (filtered_rpm == 0)
+ 106              		.loc 1 46 5 is_stmt 1 view .LVU27
+ 107              		.loc 1 46 22 is_stmt 0 view .LVU28
+ 108 0046 214B     		ldr	r3, .L12+12
  109 0048 1888     		ldrh	r0, [r3]
  110              	.LVL7:
- 111              		.loc 1 45 8 view .LVU29
+ 111              		.loc 1 46 8 view .LVU29
  112 004a 0028     		cmp	r0, #0
- 113 004c 30D0     		beq	.L2
-  46:Src/Zeugma_c/rpm.c ****     {
-  47:Src/Zeugma_c/rpm.c ****         return 0;
-  48:Src/Zeugma_c/rpm.c ****     }
-  49:Src/Zeugma_c/rpm.c **** 
-  50:Src/Zeugma_c/rpm.c ****     filtered_rpm = (TIMER_SETTING / (filtered_rpm * COMMUTATIONS_PER_REVOLUTION));
- 114              		.loc 1 50 5 is_stmt 1 view .LVU30
- 115              		.loc 1 50 51 is_stmt 0 view .LVU31
+ 113 004c 36D0     		beq	.L2
+  47:Src/Zeugma_c/rpm.c ****     {
+  48:Src/Zeugma_c/rpm.c ****         return 0;
+  49:Src/Zeugma_c/rpm.c ****     }
+  50:Src/Zeugma_c/rpm.c **** 
+  51:Src/Zeugma_c/rpm.c ****     filtered_rpm = (TIMER_SETTING / (filtered_rpm * COMMUTATIONS_PER_REVOLUTION));
+ 114              		.loc 1 51 5 is_stmt 1 view .LVU30
+ 115              		.loc 1 51 51 is_stmt 0 view .LVU31
  116 004e 00EB4000 		add	r0, r0, r0, lsl #1
+ARM GAS  /tmp/ccZFe4p4.s 			page 4
+
+
  117 0052 C000     		lsls	r0, r0, #3
-ARM GAS  /tmp/ccwr3hL1.s 			page 4
-
-
- 118              		.loc 1 50 35 view .LVU32
- 119 0054 1B4B     		ldr	r3, .L12+16
+ 118              		.loc 1 51 35 view .LVU32
+ 119 0054 1E4B     		ldr	r3, .L12+16
  120 0056 93FBF0F3 		sdiv	r3, r3, r0
- 121              		.loc 1 50 18 view .LVU33
+ 121              		.loc 1 51 18 view .LVU33
  122 005a 98B2     		uxth	r0, r3
- 123 005c 184B     		ldr	r3, .L12+12
+ 123 005c 1B4B     		ldr	r3, .L12+12
  124 005e 1880     		strh	r0, [r3]	@ movhi
-  51:Src/Zeugma_c/rpm.c ****     if (filtered_rpm > 1450)
- 125              		.loc 1 51 5 is_stmt 1 view .LVU34
- 126              		.loc 1 51 8 is_stmt 0 view .LVU35
+  52:Src/Zeugma_c/rpm.c ****     if (filtered_rpm > 1450)
+ 125              		.loc 1 52 5 is_stmt 1 view .LVU34
+ 126              		.loc 1 52 8 is_stmt 0 view .LVU35
  127 0060 40F2AA53 		movw	r3, #1450
  128 0064 9842     		cmp	r0, r3
  129 0066 02D9     		bls	.L8
-  52:Src/Zeugma_c/rpm.c ****         rpm_max_limit_flag = 0;
- 130              		.loc 1 52 9 is_stmt 1 view .LVU36
- 131              		.loc 1 52 28 is_stmt 0 view .LVU37
- 132 0068 174B     		ldr	r3, .L12+20
+  53:Src/Zeugma_c/rpm.c ****         rpm_max_limit_flag = 0;
+ 130              		.loc 1 53 9 is_stmt 1 view .LVU36
+ 131              		.loc 1 53 28 is_stmt 0 view .LVU37
+ 132 0068 1A4B     		ldr	r3, .L12+20
  133 006a 0022     		movs	r2, #0
  134 006c 1A80     		strh	r2, [r3]	@ movhi
  135              	.L8:
-  53:Src/Zeugma_c/rpm.c **** 
-  54:Src/Zeugma_c/rpm.c ****     if (filtered_rpm > 700)
- 136              		.loc 1 54 5 is_stmt 1 view .LVU38
- 137              		.loc 1 54 8 is_stmt 0 view .LVU39
- 138 006e B0F52F7F 		cmp	r0, #700
- 139 0072 02D9     		bls	.L9
-  55:Src/Zeugma_c/rpm.c ****         backEMF_mode = 1;
- 140              		.loc 1 55 9 is_stmt 1 view .LVU40
- 141              		.loc 1 55 22 is_stmt 0 view .LVU41
- 142 0074 154B     		ldr	r3, .L12+24
- 143 0076 0122     		movs	r2, #1
- 144 0078 1A70     		strb	r2, [r3]
- 145              	.L9:
-  56:Src/Zeugma_c/rpm.c ****     if (filtered_rpm < 600)
- 146              		.loc 1 56 5 is_stmt 1 view .LVU42
- 147              		.loc 1 56 8 is_stmt 0 view .LVU43
- 148 007a B0F5167F 		cmp	r0, #600
- 149 007e 17D2     		bcs	.L2
-  57:Src/Zeugma_c/rpm.c ****         backEMF_mode = 0;
- 150              		.loc 1 57 9 is_stmt 1 view .LVU44
- 151              		.loc 1 57 22 is_stmt 0 view .LVU45
- 152 0080 124B     		ldr	r3, .L12+24
- 153 0082 0022     		movs	r2, #0
- 154 0084 1A70     		strb	r2, [r3]
- 155 0086 7047     		bx	lr
- 156              	.LVL8:
- 157              	.L6:
-  40:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
- 158              		.loc 1 40 9 is_stmt 1 view .LVU46
-  40:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
- 159              		.loc 1 40 43 is_stmt 0 view .LVU47
- 160 0088 0B4A     		ldr	r2, .L12+4
- 161 008a 1368     		ldr	r3, [r2]
- 162              	.LVL9:
-  40:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
- 163              		.loc 1 40 67 view .LVU48
- 164 008c 5168     		ldr	r1, [r2, #4]
-ARM GAS  /tmp/ccwr3hL1.s 			page 5
+  54:Src/Zeugma_c/rpm.c **** 
+  55:Src/Zeugma_c/rpm.c ****     if (filtered_rpm > 1000)
+ 136              		.loc 1 55 5 is_stmt 1 view .LVU38
+ 137              		.loc 1 55 8 is_stmt 0 view .LVU39
+ 138 006e B0F57A7F 		cmp	r0, #1000
+ 139 0072 05D9     		bls	.L9
+  56:Src/Zeugma_c/rpm.c ****     {
+  57:Src/Zeugma_c/rpm.c ****         if (backEMF_mode == 0)
+ 140              		.loc 1 57 9 is_stmt 1 view .LVU40
+ 141              		.loc 1 57 26 is_stmt 0 view .LVU41
+ 142 0074 184B     		ldr	r3, .L12+24
+ 143 0076 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 144              		.loc 1 57 12 view .LVU42
+ 145 0078 13B9     		cbnz	r3, .L9
+  58:Src/Zeugma_c/rpm.c ****         {
+  59:Src/Zeugma_c/rpm.c ****             backEMF_mode = 1;
+ 146              		.loc 1 59 13 is_stmt 1 view .LVU43
+ 147              		.loc 1 59 26 is_stmt 0 view .LVU44
+ 148 007a 174B     		ldr	r3, .L12+24
+ 149 007c 0122     		movs	r2, #1
+ 150 007e 1A70     		strb	r2, [r3]
+ 151              	.L9:
+  60:Src/Zeugma_c/rpm.c ****         }
+  61:Src/Zeugma_c/rpm.c ****     }
+  62:Src/Zeugma_c/rpm.c ****     if (filtered_rpm < 700)
+ 152              		.loc 1 62 5 is_stmt 1 view .LVU45
+ 153              		.loc 1 62 8 is_stmt 0 view .LVU46
+ 154 0080 B0F52F7F 		cmp	r0, #700
+ 155 0084 1AD2     		bcs	.L2
+  63:Src/Zeugma_c/rpm.c ****     {
+  64:Src/Zeugma_c/rpm.c ****         backEMF_mode = 0;
+ 156              		.loc 1 64 9 is_stmt 1 view .LVU47
+ 157              		.loc 1 64 22 is_stmt 0 view .LVU48
+ 158 0086 144B     		ldr	r3, .L12+24
+ 159 0088 0022     		movs	r2, #0
+ 160 008a 1A70     		strb	r2, [r3]
+ARM GAS  /tmp/ccZFe4p4.s 			page 5
 
 
-  40:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
- 165              		.loc 1 40 47 view .LVU49
- 166 008e 0B44     		add	r3, r3, r1
-  40:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
- 167              		.loc 1 40 91 view .LVU50
- 168 0090 9168     		ldr	r1, [r2, #8]
-  40:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
- 169              		.loc 1 40 71 view .LVU51
- 170 0092 0B44     		add	r3, r3, r1
-  41:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
- 171              		.loc 1 41 43 view .LVU52
- 172 0094 D168     		ldr	r1, [r2, #12]
-  40:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
- 173              		.loc 1 40 95 view .LVU53
- 174 0096 0B44     		add	r3, r3, r1
-  41:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
- 175              		.loc 1 41 67 view .LVU54
- 176 0098 1169     		ldr	r1, [r2, #16]
-  41:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
- 177              		.loc 1 41 47 view .LVU55
- 178 009a 0B44     		add	r3, r3, r1
-  41:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
- 179              		.loc 1 41 91 view .LVU56
- 180 009c 5269     		ldr	r2, [r2, #20]
-  41:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
- 181              		.loc 1 41 71 view .LVU57
- 182 009e 1344     		add	r3, r3, r2
-  41:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
- 183              		.loc 1 41 96 view .LVU58
- 184 00a0 0B4A     		ldr	r2, .L12+28
- 185 00a2 A2FB0323 		umull	r2, r3, r2, r3
- 186 00a6 9B08     		lsrs	r3, r3, #2
-  40:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
- 187              		.loc 1 40 22 view .LVU59
- 188 00a8 054A     		ldr	r2, .L12+12
- 189 00aa 1380     		strh	r3, [r2]	@ movhi
- 190 00ac CBE7     		b	.L7
- 191              	.LVL10:
- 192              	.L10:
-  19:Src/Zeugma_c/rpm.c ****     }
- 193              		.loc 1 19 16 view .LVU60
- 194 00ae 0020     		movs	r0, #0
- 195              	.LVL11:
- 196              	.L2:
-  58:Src/Zeugma_c/rpm.c **** 
-  59:Src/Zeugma_c/rpm.c ****     return filtered_rpm;
-  60:Src/Zeugma_c/rpm.c **** }
- 197              		.loc 1 60 1 view .LVU61
- 198 00b0 7047     		bx	lr
- 199              	.L13:
- 200 00b2 00BF     		.align	2
- 201              	.L12:
- 202 00b4 00000000 		.word	array_index
- 203 00b8 00000000 		.word	rpm_sampling_array
- 204 00bc 00000000 		.word	first_filterless_count
- 205 00c0 00000000 		.word	filtered_rpm
- 206 00c4 808D5B00 		.word	6000000
-ARM GAS  /tmp/ccwr3hL1.s 			page 6
+  65:Src/Zeugma_c/rpm.c ****         bemf_execute_flag = 1;
+ 161              		.loc 1 65 9 is_stmt 1 view .LVU49
+ 162              		.loc 1 65 27 is_stmt 0 view .LVU50
+ 163 008c 134B     		ldr	r3, .L12+28
+ 164 008e 0122     		movs	r2, #1
+ 165 0090 1A70     		strb	r2, [r3]
+ 166 0092 7047     		bx	lr
+ 167              	.LVL8:
+ 168              	.L6:
+  41:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 169              		.loc 1 41 9 is_stmt 1 view .LVU51
+  41:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 170              		.loc 1 41 43 is_stmt 0 view .LVU52
+ 171 0094 0B4A     		ldr	r2, .L12+4
+ 172 0096 1368     		ldr	r3, [r2]
+ 173              	.LVL9:
+  41:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 174              		.loc 1 41 67 view .LVU53
+ 175 0098 5168     		ldr	r1, [r2, #4]
+  41:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 176              		.loc 1 41 47 view .LVU54
+ 177 009a 0B44     		add	r3, r3, r1
+  41:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 178              		.loc 1 41 91 view .LVU55
+ 179 009c 9168     		ldr	r1, [r2, #8]
+  41:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 180              		.loc 1 41 71 view .LVU56
+ 181 009e 0B44     		add	r3, r3, r1
+  42:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+ 182              		.loc 1 42 43 view .LVU57
+ 183 00a0 D168     		ldr	r1, [r2, #12]
+  41:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 184              		.loc 1 41 95 view .LVU58
+ 185 00a2 0B44     		add	r3, r3, r1
+  42:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+ 186              		.loc 1 42 67 view .LVU59
+ 187 00a4 1169     		ldr	r1, [r2, #16]
+  42:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+ 188              		.loc 1 42 47 view .LVU60
+ 189 00a6 0B44     		add	r3, r3, r1
+  42:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+ 190              		.loc 1 42 91 view .LVU61
+ 191 00a8 5269     		ldr	r2, [r2, #20]
+  42:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+ 192              		.loc 1 42 71 view .LVU62
+ 193 00aa 1344     		add	r3, r3, r2
+  42:Src/Zeugma_c/rpm.c ****                        6; // x microsecond / 10
+ 194              		.loc 1 42 96 view .LVU63
+ 195 00ac 0C4A     		ldr	r2, .L12+32
+ 196 00ae A2FB0323 		umull	r2, r3, r2, r3
+ 197 00b2 9B08     		lsrs	r3, r3, #2
+  41:Src/Zeugma_c/rpm.c ****                         rpm_sampling_array[3] + rpm_sampling_array[4] + rpm_sampling_array[5]) /
+ 198              		.loc 1 41 22 view .LVU64
+ 199 00b4 054A     		ldr	r2, .L12+12
+ 200 00b6 1380     		strh	r3, [r2]	@ movhi
+ 201 00b8 C5E7     		b	.L7
+ 202              	.LVL10:
+ARM GAS  /tmp/ccZFe4p4.s 			page 6
 
 
- 207 00c8 00000000 		.word	rpm_max_limit_flag
- 208 00cc 00000000 		.word	backEMF_mode
- 209 00d0 ABAAAAAA 		.word	-1431655765
- 210              		.cfi_endproc
- 211              	.LFE68:
- 213              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
- 214              		.align	1
- 215              		.global	HAL_TIM_PeriodElapsedCallback
- 216              		.syntax unified
- 217              		.thumb
- 218              		.thumb_func
- 220              	HAL_TIM_PeriodElapsedCallback:
- 221              	.LVL12:
- 222              	.LFB69:
-  61:Src/Zeugma_c/rpm.c **** 
-  62:Src/Zeugma_c/rpm.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-  63:Src/Zeugma_c/rpm.c **** {
- 223              		.loc 1 63 1 is_stmt 1 view -0
- 224              		.cfi_startproc
- 225              		@ args = 0, pretend = 0, frame = 0
- 226              		@ frame_needed = 0, uses_anonymous_args = 0
- 227              		.loc 1 63 1 is_stmt 0 view .LVU63
- 228 0000 10B5     		push	{r4, lr}
- 229              		.cfi_def_cfa_offset 8
- 230              		.cfi_offset 4, -8
- 231              		.cfi_offset 14, -4
- 232 0002 0446     		mov	r4, r0
-  64:Src/Zeugma_c/rpm.c **** 
-  65:Src/Zeugma_c/rpm.c ****     if (htim->Instance == TIM2)
- 233              		.loc 1 65 5 is_stmt 1 view .LVU64
- 234              		.loc 1 65 13 is_stmt 0 view .LVU65
- 235 0004 0368     		ldr	r3, [r0]
- 236              		.loc 1 65 8 view .LVU66
- 237 0006 B3F1804F 		cmp	r3, #1073741824
- 238 000a 08D0     		beq	.L19
- 239              	.L15:
-  66:Src/Zeugma_c/rpm.c ****     {
-  67:Src/Zeugma_c/rpm.c ****         rpm = 0;
-  68:Src/Zeugma_c/rpm.c ****     }
-  69:Src/Zeugma_c/rpm.c **** 
-  70:Src/Zeugma_c/rpm.c ****     if (htim->Instance == TIM3)
- 240              		.loc 1 70 5 is_stmt 1 view .LVU67
- 241              		.loc 1 70 13 is_stmt 0 view .LVU68
- 242 000c 2268     		ldr	r2, [r4]
- 243              		.loc 1 70 8 view .LVU69
- 244 000e 0A4B     		ldr	r3, .L22
- 245 0010 9A42     		cmp	r2, r3
- 246 0012 08D0     		beq	.L20
- 247              	.LVL13:
- 248              	.L16:
-  71:Src/Zeugma_c/rpm.c ****     {
-  72:Src/Zeugma_c/rpm.c ****         HAL_TIM_Base_Stop_IT(&htim3);
+ 203              	.L10:
+  20:Src/Zeugma_c/rpm.c ****     }
+ 204              		.loc 1 20 16 view .LVU65
+ 205 00ba 0020     		movs	r0, #0
+ 206              	.LVL11:
+ 207              	.L2:
+  66:Src/Zeugma_c/rpm.c ****     }
+  67:Src/Zeugma_c/rpm.c **** 
+  68:Src/Zeugma_c/rpm.c ****     return filtered_rpm;
+  69:Src/Zeugma_c/rpm.c **** }
+ 208              		.loc 1 69 1 view .LVU66
+ 209 00bc 7047     		bx	lr
+ 210              	.L13:
+ 211 00be 00BF     		.align	2
+ 212              	.L12:
+ 213 00c0 00000000 		.word	array_index
+ 214 00c4 00000000 		.word	rpm_sampling_array
+ 215 00c8 00000000 		.word	first_filterless_count
+ 216 00cc 00000000 		.word	filtered_rpm
+ 217 00d0 808D5B00 		.word	6000000
+ 218 00d4 00000000 		.word	rpm_max_limit_flag
+ 219 00d8 00000000 		.word	backEMF_mode
+ 220 00dc 00000000 		.word	bemf_execute_flag
+ 221 00e0 ABAAAAAA 		.word	-1431655765
+ 222              		.cfi_endproc
+ 223              	.LFE68:
+ 225              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
+ 226              		.align	1
+ 227              		.global	HAL_TIM_PeriodElapsedCallback
+ 228              		.syntax unified
+ 229              		.thumb
+ 230              		.thumb_func
+ 232              	HAL_TIM_PeriodElapsedCallback:
+ 233              	.LVL12:
+ 234              	.LFB69:
+  70:Src/Zeugma_c/rpm.c **** 
+  71:Src/Zeugma_c/rpm.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+  72:Src/Zeugma_c/rpm.c **** {
+ 235              		.loc 1 72 1 is_stmt 1 view -0
+ 236              		.cfi_startproc
+ 237              		@ args = 0, pretend = 0, frame = 0
+ 238              		@ frame_needed = 0, uses_anonymous_args = 0
+ 239              		.loc 1 72 1 is_stmt 0 view .LVU68
+ 240 0000 10B5     		push	{r4, lr}
+ 241              		.cfi_def_cfa_offset 8
+ 242              		.cfi_offset 4, -8
+ 243              		.cfi_offset 14, -4
+ 244 0002 0446     		mov	r4, r0
   73:Src/Zeugma_c/rpm.c **** 
-  74:Src/Zeugma_c/rpm.c ****         if (bemf_execute_flag)
-  75:Src/Zeugma_c/rpm.c ****         {
-  76:Src/Zeugma_c/rpm.c ****             // LOG_VAR(flagg);
-  77:Src/Zeugma_c/rpm.c ****             // abc();
-ARM GAS  /tmp/ccwr3hL1.s 			page 7
+  74:Src/Zeugma_c/rpm.c ****     if (htim->Instance == TIM2)
+ 245              		.loc 1 74 5 is_stmt 1 view .LVU69
+ 246              		.loc 1 74 13 is_stmt 0 view .LVU70
+ 247 0004 0368     		ldr	r3, [r0]
+ 248              		.loc 1 74 8 view .LVU71
+ 249 0006 B3F1804F 		cmp	r3, #1073741824
+ 250 000a 08D0     		beq	.L20
+ 251              	.L15:
+ARM GAS  /tmp/ccZFe4p4.s 			page 7
 
 
-  78:Src/Zeugma_c/rpm.c ****             // HAL_GPIO_EXTI_Callback(GPIO_PIN_1);
-  79:Src/Zeugma_c/rpm.c ****         }
- 249              		.loc 1 79 9 is_stmt 1 view .LVU70
-  80:Src/Zeugma_c/rpm.c ****     }
+  75:Src/Zeugma_c/rpm.c ****     {
+  76:Src/Zeugma_c/rpm.c ****         rpm = 0;
+  77:Src/Zeugma_c/rpm.c ****     }
+  78:Src/Zeugma_c/rpm.c **** 
+  79:Src/Zeugma_c/rpm.c ****     if (htim->Instance == TIM3)
+ 252              		.loc 1 79 5 is_stmt 1 view .LVU72
+ 253              		.loc 1 79 13 is_stmt 0 view .LVU73
+ 254 000c 2268     		ldr	r2, [r4]
+ 255              		.loc 1 79 8 view .LVU74
+ 256 000e 0D4B     		ldr	r3, .L24
+ 257 0010 9A42     		cmp	r2, r3
+ 258 0012 08D0     		beq	.L21
+ 259              	.LVL13:
+ 260              	.L16:
+  80:Src/Zeugma_c/rpm.c ****     {
   81:Src/Zeugma_c/rpm.c **** 
-  82:Src/Zeugma_c/rpm.c ****     if (htim->Instance == TIM4)
- 250              		.loc 1 82 5 view .LVU71
- 251              		.loc 1 82 13 is_stmt 0 view .LVU72
- 252 0014 2268     		ldr	r2, [r4]
- 253              		.loc 1 82 8 view .LVU73
- 254 0016 094B     		ldr	r3, .L22+4
- 255 0018 9A42     		cmp	r2, r3
- 256 001a 08D0     		beq	.L21
- 257              	.L14:
-  83:Src/Zeugma_c/rpm.c ****     {
-  84:Src/Zeugma_c/rpm.c ****         tim4Counter++;
-  85:Src/Zeugma_c/rpm.c ****     }
-  86:Src/Zeugma_c/rpm.c **** }...
- 258              		.loc 1 86 1 view .LVU74
- 259 001c 10BD     		pop	{r4, pc}
- 260              	.LVL14:
- 261              	.L19:
-  67:Src/Zeugma_c/rpm.c ****         rpm = 0;
- 262              		.loc 1 67 9 is_stmt 1 view .LVU75
-  67:Src/Zeugma_c/rpm.c ****         rpm = 0;
- 263              		.loc 1 67 13 is_stmt 0 view .LVU76
- 264 001e 084B     		ldr	r3, .L22+8
- 265 0020 0022     		movs	r2, #0
- 266 0022 1A60     		str	r2, [r3]
- 267 0024 F2E7     		b	.L15
- 268              	.L20:
-  72:Src/Zeugma_c/rpm.c ****         HAL_TIM_Base_Stop_IT(&htim3);
- 269              		.loc 1 72 9 is_stmt 1 view .LVU77
- 270 0026 0748     		ldr	r0, .L22+12
- 271              	.LVL15:
-  72:Src/Zeugma_c/rpm.c ****         HAL_TIM_Base_Stop_IT(&htim3);
- 272              		.loc 1 72 9 is_stmt 0 view .LVU78
- 273 0028 FFF7FEFF 		bl	HAL_TIM_Base_Stop_IT
- 274              	.LVL16:
-  74:Src/Zeugma_c/rpm.c ****         if (bemf_execute_flag)
- 275              		.loc 1 74 9 is_stmt 1 view .LVU79
- 276 002c F2E7     		b	.L16
- 277              	.L21:
-  84:Src/Zeugma_c/rpm.c ****         tim4Counter++;
- 278              		.loc 1 84 9 view .LVU80
-  84:Src/Zeugma_c/rpm.c ****         tim4Counter++;
- 279              		.loc 1 84 20 is_stmt 0 view .LVU81
- 280 002e 064A     		ldr	r2, .L22+16
- 281 0030 1368     		ldr	r3, [r2]
- 282 0032 0133     		adds	r3, r3, #1
- 283 0034 1360     		str	r3, [r2]
- 284              		.loc 1 86 1 view .LVU82
- 285 0036 F1E7     		b	.L14
- 286              	.L23:
- 287              		.align	2
- 288              	.L22:
- 289 0038 00040040 		.word	1073742848
-ARM GAS  /tmp/ccwr3hL1.s 			page 8
+  82:Src/Zeugma_c/rpm.c ****         if (backEMF_mode)
+  83:Src/Zeugma_c/rpm.c ****         {
+  84:Src/Zeugma_c/rpm.c ****             // abc();
+  85:Src/Zeugma_c/rpm.c ****             // HAL_GPIO_EXTI_Callback(GPIO_PIN_1);
+  86:Src/Zeugma_c/rpm.c ****             abc();
+  87:Src/Zeugma_c/rpm.c ****         }
+  88:Src/Zeugma_c/rpm.c ****         // uint16_t a = intersection_interval;
+  89:Src/Zeugma_c/rpm.c ****         // LOG_VAR(a);
+  90:Src/Zeugma_c/rpm.c ****         HAL_TIM_Base_Stop_IT(&htim3);
+  91:Src/Zeugma_c/rpm.c ****     }
+  92:Src/Zeugma_c/rpm.c **** 
+  93:Src/Zeugma_c/rpm.c ****     if (htim->Instance == TIM4)
+ 261              		.loc 1 93 5 is_stmt 1 view .LVU75
+ 262              		.loc 1 93 13 is_stmt 0 view .LVU76
+ 263 0014 2268     		ldr	r2, [r4]
+ 264              		.loc 1 93 8 view .LVU77
+ 265 0016 0C4B     		ldr	r3, .L24+4
+ 266 0018 9A42     		cmp	r2, r3
+ 267 001a 0ED0     		beq	.L22
+ 268              	.L14:
+  94:Src/Zeugma_c/rpm.c ****     {
+  95:Src/Zeugma_c/rpm.c ****         tim4Counter++;
+  96:Src/Zeugma_c/rpm.c ****     }
+  97:Src/Zeugma_c/rpm.c **** }
+ 269              		.loc 1 97 1 view .LVU78
+ 270 001c 10BD     		pop	{r4, pc}
+ 271              	.LVL14:
+ 272              	.L20:
+  76:Src/Zeugma_c/rpm.c ****     }
+ 273              		.loc 1 76 9 is_stmt 1 view .LVU79
+  76:Src/Zeugma_c/rpm.c ****     }
+ 274              		.loc 1 76 13 is_stmt 0 view .LVU80
+ 275 001e 0B4B     		ldr	r3, .L24+8
+ 276 0020 0022     		movs	r2, #0
+ 277 0022 1A60     		str	r2, [r3]
+ 278 0024 F2E7     		b	.L15
+ 279              	.L21:
+  82:Src/Zeugma_c/rpm.c ****         {
+ 280              		.loc 1 82 9 is_stmt 1 view .LVU81
+  82:Src/Zeugma_c/rpm.c ****         {
+ 281              		.loc 1 82 13 is_stmt 0 view .LVU82
+ARM GAS  /tmp/ccZFe4p4.s 			page 8
 
 
- 290 003c 00080040 		.word	1073743872
- 291 0040 00000000 		.word	rpm
- 292 0044 00000000 		.word	htim3
- 293 0048 00000000 		.word	tim4Counter
- 294              		.cfi_endproc
- 295              	.LFE69:
- 297              		.global	tim4Counter
- 298              		.section	.bss.tim4Counter,"aw",%nobits
- 299              		.align	2
- 302              	tim4Counter:
- 303 0000 00000000 		.space	4
- 304              		.global	filtered_rpm
- 305              		.section	.bss.filtered_rpm,"aw",%nobits
- 306              		.align	1
- 309              	filtered_rpm:
- 310 0000 0000     		.space	2
- 311              		.global	first_filterless_count
- 312              		.section	.bss.first_filterless_count,"aw",%nobits
- 315              	first_filterless_count:
- 316 0000 00       		.space	1
- 317              		.global	array_index
- 318              		.section	.bss.array_index,"aw",%nobits
- 321              	array_index:
- 322 0000 00       		.space	1
- 323              		.global	rpm_sampling_array
- 324              		.section	.bss.rpm_sampling_array,"aw",%nobits
- 325              		.align	2
- 328              	rpm_sampling_array:
- 329 0000 00000000 		.space	24
- 329      00000000 
- 329      00000000 
- 329      00000000 
- 329      00000000 
- 330              		.text
- 331              	.Letext0:
- 332              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h"
- 333              		.file 3 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 334              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 335              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 336              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
- 337              		.file 7 "Inc/main.h"
- 338              		.file 8 "Inc/tim.h"
-ARM GAS  /tmp/ccwr3hL1.s 			page 9
+ 282 0026 0A4B     		ldr	r3, .L24+12
+ 283 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  82:Src/Zeugma_c/rpm.c ****         {
+ 284              		.loc 1 82 12 view .LVU83
+ 285 002a 1BB9     		cbnz	r3, .L23
+ 286              	.LVL15:
+ 287              	.L17:
+  90:Src/Zeugma_c/rpm.c ****     }
+ 288              		.loc 1 90 9 is_stmt 1 view .LVU84
+ 289 002c 0948     		ldr	r0, .L24+16
+ 290 002e FFF7FEFF 		bl	HAL_TIM_Base_Stop_IT
+ 291              	.LVL16:
+ 292 0032 EFE7     		b	.L16
+ 293              	.LVL17:
+ 294              	.L23:
+  86:Src/Zeugma_c/rpm.c ****         }
+ 295              		.loc 1 86 13 view .LVU85
+ 296 0034 FFF7FEFF 		bl	abc
+ 297              	.LVL18:
+  86:Src/Zeugma_c/rpm.c ****         }
+ 298              		.loc 1 86 13 is_stmt 0 view .LVU86
+ 299 0038 F8E7     		b	.L17
+ 300              	.L22:
+  95:Src/Zeugma_c/rpm.c ****     }
+ 301              		.loc 1 95 9 is_stmt 1 view .LVU87
+  95:Src/Zeugma_c/rpm.c ****     }
+ 302              		.loc 1 95 20 is_stmt 0 view .LVU88
+ 303 003a 074A     		ldr	r2, .L24+20
+ 304 003c 1368     		ldr	r3, [r2]
+ 305 003e 0133     		adds	r3, r3, #1
+ 306 0040 1360     		str	r3, [r2]
+ 307              		.loc 1 97 1 view .LVU89
+ 308 0042 EBE7     		b	.L14
+ 309              	.L25:
+ 310              		.align	2
+ 311              	.L24:
+ 312 0044 00040040 		.word	1073742848
+ 313 0048 00080040 		.word	1073743872
+ 314 004c 00000000 		.word	rpm
+ 315 0050 00000000 		.word	backEMF_mode
+ 316 0054 00000000 		.word	htim3
+ 317 0058 00000000 		.word	tim4Counter
+ 318              		.cfi_endproc
+ 319              	.LFE69:
+ 321              		.global	tim4Counter
+ 322              		.section	.bss.tim4Counter,"aw",%nobits
+ 323              		.align	2
+ 326              	tim4Counter:
+ 327 0000 00000000 		.space	4
+ 328              		.global	filtered_rpm
+ 329              		.section	.bss.filtered_rpm,"aw",%nobits
+ 330              		.align	1
+ 333              	filtered_rpm:
+ 334 0000 0000     		.space	2
+ 335              		.global	first_filterless_count
+ 336              		.section	.bss.first_filterless_count,"aw",%nobits
+ 339              	first_filterless_count:
+ARM GAS  /tmp/ccZFe4p4.s 			page 9
+
+
+ 340 0000 00       		.space	1
+ 341              		.global	array_index
+ 342              		.section	.bss.array_index,"aw",%nobits
+ 345              	array_index:
+ 346 0000 00       		.space	1
+ 347              		.global	rpm_sampling_array
+ 348              		.section	.bss.rpm_sampling_array,"aw",%nobits
+ 349              		.align	2
+ 352              	rpm_sampling_array:
+ 353 0000 00000000 		.space	24
+ 353      00000000 
+ 353      00000000 
+ 353      00000000 
+ 353      00000000 
+ 354              		.text
+ 355              	.Letext0:
+ 356              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h"
+ 357              		.file 3 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 358              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 359              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 360              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 361              		.file 7 "Inc/main.h"
+ 362              		.file 8 "Inc/tim.h"
+ 363              		.file 9 "Inc/Zeugma_h/bemf.h"
+ARM GAS  /tmp/ccZFe4p4.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 rpm.c
-     /tmp/ccwr3hL1.s:19     .text.get_rpm:00000000 $t
-     /tmp/ccwr3hL1.s:25     .text.get_rpm:00000000 get_rpm
-     /tmp/ccwr3hL1.s:202    .text.get_rpm:000000b4 $d
-     /tmp/ccwr3hL1.s:321    .bss.array_index:00000000 array_index
-     /tmp/ccwr3hL1.s:328    .bss.rpm_sampling_array:00000000 rpm_sampling_array
-     /tmp/ccwr3hL1.s:315    .bss.first_filterless_count:00000000 first_filterless_count
-     /tmp/ccwr3hL1.s:309    .bss.filtered_rpm:00000000 filtered_rpm
-     /tmp/ccwr3hL1.s:214    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
-     /tmp/ccwr3hL1.s:220    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
-     /tmp/ccwr3hL1.s:289    .text.HAL_TIM_PeriodElapsedCallback:00000038 $d
-     /tmp/ccwr3hL1.s:302    .bss.tim4Counter:00000000 tim4Counter
-     /tmp/ccwr3hL1.s:299    .bss.tim4Counter:00000000 $d
-     /tmp/ccwr3hL1.s:306    .bss.filtered_rpm:00000000 $d
-     /tmp/ccwr3hL1.s:316    .bss.first_filterless_count:00000000 $d
-     /tmp/ccwr3hL1.s:322    .bss.array_index:00000000 $d
-     /tmp/ccwr3hL1.s:325    .bss.rpm_sampling_array:00000000 $d
+     /tmp/ccZFe4p4.s:19     .text.get_rpm:00000000 $t
+     /tmp/ccZFe4p4.s:25     .text.get_rpm:00000000 get_rpm
+     /tmp/ccZFe4p4.s:213    .text.get_rpm:000000c0 $d
+     /tmp/ccZFe4p4.s:345    .bss.array_index:00000000 array_index
+     /tmp/ccZFe4p4.s:352    .bss.rpm_sampling_array:00000000 rpm_sampling_array
+     /tmp/ccZFe4p4.s:339    .bss.first_filterless_count:00000000 first_filterless_count
+     /tmp/ccZFe4p4.s:333    .bss.filtered_rpm:00000000 filtered_rpm
+     /tmp/ccZFe4p4.s:226    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+     /tmp/ccZFe4p4.s:232    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+     /tmp/ccZFe4p4.s:312    .text.HAL_TIM_PeriodElapsedCallback:00000044 $d
+     /tmp/ccZFe4p4.s:326    .bss.tim4Counter:00000000 tim4Counter
+     /tmp/ccZFe4p4.s:323    .bss.tim4Counter:00000000 $d
+     /tmp/ccZFe4p4.s:330    .bss.filtered_rpm:00000000 $d
+     /tmp/ccZFe4p4.s:340    .bss.first_filterless_count:00000000 $d
+     /tmp/ccZFe4p4.s:346    .bss.array_index:00000000 $d
+     /tmp/ccZFe4p4.s:349    .bss.rpm_sampling_array:00000000 $d
 
 UNDEFINED SYMBOLS
 rpm_max_limit_flag
 backEMF_mode
+bemf_execute_flag
 HAL_TIM_Base_Stop_IT
+abc
 rpm
 htim3

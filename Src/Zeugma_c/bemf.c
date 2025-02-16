@@ -6,63 +6,68 @@
 #include "steps.h"
 
 uint16_t a, b, c, d, e, f = 0;
+uint8_t flag_counter = 0;
 
 void decide_step(uint8_t _a, uint8_t _b, uint8_t _c)
 {
 
-    if (_a && !_b && _c && (!oldValue[0] && !oldValue[1] && oldValue[2]))
+    if (_a && !_b && _c && ((!oldValue[0] && !oldValue[1] && oldValue[2]) || bemf_execute_flag))
     // 101'den 100'e geçiş
     {
         oldValue[0] = 1;
         oldValue[1] = 0;
         oldValue[2] = 1;
         step = 1;
-        bemf_execute_flag = 1;
+        // bemf_execute_flag = 1;
     }
-    else if (_a && !_b && !_c && (oldValue[0] && !oldValue[1] && oldValue[2])) // 100'den 110'a geçiş
+    else if (_a && !_b && !_c && ((oldValue[0] && !oldValue[1] && oldValue[2]) || bemf_execute_flag)) // 100'den 110'a geçiş
     {
         oldValue[0] = 1;
         oldValue[1] = 0;
         oldValue[2] = 0;
         step = 2;
-        bemf_execute_flag = 1;
+        // bemf_execute_flag = 1;
     }
 
-    else if (_a && _b && !_c && (oldValue[0] && !oldValue[1] && !oldValue[2])) // 100'den 110'a geçiş
+    else if (_a && _b && !_c && ((oldValue[0] && !oldValue[1] && !oldValue[2]) || bemf_execute_flag)) // 100'den 110'a geçiş
     {
         oldValue[0] = 1;
         oldValue[1] = 1;
         oldValue[2] = 0;
         step = 3;
-        bemf_execute_flag = 1;
+        // bemf_execute_flag = 1;
     }
 
-    else if (!_a && _b && !_c && (oldValue[0] && oldValue[1] && !oldValue[2])) // 100'den 110'a geçiş
+    else if (!_a && _b && !_c && ((oldValue[0] && oldValue[1] && !oldValue[2]) || bemf_execute_flag)) // 100'den 110'a geçiş
     {
         oldValue[0] = 0;
         oldValue[1] = 1;
         oldValue[2] = 0;
         step = 4;
-        bemf_execute_flag = 1;
+        // bemf_execute_flag = 1;
     }
 
-    else if (!_a && _b && _c && (!oldValue[0] && oldValue[1] && !oldValue[2])) // 100'den 110'a geçiş
+    else if (!_a && _b && _c && ((!oldValue[0] && oldValue[1] && !oldValue[2]) || bemf_execute_flag)) // 100'den 110'a geçiş
     {
         oldValue[0] = 0;
         oldValue[1] = 1;
         oldValue[2] = 1;
         step = 5;
-        bemf_execute_flag = 1;
+        // bemf_execute_flag = 1;
     }
-    else if (!_a && !_b && _c && (!oldValue[0] && oldValue[1] && oldValue[2])) // 100'den 110'a geçiş
+    else if (!_a && !_b && _c && ((!oldValue[0] && oldValue[1] && oldValue[2]) || bemf_execute_flag)) // 100'den 110'a geçiş
     {
         oldValue[0] = 0;
         oldValue[1] = 0;
         oldValue[2] = 1;
         step = 6;
-        bemf_execute_flag = 1;
+        // bemf_execute_flag = 1;
     }
     else
+    {
+        // bemf_execute_flag = 0;
+    }
+    if (backEMF_mode)
     {
         bemf_execute_flag = 0;
     }
@@ -72,7 +77,6 @@ void abc()
     if (backEMF_mode)
     {
         // LOG_VAR(flagg);
-        decide_step(polarity_A, polarity_B, polarity_C);
         execute_step(step);
     }
 }
@@ -81,33 +85,42 @@ void phaseControlBemf()
 {
     if (polarity_A + polarity_A_old == 1)
     {
+        decide_step(polarity_A, polarity_B, polarity_C);
         intersection_interval = __HAL_TIM_GET_COUNTER(&htim4);
-        __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
+        uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+        __HAL_TIM_SET_AUTORELOAD(&htim3, temp);
+        __HAL_TIM_SET_COUNTER(&htim3, 0);
         HAL_TIM_Base_Start_IT(&htim3);
         __HAL_TIM_SET_COUNTER(&htim4, 0);
         polarity_A_old = polarity_A;
         // log_var_analysis();
-        abc();
+        // abc();
     }
     else if (polarity_B + polarity_B_old == 1)
     {
+        decide_step(polarity_A, polarity_B, polarity_C);
         intersection_interval = __HAL_TIM_GET_COUNTER(&htim4);
-        __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
+        uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+        __HAL_TIM_SET_AUTORELOAD(&htim3, temp);
+        __HAL_TIM_SET_COUNTER(&htim3, 0);
         HAL_TIM_Base_Start_IT(&htim3);
         __HAL_TIM_SET_COUNTER(&htim4, 0);
         polarity_B_old = polarity_B;
         // log_var_analysis();
-        abc();
+        // abc();
     }
     else if (polarity_C + polarity_C_old == 1)
     {
+        decide_step(polarity_A, polarity_B, polarity_C);
         intersection_interval = __HAL_TIM_GET_COUNTER(&htim4);
-        __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
+        uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+        __HAL_TIM_SET_AUTORELOAD(&htim3, temp);
+        __HAL_TIM_SET_COUNTER(&htim3, 0);
         HAL_TIM_Base_Start_IT(&htim3);
         __HAL_TIM_SET_COUNTER(&htim4, 0);
         polarity_C_old = polarity_C;
         // log_var_analysis();
-        abc();
+        // abc();
     }
     else
     {

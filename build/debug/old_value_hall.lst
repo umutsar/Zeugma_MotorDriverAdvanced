@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccMtXEEL.s 			page 1
+ARM GAS  /tmp/ccA6lWRp.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
   15:Src/Zeugma_c/old_value_hall.c ****     { // İLERİ YÖN ADIMLARI
   16:Src/Zeugma_c/old_value_hall.c **** 
   17:Src/Zeugma_c/old_value_hall.c ****         if ((hall_A && !hall_B && hall_C) &&
-ARM GAS  /tmp/ccMtXEEL.s 			page 2
+ARM GAS  /tmp/ccA6lWRp.s 			page 2
 
 
   42              		.loc 1 17 9 is_stmt 1 view .LVU4
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
   89              		.loc 1 23 25 is_stmt 0 view .LVU22
   90 0042 0021     		movs	r1, #0
   91 0044 5170     		strb	r1, [r2, #1]
-ARM GAS  /tmp/ccMtXEEL.s 			page 3
+ARM GAS  /tmp/ccA6lWRp.s 			page 3
 
 
   24:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 1;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
   70:Src/Zeugma_c/old_value_hall.c ****             flagg = 1;
   71:Src/Zeugma_c/old_value_hall.c ****         }
   72:Src/Zeugma_c/old_value_hall.c ****     }
-ARM GAS  /tmp/ccMtXEEL.s 			page 4
+ARM GAS  /tmp/ccA6lWRp.s 			page 4
 
 
   73:Src/Zeugma_c/old_value_hall.c **** 
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  127:Src/Zeugma_c/old_value_hall.c ****         }
  128:Src/Zeugma_c/old_value_hall.c ****         if ((!hall_A && hall_B && hall_C) && ((!oldValue[0] && oldValue[1] && !oldValue[2]) || flag
  129:Src/Zeugma_c/old_value_hall.c ****         { // 100
-ARM GAS  /tmp/ccMtXEEL.s 			page 5
+ARM GAS  /tmp/ccA6lWRp.s 			page 5
 
 
  130:Src/Zeugma_c/old_value_hall.c ****             step = 5;
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
   27:Src/Zeugma_c/old_value_hall.c ****                  ((oldValue[0] && oldValue[1] && !oldValue[2]) || flagg)) // 100'den 110'a geçiş
  109              		.loc 1 27 29 discriminator 1 view .LVU31
  110 0054 564B     		ldr	r3, .L45+8
-ARM GAS  /tmp/ccMtXEEL.s 			page 6
+ARM GAS  /tmp/ccA6lWRp.s 			page 6
 
 
  111 0056 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  150              		.loc 1 32 13 is_stmt 1 view .LVU46
   32:Src/Zeugma_c/old_value_hall.c ****             oldValue[2] = 0;
  151              		.loc 1 32 25 is_stmt 0 view .LVU47
-ARM GAS  /tmp/ccMtXEEL.s 			page 7
+ARM GAS  /tmp/ccA6lWRp.s 			page 7
 
 
  152 0084 0021     		movs	r1, #0
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
   37:Src/Zeugma_c/old_value_hall.c ****         {
  191              		.loc 1 37 48 discriminator 1 view .LVU63
  192 00b2 13B1     		cbz	r3, .L12
-ARM GAS  /tmp/ccMtXEEL.s 			page 8
+ARM GAS  /tmp/ccA6lWRp.s 			page 8
 
 
  193              	.L11:
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
   45:Src/Zeugma_c/old_value_hall.c ****                  ((!oldValue[0] && oldValue[1] && oldValue[2]) || flagg)) // 010'dan 011'e geçiş
  232              		.loc 1 45 40 discriminator 2 view .LVU79
  233 00de 354B     		ldr	r3, .L45+12
-ARM GAS  /tmp/ccMtXEEL.s 			page 9
+ARM GAS  /tmp/ccA6lWRp.s 			page 9
 
 
  234 00e0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  272              		.loc 1 51 25 is_stmt 0 view .LVU95
  273 010a 9170     		strb	r1, [r2, #2]
   52:Src/Zeugma_c/old_value_hall.c ****         }
-ARM GAS  /tmp/ccMtXEEL.s 			page 10
+ARM GAS  /tmp/ccA6lWRp.s 			page 10
 
 
  274              		.loc 1 52 13 is_stmt 1 view .LVU96
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
   57:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
  315              		.loc 1 57 13 is_stmt 1 view .LVU110
   57:Src/Zeugma_c/old_value_hall.c ****             oldValue[0] = 0;
-ARM GAS  /tmp/ccMtXEEL.s 			page 11
+ARM GAS  /tmp/ccA6lWRp.s 			page 11
 
 
  316              		.loc 1 57 18 is_stmt 0 view .LVU111
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
   64:Src/Zeugma_c/old_value_hall.c ****         {
  356              		.loc 1 64 28 view .LVU126
  357 0172 114B     		ldr	r3, .L45+16
-ARM GAS  /tmp/ccMtXEEL.s 			page 12
+ARM GAS  /tmp/ccA6lWRp.s 			page 12
 
 
  358 0174 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  396              		.loc 1 70 19 is_stmt 0 view .LVU142
  397 01a0 064B     		ldr	r3, .L45+20
  398 01a2 1A70     		strb	r2, [r3]
-ARM GAS  /tmp/ccMtXEEL.s 			page 13
+ARM GAS  /tmp/ccA6lWRp.s 			page 13
 
 
  399 01a4 52E7     		b	.L1
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  441              	.L22:
   76:Src/Zeugma_c/old_value_hall.c ****         { // 010
  442              		.loc 1 76 93 discriminator 8 view .LVU155
-ARM GAS  /tmp/ccMtXEEL.s 			page 14
+ARM GAS  /tmp/ccA6lWRp.s 			page 14
 
 
  443 01e8 704B     		ldr	r3, .L47+16
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  481 020e 634B     		ldr	r3, .L47
  482 0210 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
   89:Src/Zeugma_c/old_value_hall.c ****         { // 011
-ARM GAS  /tmp/ccMtXEEL.s 			page 15
+ARM GAS  /tmp/ccA6lWRp.s 			page 15
 
 
  483              		.loc 1 89 12 view .LVU172
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  522              		.loc 1 92 17 is_stmt 0 view .LVU187
  523 023e 5D4B     		ldr	r3, .L47+24
  524 0240 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  /tmp/ccMtXEEL.s 			page 16
+ARM GAS  /tmp/ccA6lWRp.s 			page 16
 
 
   92:Src/Zeugma_c/old_value_hall.c ****             {
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  563 026a E3B9     		cbnz	r3, .L29
  102:Src/Zeugma_c/old_value_hall.c ****         { // 001
  564              		.loc 1 102 56 discriminator 3 view .LVU204
-ARM GAS  /tmp/ccMtXEEL.s 			page 17
+ARM GAS  /tmp/ccA6lWRp.s 			page 17
 
 
  565 026c 4E4B     		ldr	r3, .L47+12
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  110:Src/Zeugma_c/old_value_hall.c ****             }
  604              		.loc 1 110 17 is_stmt 1 view .LVU220
  110:Src/Zeugma_c/old_value_hall.c ****             }
-ARM GAS  /tmp/ccMtXEEL.s 			page 18
+ARM GAS  /tmp/ccA6lWRp.s 			page 18
 
 
  605              		.loc 1 110 29 is_stmt 0 view .LVU221
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  645 02c6 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
  115:Src/Zeugma_c/old_value_hall.c ****         { // 101
  646              		.loc 1 115 76 discriminator 6 view .LVU236
-ARM GAS  /tmp/ccMtXEEL.s 			page 19
+ARM GAS  /tmp/ccA6lWRp.s 			page 19
 
 
  647 02c8 13B1     		cbz	r3, .L35
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  686              	.L33:
  128:Src/Zeugma_c/old_value_hall.c ****         { // 100
  687              		.loc 1 128 9 view .LVU252
-ARM GAS  /tmp/ccMtXEEL.s 			page 20
+ARM GAS  /tmp/ccA6lWRp.s 			page 20
 
 
  128:Src/Zeugma_c/old_value_hall.c ****         { // 100
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  131:Src/Zeugma_c/old_value_hall.c ****             {
  728              		.loc 1 131 17 is_stmt 0 view .LVU267
  729 0322 244B     		ldr	r3, .L47+24
-ARM GAS  /tmp/ccMtXEEL.s 			page 21
+ARM GAS  /tmp/ccA6lWRp.s 			page 21
 
 
  730 0324 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  768              		.loc 1 141 33 discriminator 2 view .LVU283
  769 0352 144B     		ldr	r3, .L47+8
  770 0354 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  /tmp/ccMtXEEL.s 			page 22
+ARM GAS  /tmp/ccA6lWRp.s 			page 22
 
 
  771 0356 002B     		cmp	r3, #0
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  148:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 1;
  811              		.loc 1 148 17 is_stmt 1 view .LVU298
  148:Src/Zeugma_c/old_value_hall.c ****                 oldValue[2] = 1;
-ARM GAS  /tmp/ccMtXEEL.s 			page 23
+ARM GAS  /tmp/ccA6lWRp.s 			page 23
 
 
  812              		.loc 1 148 29 is_stmt 0 view .LVU299
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  858              		.loc 1 176 8 is_stmt 0 view .LVU308
  859 0000 6328     		cmp	r0, #99
  860 0002 1BD9     		bls	.L52
-ARM GAS  /tmp/ccMtXEEL.s 			page 24
+ARM GAS  /tmp/ccA6lWRp.s 			page 24
 
 
  861              		.loc 1 176 29 discriminator 1 view .LVU309
@@ -1438,12 +1438,12 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  906              	.L49:
  185:Src/Zeugma_c/old_value_hall.c ****         {
  186:Src/Zeugma_c/old_value_hall.c ****             sender_flag = 1; // 160 örnek tamamlandığında veri gönderimi işaretle
-ARM GAS  /tmp/ccMtXEEL.s 			page 25
+ARM GAS  /tmp/ccA6lWRp.s 			page 25
 
 
  187:Src/Zeugma_c/old_value_hall.c ****         }
  188:Src/Zeugma_c/old_value_hall.c ****     }
- 189:Src/Zeugma_c/old_value_hall.c **** }...
+ 189:Src/Zeugma_c/old_value_hall.c **** }
  907              		.loc 1 189 1 view .LVU328
  908 0030 10BC     		pop	{r4}
  909              		.cfi_remember_state
@@ -1455,14 +1455,14 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  915              	.LVL15:
  916              	.L55:
  917              		.cfi_restore_state
- 186:Src/Zeugma_c/old_value_hall.c ****             sender_flag = 1; // 160 örnek tamamlandığında veri gönderimi işaretle
+ 186:Src/Zeugma_c/old_value_hall.c ****         }
  918              		.loc 1 186 13 is_stmt 1 view .LVU330
- 186:Src/Zeugma_c/old_value_hall.c ****             sender_flag = 1; // 160 örnek tamamlandığında veri gönderimi işaretle
+ 186:Src/Zeugma_c/old_value_hall.c ****         }
  919              		.loc 1 186 25 is_stmt 0 view .LVU331
  920 0034 044B     		ldr	r3, .L56+8
  921 0036 0122     		movs	r2, #1
  922              	.LVL16:
- 186:Src/Zeugma_c/old_value_hall.c ****             sender_flag = 1; // 160 örnek tamamlandığında veri gönderimi işaretle
+ 186:Src/Zeugma_c/old_value_hall.c ****         }
  923              		.loc 1 186 25 view .LVU332
  924 0038 1A70     		strb	r2, [r3]
  925              		.loc 1 189 1 view .LVU333
@@ -1494,23 +1494,23 @@ ARM GAS  /tmp/ccMtXEEL.s 			page 1
  956              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h"
  957              		.file 3 "Inc/main.h"
  958              		.file 4 "Inc/Zeugma_h/bemf.h"
-ARM GAS  /tmp/ccMtXEEL.s 			page 26
+ARM GAS  /tmp/ccA6lWRp.s 			page 26
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 old_value_hall.c
-     /tmp/ccMtXEEL.s:19     .text.set_old_value:00000000 $t
-     /tmp/ccMtXEEL.s:25     .text.set_old_value:00000000 set_old_value
-     /tmp/ccMtXEEL.s:403    .text.set_old_value:000001a8 $d
-     /tmp/ccMtXEEL.s:413    .text.set_old_value:000001c4 $t
-     /tmp/ccMtXEEL.s:832    .text.set_old_value:0000039c $d
-     /tmp/ccMtXEEL.s:843    .text.sample_phase_data:00000000 $t
-     /tmp/ccMtXEEL.s:849    .text.sample_phase_data:00000000 sample_phase_data
-     /tmp/ccMtXEEL.s:936    .text.sample_phase_data:00000040 $d
-     /tmp/ccMtXEEL.s:952    .bss.counter:00000000 counter
-     /tmp/ccMtXEEL.s:946    .bss.sender_flag:00000000 sender_flag
-     /tmp/ccMtXEEL.s:947    .bss.sender_flag:00000000 $d
-     /tmp/ccMtXEEL.s:953    .bss.counter:00000000 $d
+     /tmp/ccA6lWRp.s:19     .text.set_old_value:00000000 $t
+     /tmp/ccA6lWRp.s:25     .text.set_old_value:00000000 set_old_value
+     /tmp/ccA6lWRp.s:403    .text.set_old_value:000001a8 $d
+     /tmp/ccA6lWRp.s:413    .text.set_old_value:000001c4 $t
+     /tmp/ccA6lWRp.s:832    .text.set_old_value:0000039c $d
+     /tmp/ccA6lWRp.s:843    .text.sample_phase_data:00000000 $t
+     /tmp/ccA6lWRp.s:849    .text.sample_phase_data:00000000 sample_phase_data
+     /tmp/ccA6lWRp.s:936    .text.sample_phase_data:00000040 $d
+     /tmp/ccA6lWRp.s:952    .bss.counter:00000000 counter
+     /tmp/ccA6lWRp.s:946    .bss.sender_flag:00000000 sender_flag
+     /tmp/ccA6lWRp.s:947    .bss.sender_flag:00000000 $d
+     /tmp/ccA6lWRp.s:953    .bss.counter:00000000 $d
 
 UNDEFINED SYMBOLS
 geri_vites

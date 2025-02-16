@@ -8,6 +8,20 @@
 #include "main.h"
 #include <debug_monitor.h>
 
+#define ALPHA_SHIFT_B 4            // α = 1 / 2^ALPHA_SHIFT (örn: 3 → α = 1/8)
+#define ALPHA_B (1 << ALPHA_SHIFT_B) // 2^ALPHA_SHIFT
+
+uint16_t ema_filter4(uint16_t new_value)
+{
+  static uint16_t filtered_value4 = 0;
+
+  if (filtered_value4 == 0)
+    filtered_value4 = new_value;
+
+  filtered_value4 = filtered_value4 + ((new_value - filtered_value4) >> ALPHA_SHIFT_B);
+
+  return filtered_value4;
+}
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -20,6 +34,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   // {
   // rpm_counter++;
   difference_two_coummutation_time = __HAL_TIM_GET_COUNTER(&htim2);
+  difference_two_coummutation_time_filtered = ema_filter4(difference_two_coummutation_time);
+
   rpm = get_rpm(difference_two_coummutation_time);
 
   for (int i = 0; i < 30; i++)

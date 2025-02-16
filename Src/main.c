@@ -95,7 +95,9 @@ uint32_t timeForRotorStopStatusMsFlag = 0;
 
 volatile uint32_t rpm_counter = 0;
 volatile uint32_t rpm;
-volatile uint32_t difference_two_coummutation_time = 1;
+volatile uint16_t difference_two_coummutation_time = 1;
+volatile uint16_t difference_two_coummutation_time_filtered = 1;
+
 uint32_t previousTime3 = 0;
 
 uint16_t minCurrent = 5000;
@@ -114,9 +116,9 @@ volatile uint32_t phase_B;
 volatile uint32_t phase_C;
 
 uint16_t target_rpm = 0;
-uint16_t max_rpm_limit = 2500;
+uint16_t max_rpm_limit = 2000;
 uint16_t max_current_limit = 2100;
-uint16_t max_pwm_limit = 900; // Max value: 1168!!!
+uint16_t max_pwm_limit = 800; // Max value: 1168!!!
 
 uint8_t flag12 = 0;
 uint16_t battery_voltage = 0;
@@ -143,10 +145,10 @@ uint8_t polarity_A_old = 0;
 uint8_t polarity_B_old = 0;
 uint8_t polarity_C_old = 0;
 
-uint32_t intersection_interval = 0;
+uint16_t intersection_interval = 0;
 
 uint16_t notr = 0;
-uint8_t bemf_execute_flag = 0;
+uint8_t bemf_execute_flag = 1;
 
 // VARIABLE END
 
@@ -210,6 +212,8 @@ uint16_t ema_filter3(uint16_t new_value)
 
   return filtered_value3;
 }
+
+
 
 uint16_t dizi[120] = {0};
 uint16_t dizi_index = 0;
@@ -325,7 +329,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
     if ((currentValue <= 1500) && (pwm_value > 100))
     {
       pwm_value = pwm_value - 1;
-      LOG_VAR(pwm_value);
+      // LOG_VAR(pwm_value);
     }
 
     if (minCurrent > filtered_current)
@@ -419,19 +423,23 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    if (HAL_GetTick() - previousTime3 > 50) // && rpm_max_limit_flag)
+    if (HAL_GetTick() - previousTime3 > 20) // && rpm_max_limit_flag)
     {
 
       // LOG_VAR(phase_A);
       // LOG_VAR(phase_B);
       // LOG_VAR(phase_C);
       // LOG_VAR(motor_voltage);
-      LOG_VAR(rpm);
+      // LOG_VAR(rpm);
       // LOG_POST();
       // LOG_VAR(adcBuffer[6]);
 
       // // LOG_VAR(step);
-
+      uint16_t k = difference_two_coummutation_time;
+      uint16_t t = difference_two_coummutation_time_filtered;
+      LOG_VAR(rpm);
+      LOG_VAR(k);
+      LOG_VAR(t);
       LOG_POST();
       previousTime3 = HAL_GetTick();
     }

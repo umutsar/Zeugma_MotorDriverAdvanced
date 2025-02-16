@@ -5,6 +5,7 @@
 #include "bemf.h"
 #include "main.h"
 #include "debug_monitor.h"
+#include "steps.h"
 
 uint32_t rpm_sampling_array[6] = {0};
 uint8_t array_index = 0;
@@ -51,10 +52,18 @@ uint16_t get_rpm(int32_t _difference_two_coummutation_time)
     if (filtered_rpm > 1450)
         rpm_max_limit_flag = 0;
 
-    if (filtered_rpm > 700)
-        backEMF_mode = 1;
-    if (filtered_rpm < 600)
+    if (filtered_rpm > 1000)
+    {
+        if (backEMF_mode == 0)
+        {
+            backEMF_mode = 1;
+        }
+    }
+    if (filtered_rpm < 700)
+    {
         backEMF_mode = 0;
+        bemf_execute_flag = 1;
+    }
 
     return filtered_rpm;
 }
@@ -70,12 +79,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     if (htim->Instance == TIM3)
     {
 
-        if (bemf_execute_flag)
+        if (backEMF_mode)
         {
-            // LOG_VAR(flagg);
             // abc();
             // HAL_GPIO_EXTI_Callback(GPIO_PIN_1);
+            abc();
         }
+        // uint16_t a = intersection_interval;
+        // LOG_VAR(a);
         HAL_TIM_Base_Stop_IT(&htim3);
     }
 

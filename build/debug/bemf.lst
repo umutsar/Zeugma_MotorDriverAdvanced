@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cceUZvJF.s 			page 1
+ARM GAS  /tmp/ccnMcqIc.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -35,895 +35,1077 @@ ARM GAS  /tmp/cceUZvJF.s 			page 1
    6:Src/Zeugma_c/bemf.c **** #include "steps.h"
    7:Src/Zeugma_c/bemf.c **** 
    8:Src/Zeugma_c/bemf.c **** uint16_t a, b, c, d, e, f = 0;
-   9:Src/Zeugma_c/bemf.c **** 
-  10:Src/Zeugma_c/bemf.c **** void decide_step(uint8_t _a, uint8_t _b, uint8_t _c)
-  11:Src/Zeugma_c/bemf.c **** {
-  28              		.loc 1 11 1 view -0
+   9:Src/Zeugma_c/bemf.c **** uint8_t flag_counter = 0;
+  10:Src/Zeugma_c/bemf.c **** 
+  11:Src/Zeugma_c/bemf.c **** void decide_step(uint8_t _a, uint8_t _b, uint8_t _c)
+  12:Src/Zeugma_c/bemf.c **** {
+  28              		.loc 1 12 1 view -0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
-  12:Src/Zeugma_c/bemf.c **** 
-  13:Src/Zeugma_c/bemf.c ****     if (_a && !_b && _c && (!oldValue[0] && !oldValue[1] && oldValue[2]))
-  33              		.loc 1 13 5 view .LVU1
-  34              		.loc 1 13 8 is_stmt 0 view .LVU2
+  13:Src/Zeugma_c/bemf.c **** 
+  14:Src/Zeugma_c/bemf.c ****     if (_a && !_b && _c && ((!oldValue[0] && !oldValue[1] && oldValue[2]) || bemf_execute_flag))
+  33              		.loc 1 14 5 view .LVU1
+  34              		.loc 1 14 8 is_stmt 0 view .LVU2
   35 0000 0346     		mov	r3, r0
   36 0002 0028     		cmp	r0, #0
-  37 0004 2AD0     		beq	.L2
-  38              		.loc 1 13 12 discriminator 1 view .LVU3
-  39 0006 99B9     		cbnz	r1, .L3
-  40              		.loc 1 13 19 discriminator 2 view .LVU4
-  41 0008 92B1     		cbz	r2, .L3
-  42              		.loc 1 13 38 discriminator 3 view .LVU5
-  43 000a 4848     		ldr	r0, .L9
+  37 0004 34D0     		beq	.L2
+  38              		.loc 1 14 12 discriminator 1 view .LVU3
+  39 0006 D9B9     		cbnz	r1, .L3
+  40              		.loc 1 14 19 discriminator 2 view .LVU4
+  41 0008 D2B1     		cbz	r2, .L3
+  42              		.loc 1 14 39 discriminator 3 view .LVU5
+  43 000a 4E48     		ldr	r0, .L21
   44              	.LVL1:
-  45              		.loc 1 13 38 discriminator 3 view .LVU6
-ARM GAS  /tmp/cceUZvJF.s 			page 2
+ARM GAS  /tmp/ccnMcqIc.s 			page 2
 
 
+  45              		.loc 1 14 39 discriminator 3 view .LVU6
   46 000c 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
-  47              		.loc 1 13 25 discriminator 3 view .LVU7
-  48 000e 78B9     		cbnz	r0, .L3
-  49              		.loc 1 13 54 discriminator 4 view .LVU8
-  50 0010 4648     		ldr	r0, .L9
+  47              		.loc 1 14 25 discriminator 3 view .LVU7
+  48 000e 28B9     		cbnz	r0, .L4
+  49              		.loc 1 14 55 discriminator 4 view .LVU8
+  50 0010 4C48     		ldr	r0, .L21
   51 0012 4078     		ldrb	r0, [r0, #1]	@ zero_extendqisi2
-  52              		.loc 1 13 42 discriminator 4 view .LVU9
-  53 0014 60B9     		cbnz	r0, .L3
-  54              		.loc 1 13 69 discriminator 5 view .LVU10
-  55 0016 4548     		ldr	r0, .L9
+  52              		.loc 1 14 43 discriminator 4 view .LVU9
+  53 0014 10B9     		cbnz	r0, .L4
+  54              		.loc 1 14 70 discriminator 6 view .LVU10
+  55 0016 4B48     		ldr	r0, .L21
   56 0018 8078     		ldrb	r0, [r0, #2]	@ zero_extendqisi2
-  57              		.loc 1 13 58 discriminator 5 view .LVU11
-  58 001a 48B1     		cbz	r0, .L3
-  14:Src/Zeugma_c/bemf.c ****     // 101'den 100'e geÃ§iÅŸ
-  15:Src/Zeugma_c/bemf.c ****     {
-  16:Src/Zeugma_c/bemf.c ****         oldValue[0] = 1;
-  59              		.loc 1 16 9 is_stmt 1 view .LVU12
-  60              		.loc 1 16 21 is_stmt 0 view .LVU13
-  61 001c 434A     		ldr	r2, .L9
-  62              	.LVL2:
-  63              		.loc 1 16 21 view .LVU14
-  64 001e 0123     		movs	r3, #1
-  65              	.LVL3:
-  66              		.loc 1 16 21 view .LVU15
-  67 0020 1370     		strb	r3, [r2]
-  17:Src/Zeugma_c/bemf.c ****         oldValue[1] = 0;
-  68              		.loc 1 17 9 is_stmt 1 view .LVU16
-  69              		.loc 1 17 21 is_stmt 0 view .LVU17
-  70 0022 5170     		strb	r1, [r2, #1]
-  18:Src/Zeugma_c/bemf.c ****         oldValue[2] = 1;
-  71              		.loc 1 18 9 is_stmt 1 view .LVU18
-  72              		.loc 1 18 21 is_stmt 0 view .LVU19
-  73 0024 9370     		strb	r3, [r2, #2]
-  19:Src/Zeugma_c/bemf.c ****         step = 1;
-  74              		.loc 1 19 9 is_stmt 1 view .LVU20
-  75              		.loc 1 19 14 is_stmt 0 view .LVU21
-  76 0026 424A     		ldr	r2, .L9+4
-  77 0028 1360     		str	r3, [r2]
-  20:Src/Zeugma_c/bemf.c ****         bemf_execute_flag = 1;
-  78              		.loc 1 20 9 is_stmt 1 view .LVU22
-  79              		.loc 1 20 27 is_stmt 0 view .LVU23
-  80 002a 424A     		ldr	r2, .L9+8
-  81 002c 1370     		strb	r3, [r2]
-  82 002e 7047     		bx	lr
-  83              	.LVL4:
-  84              	.L3:
-  21:Src/Zeugma_c/bemf.c ****     }
-  22:Src/Zeugma_c/bemf.c ****     else if (_a && !_b && !_c && (oldValue[0] && !oldValue[1] && oldValue[2])) // 100'den 110'a geÃ
-  85              		.loc 1 22 10 is_stmt 1 view .LVU24
-  86              		.loc 1 22 17 is_stmt 0 discriminator 1 view .LVU25
-  87 0030 A1B9     		cbnz	r1, .L2
-  88              		.loc 1 22 24 discriminator 2 view .LVU26
-  89 0032 9AB9     		cbnz	r2, .L2
-  90              		.loc 1 22 43 discriminator 3 view .LVU27
-  91 0034 3D48     		ldr	r0, .L9
-  92 0036 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
-  93              		.loc 1 22 31 discriminator 3 view .LVU28
-ARM GAS  /tmp/cceUZvJF.s 			page 3
+  57              		.loc 1 14 59 discriminator 6 view .LVU11
+  58 001a 10B9     		cbnz	r0, .L5
+  59              	.L4:
+  60              		.loc 1 14 75 discriminator 8 view .LVU12
+  61 001c 4A48     		ldr	r0, .L21+4
+  62 001e 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
+  63 0020 70B1     		cbz	r0, .L3
+  64              	.L5:
+  15:Src/Zeugma_c/bemf.c ****     // 101'den 100'e geÃ§iÅŸ
+  16:Src/Zeugma_c/bemf.c ****     {
+  17:Src/Zeugma_c/bemf.c ****         oldValue[0] = 1;
+  65              		.loc 1 17 9 is_stmt 1 view .LVU13
+  66              		.loc 1 17 21 is_stmt 0 view .LVU14
+  67 0022 484A     		ldr	r2, .L21
+  68              	.LVL2:
+  69              		.loc 1 17 21 view .LVU15
+  70 0024 0123     		movs	r3, #1
+  71              	.LVL3:
+  72              		.loc 1 17 21 view .LVU16
+  73 0026 1370     		strb	r3, [r2]
+  18:Src/Zeugma_c/bemf.c ****         oldValue[1] = 0;
+  74              		.loc 1 18 9 is_stmt 1 view .LVU17
+  75              		.loc 1 18 21 is_stmt 0 view .LVU18
+  76 0028 0021     		movs	r1, #0
+  77              	.LVL4:
+  78              		.loc 1 18 21 view .LVU19
+  79 002a 5170     		strb	r1, [r2, #1]
+  19:Src/Zeugma_c/bemf.c ****         oldValue[2] = 1;
+  80              		.loc 1 19 9 is_stmt 1 view .LVU20
+  81              		.loc 1 19 21 is_stmt 0 view .LVU21
+  82 002c 9370     		strb	r3, [r2, #2]
+  20:Src/Zeugma_c/bemf.c ****         step = 1;
+  83              		.loc 1 20 9 is_stmt 1 view .LVU22
+  84              		.loc 1 20 14 is_stmt 0 view .LVU23
+  85 002e 474A     		ldr	r2, .L21+8
+  86 0030 1360     		str	r3, [r2]
+  87              	.L6:
+  21:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+  22:Src/Zeugma_c/bemf.c ****     }
+  23:Src/Zeugma_c/bemf.c ****     else if (_a && !_b && !_c && ((oldValue[0] && !oldValue[1] && oldValue[2]) || bemf_execute_flag
+  24:Src/Zeugma_c/bemf.c ****     {
+  25:Src/Zeugma_c/bemf.c ****         oldValue[0] = 1;
+  26:Src/Zeugma_c/bemf.c ****         oldValue[1] = 0;
+  27:Src/Zeugma_c/bemf.c ****         oldValue[2] = 0;
+  28:Src/Zeugma_c/bemf.c ****         step = 2;
+ARM GAS  /tmp/ccnMcqIc.s 			page 3
 
 
-  94 0038 80B1     		cbz	r0, .L2
-  95              		.loc 1 22 59 discriminator 4 view .LVU29
-  96 003a 3C48     		ldr	r0, .L9
-  97 003c 4078     		ldrb	r0, [r0, #1]	@ zero_extendqisi2
-  98              		.loc 1 22 47 discriminator 4 view .LVU30
-  99 003e 68B9     		cbnz	r0, .L2
- 100              		.loc 1 22 74 discriminator 5 view .LVU31
- 101 0040 3A48     		ldr	r0, .L9
- 102 0042 8078     		ldrb	r0, [r0, #2]	@ zero_extendqisi2
- 103              		.loc 1 22 63 discriminator 5 view .LVU32
- 104 0044 50B1     		cbz	r0, .L2
+  29:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+  30:Src/Zeugma_c/bemf.c ****     }
+  31:Src/Zeugma_c/bemf.c **** 
+  32:Src/Zeugma_c/bemf.c ****     else if (_a && _b && !_c && ((oldValue[0] && !oldValue[1] && !oldValue[2]) || bemf_execute_flag
+  33:Src/Zeugma_c/bemf.c ****     {
+  34:Src/Zeugma_c/bemf.c ****         oldValue[0] = 1;
+  35:Src/Zeugma_c/bemf.c ****         oldValue[1] = 1;
+  36:Src/Zeugma_c/bemf.c ****         oldValue[2] = 0;
+  37:Src/Zeugma_c/bemf.c ****         step = 3;
+  38:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+  39:Src/Zeugma_c/bemf.c ****     }
+  40:Src/Zeugma_c/bemf.c **** 
+  41:Src/Zeugma_c/bemf.c ****     else if (!_a && _b && !_c && ((oldValue[0] && oldValue[1] && !oldValue[2]) || bemf_execute_flag
+  42:Src/Zeugma_c/bemf.c ****     {
+  43:Src/Zeugma_c/bemf.c ****         oldValue[0] = 0;
+  44:Src/Zeugma_c/bemf.c ****         oldValue[1] = 1;
+  45:Src/Zeugma_c/bemf.c ****         oldValue[2] = 0;
+  46:Src/Zeugma_c/bemf.c ****         step = 4;
+  47:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+  48:Src/Zeugma_c/bemf.c ****     }
+  49:Src/Zeugma_c/bemf.c **** 
+  50:Src/Zeugma_c/bemf.c ****     else if (!_a && _b && _c && ((!oldValue[0] && oldValue[1] && !oldValue[2]) || bemf_execute_flag
+  51:Src/Zeugma_c/bemf.c ****     {
+  52:Src/Zeugma_c/bemf.c ****         oldValue[0] = 0;
+  53:Src/Zeugma_c/bemf.c ****         oldValue[1] = 1;
+  54:Src/Zeugma_c/bemf.c ****         oldValue[2] = 1;
+  55:Src/Zeugma_c/bemf.c ****         step = 5;
+  56:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+  57:Src/Zeugma_c/bemf.c ****     }
+  58:Src/Zeugma_c/bemf.c ****     else if (!_a && !_b && _c && ((!oldValue[0] && oldValue[1] && oldValue[2]) || bemf_execute_flag
+  59:Src/Zeugma_c/bemf.c ****     {
+  60:Src/Zeugma_c/bemf.c ****         oldValue[0] = 0;
+  61:Src/Zeugma_c/bemf.c ****         oldValue[1] = 0;
+  62:Src/Zeugma_c/bemf.c ****         oldValue[2] = 1;
+  63:Src/Zeugma_c/bemf.c ****         step = 6;
+  64:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+  65:Src/Zeugma_c/bemf.c ****     }
+  66:Src/Zeugma_c/bemf.c ****     else
+  67:Src/Zeugma_c/bemf.c ****     {
+  68:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 0;
+  69:Src/Zeugma_c/bemf.c ****     }
+  70:Src/Zeugma_c/bemf.c ****     if (backEMF_mode)
+  88              		.loc 1 70 5 is_stmt 1 view .LVU24
+  89              		.loc 1 70 9 is_stmt 0 view .LVU25
+  90 0032 474B     		ldr	r3, .L21+12
+  91 0034 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  92              		.loc 1 70 8 view .LVU26
+  93 0036 13B1     		cbz	r3, .L1
+  71:Src/Zeugma_c/bemf.c ****     {
+  72:Src/Zeugma_c/bemf.c ****         bemf_execute_flag = 0;
+  94              		.loc 1 72 9 is_stmt 1 view .LVU27
+  95              		.loc 1 72 27 is_stmt 0 view .LVU28
+  96 0038 434B     		ldr	r3, .L21+4
+  97 003a 0022     		movs	r2, #0
+  98 003c 1A70     		strb	r2, [r3]
+  99              	.L1:
+  73:Src/Zeugma_c/bemf.c ****     }
+ARM GAS  /tmp/ccnMcqIc.s 			page 4
+
+
+  74:Src/Zeugma_c/bemf.c **** }
+ 100              		.loc 1 74 1 view .LVU29
+ 101 003e 7047     		bx	lr
+ 102              	.LVL5:
+ 103              	.L3:
   23:Src/Zeugma_c/bemf.c ****     {
-  24:Src/Zeugma_c/bemf.c ****         oldValue[0] = 1;
- 105              		.loc 1 24 9 is_stmt 1 view .LVU33
- 106              		.loc 1 24 21 is_stmt 0 view .LVU34
- 107 0046 394B     		ldr	r3, .L9
- 108 0048 0122     		movs	r2, #1
- 109              	.LVL5:
- 110              		.loc 1 24 21 view .LVU35
- 111 004a 1A70     		strb	r2, [r3]
+ 104              		.loc 1 23 10 is_stmt 1 view .LVU30
+  23:Src/Zeugma_c/bemf.c ****     {
+ 105              		.loc 1 23 17 is_stmt 0 discriminator 1 view .LVU31
+ 106 0040 B1B9     		cbnz	r1, .L2
+  23:Src/Zeugma_c/bemf.c ****     {
+ 107              		.loc 1 23 24 discriminator 2 view .LVU32
+ 108 0042 AAB9     		cbnz	r2, .L2
+  23:Src/Zeugma_c/bemf.c ****     {
+ 109              		.loc 1 23 44 discriminator 3 view .LVU33
+ 110 0044 3F48     		ldr	r0, .L21
+ 111 0046 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
+  23:Src/Zeugma_c/bemf.c ****     {
+ 112              		.loc 1 23 31 discriminator 3 view .LVU34
+ 113 0048 28B1     		cbz	r0, .L7
+  23:Src/Zeugma_c/bemf.c ****     {
+ 114              		.loc 1 23 60 discriminator 4 view .LVU35
+ 115 004a 3E48     		ldr	r0, .L21
+ 116 004c 4078     		ldrb	r0, [r0, #1]	@ zero_extendqisi2
+  23:Src/Zeugma_c/bemf.c ****     {
+ 117              		.loc 1 23 48 discriminator 4 view .LVU36
+ 118 004e 10B9     		cbnz	r0, .L7
+  23:Src/Zeugma_c/bemf.c ****     {
+ 119              		.loc 1 23 75 discriminator 6 view .LVU37
+ 120 0050 3C48     		ldr	r0, .L21
+ 121 0052 8078     		ldrb	r0, [r0, #2]	@ zero_extendqisi2
+  23:Src/Zeugma_c/bemf.c ****     {
+ 122              		.loc 1 23 64 discriminator 6 view .LVU38
+ 123 0054 10B9     		cbnz	r0, .L8
+ 124              	.L7:
+  23:Src/Zeugma_c/bemf.c ****     {
+ 125              		.loc 1 23 80 discriminator 8 view .LVU39
+ 126 0056 3C48     		ldr	r0, .L21+4
+ 127 0058 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
+ 128 005a 48B1     		cbz	r0, .L2
+ 129              	.L8:
   25:Src/Zeugma_c/bemf.c ****         oldValue[1] = 0;
- 112              		.loc 1 25 9 is_stmt 1 view .LVU36
- 113              		.loc 1 25 21 is_stmt 0 view .LVU37
- 114 004c 5970     		strb	r1, [r3, #1]
+ 130              		.loc 1 25 9 is_stmt 1 view .LVU40
+  25:Src/Zeugma_c/bemf.c ****         oldValue[1] = 0;
+ 131              		.loc 1 25 21 is_stmt 0 view .LVU41
+ 132 005c 394B     		ldr	r3, .L21
+ 133 005e 0122     		movs	r2, #1
+ 134              	.LVL6:
+  25:Src/Zeugma_c/bemf.c ****         oldValue[1] = 0;
+ 135              		.loc 1 25 21 view .LVU42
+ 136 0060 1A70     		strb	r2, [r3]
   26:Src/Zeugma_c/bemf.c ****         oldValue[2] = 0;
- 115              		.loc 1 26 9 is_stmt 1 view .LVU38
- 116              		.loc 1 26 21 is_stmt 0 view .LVU39
- 117 004e 9970     		strb	r1, [r3, #2]
+ 137              		.loc 1 26 9 is_stmt 1 view .LVU43
+  26:Src/Zeugma_c/bemf.c ****         oldValue[2] = 0;
+ 138              		.loc 1 26 21 is_stmt 0 view .LVU44
+ 139 0062 0022     		movs	r2, #0
+ 140 0064 5A70     		strb	r2, [r3, #1]
+ARM GAS  /tmp/ccnMcqIc.s 			page 5
+
+
   27:Src/Zeugma_c/bemf.c ****         step = 2;
- 118              		.loc 1 27 9 is_stmt 1 view .LVU40
- 119              		.loc 1 27 14 is_stmt 0 view .LVU41
- 120 0050 374B     		ldr	r3, .L9+4
- 121 0052 0221     		movs	r1, #2
- 122              	.LVL6:
- 123              		.loc 1 27 14 view .LVU42
- 124 0054 1960     		str	r1, [r3]
- 125              	.LVL7:
-  28:Src/Zeugma_c/bemf.c ****         bemf_execute_flag = 1;
- 126              		.loc 1 28 9 is_stmt 1 view .LVU43
- 127              		.loc 1 28 27 is_stmt 0 view .LVU44
- 128 0056 374B     		ldr	r3, .L9+8
- 129 0058 1A70     		strb	r2, [r3]
- 130 005a 7047     		bx	lr
- 131              	.LVL8:
- 132              	.L2:
-  29:Src/Zeugma_c/bemf.c ****     }
-  30:Src/Zeugma_c/bemf.c **** 
-  31:Src/Zeugma_c/bemf.c ****     else if (_a && _b && !_c && (oldValue[0] && !oldValue[1] && !oldValue[2])) // 100'den 110'a geÃ
- 133              		.loc 1 31 10 is_stmt 1 view .LVU45
- 134              		.loc 1 31 13 is_stmt 0 view .LVU46
- 135 005c DBB1     		cbz	r3, .L5
- 136              		.loc 1 31 17 discriminator 1 view .LVU47
- 137 005e 0029     		cmp	r1, #0
- 138 0060 5FD0     		beq	.L6
- 139              		.loc 1 31 23 discriminator 2 view .LVU48
- 140 0062 002A     		cmp	r2, #0
- 141 0064 5DD1     		bne	.L6
-ARM GAS  /tmp/cceUZvJF.s 			page 4
-
-
- 142              		.loc 1 31 42 discriminator 3 view .LVU49
- 143 0066 314B     		ldr	r3, .L9
- 144 0068 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 145              		.loc 1 31 30 discriminator 3 view .LVU50
- 146 006a 002B     		cmp	r3, #0
- 147 006c 59D0     		beq	.L6
- 148              		.loc 1 31 58 discriminator 4 view .LVU51
- 149 006e 2F4B     		ldr	r3, .L9
- 150 0070 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 151              		.loc 1 31 46 discriminator 4 view .LVU52
- 152 0072 002B     		cmp	r3, #0
- 153 0074 55D1     		bne	.L6
- 154              		.loc 1 31 74 discriminator 5 view .LVU53
- 155 0076 2D4B     		ldr	r3, .L9
- 156 0078 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 157              		.loc 1 31 62 discriminator 5 view .LVU54
- 158 007a 002B     		cmp	r3, #0
- 159 007c 51D1     		bne	.L6
+ 141              		.loc 1 27 9 is_stmt 1 view .LVU45
+  27:Src/Zeugma_c/bemf.c ****         step = 2;
+ 142              		.loc 1 27 21 is_stmt 0 view .LVU46
+ 143 0066 9A70     		strb	r2, [r3, #2]
+  28:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+ 144              		.loc 1 28 9 is_stmt 1 view .LVU47
+  28:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+ 145              		.loc 1 28 14 is_stmt 0 view .LVU48
+ 146 0068 384B     		ldr	r3, .L21+8
+ 147 006a 0222     		movs	r2, #2
+ 148 006c 1A60     		str	r2, [r3]
+ 149 006e E0E7     		b	.L6
+ 150              	.LVL7:
+ 151              	.L2:
   32:Src/Zeugma_c/bemf.c ****     {
-  33:Src/Zeugma_c/bemf.c ****         oldValue[0] = 1;
- 160              		.loc 1 33 9 is_stmt 1 view .LVU55
- 161              		.loc 1 33 21 is_stmt 0 view .LVU56
- 162 007e 2B4A     		ldr	r2, .L9
- 163              	.LVL9:
- 164              		.loc 1 33 21 view .LVU57
- 165 0080 0123     		movs	r3, #1
- 166 0082 1370     		strb	r3, [r2]
+ 152              		.loc 1 32 10 is_stmt 1 view .LVU49
+  32:Src/Zeugma_c/bemf.c ****     {
+ 153              		.loc 1 32 13 is_stmt 0 view .LVU50
+ 154 0070 D3B1     		cbz	r3, .L9
+  32:Src/Zeugma_c/bemf.c ****     {
+ 155              		.loc 1 32 17 discriminator 1 view .LVU51
+ 156 0072 0029     		cmp	r1, #0
+ 157 0074 DDD0     		beq	.L6
+  32:Src/Zeugma_c/bemf.c ****     {
+ 158              		.loc 1 32 23 discriminator 2 view .LVU52
+ 159 0076 002A     		cmp	r2, #0
+ 160 0078 DBD1     		bne	.L6
+  32:Src/Zeugma_c/bemf.c ****     {
+ 161              		.loc 1 32 43 discriminator 3 view .LVU53
+ 162 007a 324B     		ldr	r3, .L21
+ 163 007c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  32:Src/Zeugma_c/bemf.c ****     {
+ 164              		.loc 1 32 30 discriminator 3 view .LVU54
+ 165 007e 2BB1     		cbz	r3, .L10
+  32:Src/Zeugma_c/bemf.c ****     {
+ 166              		.loc 1 32 59 discriminator 4 view .LVU55
+ 167 0080 304B     		ldr	r3, .L21
+ 168 0082 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  32:Src/Zeugma_c/bemf.c ****     {
+ 169              		.loc 1 32 47 discriminator 4 view .LVU56
+ 170 0084 13B9     		cbnz	r3, .L10
+  32:Src/Zeugma_c/bemf.c ****     {
+ 171              		.loc 1 32 75 discriminator 6 view .LVU57
+ 172 0086 2F4B     		ldr	r3, .L21
+ 173 0088 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+  32:Src/Zeugma_c/bemf.c ****     {
+ 174              		.loc 1 32 63 discriminator 6 view .LVU58
+ 175 008a 1BB1     		cbz	r3, .L11
+ 176              	.L10:
+  32:Src/Zeugma_c/bemf.c ****     {
+ 177              		.loc 1 32 80 discriminator 8 view .LVU59
+ 178 008c 2E4B     		ldr	r3, .L21+4
+ 179 008e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 180 0090 002B     		cmp	r3, #0
+ 181 0092 CED0     		beq	.L6
+ 182              	.L11:
+ARM GAS  /tmp/ccnMcqIc.s 			page 6
+
+
   34:Src/Zeugma_c/bemf.c ****         oldValue[1] = 1;
- 167              		.loc 1 34 9 is_stmt 1 view .LVU58
- 168              		.loc 1 34 21 is_stmt 0 view .LVU59
- 169 0084 5370     		strb	r3, [r2, #1]
+ 183              		.loc 1 34 9 is_stmt 1 view .LVU60
+  34:Src/Zeugma_c/bemf.c ****         oldValue[1] = 1;
+ 184              		.loc 1 34 21 is_stmt 0 view .LVU61
+ 185 0094 2B4B     		ldr	r3, .L21
+ 186 0096 0122     		movs	r2, #1
+ 187              	.LVL8:
+  34:Src/Zeugma_c/bemf.c ****         oldValue[1] = 1;
+ 188              		.loc 1 34 21 view .LVU62
+ 189 0098 1A70     		strb	r2, [r3]
   35:Src/Zeugma_c/bemf.c ****         oldValue[2] = 0;
- 170              		.loc 1 35 9 is_stmt 1 view .LVU60
- 171              		.loc 1 35 21 is_stmt 0 view .LVU61
- 172 0086 0021     		movs	r1, #0
- 173              	.LVL10:
- 174              		.loc 1 35 21 view .LVU62
- 175 0088 9170     		strb	r1, [r2, #2]
+ 190              		.loc 1 35 9 is_stmt 1 view .LVU63
+  35:Src/Zeugma_c/bemf.c ****         oldValue[2] = 0;
+ 191              		.loc 1 35 21 is_stmt 0 view .LVU64
+ 192 009a 5A70     		strb	r2, [r3, #1]
   36:Src/Zeugma_c/bemf.c ****         step = 3;
- 176              		.loc 1 36 9 is_stmt 1 view .LVU63
- 177              		.loc 1 36 14 is_stmt 0 view .LVU64
- 178 008a 294A     		ldr	r2, .L9+4
- 179 008c 0321     		movs	r1, #3
- 180 008e 1160     		str	r1, [r2]
-  37:Src/Zeugma_c/bemf.c ****         bemf_execute_flag = 1;
- 181              		.loc 1 37 9 is_stmt 1 view .LVU65
- 182              		.loc 1 37 27 is_stmt 0 view .LVU66
- 183 0090 284A     		ldr	r2, .L9+8
- 184 0092 1370     		strb	r3, [r2]
- 185 0094 7047     		bx	lr
- 186              	.LVL11:
- 187              	.L5:
-  38:Src/Zeugma_c/bemf.c ****     }
-  39:Src/Zeugma_c/bemf.c **** 
-  40:Src/Zeugma_c/bemf.c ****     else if (!_a && _b && !_c && (oldValue[0] && oldValue[1] && !oldValue[2])) // 100'den 110'a geÃ
- 188              		.loc 1 40 18 discriminator 1 view .LVU67
- 189 0096 A9B1     		cbz	r1, .L7
-ARM GAS  /tmp/cceUZvJF.s 			page 5
-
-
- 190              		.loc 1 40 24 discriminator 2 view .LVU68
- 191 0098 A2B9     		cbnz	r2, .L7
- 192              		.loc 1 40 43 discriminator 3 view .LVU69
- 193 009a 2448     		ldr	r0, .L9
- 194 009c 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
- 195              		.loc 1 40 31 discriminator 3 view .LVU70
- 196 009e 88B1     		cbz	r0, .L7
- 197              		.loc 1 40 58 discriminator 4 view .LVU71
- 198 00a0 2248     		ldr	r0, .L9
- 199 00a2 4078     		ldrb	r0, [r0, #1]	@ zero_extendqisi2
- 200              		.loc 1 40 47 discriminator 4 view .LVU72
- 201 00a4 70B1     		cbz	r0, .L7
- 202              		.loc 1 40 74 discriminator 5 view .LVU73
- 203 00a6 2148     		ldr	r0, .L9
- 204 00a8 8078     		ldrb	r0, [r0, #2]	@ zero_extendqisi2
- 205              		.loc 1 40 62 discriminator 5 view .LVU74
- 206 00aa 58B9     		cbnz	r0, .L7
+ 193              		.loc 1 36 9 is_stmt 1 view .LVU65
+  36:Src/Zeugma_c/bemf.c ****         step = 3;
+ 194              		.loc 1 36 21 is_stmt 0 view .LVU66
+ 195 009c 0022     		movs	r2, #0
+ 196 009e 9A70     		strb	r2, [r3, #2]
+  37:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+ 197              		.loc 1 37 9 is_stmt 1 view .LVU67
+  37:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+ 198              		.loc 1 37 14 is_stmt 0 view .LVU68
+ 199 00a0 2A4B     		ldr	r3, .L21+8
+ 200 00a2 0322     		movs	r2, #3
+ 201 00a4 1A60     		str	r2, [r3]
+ 202 00a6 C4E7     		b	.L6
+ 203              	.LVL9:
+ 204              	.L9:
   41:Src/Zeugma_c/bemf.c ****     {
-  42:Src/Zeugma_c/bemf.c ****         oldValue[0] = 0;
- 207              		.loc 1 42 9 is_stmt 1 view .LVU75
- 208              		.loc 1 42 21 is_stmt 0 view .LVU76
- 209 00ac 1F4B     		ldr	r3, .L9
- 210 00ae 0021     		movs	r1, #0
- 211              	.LVL12:
- 212              		.loc 1 42 21 view .LVU77
- 213 00b0 1970     		strb	r1, [r3]
+ 205              		.loc 1 41 18 discriminator 1 view .LVU69
+ 206 00a8 B1B1     		cbz	r1, .L12
+  41:Src/Zeugma_c/bemf.c ****     {
+ 207              		.loc 1 41 24 discriminator 2 view .LVU70
+ 208 00aa AAB9     		cbnz	r2, .L12
+  41:Src/Zeugma_c/bemf.c ****     {
+ 209              		.loc 1 41 44 discriminator 3 view .LVU71
+ 210 00ac 2548     		ldr	r0, .L21
+ 211 00ae 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
+  41:Src/Zeugma_c/bemf.c ****     {
+ 212              		.loc 1 41 31 discriminator 3 view .LVU72
+ 213 00b0 28B1     		cbz	r0, .L13
+  41:Src/Zeugma_c/bemf.c ****     {
+ 214              		.loc 1 41 59 discriminator 4 view .LVU73
+ 215 00b2 2448     		ldr	r0, .L21
+ 216 00b4 4078     		ldrb	r0, [r0, #1]	@ zero_extendqisi2
+  41:Src/Zeugma_c/bemf.c ****     {
+ 217              		.loc 1 41 48 discriminator 4 view .LVU74
+ 218 00b6 10B1     		cbz	r0, .L13
+  41:Src/Zeugma_c/bemf.c ****     {
+ 219              		.loc 1 41 75 discriminator 6 view .LVU75
+ 220 00b8 2248     		ldr	r0, .L21
+ 221 00ba 8078     		ldrb	r0, [r0, #2]	@ zero_extendqisi2
+  41:Src/Zeugma_c/bemf.c ****     {
+ 222              		.loc 1 41 63 discriminator 6 view .LVU76
+ARM GAS  /tmp/ccnMcqIc.s 			page 7
+
+
+ 223 00bc 10B1     		cbz	r0, .L14
+ 224              	.L13:
+  41:Src/Zeugma_c/bemf.c ****     {
+ 225              		.loc 1 41 80 discriminator 8 view .LVU77
+ 226 00be 2248     		ldr	r0, .L21+4
+ 227 00c0 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
+ 228 00c2 48B1     		cbz	r0, .L12
+ 229              	.L14:
   43:Src/Zeugma_c/bemf.c ****         oldValue[1] = 1;
- 214              		.loc 1 43 9 is_stmt 1 view .LVU78
- 215              		.loc 1 43 21 is_stmt 0 view .LVU79
- 216 00b2 0122     		movs	r2, #1
- 217              	.LVL13:
- 218              		.loc 1 43 21 view .LVU80
- 219 00b4 5A70     		strb	r2, [r3, #1]
+ 230              		.loc 1 43 9 is_stmt 1 view .LVU78
+  43:Src/Zeugma_c/bemf.c ****         oldValue[1] = 1;
+ 231              		.loc 1 43 21 is_stmt 0 view .LVU79
+ 232 00c4 1F4B     		ldr	r3, .L21
+ 233 00c6 0022     		movs	r2, #0
+ 234              	.LVL10:
+  43:Src/Zeugma_c/bemf.c ****         oldValue[1] = 1;
+ 235              		.loc 1 43 21 view .LVU80
+ 236 00c8 1A70     		strb	r2, [r3]
   44:Src/Zeugma_c/bemf.c ****         oldValue[2] = 0;
- 220              		.loc 1 44 9 is_stmt 1 view .LVU81
- 221              		.loc 1 44 21 is_stmt 0 view .LVU82
- 222 00b6 9970     		strb	r1, [r3, #2]
+ 237              		.loc 1 44 9 is_stmt 1 view .LVU81
+  44:Src/Zeugma_c/bemf.c ****         oldValue[2] = 0;
+ 238              		.loc 1 44 21 is_stmt 0 view .LVU82
+ 239 00ca 0121     		movs	r1, #1
+ 240              	.LVL11:
+  44:Src/Zeugma_c/bemf.c ****         oldValue[2] = 0;
+ 241              		.loc 1 44 21 view .LVU83
+ 242 00cc 5970     		strb	r1, [r3, #1]
   45:Src/Zeugma_c/bemf.c ****         step = 4;
- 223              		.loc 1 45 9 is_stmt 1 view .LVU83
- 224              		.loc 1 45 14 is_stmt 0 view .LVU84
- 225 00b8 1D4B     		ldr	r3, .L9+4
- 226 00ba 0421     		movs	r1, #4
- 227 00bc 1960     		str	r1, [r3]
-  46:Src/Zeugma_c/bemf.c ****         bemf_execute_flag = 1;
- 228              		.loc 1 46 9 is_stmt 1 view .LVU85
- 229              		.loc 1 46 27 is_stmt 0 view .LVU86
- 230 00be 1D4B     		ldr	r3, .L9+8
- 231 00c0 1A70     		strb	r2, [r3]
- 232 00c2 7047     		bx	lr
- 233              	.LVL14:
- 234              	.L7:
-  47:Src/Zeugma_c/bemf.c ****     }
-  48:Src/Zeugma_c/bemf.c **** 
-  49:Src/Zeugma_c/bemf.c ****     else if (!_a && _b && _c && (!oldValue[0] && oldValue[1] && !oldValue[2])) // 100'den 110'a geÃ
- 235              		.loc 1 49 10 is_stmt 1 view .LVU87
- 236              		.loc 1 49 13 is_stmt 0 view .LVU88
- 237 00c4 002B     		cmp	r3, #0
-ARM GAS  /tmp/cceUZvJF.s 			page 6
-
-
- 238 00c6 2CD1     		bne	.L6
- 239              		.loc 1 49 18 discriminator 1 view .LVU89
- 240 00c8 A1B1     		cbz	r1, .L8
- 241              		.loc 1 49 24 discriminator 2 view .LVU90
- 242 00ca 9AB1     		cbz	r2, .L8
- 243              		.loc 1 49 43 discriminator 3 view .LVU91
- 244 00cc 174B     		ldr	r3, .L9
- 245 00ce 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 246              		.loc 1 49 30 discriminator 3 view .LVU92
- 247 00d0 83B9     		cbnz	r3, .L8
- 248              		.loc 1 49 58 discriminator 4 view .LVU93
- 249 00d2 164B     		ldr	r3, .L9
- 250 00d4 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 251              		.loc 1 49 47 discriminator 4 view .LVU94
- 252 00d6 6BB1     		cbz	r3, .L8
- 253              		.loc 1 49 74 discriminator 5 view .LVU95
- 254 00d8 144B     		ldr	r3, .L9
- 255 00da 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 256              		.loc 1 49 62 discriminator 5 view .LVU96
- 257 00dc 53B9     		cbnz	r3, .L8
+ 243              		.loc 1 45 9 is_stmt 1 view .LVU84
+  45:Src/Zeugma_c/bemf.c ****         step = 4;
+ 244              		.loc 1 45 21 is_stmt 0 view .LVU85
+ 245 00ce 9A70     		strb	r2, [r3, #2]
+  46:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+ 246              		.loc 1 46 9 is_stmt 1 view .LVU86
+  46:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+ 247              		.loc 1 46 14 is_stmt 0 view .LVU87
+ 248 00d0 1E4B     		ldr	r3, .L21+8
+ 249 00d2 0422     		movs	r2, #4
+ 250 00d4 1A60     		str	r2, [r3]
+ 251 00d6 ACE7     		b	.L6
+ 252              	.LVL12:
+ 253              	.L12:
   50:Src/Zeugma_c/bemf.c ****     {
-  51:Src/Zeugma_c/bemf.c ****         oldValue[0] = 0;
- 258              		.loc 1 51 9 is_stmt 1 view .LVU97
- 259              		.loc 1 51 21 is_stmt 0 view .LVU98
- 260 00de 134A     		ldr	r2, .L9
- 261              	.LVL15:
- 262              		.loc 1 51 21 view .LVU99
- 263 00e0 1370     		strb	r3, [r2]
+ 254              		.loc 1 50 10 is_stmt 1 view .LVU88
+  50:Src/Zeugma_c/bemf.c ****     {
+ 255              		.loc 1 50 13 is_stmt 0 view .LVU89
+ 256 00d8 002B     		cmp	r3, #0
+ 257 00da AAD1     		bne	.L6
+  50:Src/Zeugma_c/bemf.c ****     {
+ 258              		.loc 1 50 18 discriminator 1 view .LVU90
+ 259 00dc B1B1     		cbz	r1, .L15
+  50:Src/Zeugma_c/bemf.c ****     {
+ 260              		.loc 1 50 24 discriminator 2 view .LVU91
+ 261 00de AAB1     		cbz	r2, .L15
+  50:Src/Zeugma_c/bemf.c ****     {
+ 262              		.loc 1 50 44 discriminator 3 view .LVU92
+ 263 00e0 184B     		ldr	r3, .L21
+ARM GAS  /tmp/ccnMcqIc.s 			page 8
+
+
+ 264 00e2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  50:Src/Zeugma_c/bemf.c ****     {
+ 265              		.loc 1 50 30 discriminator 3 view .LVU93
+ 266 00e4 2BB9     		cbnz	r3, .L16
+  50:Src/Zeugma_c/bemf.c ****     {
+ 267              		.loc 1 50 59 discriminator 4 view .LVU94
+ 268 00e6 174B     		ldr	r3, .L21
+ 269 00e8 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  50:Src/Zeugma_c/bemf.c ****     {
+ 270              		.loc 1 50 48 discriminator 4 view .LVU95
+ 271 00ea 13B1     		cbz	r3, .L16
+  50:Src/Zeugma_c/bemf.c ****     {
+ 272              		.loc 1 50 75 discriminator 6 view .LVU96
+ 273 00ec 154B     		ldr	r3, .L21
+ 274 00ee 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+  50:Src/Zeugma_c/bemf.c ****     {
+ 275              		.loc 1 50 63 discriminator 6 view .LVU97
+ 276 00f0 13B1     		cbz	r3, .L17
+ 277              	.L16:
+  50:Src/Zeugma_c/bemf.c ****     {
+ 278              		.loc 1 50 80 discriminator 8 view .LVU98
+ 279 00f2 154B     		ldr	r3, .L21+4
+ 280 00f4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 281 00f6 4BB1     		cbz	r3, .L15
+ 282              	.L17:
   52:Src/Zeugma_c/bemf.c ****         oldValue[1] = 1;
- 264              		.loc 1 52 9 is_stmt 1 view .LVU100
- 265              		.loc 1 52 21 is_stmt 0 view .LVU101
- 266 00e2 0123     		movs	r3, #1
- 267 00e4 5370     		strb	r3, [r2, #1]
+ 283              		.loc 1 52 9 is_stmt 1 view .LVU99
+  52:Src/Zeugma_c/bemf.c ****         oldValue[1] = 1;
+ 284              		.loc 1 52 21 is_stmt 0 view .LVU100
+ 285 00f8 124B     		ldr	r3, .L21
+ 286 00fa 0022     		movs	r2, #0
+ 287              	.LVL13:
+  52:Src/Zeugma_c/bemf.c ****         oldValue[1] = 1;
+ 288              		.loc 1 52 21 view .LVU101
+ 289 00fc 1A70     		strb	r2, [r3]
   53:Src/Zeugma_c/bemf.c ****         oldValue[2] = 1;
- 268              		.loc 1 53 9 is_stmt 1 view .LVU102
- 269              		.loc 1 53 21 is_stmt 0 view .LVU103
- 270 00e6 9370     		strb	r3, [r2, #2]
+ 290              		.loc 1 53 9 is_stmt 1 view .LVU102
+  53:Src/Zeugma_c/bemf.c ****         oldValue[2] = 1;
+ 291              		.loc 1 53 21 is_stmt 0 view .LVU103
+ 292 00fe 0122     		movs	r2, #1
+ 293 0100 5A70     		strb	r2, [r3, #1]
   54:Src/Zeugma_c/bemf.c ****         step = 5;
- 271              		.loc 1 54 9 is_stmt 1 view .LVU104
- 272              		.loc 1 54 14 is_stmt 0 view .LVU105
- 273 00e8 114A     		ldr	r2, .L9+4
- 274 00ea 0521     		movs	r1, #5
- 275              	.LVL16:
- 276              		.loc 1 54 14 view .LVU106
- 277 00ec 1160     		str	r1, [r2]
-  55:Src/Zeugma_c/bemf.c ****         bemf_execute_flag = 1;
- 278              		.loc 1 55 9 is_stmt 1 view .LVU107
- 279              		.loc 1 55 27 is_stmt 0 view .LVU108
- 280 00ee 114A     		ldr	r2, .L9+8
- 281 00f0 1370     		strb	r3, [r2]
- 282 00f2 7047     		bx	lr
- 283              	.LVL17:
- 284              	.L8:
-  56:Src/Zeugma_c/bemf.c ****     }
-  57:Src/Zeugma_c/bemf.c ****     else if (!_a && !_b && _c && (!oldValue[0] && oldValue[1] && oldValue[2])) // 100'den 110'a geÃ
- 285              		.loc 1 57 10 is_stmt 1 view .LVU109
- 286              		.loc 1 57 18 is_stmt 0 discriminator 1 view .LVU110
-ARM GAS  /tmp/cceUZvJF.s 			page 7
-
-
- 287 00f4 A9B9     		cbnz	r1, .L6
- 288              		.loc 1 57 25 discriminator 2 view .LVU111
- 289 00f6 A2B1     		cbz	r2, .L6
- 290              		.loc 1 57 44 discriminator 3 view .LVU112
- 291 00f8 0C4B     		ldr	r3, .L9
- 292 00fa 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 293              		.loc 1 57 31 discriminator 3 view .LVU113
- 294 00fc 8BB9     		cbnz	r3, .L6
- 295              		.loc 1 57 59 discriminator 4 view .LVU114
- 296 00fe 0B4B     		ldr	r3, .L9
- 297 0100 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 298              		.loc 1 57 48 discriminator 4 view .LVU115
- 299 0102 73B1     		cbz	r3, .L6
- 300              		.loc 1 57 74 discriminator 5 view .LVU116
- 301 0104 094B     		ldr	r3, .L9
- 302 0106 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 303              		.loc 1 57 63 discriminator 5 view .LVU117
- 304 0108 5BB1     		cbz	r3, .L6
+ 294              		.loc 1 54 9 is_stmt 1 view .LVU104
+  54:Src/Zeugma_c/bemf.c ****         step = 5;
+ 295              		.loc 1 54 21 is_stmt 0 view .LVU105
+ 296 0102 9A70     		strb	r2, [r3, #2]
+  55:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+ 297              		.loc 1 55 9 is_stmt 1 view .LVU106
+  55:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+ 298              		.loc 1 55 14 is_stmt 0 view .LVU107
+ 299 0104 114B     		ldr	r3, .L21+8
+ 300 0106 0522     		movs	r2, #5
+ 301 0108 1A60     		str	r2, [r3]
+ 302 010a 92E7     		b	.L6
+ 303              	.LVL14:
+ 304              	.L15:
   58:Src/Zeugma_c/bemf.c ****     {
-  59:Src/Zeugma_c/bemf.c ****         oldValue[0] = 0;
- 305              		.loc 1 59 9 is_stmt 1 view .LVU118
- 306              		.loc 1 59 21 is_stmt 0 view .LVU119
- 307 010a 084B     		ldr	r3, .L9
- 308 010c 0022     		movs	r2, #0
- 309              	.LVL18:
- 310              		.loc 1 59 21 view .LVU120
- 311 010e 1A70     		strb	r2, [r3]
+ARM GAS  /tmp/ccnMcqIc.s 			page 9
+
+
+ 305              		.loc 1 58 10 is_stmt 1 view .LVU108
+  58:Src/Zeugma_c/bemf.c ****     {
+ 306              		.loc 1 58 18 is_stmt 0 discriminator 1 view .LVU109
+ 307 010c 0029     		cmp	r1, #0
+ 308 010e 90D1     		bne	.L6
+  58:Src/Zeugma_c/bemf.c ****     {
+ 309              		.loc 1 58 25 discriminator 2 view .LVU110
+ 310 0110 002A     		cmp	r2, #0
+ 311 0112 8ED0     		beq	.L6
+  58:Src/Zeugma_c/bemf.c ****     {
+ 312              		.loc 1 58 45 discriminator 3 view .LVU111
+ 313 0114 0B4B     		ldr	r3, .L21
+ 314 0116 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  58:Src/Zeugma_c/bemf.c ****     {
+ 315              		.loc 1 58 31 discriminator 3 view .LVU112
+ 316 0118 2BB9     		cbnz	r3, .L18
+  58:Src/Zeugma_c/bemf.c ****     {
+ 317              		.loc 1 58 60 discriminator 4 view .LVU113
+ 318 011a 0A4B     		ldr	r3, .L21
+ 319 011c 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  58:Src/Zeugma_c/bemf.c ****     {
+ 320              		.loc 1 58 49 discriminator 4 view .LVU114
+ 321 011e 13B1     		cbz	r3, .L18
+  58:Src/Zeugma_c/bemf.c ****     {
+ 322              		.loc 1 58 75 discriminator 6 view .LVU115
+ 323 0120 084B     		ldr	r3, .L21
+ 324 0122 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+  58:Src/Zeugma_c/bemf.c ****     {
+ 325              		.loc 1 58 64 discriminator 6 view .LVU116
+ 326 0124 1BB9     		cbnz	r3, .L19
+ 327              	.L18:
+  58:Src/Zeugma_c/bemf.c ****     {
+ 328              		.loc 1 58 80 discriminator 8 view .LVU117
+ 329 0126 084B     		ldr	r3, .L21+4
+ 330 0128 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 331 012a 002B     		cmp	r3, #0
+ 332 012c 81D0     		beq	.L6
+ 333              	.L19:
   60:Src/Zeugma_c/bemf.c ****         oldValue[1] = 0;
- 312              		.loc 1 60 9 is_stmt 1 view .LVU121
- 313              		.loc 1 60 21 is_stmt 0 view .LVU122
- 314 0110 5A70     		strb	r2, [r3, #1]
+ 334              		.loc 1 60 9 is_stmt 1 view .LVU118
+  60:Src/Zeugma_c/bemf.c ****         oldValue[1] = 0;
+ 335              		.loc 1 60 21 is_stmt 0 view .LVU119
+ 336 012e 054B     		ldr	r3, .L21
+ 337 0130 0022     		movs	r2, #0
+ 338              	.LVL15:
+  60:Src/Zeugma_c/bemf.c ****         oldValue[1] = 0;
+ 339              		.loc 1 60 21 view .LVU120
+ 340 0132 1A70     		strb	r2, [r3]
   61:Src/Zeugma_c/bemf.c ****         oldValue[2] = 1;
- 315              		.loc 1 61 9 is_stmt 1 view .LVU123
- 316              		.loc 1 61 21 is_stmt 0 view .LVU124
- 317 0112 0122     		movs	r2, #1
- 318 0114 9A70     		strb	r2, [r3, #2]
+ 341              		.loc 1 61 9 is_stmt 1 view .LVU121
+  61:Src/Zeugma_c/bemf.c ****         oldValue[2] = 1;
+ 342              		.loc 1 61 21 is_stmt 0 view .LVU122
+ 343 0134 5A70     		strb	r2, [r3, #1]
   62:Src/Zeugma_c/bemf.c ****         step = 6;
- 319              		.loc 1 62 9 is_stmt 1 view .LVU125
- 320              		.loc 1 62 14 is_stmt 0 view .LVU126
- 321 0116 064B     		ldr	r3, .L9+4
- 322 0118 0621     		movs	r1, #6
- 323              	.LVL19:
- 324              		.loc 1 62 14 view .LVU127
- 325 011a 1960     		str	r1, [r3]
-  63:Src/Zeugma_c/bemf.c ****         bemf_execute_flag = 1;
- 326              		.loc 1 63 9 is_stmt 1 view .LVU128
- 327              		.loc 1 63 27 is_stmt 0 view .LVU129
- 328 011c 054B     		ldr	r3, .L9+8
- 329 011e 1A70     		strb	r2, [r3]
- 330 0120 7047     		bx	lr
- 331              	.LVL20:
- 332              	.L6:
-  64:Src/Zeugma_c/bemf.c ****     }
-  65:Src/Zeugma_c/bemf.c ****     else
-  66:Src/Zeugma_c/bemf.c ****     {
-  67:Src/Zeugma_c/bemf.c ****         bemf_execute_flag = 0;
- 333              		.loc 1 67 9 is_stmt 1 view .LVU130
-ARM GAS  /tmp/cceUZvJF.s 			page 8
+ 344              		.loc 1 62 9 is_stmt 1 view .LVU123
+  62:Src/Zeugma_c/bemf.c ****         step = 6;
+ 345              		.loc 1 62 21 is_stmt 0 view .LVU124
+ARM GAS  /tmp/ccnMcqIc.s 			page 10
 
 
- 334              		.loc 1 67 27 is_stmt 0 view .LVU131
- 335 0122 044B     		ldr	r3, .L9+8
- 336 0124 0022     		movs	r2, #0
- 337              	.LVL21:
- 338              		.loc 1 67 27 view .LVU132
- 339 0126 1A70     		strb	r2, [r3]
-  68:Src/Zeugma_c/bemf.c ****     }
-  69:Src/Zeugma_c/bemf.c **** }
- 340              		.loc 1 69 1 view .LVU133
- 341 0128 7047     		bx	lr
- 342              	.L10:
- 343 012a 00BF     		.align	2
- 344              	.L9:
- 345 012c 00000000 		.word	oldValue
- 346 0130 00000000 		.word	step
- 347 0134 00000000 		.word	bemf_execute_flag
- 348              		.cfi_endproc
- 349              	.LFE68:
- 351              		.section	.text.abc,"ax",%progbits
- 352              		.align	1
- 353              		.global	abc
- 354              		.syntax unified
- 355              		.thumb
- 356              		.thumb_func
- 358              	abc:
- 359              	.LFB69:
-  70:Src/Zeugma_c/bemf.c **** void abc()
-  71:Src/Zeugma_c/bemf.c **** {
- 360              		.loc 1 71 1 is_stmt 1 view -0
- 361              		.cfi_startproc
- 362              		@ args = 0, pretend = 0, frame = 0
- 363              		@ frame_needed = 0, uses_anonymous_args = 0
- 364 0000 08B5     		push	{r3, lr}
- 365              		.cfi_def_cfa_offset 8
- 366              		.cfi_offset 3, -8
- 367              		.cfi_offset 14, -4
-  72:Src/Zeugma_c/bemf.c ****     if (backEMF_mode)
- 368              		.loc 1 72 5 view .LVU135
- 369              		.loc 1 72 9 is_stmt 0 view .LVU136
- 370 0002 094B     		ldr	r3, .L15
- 371 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 372              		.loc 1 72 8 view .LVU137
- 373 0006 03B9     		cbnz	r3, .L14
- 374              	.L11:
-  73:Src/Zeugma_c/bemf.c ****     {
-  74:Src/Zeugma_c/bemf.c ****         // LOG_VAR(flagg);
-  75:Src/Zeugma_c/bemf.c ****         decide_step(polarity_A, polarity_B, polarity_C);
-  76:Src/Zeugma_c/bemf.c ****         execute_step(step);
-  77:Src/Zeugma_c/bemf.c ****     }
-  78:Src/Zeugma_c/bemf.c **** }
- 375              		.loc 1 78 1 view .LVU138
- 376 0008 08BD     		pop	{r3, pc}
- 377              	.L14:
-  75:Src/Zeugma_c/bemf.c ****         execute_step(step);
- 378              		.loc 1 75 9 is_stmt 1 view .LVU139
- 379 000a 084B     		ldr	r3, .L15+4
- 380 000c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
-ARM GAS  /tmp/cceUZvJF.s 			page 9
+ 346 0136 0122     		movs	r2, #1
+ 347 0138 9A70     		strb	r2, [r3, #2]
+  63:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+ 348              		.loc 1 63 9 is_stmt 1 view .LVU125
+  63:Src/Zeugma_c/bemf.c ****         // bemf_execute_flag = 1;
+ 349              		.loc 1 63 14 is_stmt 0 view .LVU126
+ 350 013a 044B     		ldr	r3, .L21+8
+ 351 013c 0622     		movs	r2, #6
+ 352 013e 1A60     		str	r2, [r3]
+ 353 0140 77E7     		b	.L6
+ 354              	.L22:
+ 355 0142 00BF     		.align	2
+ 356              	.L21:
+ 357 0144 00000000 		.word	oldValue
+ 358 0148 00000000 		.word	bemf_execute_flag
+ 359 014c 00000000 		.word	step
+ 360 0150 00000000 		.word	backEMF_mode
+ 361              		.cfi_endproc
+ 362              	.LFE68:
+ 364              		.section	.text.abc,"ax",%progbits
+ 365              		.align	1
+ 366              		.global	abc
+ 367              		.syntax unified
+ 368              		.thumb
+ 369              		.thumb_func
+ 371              	abc:
+ 372              	.LFB69:
+  75:Src/Zeugma_c/bemf.c **** void abc()
+  76:Src/Zeugma_c/bemf.c **** {
+ 373              		.loc 1 76 1 is_stmt 1 view -0
+ 374              		.cfi_startproc
+ 375              		@ args = 0, pretend = 0, frame = 0
+ 376              		@ frame_needed = 0, uses_anonymous_args = 0
+ 377 0000 08B5     		push	{r3, lr}
+ 378              		.cfi_def_cfa_offset 8
+ 379              		.cfi_offset 3, -8
+ 380              		.cfi_offset 14, -4
+  77:Src/Zeugma_c/bemf.c ****     if (backEMF_mode)
+ 381              		.loc 1 77 5 view .LVU128
+ 382              		.loc 1 77 9 is_stmt 0 view .LVU129
+ 383 0002 054B     		ldr	r3, .L27
+ 384 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 385              		.loc 1 77 8 view .LVU130
+ 386 0006 03B9     		cbnz	r3, .L26
+ 387              	.L23:
+  78:Src/Zeugma_c/bemf.c ****     {
+  79:Src/Zeugma_c/bemf.c ****         // LOG_VAR(flagg);
+  80:Src/Zeugma_c/bemf.c ****         execute_step(step);
+  81:Src/Zeugma_c/bemf.c ****     }
+  82:Src/Zeugma_c/bemf.c **** }
+ 388              		.loc 1 82 1 view .LVU131
+ 389 0008 08BD     		pop	{r3, pc}
+ 390              	.L26:
+  80:Src/Zeugma_c/bemf.c ****     }
+ 391              		.loc 1 80 9 is_stmt 1 view .LVU132
+ 392 000a 044B     		ldr	r3, .L27+4
+ 393 000c 1868     		ldr	r0, [r3]
+ARM GAS  /tmp/ccnMcqIc.s 			page 11
 
 
- 381 000e 084B     		ldr	r3, .L15+8
- 382 0010 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
- 383 0012 084B     		ldr	r3, .L15+12
- 384 0014 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
- 385 0016 FFF7FEFF 		bl	decide_step
- 386              	.LVL22:
-  76:Src/Zeugma_c/bemf.c ****     }
- 387              		.loc 1 76 9 view .LVU140
- 388 001a 074B     		ldr	r3, .L15+16
- 389 001c 1868     		ldr	r0, [r3]
- 390 001e C0B2     		uxtb	r0, r0
- 391 0020 FFF7FEFF 		bl	execute_step
- 392              	.LVL23:
- 393              		.loc 1 78 1 is_stmt 0 view .LVU141
- 394 0024 F0E7     		b	.L11
- 395              	.L16:
- 396 0026 00BF     		.align	2
- 397              	.L15:
- 398 0028 00000000 		.word	backEMF_mode
- 399 002c 00000000 		.word	polarity_C
- 400 0030 00000000 		.word	polarity_B
- 401 0034 00000000 		.word	polarity_A
- 402 0038 00000000 		.word	step
- 403              		.cfi_endproc
- 404              	.LFE69:
- 406              		.section	.text.phaseControlBemf,"ax",%progbits
- 407              		.align	1
- 408              		.global	phaseControlBemf
- 409              		.syntax unified
- 410              		.thumb
- 411              		.thumb_func
- 413              	phaseControlBemf:
- 414              	.LFB70:
-  79:Src/Zeugma_c/bemf.c **** 
-  80:Src/Zeugma_c/bemf.c **** void phaseControlBemf()
-  81:Src/Zeugma_c/bemf.c **** {
- 415              		.loc 1 81 1 is_stmt 1 view -0
- 416              		.cfi_startproc
- 417              		@ args = 0, pretend = 0, frame = 0
- 418              		@ frame_needed = 0, uses_anonymous_args = 0
- 419 0000 10B5     		push	{r4, lr}
- 420              		.cfi_def_cfa_offset 8
- 421              		.cfi_offset 4, -8
- 422              		.cfi_offset 14, -4
-  82:Src/Zeugma_c/bemf.c ****     if (polarity_A + polarity_A_old == 1)
- 423              		.loc 1 82 5 view .LVU143
- 424              		.loc 1 82 20 is_stmt 0 view .LVU144
- 425 0002 324B     		ldr	r3, .L25
- 426 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 427 0006 324A     		ldr	r2, .L25+4
- 428 0008 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
- 429 000a 1344     		add	r3, r3, r2
- 430              		.loc 1 82 8 view .LVU145
- 431 000c 012B     		cmp	r3, #1
- 432 000e 0ED0     		beq	.L22
-  83:Src/Zeugma_c/bemf.c ****     {
-  84:Src/Zeugma_c/bemf.c ****         intersection_interval = __HAL_TIM_GET_COUNTER(&htim4);
-ARM GAS  /tmp/cceUZvJF.s 			page 10
+ 394 000e C0B2     		uxtb	r0, r0
+ 395 0010 FFF7FEFF 		bl	execute_step
+ 396              	.LVL16:
+ 397              		.loc 1 82 1 is_stmt 0 view .LVU133
+ 398 0014 F8E7     		b	.L23
+ 399              	.L28:
+ 400 0016 00BF     		.align	2
+ 401              	.L27:
+ 402 0018 00000000 		.word	backEMF_mode
+ 403 001c 00000000 		.word	step
+ 404              		.cfi_endproc
+ 405              	.LFE69:
+ 407              		.section	.text.phaseControlBemf,"ax",%progbits
+ 408              		.align	1
+ 409              		.global	phaseControlBemf
+ 410              		.syntax unified
+ 411              		.thumb
+ 412              		.thumb_func
+ 414              	phaseControlBemf:
+ 415              	.LFB70:
+  83:Src/Zeugma_c/bemf.c **** 
+  84:Src/Zeugma_c/bemf.c **** void phaseControlBemf()
+  85:Src/Zeugma_c/bemf.c **** {
+ 416              		.loc 1 85 1 is_stmt 1 view -0
+ 417              		.cfi_startproc
+ 418              		@ args = 0, pretend = 0, frame = 0
+ 419              		@ frame_needed = 0, uses_anonymous_args = 0
+ 420 0000 38B5     		push	{r3, r4, r5, lr}
+ 421              		.cfi_def_cfa_offset 16
+ 422              		.cfi_offset 3, -16
+ 423              		.cfi_offset 4, -12
+ 424              		.cfi_offset 5, -8
+ 425              		.cfi_offset 14, -4
+  86:Src/Zeugma_c/bemf.c ****     if (polarity_A + polarity_A_old == 1)
+ 426              		.loc 1 86 5 view .LVU135
+ 427              		.loc 1 86 20 is_stmt 0 view .LVU136
+ 428 0002 394B     		ldr	r3, .L37
+ 429 0004 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 430 0006 394B     		ldr	r3, .L37+4
+ 431 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 432 000a 0344     		add	r3, r3, r0
+ 433              		.loc 1 86 8 view .LVU137
+ 434 000c 012B     		cmp	r3, #1
+ 435 000e 0ED0     		beq	.L34
+  87:Src/Zeugma_c/bemf.c ****     {
+  88:Src/Zeugma_c/bemf.c ****         decide_step(polarity_A, polarity_B, polarity_C);
+  89:Src/Zeugma_c/bemf.c ****         intersection_interval = __HAL_TIM_GET_COUNTER(&htim4);
+  90:Src/Zeugma_c/bemf.c ****         uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+  91:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, temp);
+  92:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+  93:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
+  94:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim4, 0);
+  95:Src/Zeugma_c/bemf.c ****         polarity_A_old = polarity_A;
+  96:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
+  97:Src/Zeugma_c/bemf.c ****         // abc();
+  98:Src/Zeugma_c/bemf.c ****     }
+  99:Src/Zeugma_c/bemf.c ****     else if (polarity_B + polarity_B_old == 1)
+ARM GAS  /tmp/ccnMcqIc.s 			page 12
 
 
-  85:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
-  86:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
-  87:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim4, 0);
-  88:Src/Zeugma_c/bemf.c ****         polarity_A_old = polarity_A;
-  89:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
-  90:Src/Zeugma_c/bemf.c ****         abc();
-  91:Src/Zeugma_c/bemf.c ****     }
-  92:Src/Zeugma_c/bemf.c ****     else if (polarity_B + polarity_B_old == 1)
- 433              		.loc 1 92 10 is_stmt 1 view .LVU146
- 434              		.loc 1 92 25 is_stmt 0 view .LVU147
- 435 0010 304B     		ldr	r3, .L25+8
- 436 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 437 0014 304A     		ldr	r2, .L25+12
- 438 0016 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
- 439 0018 1344     		add	r3, r3, r2
- 440              		.loc 1 92 13 view .LVU148
- 441 001a 012B     		cmp	r3, #1
- 442 001c 21D0     		beq	.L23
-  93:Src/Zeugma_c/bemf.c ****     {
-  94:Src/Zeugma_c/bemf.c ****         intersection_interval = __HAL_TIM_GET_COUNTER(&htim4);
-  95:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
-  96:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
-  97:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim4, 0);
-  98:Src/Zeugma_c/bemf.c ****         polarity_B_old = polarity_B;
-  99:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
- 100:Src/Zeugma_c/bemf.c ****         abc();
- 101:Src/Zeugma_c/bemf.c ****     }
- 102:Src/Zeugma_c/bemf.c ****     else if (polarity_C + polarity_C_old == 1)
- 443              		.loc 1 102 10 is_stmt 1 view .LVU149
- 444              		.loc 1 102 25 is_stmt 0 view .LVU150
- 445 001e 2F4B     		ldr	r3, .L25+16
- 446 0020 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 447 0022 2F4A     		ldr	r2, .L25+20
- 448 0024 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
- 449 0026 1344     		add	r3, r3, r2
- 450              		.loc 1 102 13 view .LVU151
- 451 0028 012B     		cmp	r3, #1
- 452 002a 34D0     		beq	.L24
- 453              	.L17:
- 103:Src/Zeugma_c/bemf.c ****     {
- 104:Src/Zeugma_c/bemf.c ****         intersection_interval = __HAL_TIM_GET_COUNTER(&htim4);
- 105:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
+ 436              		.loc 1 99 10 is_stmt 1 view .LVU138
+ 437              		.loc 1 99 25 is_stmt 0 view .LVU139
+ 438 0010 374B     		ldr	r3, .L37+8
+ 439 0012 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 440 0014 374B     		ldr	r3, .L37+12
+ 441 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 442 0018 0B44     		add	r3, r3, r1
+ 443              		.loc 1 99 13 view .LVU140
+ 444 001a 012B     		cmp	r3, #1
+ 445 001c 28D0     		beq	.L35
+ 100:Src/Zeugma_c/bemf.c ****     {
+ 101:Src/Zeugma_c/bemf.c ****         decide_step(polarity_A, polarity_B, polarity_C);
+ 102:Src/Zeugma_c/bemf.c ****         intersection_interval = __HAL_TIM_GET_COUNTER(&htim4);
+ 103:Src/Zeugma_c/bemf.c ****         uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+ 104:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, temp);
+ 105:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
  106:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
  107:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim4, 0);
- 108:Src/Zeugma_c/bemf.c ****         polarity_C_old = polarity_C;
+ 108:Src/Zeugma_c/bemf.c ****         polarity_B_old = polarity_B;
  109:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
- 110:Src/Zeugma_c/bemf.c ****         abc();
+ 110:Src/Zeugma_c/bemf.c ****         // abc();
  111:Src/Zeugma_c/bemf.c ****     }
- 112:Src/Zeugma_c/bemf.c ****     else
+ 112:Src/Zeugma_c/bemf.c ****     else if (polarity_C + polarity_C_old == 1)
+ 446              		.loc 1 112 10 is_stmt 1 view .LVU141
+ 447              		.loc 1 112 25 is_stmt 0 view .LVU142
+ 448 001e 364B     		ldr	r3, .L37+16
+ 449 0020 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 450 0022 364B     		ldr	r3, .L37+20
+ 451 0024 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 452 0026 1344     		add	r3, r3, r2
+ 453              		.loc 1 112 13 view .LVU143
+ 454 0028 012B     		cmp	r3, #1
+ 455 002a 40D0     		beq	.L36
+ 456              	.L29:
  113:Src/Zeugma_c/bemf.c ****     {
- 114:Src/Zeugma_c/bemf.c ****         a = a;
- 115:Src/Zeugma_c/bemf.c ****     }
- 116:Src/Zeugma_c/bemf.c **** }
- 454              		.loc 1 116 1 view .LVU152
- 455 002c 10BD     		pop	{r4, pc}
- 456              	.L22:
-  84:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
-ARM GAS  /tmp/cceUZvJF.s 			page 11
+ 114:Src/Zeugma_c/bemf.c ****         decide_step(polarity_A, polarity_B, polarity_C);
+ 115:Src/Zeugma_c/bemf.c ****         intersection_interval = __HAL_TIM_GET_COUNTER(&htim4);
+ 116:Src/Zeugma_c/bemf.c ****         uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+ 117:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, temp);
+ 118:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 119:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
+ 120:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim4, 0);
+ 121:Src/Zeugma_c/bemf.c ****         polarity_C_old = polarity_C;
+ 122:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
+ 123:Src/Zeugma_c/bemf.c ****         // abc();
+ 124:Src/Zeugma_c/bemf.c ****     }
+ 125:Src/Zeugma_c/bemf.c ****     else
+ 126:Src/Zeugma_c/bemf.c ****     {
+ 127:Src/Zeugma_c/bemf.c ****         a = a;
+ 128:Src/Zeugma_c/bemf.c ****     }
+ 129:Src/Zeugma_c/bemf.c **** }
+ 457              		.loc 1 129 1 view .LVU144
+ 458 002c 38BD     		pop	{r3, r4, r5, pc}
+ 459              	.L34:
+ 460              	.LBB2:
+  88:Src/Zeugma_c/bemf.c ****         intersection_interval = __HAL_TIM_GET_COUNTER(&htim4);
+ 461              		.loc 1 88 9 is_stmt 1 view .LVU145
+ARM GAS  /tmp/ccnMcqIc.s 			page 13
 
 
- 457              		.loc 1 84 9 is_stmt 1 view .LVU153
-  84:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
- 458              		.loc 1 84 33 is_stmt 0 view .LVU154
- 459 002e 2D4C     		ldr	r4, .L25+24
- 460 0030 2368     		ldr	r3, [r4]
- 461 0032 5B6A     		ldr	r3, [r3, #36]
-  84:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
- 462              		.loc 1 84 31 view .LVU155
- 463 0034 2C4A     		ldr	r2, .L25+28
- 464 0036 1360     		str	r3, [r2]
-  85:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
- 465              		.loc 1 85 9 is_stmt 1 view .LVU156
-  85:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
- 466              		.loc 1 85 9 view .LVU157
- 467 0038 5B00     		lsls	r3, r3, #1
- 468 003a 2C48     		ldr	r0, .L25+32
- 469 003c 0168     		ldr	r1, [r0]
- 470 003e 2C4A     		ldr	r2, .L25+36
- 471 0040 A2FB0323 		umull	r2, r3, r2, r3
- 472 0044 5B08     		lsrs	r3, r3, #1
- 473 0046 CB62     		str	r3, [r1, #44]
-  85:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
- 474              		.loc 1 85 9 view .LVU158
- 475 0048 C360     		str	r3, [r0, #12]
-  85:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
- 476              		.loc 1 85 9 view .LVU159
-  86:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim4, 0);
- 477              		.loc 1 86 9 view .LVU160
- 478 004a FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
- 479              	.LVL24:
-  87:Src/Zeugma_c/bemf.c ****         polarity_A_old = polarity_A;
- 480              		.loc 1 87 9 view .LVU161
- 481 004e 2368     		ldr	r3, [r4]
- 482 0050 0022     		movs	r2, #0
- 483 0052 5A62     		str	r2, [r3, #36]
-  88:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
- 484              		.loc 1 88 9 view .LVU162
-  88:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
- 485              		.loc 1 88 24 is_stmt 0 view .LVU163
- 486 0054 1D4B     		ldr	r3, .L25
- 487 0056 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
- 488 0058 1D4B     		ldr	r3, .L25+4
- 489 005a 1A70     		strb	r2, [r3]
-  90:Src/Zeugma_c/bemf.c ****     }
- 490              		.loc 1 90 9 is_stmt 1 view .LVU164
- 491 005c FFF7FEFF 		bl	abc
- 492              	.LVL25:
- 493 0060 E4E7     		b	.L17
- 494              	.L23:
-  94:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
- 495              		.loc 1 94 9 view .LVU165
-  94:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
- 496              		.loc 1 94 33 is_stmt 0 view .LVU166
- 497 0062 204C     		ldr	r4, .L25+24
- 498 0064 2368     		ldr	r3, [r4]
- 499 0066 5B6A     		ldr	r3, [r3, #36]
-  94:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
-ARM GAS  /tmp/cceUZvJF.s 			page 12
+ 462 002e 324B     		ldr	r3, .L37+16
+ 463 0030 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 464 0032 2F4B     		ldr	r3, .L37+8
+ 465 0034 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 466 0036 FFF7FEFF 		bl	decide_step
+ 467              	.LVL17:
+  89:Src/Zeugma_c/bemf.c ****         uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+ 468              		.loc 1 89 9 view .LVU146
+  89:Src/Zeugma_c/bemf.c ****         uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+ 469              		.loc 1 89 33 is_stmt 0 view .LVU147
+ 470 003a 314D     		ldr	r5, .L37+24
+ 471 003c 2B68     		ldr	r3, [r5]
+ 472 003e 5A6A     		ldr	r2, [r3, #36]
+  89:Src/Zeugma_c/bemf.c ****         uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+ 473              		.loc 1 89 31 view .LVU148
+ 474 0040 304B     		ldr	r3, .L37+28
+ 475 0042 1A80     		strh	r2, [r3]	@ movhi
+  90:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, temp);
+ 476              		.loc 1 90 9 is_stmt 1 view .LVU149
+  90:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, temp);
+ 477              		.loc 1 90 73 is_stmt 0 view .LVU150
+ 478 0044 304B     		ldr	r3, .L37+32
+ 479 0046 1B88     		ldrh	r3, [r3]
+ 480 0048 9BB2     		uxth	r3, r3
+ 481 004a 304A     		ldr	r2, .L37+36
+ 482 004c 82FB0323 		smull	r2, r3, r2, r3
+ 483              	.LVL18:
+  91:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 484              		.loc 1 91 9 is_stmt 1 view .LVU151
+  91:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 485              		.loc 1 91 9 view .LVU152
+ 486 0050 2F48     		ldr	r0, .L37+40
+ 487 0052 0268     		ldr	r2, [r0]
+ 488 0054 5B08     		lsrs	r3, r3, #1
+ 489              	.LVL19:
+  91:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 490              		.loc 1 91 9 is_stmt 0 view .LVU153
+ 491 0056 D362     		str	r3, [r2, #44]
+  91:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 492              		.loc 1 91 9 is_stmt 1 view .LVU154
+ 493 0058 C360     		str	r3, [r0, #12]
+  91:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 494              		.loc 1 91 9 view .LVU155
+  92:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
+ 495              		.loc 1 92 9 view .LVU156
+ 496 005a 0024     		movs	r4, #0
+ 497 005c 5462     		str	r4, [r2, #36]
+  93:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim4, 0);
+ 498              		.loc 1 93 9 view .LVU157
+ 499 005e FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+ 500              	.LVL20:
+  94:Src/Zeugma_c/bemf.c ****         polarity_A_old = polarity_A;
+ 501              		.loc 1 94 9 view .LVU158
+ 502 0062 2B68     		ldr	r3, [r5]
+ 503 0064 5C62     		str	r4, [r3, #36]
+  95:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
+ 504              		.loc 1 95 9 view .LVU159
+ARM GAS  /tmp/ccnMcqIc.s 			page 14
 
 
- 500              		.loc 1 94 31 view .LVU167
- 501 0068 1F4A     		ldr	r2, .L25+28
- 502 006a 1360     		str	r3, [r2]
-  95:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
- 503              		.loc 1 95 9 is_stmt 1 view .LVU168
-  95:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
- 504              		.loc 1 95 9 view .LVU169
- 505 006c 5B00     		lsls	r3, r3, #1
- 506 006e 1F48     		ldr	r0, .L25+32
- 507 0070 0168     		ldr	r1, [r0]
- 508 0072 1F4A     		ldr	r2, .L25+36
- 509 0074 A2FB0323 		umull	r2, r3, r2, r3
- 510 0078 5B08     		lsrs	r3, r3, #1
- 511 007a CB62     		str	r3, [r1, #44]
-  95:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
- 512              		.loc 1 95 9 view .LVU170
- 513 007c C360     		str	r3, [r0, #12]
-  95:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
- 514              		.loc 1 95 9 view .LVU171
-  96:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim4, 0);
- 515              		.loc 1 96 9 view .LVU172
- 516 007e FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
- 517              	.LVL26:
-  97:Src/Zeugma_c/bemf.c ****         polarity_B_old = polarity_B;
- 518              		.loc 1 97 9 view .LVU173
- 519 0082 2368     		ldr	r3, [r4]
- 520 0084 0022     		movs	r2, #0
- 521 0086 5A62     		str	r2, [r3, #36]
-  98:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
- 522              		.loc 1 98 9 view .LVU174
-  98:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
- 523              		.loc 1 98 24 is_stmt 0 view .LVU175
- 524 0088 124B     		ldr	r3, .L25+8
- 525 008a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
- 526 008c 124B     		ldr	r3, .L25+12
- 527 008e 1A70     		strb	r2, [r3]
- 100:Src/Zeugma_c/bemf.c ****     }
- 528              		.loc 1 100 9 is_stmt 1 view .LVU176
- 529 0090 FFF7FEFF 		bl	abc
- 530              	.LVL27:
- 531 0094 CAE7     		b	.L17
- 532              	.L24:
- 104:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
- 533              		.loc 1 104 9 view .LVU177
- 104:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
- 534              		.loc 1 104 33 is_stmt 0 view .LVU178
- 535 0096 134C     		ldr	r4, .L25+24
- 536 0098 2368     		ldr	r3, [r4]
- 537 009a 5B6A     		ldr	r3, [r3, #36]
- 104:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, (intersection_interval * 2) / 3);
- 538              		.loc 1 104 31 view .LVU179
- 539 009c 124A     		ldr	r2, .L25+28
- 540 009e 1360     		str	r3, [r2]
+  95:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
+ 505              		.loc 1 95 24 is_stmt 0 view .LVU160
+ 506 0066 204B     		ldr	r3, .L37
+ 507 0068 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 508 006a 204B     		ldr	r3, .L37+4
+ 509 006c 1A70     		strb	r2, [r3]
+ 510              	.LBE2:
+ 511 006e DDE7     		b	.L29
+ 512              	.LVL21:
+ 513              	.L35:
+ 514              	.LBB3:
+ 101:Src/Zeugma_c/bemf.c ****         intersection_interval = __HAL_TIM_GET_COUNTER(&htim4);
+ 515              		.loc 1 101 9 is_stmt 1 view .LVU161
+ 516 0070 214B     		ldr	r3, .L37+16
+ 517 0072 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 518 0074 FFF7FEFF 		bl	decide_step
+ 519              	.LVL22:
+ 102:Src/Zeugma_c/bemf.c ****         uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+ 520              		.loc 1 102 9 view .LVU162
+ 102:Src/Zeugma_c/bemf.c ****         uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+ 521              		.loc 1 102 33 is_stmt 0 view .LVU163
+ 522 0078 214D     		ldr	r5, .L37+24
+ 523 007a 2B68     		ldr	r3, [r5]
+ 524 007c 5A6A     		ldr	r2, [r3, #36]
+ 102:Src/Zeugma_c/bemf.c ****         uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+ 525              		.loc 1 102 31 view .LVU164
+ 526 007e 214B     		ldr	r3, .L37+28
+ 527 0080 1A80     		strh	r2, [r3]	@ movhi
+ 103:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, temp);
+ 528              		.loc 1 103 9 is_stmt 1 view .LVU165
+ 103:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, temp);
+ 529              		.loc 1 103 73 is_stmt 0 view .LVU166
+ 530 0082 214B     		ldr	r3, .L37+32
+ 531 0084 1B88     		ldrh	r3, [r3]
+ 532 0086 9BB2     		uxth	r3, r3
+ 533 0088 204A     		ldr	r2, .L37+36
+ 534 008a 82FB0323 		smull	r2, r3, r2, r3
+ 535              	.LVL23:
+ 104:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 536              		.loc 1 104 9 is_stmt 1 view .LVU167
+ 104:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 537              		.loc 1 104 9 view .LVU168
+ 538 008e 2048     		ldr	r0, .L37+40
+ 539 0090 0268     		ldr	r2, [r0]
+ 540 0092 5B08     		lsrs	r3, r3, #1
+ 541              	.LVL24:
+ 104:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 542              		.loc 1 104 9 is_stmt 0 view .LVU169
+ 543 0094 D362     		str	r3, [r2, #44]
+ 104:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 544              		.loc 1 104 9 is_stmt 1 view .LVU170
+ 545 0096 C360     		str	r3, [r0, #12]
+ 104:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 546              		.loc 1 104 9 view .LVU171
  105:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
- 541              		.loc 1 105 9 is_stmt 1 view .LVU180
- 105:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
- 542              		.loc 1 105 9 view .LVU181
-ARM GAS  /tmp/cceUZvJF.s 			page 13
+ 547              		.loc 1 105 9 view .LVU172
+ 548 0098 0024     		movs	r4, #0
+ARM GAS  /tmp/ccnMcqIc.s 			page 15
 
 
- 543 00a0 5B00     		lsls	r3, r3, #1
- 544 00a2 1248     		ldr	r0, .L25+32
- 545 00a4 0168     		ldr	r1, [r0]
- 546 00a6 124A     		ldr	r2, .L25+36
- 547 00a8 A2FB0323 		umull	r2, r3, r2, r3
- 548 00ac 5B08     		lsrs	r3, r3, #1
- 549 00ae CB62     		str	r3, [r1, #44]
- 105:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
- 550              		.loc 1 105 9 view .LVU182
- 551 00b0 C360     		str	r3, [r0, #12]
- 105:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
- 552              		.loc 1 105 9 view .LVU183
+ 549 009a 5462     		str	r4, [r2, #36]
  106:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim4, 0);
- 553              		.loc 1 106 9 view .LVU184
- 554 00b2 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
- 555              	.LVL28:
- 107:Src/Zeugma_c/bemf.c ****         polarity_C_old = polarity_C;
- 556              		.loc 1 107 9 view .LVU185
- 557 00b6 2368     		ldr	r3, [r4]
- 558 00b8 0022     		movs	r2, #0
- 559 00ba 5A62     		str	r2, [r3, #36]
+ 550              		.loc 1 106 9 view .LVU173
+ 551 009c FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+ 552              	.LVL25:
+ 107:Src/Zeugma_c/bemf.c ****         polarity_B_old = polarity_B;
+ 553              		.loc 1 107 9 view .LVU174
+ 554 00a0 2B68     		ldr	r3, [r5]
+ 555 00a2 5C62     		str	r4, [r3, #36]
  108:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
- 560              		.loc 1 108 9 view .LVU186
+ 556              		.loc 1 108 9 view .LVU175
  108:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
- 561              		.loc 1 108 24 is_stmt 0 view .LVU187
- 562 00bc 074B     		ldr	r3, .L25+16
- 563 00be 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
- 564 00c0 074B     		ldr	r3, .L25+20
- 565 00c2 1A70     		strb	r2, [r3]
- 110:Src/Zeugma_c/bemf.c ****     }
- 566              		.loc 1 110 9 is_stmt 1 view .LVU188
- 567 00c4 FFF7FEFF 		bl	abc
- 568              	.LVL29:
- 569              		.loc 1 116 1 is_stmt 0 view .LVU189
- 570 00c8 B0E7     		b	.L17
- 571              	.L26:
- 572 00ca 00BF     		.align	2
- 573              	.L25:
- 574 00cc 00000000 		.word	polarity_A
- 575 00d0 00000000 		.word	polarity_A_old
- 576 00d4 00000000 		.word	polarity_B
- 577 00d8 00000000 		.word	polarity_B_old
- 578 00dc 00000000 		.word	polarity_C
- 579 00e0 00000000 		.word	polarity_C_old
- 580 00e4 00000000 		.word	htim4
- 581 00e8 00000000 		.word	intersection_interval
- 582 00ec 00000000 		.word	htim3
- 583 00f0 ABAAAAAA 		.word	-1431655765
- 584              		.cfi_endproc
- 585              	.LFE70:
- 587              		.section	.text.log_var_analysis,"ax",%progbits
- 588              		.align	1
- 589              		.global	log_var_analysis
- 590              		.syntax unified
- 591              		.thumb
- 592              		.thumb_func
- 594              	log_var_analysis:
-ARM GAS  /tmp/cceUZvJF.s 			page 14
+ 557              		.loc 1 108 24 is_stmt 0 view .LVU176
+ 558 00a4 124B     		ldr	r3, .L37+8
+ 559 00a6 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 560 00a8 124B     		ldr	r3, .L37+12
+ 561 00aa 1A70     		strb	r2, [r3]
+ 562              	.LBE3:
+ 563 00ac BEE7     		b	.L29
+ 564              	.LVL26:
+ 565              	.L36:
+ 566              	.LBB4:
+ 114:Src/Zeugma_c/bemf.c ****         intersection_interval = __HAL_TIM_GET_COUNTER(&htim4);
+ 567              		.loc 1 114 9 is_stmt 1 view .LVU177
+ 568 00ae FFF7FEFF 		bl	decide_step
+ 569              	.LVL27:
+ 115:Src/Zeugma_c/bemf.c ****         uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+ 570              		.loc 1 115 9 view .LVU178
+ 115:Src/Zeugma_c/bemf.c ****         uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+ 571              		.loc 1 115 33 is_stmt 0 view .LVU179
+ 572 00b2 134D     		ldr	r5, .L37+24
+ 573 00b4 2B68     		ldr	r3, [r5]
+ 574 00b6 5A6A     		ldr	r2, [r3, #36]
+ 115:Src/Zeugma_c/bemf.c ****         uint16_t temp = (difference_two_coummutation_time_filtered * 2) / 24;
+ 575              		.loc 1 115 31 view .LVU180
+ 576 00b8 124B     		ldr	r3, .L37+28
+ 577 00ba 1A80     		strh	r2, [r3]	@ movhi
+ 116:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, temp);
+ 578              		.loc 1 116 9 is_stmt 1 view .LVU181
+ 116:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_AUTORELOAD(&htim3, temp);
+ 579              		.loc 1 116 73 is_stmt 0 view .LVU182
+ 580 00bc 124B     		ldr	r3, .L37+32
+ 581 00be 1B88     		ldrh	r3, [r3]
+ 582 00c0 9BB2     		uxth	r3, r3
+ 583 00c2 124A     		ldr	r2, .L37+36
+ 584 00c4 82FB0323 		smull	r2, r3, r2, r3
+ 585              	.LVL28:
+ 117:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 586              		.loc 1 117 9 is_stmt 1 view .LVU183
+ 117:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 587              		.loc 1 117 9 view .LVU184
+ 588 00c8 1148     		ldr	r0, .L37+40
+ 589 00ca 0268     		ldr	r2, [r0]
+ 590 00cc 5B08     		lsrs	r3, r3, #1
+ 591              	.LVL29:
+ 117:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 592              		.loc 1 117 9 is_stmt 0 view .LVU185
+ARM GAS  /tmp/ccnMcqIc.s 			page 16
 
 
- 595              	.LFB71:
- 117:Src/Zeugma_c/bemf.c **** 
- 118:Src/Zeugma_c/bemf.c **** void log_var_analysis()
- 119:Src/Zeugma_c/bemf.c **** {
- 596              		.loc 1 119 1 is_stmt 1 view -0
- 597              		.cfi_startproc
- 598              		@ args = 0, pretend = 0, frame = 0
- 599              		@ frame_needed = 0, uses_anonymous_args = 0
- 600              		@ link register save eliminated.
- 120:Src/Zeugma_c/bemf.c ****     if (rpm > 800 && 0)
- 601              		.loc 1 120 5 view .LVU191
- 602              		.loc 1 120 8 is_stmt 0 view .LVU192
- 603 0000 014B     		ldr	r3, .L28
- 604 0002 1B68     		ldr	r3, [r3]
- 121:Src/Zeugma_c/bemf.c ****     {
- 122:Src/Zeugma_c/bemf.c ****         a = polarity_A_old;
- 123:Src/Zeugma_c/bemf.c ****         b = polarity_B_old;
- 124:Src/Zeugma_c/bemf.c ****         c = polarity_C_old;
- 125:Src/Zeugma_c/bemf.c ****         d = hall_A;
- 126:Src/Zeugma_c/bemf.c ****         e = hall_B;
- 127:Src/Zeugma_c/bemf.c ****         f = hall_C;
- 128:Src/Zeugma_c/bemf.c **** 
- 129:Src/Zeugma_c/bemf.c ****         static uint8_t log_counter = 0;
- 130:Src/Zeugma_c/bemf.c ****         log_counter += 1;
- 131:Src/Zeugma_c/bemf.c **** 
- 132:Src/Zeugma_c/bemf.c ****         if (log_counter == 6)
- 133:Src/Zeugma_c/bemf.c ****         {
- 134:Src/Zeugma_c/bemf.c ****             LOG_POST();
- 135:Src/Zeugma_c/bemf.c ****             log_counter = 0;
- 136:Src/Zeugma_c/bemf.c **** 
- 137:Src/Zeugma_c/bemf.c ****             LOG_VAR(a);
- 138:Src/Zeugma_c/bemf.c ****             LOG_VAR(b);
- 139:Src/Zeugma_c/bemf.c ****             LOG_VAR(c);
- 140:Src/Zeugma_c/bemf.c ****             LOG_VAR(d);
- 141:Src/Zeugma_c/bemf.c ****             LOG_VAR(e);
- 142:Src/Zeugma_c/bemf.c ****             LOG_VAR(f);
- 143:Src/Zeugma_c/bemf.c ****         }
- 144:Src/Zeugma_c/bemf.c ****         else
- 145:Src/Zeugma_c/bemf.c ****         {
- 146:Src/Zeugma_c/bemf.c ****             LOG_VAR(a);
- 147:Src/Zeugma_c/bemf.c ****             LOG_VAR(b);
- 148:Src/Zeugma_c/bemf.c ****             LOG_VAR(c);
- 149:Src/Zeugma_c/bemf.c ****             LOG_VAR(d);
- 150:Src/Zeugma_c/bemf.c ****             LOG_VAR(e);
- 151:Src/Zeugma_c/bemf.c ****             LOG_VAR(f);
- 152:Src/Zeugma_c/bemf.c ****         }
- 153:Src/Zeugma_c/bemf.c ****     }
- 154:Src/Zeugma_c/bemf.c **** }
- 605              		.loc 1 154 1 view .LVU193
- 606 0004 7047     		bx	lr
- 607              	.L29:
- 608 0006 00BF     		.align	2
- 609              	.L28:
- 610 0008 00000000 		.word	rpm
- 611              		.cfi_endproc
- 612              	.LFE71:
- 614              		.global	f
-ARM GAS  /tmp/cceUZvJF.s 			page 15
+ 593 00ce D362     		str	r3, [r2, #44]
+ 117:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 594              		.loc 1 117 9 is_stmt 1 view .LVU186
+ 595 00d0 C360     		str	r3, [r0, #12]
+ 117:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim3, 0);
+ 596              		.loc 1 117 9 view .LVU187
+ 118:Src/Zeugma_c/bemf.c ****         HAL_TIM_Base_Start_IT(&htim3);
+ 597              		.loc 1 118 9 view .LVU188
+ 598 00d2 0024     		movs	r4, #0
+ 599 00d4 5462     		str	r4, [r2, #36]
+ 119:Src/Zeugma_c/bemf.c ****         __HAL_TIM_SET_COUNTER(&htim4, 0);
+ 600              		.loc 1 119 9 view .LVU189
+ 601 00d6 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+ 602              	.LVL30:
+ 120:Src/Zeugma_c/bemf.c ****         polarity_C_old = polarity_C;
+ 603              		.loc 1 120 9 view .LVU190
+ 604 00da 2B68     		ldr	r3, [r5]
+ 605 00dc 5C62     		str	r4, [r3, #36]
+ 121:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
+ 606              		.loc 1 121 9 view .LVU191
+ 121:Src/Zeugma_c/bemf.c ****         // log_var_analysis();
+ 607              		.loc 1 121 24 is_stmt 0 view .LVU192
+ 608 00de 064B     		ldr	r3, .L37+16
+ 609 00e0 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 610 00e2 064B     		ldr	r3, .L37+20
+ 611 00e4 1A70     		strb	r2, [r3]
+ 612              	.LBE4:
+ 613              		.loc 1 129 1 view .LVU193
+ 614 00e6 A1E7     		b	.L29
+ 615              	.L38:
+ 616              		.align	2
+ 617              	.L37:
+ 618 00e8 00000000 		.word	polarity_A
+ 619 00ec 00000000 		.word	polarity_A_old
+ 620 00f0 00000000 		.word	polarity_B
+ 621 00f4 00000000 		.word	polarity_B_old
+ 622 00f8 00000000 		.word	polarity_C
+ 623 00fc 00000000 		.word	polarity_C_old
+ 624 0100 00000000 		.word	htim4
+ 625 0104 00000000 		.word	intersection_interval
+ 626 0108 00000000 		.word	difference_two_coummutation_time_filtered
+ 627 010c ABAAAA2A 		.word	715827883
+ 628 0110 00000000 		.word	htim3
+ 629              		.cfi_endproc
+ 630              	.LFE70:
+ 632              		.section	.text.log_var_analysis,"ax",%progbits
+ 633              		.align	1
+ 634              		.global	log_var_analysis
+ 635              		.syntax unified
+ 636              		.thumb
+ 637              		.thumb_func
+ 639              	log_var_analysis:
+ 640              	.LFB71:
+ 130:Src/Zeugma_c/bemf.c **** 
+ 131:Src/Zeugma_c/bemf.c **** void log_var_analysis()
+ 132:Src/Zeugma_c/bemf.c **** {
+ 641              		.loc 1 132 1 is_stmt 1 view -0
+ARM GAS  /tmp/ccnMcqIc.s 			page 17
 
 
- 615              		.section	.bss.f,"aw",%nobits
- 616              		.align	1
- 619              	f:
- 620 0000 0000     		.space	2
- 621              		.global	e
- 622              		.section	.bss.e,"aw",%nobits
- 623              		.align	1
- 626              	e:
- 627 0000 0000     		.space	2
- 628              		.global	d
- 629              		.section	.bss.d,"aw",%nobits
- 630              		.align	1
- 633              	d:
- 634 0000 0000     		.space	2
- 635              		.global	c
- 636              		.section	.bss.c,"aw",%nobits
- 637              		.align	1
- 640              	c:
- 641 0000 0000     		.space	2
- 642              		.global	b
- 643              		.section	.bss.b,"aw",%nobits
- 644              		.align	1
- 647              	b:
- 648 0000 0000     		.space	2
- 649              		.global	a
- 650              		.section	.bss.a,"aw",%nobits
- 651              		.align	1
- 654              	a:
- 655 0000 0000     		.space	2
- 656              		.text
- 657              	.Letext0:
- 658              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h"
- 659              		.file 3 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 660              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 661              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 662              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
- 663              		.file 7 "Inc/main.h"
- 664              		.file 8 "Inc/tim.h"
- 665              		.file 9 "Inc/Zeugma_h/steps.h"
-ARM GAS  /tmp/cceUZvJF.s 			page 16
+ 642              		.cfi_startproc
+ 643              		@ args = 0, pretend = 0, frame = 0
+ 644              		@ frame_needed = 0, uses_anonymous_args = 0
+ 645              		@ link register save eliminated.
+ 133:Src/Zeugma_c/bemf.c ****     if (rpm > 800 && 0)
+ 646              		.loc 1 133 5 view .LVU195
+ 647              		.loc 1 133 8 is_stmt 0 view .LVU196
+ 648 0000 014B     		ldr	r3, .L40
+ 649 0002 1B68     		ldr	r3, [r3]
+ 134:Src/Zeugma_c/bemf.c ****     {
+ 135:Src/Zeugma_c/bemf.c ****         a = polarity_A_old;
+ 136:Src/Zeugma_c/bemf.c ****         b = polarity_B_old;
+ 137:Src/Zeugma_c/bemf.c ****         c = polarity_C_old;
+ 138:Src/Zeugma_c/bemf.c ****         d = hall_A;
+ 139:Src/Zeugma_c/bemf.c ****         e = hall_B;
+ 140:Src/Zeugma_c/bemf.c ****         f = hall_C;
+ 141:Src/Zeugma_c/bemf.c **** 
+ 142:Src/Zeugma_c/bemf.c ****         static uint8_t log_counter = 0;
+ 143:Src/Zeugma_c/bemf.c ****         log_counter += 1;
+ 144:Src/Zeugma_c/bemf.c **** 
+ 145:Src/Zeugma_c/bemf.c ****         if (log_counter == 6)
+ 146:Src/Zeugma_c/bemf.c ****         {
+ 147:Src/Zeugma_c/bemf.c ****             LOG_POST();
+ 148:Src/Zeugma_c/bemf.c ****             log_counter = 0;
+ 149:Src/Zeugma_c/bemf.c **** 
+ 150:Src/Zeugma_c/bemf.c ****             LOG_VAR(a);
+ 151:Src/Zeugma_c/bemf.c ****             LOG_VAR(b);
+ 152:Src/Zeugma_c/bemf.c ****             LOG_VAR(c);
+ 153:Src/Zeugma_c/bemf.c ****             LOG_VAR(d);
+ 154:Src/Zeugma_c/bemf.c ****             LOG_VAR(e);
+ 155:Src/Zeugma_c/bemf.c ****             LOG_VAR(f);
+ 156:Src/Zeugma_c/bemf.c ****         }
+ 157:Src/Zeugma_c/bemf.c ****         else
+ 158:Src/Zeugma_c/bemf.c ****         {
+ 159:Src/Zeugma_c/bemf.c ****             LOG_VAR(a);
+ 160:Src/Zeugma_c/bemf.c ****             LOG_VAR(b);
+ 161:Src/Zeugma_c/bemf.c ****             LOG_VAR(c);
+ 162:Src/Zeugma_c/bemf.c ****             LOG_VAR(d);
+ 163:Src/Zeugma_c/bemf.c ****             LOG_VAR(e);
+ 164:Src/Zeugma_c/bemf.c ****             LOG_VAR(f);
+ 165:Src/Zeugma_c/bemf.c ****         }
+ 166:Src/Zeugma_c/bemf.c ****     }
+ 167:Src/Zeugma_c/bemf.c **** }
+ 650              		.loc 1 167 1 view .LVU197
+ 651 0004 7047     		bx	lr
+ 652              	.L41:
+ 653 0006 00BF     		.align	2
+ 654              	.L40:
+ 655 0008 00000000 		.word	rpm
+ 656              		.cfi_endproc
+ 657              	.LFE71:
+ 659              		.global	flag_counter
+ 660              		.section	.bss.flag_counter,"aw",%nobits
+ 663              	flag_counter:
+ 664 0000 00       		.space	1
+ 665              		.global	f
+ 666              		.section	.bss.f,"aw",%nobits
+ARM GAS  /tmp/ccnMcqIc.s 			page 18
+
+
+ 667              		.align	1
+ 670              	f:
+ 671 0000 0000     		.space	2
+ 672              		.global	e
+ 673              		.section	.bss.e,"aw",%nobits
+ 674              		.align	1
+ 677              	e:
+ 678 0000 0000     		.space	2
+ 679              		.global	d
+ 680              		.section	.bss.d,"aw",%nobits
+ 681              		.align	1
+ 684              	d:
+ 685 0000 0000     		.space	2
+ 686              		.global	c
+ 687              		.section	.bss.c,"aw",%nobits
+ 688              		.align	1
+ 691              	c:
+ 692 0000 0000     		.space	2
+ 693              		.global	b
+ 694              		.section	.bss.b,"aw",%nobits
+ 695              		.align	1
+ 698              	b:
+ 699 0000 0000     		.space	2
+ 700              		.global	a
+ 701              		.section	.bss.a,"aw",%nobits
+ 702              		.align	1
+ 705              	a:
+ 706 0000 0000     		.space	2
+ 707              		.text
+ 708              	.Letext0:
+ 709              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h"
+ 710              		.file 3 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 711              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 712              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 713              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 714              		.file 7 "Inc/main.h"
+ 715              		.file 8 "Inc/tim.h"
+ 716              		.file 9 "Inc/Zeugma_h/steps.h"
+ARM GAS  /tmp/ccnMcqIc.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 bemf.c
-     /tmp/cceUZvJF.s:19     .text.decide_step:00000000 $t
-     /tmp/cceUZvJF.s:25     .text.decide_step:00000000 decide_step
-     /tmp/cceUZvJF.s:345    .text.decide_step:0000012c $d
-     /tmp/cceUZvJF.s:352    .text.abc:00000000 $t
-     /tmp/cceUZvJF.s:358    .text.abc:00000000 abc
-     /tmp/cceUZvJF.s:398    .text.abc:00000028 $d
-     /tmp/cceUZvJF.s:407    .text.phaseControlBemf:00000000 $t
-     /tmp/cceUZvJF.s:413    .text.phaseControlBemf:00000000 phaseControlBemf
-     /tmp/cceUZvJF.s:574    .text.phaseControlBemf:000000cc $d
-     /tmp/cceUZvJF.s:588    .text.log_var_analysis:00000000 $t
-     /tmp/cceUZvJF.s:594    .text.log_var_analysis:00000000 log_var_analysis
-     /tmp/cceUZvJF.s:610    .text.log_var_analysis:00000008 $d
-     /tmp/cceUZvJF.s:619    .bss.f:00000000 f
-     /tmp/cceUZvJF.s:616    .bss.f:00000000 $d
-     /tmp/cceUZvJF.s:626    .bss.e:00000000 e
-     /tmp/cceUZvJF.s:623    .bss.e:00000000 $d
-     /tmp/cceUZvJF.s:633    .bss.d:00000000 d
-     /tmp/cceUZvJF.s:630    .bss.d:00000000 $d
-     /tmp/cceUZvJF.s:640    .bss.c:00000000 c
-     /tmp/cceUZvJF.s:637    .bss.c:00000000 $d
-     /tmp/cceUZvJF.s:647    .bss.b:00000000 b
-     /tmp/cceUZvJF.s:644    .bss.b:00000000 $d
-     /tmp/cceUZvJF.s:654    .bss.a:00000000 a
-     /tmp/cceUZvJF.s:651    .bss.a:00000000 $d
+     /tmp/ccnMcqIc.s:19     .text.decide_step:00000000 $t
+     /tmp/ccnMcqIc.s:25     .text.decide_step:00000000 decide_step
+     /tmp/ccnMcqIc.s:357    .text.decide_step:00000144 $d
+     /tmp/ccnMcqIc.s:365    .text.abc:00000000 $t
+     /tmp/ccnMcqIc.s:371    .text.abc:00000000 abc
+     /tmp/ccnMcqIc.s:402    .text.abc:00000018 $d
+     /tmp/ccnMcqIc.s:408    .text.phaseControlBemf:00000000 $t
+     /tmp/ccnMcqIc.s:414    .text.phaseControlBemf:00000000 phaseControlBemf
+     /tmp/ccnMcqIc.s:618    .text.phaseControlBemf:000000e8 $d
+     /tmp/ccnMcqIc.s:633    .text.log_var_analysis:00000000 $t
+     /tmp/ccnMcqIc.s:639    .text.log_var_analysis:00000000 log_var_analysis
+     /tmp/ccnMcqIc.s:655    .text.log_var_analysis:00000008 $d
+     /tmp/ccnMcqIc.s:663    .bss.flag_counter:00000000 flag_counter
+     /tmp/ccnMcqIc.s:664    .bss.flag_counter:00000000 $d
+     /tmp/ccnMcqIc.s:670    .bss.f:00000000 f
+     /tmp/ccnMcqIc.s:667    .bss.f:00000000 $d
+     /tmp/ccnMcqIc.s:677    .bss.e:00000000 e
+     /tmp/ccnMcqIc.s:674    .bss.e:00000000 $d
+     /tmp/ccnMcqIc.s:684    .bss.d:00000000 d
+     /tmp/ccnMcqIc.s:681    .bss.d:00000000 $d
+     /tmp/ccnMcqIc.s:691    .bss.c:00000000 c
+     /tmp/ccnMcqIc.s:688    .bss.c:00000000 $d
+     /tmp/ccnMcqIc.s:698    .bss.b:00000000 b
+     /tmp/ccnMcqIc.s:695    .bss.b:00000000 $d
+     /tmp/ccnMcqIc.s:705    .bss.a:00000000 a
+     /tmp/ccnMcqIc.s:702    .bss.a:00000000 $d
 
 UNDEFINED SYMBOLS
 oldValue
-step
 bemf_execute_flag
-execute_step
+step
 backEMF_mode
-polarity_C
-polarity_B
-polarity_A
+execute_step
 HAL_TIM_Base_Start_IT
+polarity_A
 polarity_A_old
+polarity_B
 polarity_B_old
+polarity_C
 polarity_C_old
 htim4
 intersection_interval
+difference_two_coummutation_time_filtered
 htim3
 rpm

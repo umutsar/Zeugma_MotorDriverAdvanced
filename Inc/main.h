@@ -95,7 +95,9 @@ void Error_Handler(void);
   extern uint32_t timeForRotorStopStatusMsFlag;
   extern volatile uint32_t rpm_counter; // removable
   extern volatile uint32_t rpm;
-  extern volatile uint32_t difference_two_coummutation_time;
+  extern volatile uint16_t difference_two_coummutation_time;
+  extern volatile uint16_t difference_two_coummutation_time_filtered;
+
   extern uint8_t logvarflag;
   extern uint16_t temporary_current_value;
   extern uint32_t new_ARR;
@@ -146,7 +148,7 @@ void Error_Handler(void);
   extern uint8_t polarity_B_old;
   extern uint8_t polarity_C_old;
 
-  extern uint32_t intersection_interval;
+  extern uint16_t intersection_interval;
   extern uint16_t a, b, c, d, e, f;
 
   extern uint16_t notr;
